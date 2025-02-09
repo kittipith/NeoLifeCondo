@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Life Condo</title>
+    <style>
+        .room{
+            display: flex;
+            justify-content: center;
+        }
+        .img_roomall{
+            display: grid;
+            grid-template-columns: repeat(2, 650px);
+            gap: 20px;
+        }
+        .img_room1{
+            display: flex;
+            align-items: end;
+            justify-content: end;
+        }
+        .img_room2{
+            display: grid;
+            grid-template-columns: repeat(2, 300px);
+            gap: 20px;
+        }
+        .img_room1 img{
+            width: 600px;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        .img_room2 img{
+            width: 300px;
+            height: 200px;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="room">
+        <div class="img_roomall">
+            <div class="img_room1">
+                <img src="/website/static/img/inside_condo1.webp">
+            </div>
+            <div class="img_room2">
+                <img src="/website/static/img/inside_condo.webp">
+                <img src="/website/static/img/inside_condo3.webp">
+                <img src="/website/static/img/inside_condo2.webp">
+                <img src="/website/static/img/balcony.jpg">
+            </div>
+        </div>
+    </div>
+    <div class="text">
+        <div class="detail">
+            <p>ห้อง 101</p>
+            <p>฿ 10,000 /เดือน</p>
+            <hr>
+        </div>
+        <div class="plan&button">
+
+        </div>
+    </div>
+</body>
+</html>
