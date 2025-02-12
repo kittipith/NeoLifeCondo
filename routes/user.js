@@ -17,9 +17,10 @@ router.get("/", (req, res) => {
 
 //หน้าแสดง condo ทั้งหมด
 router.get("/condo", (req, res) => {
-    db.all(`SELECT * FROM condo WHERE renter_id is NULL`, [], (err, data) => {
-        res.render("test", { condos: data });
-    });
+    // db.all(`SELECT * FROM condo WHERE renter_id is NULL`, [], (err, data) => {
+    //     res.render("test", { condos: data });
+    // });
+    res.render("room_detail", { name: "boss" });
 })
 
 //หน้าที่เลือก condo แล้ว
@@ -30,17 +31,19 @@ router.get("/condo/:id", (req, res) => {
     });
 })
 
-router.get("/condo/:id", (req, res) => {
+//หน้าที่เลือก condo แล้วมีข้อมูลให้กรอก
+router.post("/condo/:id/reserve", (req, res) => {
     const roomId = req.params.id;
-    const { username, password } = req.body;
-    db.run(`SELECT * FROM condo WHERE renter_id is NULL AND ${roomId} = room_id`, [], (err, data) => {
+    const {firstname, lastname} = req.body;
+})
+
+//ยืนยันการจองคอนโด
+router.post("/condo/:id/reserve/confirm", (req, res) => {
+    const roomId = req.params.id;
+    db.all(`SELECT * FROM condo WHERE renter_id is NULL AND ${roomId} = room_id`, [], (err, data) => {
         res.render("test", { condos: data });
     });
 })
-
-
-
-
 
 
 router.get("/user/information", verifyToken, (req, res) => {
