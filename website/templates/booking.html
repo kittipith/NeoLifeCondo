@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            margin: 0;
+        }
+        .head{
+            display: flexbox;
+        }
+        .head-second{
+            display: flex;
+            gap: 10px;
+            width: 18%;
+            margin-left: 2%;
+        }
+        .head-second-img{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 5px;
+        }
+        .head-second-img img{
+            width: 30px;
+            height: 30px;
+        }
+        .head-second-img p{
+            color: #7F7F7F;
+        }
+        .book{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            width: 65%;
+            background-color: red;
+        }
+        .book_img{
+            display: flex;
+            justify-content: end;
+            background-color: black;
+        }
+        .book_img img{
+            width: 300px;
+            height: 200px;
+        }
+        .explain{
+            font-weight: bold;
+            margin: 0;
+        }
+        .booking_date{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 10px;
+        }
+        .booking_date input{
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h1>รายละเอียดในการจองห้อง</h1>
+        <div class="head-second">
+            <div class="head-second-img">
+                <img src="/website/static/img/stair.png">
+                <p>ชั้น 1</p>
+            </div>
+            <div class="head-second-img">
+                <img src="/website/static/img/double-beds.png">
+                <p>1 ห้องนอน</p>
+            </div>
+            <div class="head-second-img">
+                <img src="/website/static/img/bath.png">
+                <p>1 ห้องน้ำ</p>
+            </div>
+        </div>
+        <p class="explain">ห้อง 102</p>
+        <p class="explain">พื้นที่ใช้สอย 30 ตร.ม.</p>
+        <p class="explain">ระเบียงห้องหันทางทิศใต้</p>
+        <div class="book">
+            <div>
+                <div class="booking_date">
+                    <p>วันที่ต้องการทำสัญญา</p>
+                    <input type="date">
+                </div>
+                <div class="booking_date">
+                    <p>เวลาที่ต้องการทำสัญญา</p>
+                    <input type="time">
+                </div>
+            </div>
+            <div class="book_img">
+                <img src="/website/static/img/inside_condo1.webp">
+            </div>
+        </div>
+        <hr>
+    </div>
+
+</body>
+</html>
