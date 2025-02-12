@@ -5,18 +5,44 @@ const path = require("path");
 const router = express.Router();
 const { users, REFRESH_SECRET } = require("../config");
 const { verifyToken } = require("../middleware/authMiddleware");
+const db = require("../database/database");
 
+// 📌 แสดงข้อมูล USER
+//res.render("test", { condos: rows }); // ส่งข้อมูลไปที่ template
 
-// 📌 ADMIN ROUTE
-// router.get("/show", (req, res) => {
-//     res.sendFile(path.join(__dirname, '../public/test.html'));
-// });
-
+//หน้า Default
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, '../website/templates/test.html'));
 })
 
-// 📌 แสดงข้อมูล USER
+//หน้าแสดง condo ทั้งหมด
+router.get("/condo", (req, res) => {
+    db.all(`SELECT * FROM condo WHERE renter_id is NULL`, [], (err, data) => {
+        res.render("test", { condos: data });
+    });
+})
+
+//หน้าที่เลือก condo แล้ว
+router.get("/condo/:id", (req, res) => {
+    const roomId = req.params.id;
+    db.all(`SELECT * FROM condo WHERE renter_id is NULL AND ${roomId} = room_id`, [], (err, data) => {
+        res.render("test", { condos: data });
+    });
+})
+
+router.get("/condo/:id", (req, res) => {
+    const roomId = req.params.id;
+    const { username, password } = req.body;
+    db.run(`SELECT * FROM condo WHERE renter_id is NULL AND ${roomId} = room_id`, [], (err, data) => {
+        res.render("test", { condos: data });
+    });
+})
+
+
+
+
+
+
 router.get("/user/information", verifyToken, (req, res) => {
     const { refreshToken } = req.cookies;
 
