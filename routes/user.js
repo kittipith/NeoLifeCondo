@@ -20,7 +20,7 @@ router.get("/condo", (req, res) => {
     // db.all(`SELECT * FROM condo WHERE renter_id is NULL`, [], (err, data) => {
     //     res.render("test", { condos: data });
     // });
-    res.render("test");
+    res.render("room_detail", { name: "boss" });
 })
 
 //หน้าที่เลือก condo แล้ว
