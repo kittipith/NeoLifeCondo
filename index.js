@@ -9,6 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: true })); // รองรับ Form Data
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views")); // โฟลเดอร์เก็บไฟล์ .ejs
 // app.use(express.static(path.join(__dirname, "public")));
 
 // ✅ Import Routes
