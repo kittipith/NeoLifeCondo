@@ -6,8 +6,9 @@
         "area": "30",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "South"
+        "common-fee": "pay",
+        "direction": "South",
+        "corner": "Yes"
     },
     {
         "id": "102",
@@ -16,8 +17,9 @@
         "area": "30",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "South"
+        "common-fee": "pay",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "103",
@@ -26,8 +28,9 @@
         "area": "30",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "South"
+        "common-fee": "pay",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "104",
@@ -36,8 +39,9 @@
         "area": "30",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "South"
+        "common-fee": "pay",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "105",
@@ -46,8 +50,9 @@
         "area": "30",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "South"
+        "common-fee": "pay",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "106",
@@ -56,8 +61,9 @@
         "area": "30",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "North"
+        "common-fee": "pay",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "107",
@@ -66,8 +72,9 @@
         "area": "30",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "North"
+        "common-fee": "pay",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "108",
@@ -76,8 +83,9 @@
         "area": "30",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "North"
+        "common-fee": "pay",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "109",
@@ -86,8 +94,9 @@
         "area": "30",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "North"
+        "common-fee": "pay",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "110",
@@ -96,8 +105,9 @@
         "area": "30",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "North"
+        "common-fee": "pay",
+        "direction": "North",
+        "corner": "Yes"
     },
     {
         "id": "201",
@@ -106,8 +116,9 @@
         "area": "35",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "South"
+        "common-fee": "pay",
+        "direction": "South",
+        "corner": "Yes"
     },
     {
         "id": "202",
@@ -116,8 +127,9 @@
         "area": "35",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "South"
+        "common-fee": "pay",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "203",
@@ -126,8 +138,9 @@
         "area": "35",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "South"
+        "common-fee": "pay",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "204",
@@ -136,8 +149,9 @@
         "area": "35",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "South"
+        "common-fee": "pay",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "205",
@@ -146,8 +160,9 @@
         "area": "35",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "South"
+        "common-fee": "pay",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "206",
@@ -156,8 +171,9 @@
         "area": "35",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "North"
+        "common-fee": "pay",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "207",
@@ -166,8 +182,9 @@
         "area": "35",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "North"
+        "common-fee": "pay",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "208",
@@ -176,8 +193,9 @@
         "area": "35",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "North"
+        "common-fee": "pay",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "209",
@@ -186,8 +204,9 @@
         "area": "35",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "North"
+        "common-fee": "pay",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "210",
@@ -196,8 +215,9 @@
         "area": "35",
         "bed-room": "1",
         "bath-room": "1",
-        "Common-fee": "pay",
-        "direction": "North"
+        "common-fee": "pay",
+        "direction": "North",
+        "corner": "Yes"
     },
     {
         "id": "301",
@@ -206,8 +226,9 @@
         "area": "40",
         "bed-room": "2",
         "bath-room": "1",
-        "Common-fee": "free",
-        "direction": "South"
+        "common-fee": "free",
+        "direction": "South",
+        "corner": "Yes"
     },
     {
         "id": "302",
@@ -216,8 +237,9 @@
         "area": "40",
         "bed-room": "2",
         "bath-room": "1",
-        "Common-fee": "free",
-        "direction": "South"
+        "common-fee": "free",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "303",
@@ -226,8 +248,9 @@
         "area": "40",
         "bed-room": "2",
         "bath-room": "1",
-        "Common-fee": "free",
-        "direction": "South"
+        "common-fee": "free",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "304",
@@ -236,8 +259,9 @@
         "area": "40",
         "bed-room": "2",
         "bath-room": "1",
-        "Common-fee": "free",
-        "direction": "South"
+        "common-fee": "free",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "305",
@@ -246,8 +270,9 @@
         "area": "40",
         "bed-room": "2",
         "bath-room": "1",
-        "Common-fee": "free",
-        "direction": "South"
+        "common-fee": "free",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "306",
@@ -256,8 +281,9 @@
         "area": "40",
         "bed-room": "2",
         "bath-room": "1",
-        "Common-fee": "free",
-        "direction": "North"
+        "common-fee": "free",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "307",
@@ -266,8 +292,9 @@
         "area": "40",
         "bed-room": "2",
         "bath-room": "1",
-        "Common-fee": "free",
-        "direction": "North"
+        "common-fee": "free",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "308",
@@ -276,8 +303,9 @@
         "area": "40",
         "bed-room": "2",
         "bath-room": "1",
-        "Common-fee": "free",
-        "direction": "North"
+        "common-fee": "free",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "309",
@@ -286,8 +314,9 @@
         "area": "40",
         "bed-room": "2",
         "bath-room": "1",
-        "Common-fee": "free",
-        "direction": "North"
+        "common-fee": "free",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "310",
@@ -296,8 +325,9 @@
         "area": "40",
         "bed-room": "2",
         "bath-room": "1",
-        "Common-fee": "free",
-        "direction": "North"
+        "common-fee": "free",
+        "direction": "North",
+        "corner": "Yes"
     },
     {
         "id": "401",
@@ -306,8 +336,9 @@
         "area": "55",
         "bed-room": "3",
         "bath-room": "2",
-        "Common-fee": "free",
-        "direction": "South"
+        "common-fee": "free",
+        "direction": "South",
+        "corner": "Yes"
     },
     {
         "id": "402",
@@ -316,8 +347,9 @@
         "area": "55",
         "bed-room": "3",
         "bath-room": "2",
-        "Common-fee": "free",
-        "direction": "South"
+        "common-fee": "free",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "403",
@@ -326,8 +358,9 @@
         "area": "55",
         "bed-room": "3",
         "bath-room": "2",
-        "Common-fee": "free",
-        "direction": "South"
+        "common-fee": "free",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "404",
@@ -336,8 +369,9 @@
         "area": "55",
         "bed-room": "3",
         "bath-room": "2",
-        "Common-fee": "free",
-        "direction": "South"
+        "common-fee": "free",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "405",
@@ -346,8 +380,9 @@
         "area": "55",
         "bed-room": "3",
         "bath-room": "2",
-        "Common-fee": "free",
-        "direction": "South"
+        "common-fee": "free",
+        "direction": "South",
+        "corner": "No"
     },
     {
         "id": "406",
@@ -356,8 +391,9 @@
         "area": "55",
         "bed-room": "3",
         "bath-room": "2",
-        "Common-fee": "free",
-        "direction": "North"
+        "common-fee": "free",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "407",
@@ -366,8 +402,9 @@
         "area": "55",
         "bed-room": "3",
         "bath-room": "2",
-        "Common-fee": "free",
-        "direction": "North"
+        "common-fee": "free",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "408",
@@ -376,8 +413,9 @@
         "area": "55",
         "bed-room": "3",
         "bath-room": "2",
-        "Common-fee": "free",
-        "direction": "North"
+        "common-fee": "free",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "409",
@@ -386,8 +424,9 @@
         "area": "55",
         "bed-room": "3",
         "bath-room": "2",
-        "Common-fee": "free",
-        "direction": "North"
+        "common-fee": "free",
+        "direction": "North",
+        "corner": "No"
     },
     {
         "id": "410",
@@ -396,7 +435,8 @@
         "area": "55",
         "bed-room": "3",
         "bath-room": "2",
-        "Common-fee": "free",
-        "direction": "North"
+        "common-fee": "free",
+        "direction": "North",
+        "corner": "Yes"
     }
 ]

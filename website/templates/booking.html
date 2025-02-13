@@ -4,100 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        h1{
-            margin: 0;
-        }
-        .head{
-            display: flexbox;
-        }
-        .head-second{
-            display: flex;
-            gap: 10px;
-            width: 18%;
-            margin-left: 2%;
-        }
-        .head-second-img{
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            gap: 5px;
-        }
-        .head-second-img img{
-            width: 30px;
-            height: 30px;
-        }
-        .head-second-img p{
-            color: #7F7F7F;
-        }
-        .book{
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            width: 65%;
-            background-color: red;
-        }
-        .book_img{
-            display: flex;
-            justify-content: end;
-            background-color: black;
-        }
-        .book_img img{
-            width: 300px;
-            height: 200px;
-        }
-        .explain{
-            font-weight: bold;
-            margin: 0;
-        }
-        .booking_date{
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            gap: 10px;
-        }
-        .booking_date input{
-            width: 200px;
-            height: 30px;
-            font-size: 18px;
-        }
-    </style>
+    <link rel="stylesheet" href="/website/static/css/booking.css">
 </head>
 <body>
-    <div class="head">
-        <h1>รายละเอียดในการจองห้อง</h1>
-        <div class="head-second">
-            <div class="head-second-img">
-                <img src="/website/static/img/stair.png">
-                <p>ชั้น 1</p>
+    <div class="big">
+        <div class="top">
+            <div class="head">
+                <h1>รายละเอียดในการจองห้อง</h1>
+                <div class="head-second">
+                    <div class="head-second-img">
+                        <img src="/website/static/img/stair.png">
+                        <p>ชั้น 1</p> <!-- ดีงข้อมูลชั้น -->
+                    </div>
+                    <div class="head-second-img">
+                        <img src="/website/static/img/double-beds.png">
+                        <p>1 ห้องนอน</p> <!-- ดีงข้อมูลห้องนอน -->
+                    </div>
+                    <div class="head-second-img">
+                        <img src="/website/static/img/bath.png">
+                        <p>1 ห้องน้ำ</p> <!-- ดีงข้อมูลห้องน้ำ -->
+                    </div>
+                </div>
+                <div class="book">
+                    <div>
+                        <p class="explain">ห้อง 102</p> <!-- ดีงข้อมูล ID  -->
+                        <p class="explain">พื้นที่ใช้สอย 30 ตร.ม.</p> <!-- ดีงข้อมูล area -->
+                        <p class="explain">ระเบียงห้องหันทางทิศใต้</p> <!-- ใช้เงื่อนไขเอาถ้าทิสเป็น South ก็โชว์ว่า ระเบียงห้องหันทางทิศใต้ ถ้าเป็น North ก็โชว์ว่า ระเบียงห้องหันทางทิศเหนือ -->
+                        <div class="booking_date">
+                            <p>วันที่ต้องการทำสัญญา</p>
+                            <input type="date">
+                        </div>
+                        <div class="booking_date">
+                            <p>เวลาที่ต้องการทำสัญญา</p>
+                            <input type="time">
+                        </div>
+                    </div>
+                    <div class="book_img">
+                        <img src="/website/static/img/inside_condo1.webp">
+                    </div>
+                </div>
+                <hr>
             </div>
-            <div class="head-second-img">
-                <img src="/website/static/img/double-beds.png">
-                <p>1 ห้องนอน</p>
-            </div>
-            <div class="head-second-img">
-                <img src="/website/static/img/bath.png">
-                <p>1 ห้องน้ำ</p>
+            <div class="box-confirm">
+                <p class="text-medium">ราคาห้อง</p>
+                <h1>฿ 10,000 /เดือน</h1> <!-- ดีงราคาห้อง -->
+                <hr>
+                <p class="text-small">ระยะเวลาขั้นต่ำในการอยู่อาศัยคือ 1 ปี</p>
+                <p class="text-small">กรุณาตรวจสอบรายละเอียดการจองก่อนที่จะยืนยัน</p>
+                <div class="box-check">
+                    <input type="checkbox">
+                    <label>ยอมรับข้อตกลงของยูนิตนี้และเงื่อนไขการจองออนไลน์</label>
+                </div>
+                <div class="btn-confirm">
+                    <button>ยืนยันการจอง</button>
+                </div>
             </div>
         </div>
-        <p class="explain">ห้อง 102</p>
-        <p class="explain">พื้นที่ใช้สอย 30 ตร.ม.</p>
-        <p class="explain">ระเบียงห้องหันทางทิศใต้</p>
-        <div class="book">
-            <div>
-                <div class="booking_date">
-                    <p>วันที่ต้องการทำสัญญา</p>
-                    <input type="date">
-                </div>
-                <div class="booking_date">
-                    <p>เวลาที่ต้องการทำสัญญา</p>
-                    <input type="time">
+    </div>
+    <div class="bottom">
+        <div class="tail">
+            <div class="tail-top">
+                <h1>ข้อมูลส่วนตัว</h1>
+                <div class="input-personal">
+                    <div class="input">
+                        <input type="text" required placeholder="คำนำหน้า*">
+                        <label class="label">คำนำหน้า*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="ชื่อ*">
+                        <label class="label">ชื่อ*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="นามสกุล*">
+                        <label class="label">นามสกุล*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="ชื่อเล่น*">
+                        <label class="label">ชื่อเล่น*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="อายุ*">
+                        <label class="label">อายุ*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="เพศ*">
+                        <label class="label">เพศ*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="สัญชาติ*">
+                        <label class="label">สัญชาติ*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="เชื้อชาติ*">
+                        <label class="label">เชื้อชาติ*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="ศาสนา*">
+                        <label class="label">ศาสนา*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="เลขบัตรประชาชน*">
+                        <label class="label">เลขบัตรประชาชน*</label>
+                    </div>
+                    <div class="input">
+                        <input type="date" required placeholder="วันเกิด*" style="color: #585858;">
+                        <label class="label">วันเกิด*</label>
+                    </div>
                 </div>
             </div>
-            <div class="book_img">
-                <img src="/website/static/img/inside_condo1.webp">
+            <div class="tail-bottom">
+                <h1>ข้อมูลติดต่อ</h1>
+                <div class="input-personal">
+                    <div class="input">
+                        <input type="" required placeholder="ที่อยู่*">
+                        <label class="label">ที่อยู่*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" placeholder="ถนน*">
+                        <label class="label">ถนน*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" placeholder="แขวง/ตำบล*">
+                        <label class="label">แขวง/ตำบล*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" placeholder="เขต/อำเภอ*">
+                        <label class="label">เขต/อำเภอ*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="จังหวัด*">
+                        <label class="label">จังหวัด*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="รหัสไปรณีย์*">
+                        <label class="label">รหัสไปรณีย์*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="เบอร์โทรศัพท์*">
+                        <label class="label">เบอร์โทรศัพท์*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="E-mail*">
+                        <label class="label">E-mail*</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" required placeholder="Line-ID*">
+                        <label class="label">Line-ID*</label>
+                    </div>
+                </div>
             </div>
         </div>
-        <hr>
     </div>
 
 </body>
