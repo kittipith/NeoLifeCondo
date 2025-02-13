@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/bill.css">
+</head>
+<body>
+    <h1>ใบแจ้งหนี้</h1>
+    <div class="text">
+        <div class="text-row">
+            <p>เล่มที่</p><p>1111111</p>
+            <div class="text-end"><p>วันที่</p><p>2/9/2566</p></div>
+        </div>
+        <div class="text-row">
+            <p>ค่าเช่าห้อง เลขที่</p><p>1111111</p>
+            <p style="margin-left: 5%;">ประจำเดือน</p><p>มกราคม</p>
+            <div class="text-end"><p>ชื่อ</p><p>นาย กิตติพิชญ์ หิรัญวงศ์</p></div>
+        </div>
+    </div>
+    <table class="invoice-table">
+        <thead>
+            <tr>
+                <th class="table-list">รายการ</th>
+                <th class="table-amount">จำนวน</th>
+                <th class="table-each">หน่วยละ</th>
+                <th class="table-sum">รวมเงิน</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ค่าเช่า</td>
+                <td>100</td>
+                <td>200</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>ค่าน้ำ</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>ค่าไฟ</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="fine"><p>ค่าปรับ</p><p>กระจกแตก</p></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>รวมทั้งสิ้น</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text">
+        <div class="text-row">
+            <p style="text-align: start;">หมายเหตุ:ใบเสร็จรับเงินนี้จะสมบูรณ์ เมื่อได้รับการชำระเงินเป็นที่เรียบร้อย</p>
+            <img src="../static/img/qrcode.png" class="qrcode">
+        </div>
+        <button id="print">
+            <img src="../static/img/print.png" alt="">
+        </button>
+    </div>
+
+    <script>
+        const printBtn = document.getElementById('print');
+        printBtn.addEventListener('click', function(){
+            print();
+        })
+    </script>
+</body>
+</html>

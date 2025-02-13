@@ -1,0 +1,108 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5%;
+    margin-top: 3%;
+    font-size: 1.1rem;
+}
+
+.text{
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.text p{
+    margin-right: 10px;
+}
+
+.text-row{
+    display: flex; 
+    flex-direction: row;
+}
+
+.text-end{
+    display: flex; 
+    margin-left: auto;
+}
+
+.invoice-table{
+    width: 100%;
+}
+
+.invoice-table, th, td{
+    border: solid black 1px;
+    border-collapse: collapse;
+    height: 50px;
+}
+.table-list{
+    width: 60%;
+}
+
+.invoice-table tr td:first-child {
+    padding-left: 1.5%;
+}
+
+.invoice-table tr td:nth-child(2),  tr td:nth-child(3){
+    text-align: center;
+}
+
+.invoice-table tr td:nth-child(4){
+    text-align: end;
+    padding-right: 1.5%;
+}
+
+.fine{
+    display: flex;
+    border: 0px;
+    margin-left: 1.5%;
+}
+
+
+.invoice-table td.fine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.invoice-table td.fine p:first-of-type {
+    margin-right: auto; 
+}
+
+
+.invoice-table td.fine p:nth-of-type(2) {
+    text-align: center;
+    flex-grow: 1;
+    margin-left: -9%;
+}
+
+.qrcode{
+    width: 195px;
+    margin-left: auto;
+    margin-top: 2%;
+}
+
+
+#print {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-left: auto;
+    margin-top: 2%;
+}
+
+
+#print img {
+    width: 75px;
+    height: auto;
+}
+
+@media print {
+    #print {
+        display: none;
+    }
+}
