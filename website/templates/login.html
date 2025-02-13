@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Life Condo</title>
+    <style>
+        body{
+            background-color: #C4C4C4;
+        }
+        .head{
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            background-color: #27292C;
+            margin: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+        }
+        .head img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .head p{
+            color: white;
+            font-size: 30px;
+            margin-bottom: 0;
+        }
+        .box-bigger{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box-login{
+            display: flexbox;
+            width: 450px;
+            height: 500px;
+            border: 1px solid black;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .top{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .top img{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+        .top p{
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+        .middle{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto 10px;
+        }
+        .middle input{
+            width: 90%;
+            height: 25px;
+            border-radius: 7px;
+            border: 0.5px solid black;
+        }
+        .middle p{
+            text-align: left;
+            width: 90%;
+        }
+        .remember{
+            display: flex;
+            justify-content: left;
+            padding-left: 6%;
+            margin: 5px auto;
+        }
+        .btn-login{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .btn-login button{
+            width: 35%;
+            height: 5vh;
+            font-size: 18px;
+            color: white;
+            background-color: #27292C;
+        }
+        hr{
+            width: 90%;
+        }
+        .last{
+            display: flex;
+            justify-content: center;
+        }
+        .last p{
+            width: 70%;
+            color: #4A4A4A;
+            font-size: 13px;
+            margin: 5px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <img src="/website/static/img/logo_condo.png">
+        <p>Neo Life Condo</p>
+    </div>
+    <div class="box-bigger">
+        <div class="box-login">
+            <div class="top">
+                <img src="/website/static/img/logo_condo.png">
+                <p>LOGIN</p>
+            </div>
+            <div class="middle">
+                <p>Username</p>
+                <input type="text">
+                <p>Password</p>
+                <input type="password">
+            </div>
+            <div class="remember">
+                <input type="checkbox">
+                <label>จดจำการเข้าสู่ระบบ</label>
+            </div>
+            <div class="btn-login">
+                <button>เข้าสู่ระบบ</button>
+            </div>
+            <hr>
+            <div class="last">
+                <p>ข้าพเจ้ายอมรับใน เงื่อนไขและข้อตกลงการใช้บริการ และ นโยบายความเป็นส่วนตัว รวมไปถึงการเก็บรวบรวม, การนำไปใช้ และ การเปิดเผยข้อมูลส่วนบุคคลของข้าพเจ้า</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
