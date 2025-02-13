@@ -1,0 +1,175 @@
+.big{
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+    margin-bottom: 10px;
+}
+.top {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    width: 70%;
+    margin-bottom: 0;
+}
+h1{
+    margin: 0;
+}
+.head{
+    display: flexbox;
+}
+.head-second{
+    display: flex;
+    gap: 10px;
+    margin-left: 2%;
+}
+.head-second-img{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+}
+.head-second-img img{
+    width: 30px;
+    height: 30px;
+}
+.head-second-img p{
+    color: #7F7F7F;
+}
+.book{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.book_img{
+    display: flex;
+    justify-content: end;
+    align-self: end;
+}
+.book_img img{
+    width: 90%;
+    height: 225px;
+    border-radius: 15px;
+}
+.explain{
+    font-weight: bold;
+    margin: 0;
+}
+.booking_date{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+.booking_date input{
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #585858;
+}
+.booking_date p{
+    font-size: 20px;
+}
+.box-confirm{
+    border: 0.5px solid black;
+    align-self: end;
+    border-radius: 10px;
+    padding: 0 5%;
+    width: 90%;
+}
+.box-confirm input, label{
+    margin: 0;
+}
+.box-confirm label{
+    color: #0090FF;
+}
+.btn-confirm{
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+.btn-confirm button{
+    width: 100%;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    border: 0.5px solid #ccc;
+    background-color: #FF4902;
+}
+.text-medium{
+    font-size: 20px;
+}
+.text-small{
+    font-size: 15px;
+    color: #454545;
+    margin: 0;
+}
+.box-check{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.bottom{
+    display: flex;
+    justify-content: center;
+}
+.tail{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 70%;
+    
+}
+.input-personal{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 70%;
+}
+.input{
+    position: relative;
+    display: inline-block;
+    width: 250px;
+}
+.input input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+}
+.label{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+    background: white;
+    padding: 0 5px;
+    opacity: 0;
+}
+
+.input input:focus + .label,
+.input input:not(:placeholder-shown) + .label {
+    top: 0;
+    left: 10px;
+    font-size: 12px;
+    color: #333;
+    opacity: 1;
+}
+.input input:focus::placeholder {
+    color: transparent;
+}
+.tail-top h1{
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+.tail-bottom h1{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
