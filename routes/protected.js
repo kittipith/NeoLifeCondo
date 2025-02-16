@@ -1,6 +1,6 @@
 const express = require("express");
 const { verifyToken } = require("../middleware/authMiddleware");
-
+const db = require("../database/database");
 const router = express.Router();
 
 // 📌 ADMIN ROUTE

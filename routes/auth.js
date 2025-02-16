@@ -1,6 +1,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const path = require("path");
+const db = require("../database/database");
 
 const { ACCESS_SECRET, REFRESH_SECRET, refreshTokens, users } = require("../config");
 
