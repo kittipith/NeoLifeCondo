@@ -1,164 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neo Life Condo</title>
     <link rel="stylesheet" href="/static/css/booking.css">
 </head>
+
 <body>
-    <div class="big">
-        <div class="top">
-            <div class="head">
-                <h1>รายละเอียดในการจองห้อง</h1>
-                <div class="head-second">
-                    <div class="head-second-img">
-                        <img src="/static/img/stair.png">
-                        <p>ชั้น <%= condo.floor %></p> <!-- ดีงข้อมูลชั้น -->
-                    </div>
-                    <div class="head-second-img">
-                        <img src="/static/img/double-beds.png">
-                        <p><%= condo.bed_room %> ห้องนอน</p> <!-- ดีงข้อมูลห้องนอน -->
-                    </div>
-                    <div class="head-second-img">
-                        <img src="/static/img/bath.png">
-                        <p><%= condo.bath_room %> ห้องน้ำ</p> <!-- ดีงข้อมูลห้องน้ำ -->
-                    </div>
-                </div>
-                <div class="book">
-                    <div>
-                        <p class="explain">ห้อง <%= condo.room_number %></p> <!-- ดีงข้อมูล ID  -->
-                        <p class="explain">พื้นที่ใช้สอย <%= condo.area %> ตร.ม.</p> <!-- ดีงข้อมูล area -->
-                        <% if (condo.direction === "North") { %>
-                            <p class="explain">ระเบียงห้องหันทางทิศเหนือ</p> <!-- ใช้เงื่อนไขเอาถ้าทิสเป็น South ก็โชว์ว่า ระเบียงห้องหันทางทิศใต้ ถ้าเป็น North ก็โชว์ว่า ระเบียงห้องหันทางทิศเหนือ -->
-                        <% } else { %>
-                            <p class="explain">ระเบียงห้องหันทางทิศใต้</p> <!-- ใช้เงื่อนไขเอาถ้าทิสเป็น South ก็โชว์ว่า ระเบียงห้องหันทางทิศใต้ ถ้าเป็น North ก็โชว์ว่า ระเบียงห้องหันทางทิศเหนือ -->
-                        <% } %>
-                        <div class="booking_date">
-                            <p>วันที่ต้องการทำสัญญา</p>
-                            <input type="date">
+    <form action="/condo/<%= condo.room_id %>/reserve" method="POST">
+        <div class="big">
+            <div class="top">
+                <div class="head">
+                    <h1>รายละเอียดในการจองห้อง</h1>
+                    <div class="head-second">
+                        <div class="head-second-img">
+                            <img src="/static/img/stair.png">
+                            <p>ชั้น <%= condo.floor %>
+                            </p> <!-- ดีงข้อมูลชั้น -->
                         </div>
-                        <div class="booking_date">
-                            <p>เวลาที่ต้องการทำสัญญา</p>
-                            <input type="time">
+                        <div class="head-second-img">
+                            <img src="/static/img/double-beds.png">
+                            <p>
+                                <%= condo.bed_room %> ห้องนอน
+                            </p> <!-- ดีงข้อมูลห้องนอน -->
+                        </div>
+                        <div class="head-second-img">
+                            <img src="/static/img/bath.png">
+                            <p>
+                                <%= condo.bath_room %> ห้องน้ำ
+                            </p> <!-- ดีงข้อมูลห้องน้ำ -->
                         </div>
                     </div>
-                    <div class="book_img">
-                        <img src="/static/img/inside_condo1.webp">
+                    <div class="book">
+                        <div>
+                            <p class="explain">ห้อง <%= condo.room_number %>
+                            </p> <!-- ดีงข้อมูล ID  -->
+                            <p class="explain">พื้นที่ใช้สอย <%= condo.area %> ตร.ม.</p> <!-- ดีงข้อมูล area -->
+                            <% if (condo.direction==="North" ) { %>
+                                <p class="explain">ระเบียงห้องหันทางทิศเหนือ</p>
+                                <!-- ใช้เงื่อนไขเอาถ้าทิสเป็น South ก็โชว์ว่า ระเบียงห้องหันทางทิศใต้ ถ้าเป็น North ก็โชว์ว่า ระเบียงห้องหันทางทิศเหนือ -->
+                                <% } else { %>
+                                    <p class="explain">ระเบียงห้องหันทางทิศใต้</p>
+                                    <!-- ใช้เงื่อนไขเอาถ้าทิสเป็น South ก็โชว์ว่า ระเบียงห้องหันทางทิศใต้ ถ้าเป็น North ก็โชว์ว่า ระเบียงห้องหันทางทิศเหนือ -->
+                                    <% } %>
+                                        <div class="booking_date">
+                                            <p>วันที่ต้องการทำสัญญา</p>
+                                            <input type="date" name="contact_day">
+                                        </div>
+                                        <div class="booking_date">
+                                            <p>เวลาที่ต้องการทำสัญญา</p>
+                                            <input type="time" name="contact_time">
+                                        </div>
+                        </div>
+                        <div class="book_img">
+                            <img src="/static/img/inside_condo1.webp">
+                        </div>
                     </div>
+                    <hr>
                 </div>
-                <hr>
-            </div>
-            <div class="box-confirm">
-                <p class="text-medium">ราคาห้อง</p>
-                <h1>฿ <%= Number(condo.price).toLocaleString() %> /เดือน</h1> <!-- ดีงราคาห้อง -->
-                <hr>
-                <p class="text-small">ระยะเวลาขั้นต่ำในการอยู่อาศัยคือ 1 ปี</p>
-                <p class="text-small">กรุณาตรวจสอบรายละเอียดการจองก่อนที่จะยืนยัน</p>
-                <div class="box-check">
-                    <input type="checkbox">
-                    <label>ยอมรับข้อตกลงของยูนิตนี้และเงื่อนไขการจองออนไลน์</label>
-                </div>
-                <div class="btn-confirm">
-                    <button>ยืนยันการจอง</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="bottom">
-        <div class="tail">
-            <div class="tail-top">
-                <h1>ข้อมูลส่วนตัว</h1>
-                <div class="input-personal">
-                    <div class="input">
-                        <input type="text" required placeholder="คำนำหน้า*">
-                        <label class="label">คำนำหน้า*</label>
+                <div class="box-confirm">
+                    <p class="text-medium">ราคาห้อง</p>
+                    <h1>฿ <%= Number(condo.price).toLocaleString() %> /เดือน</h1> <!-- ดีงราคาห้อง -->
+                    <hr>
+                    <p class="text-small">ระยะเวลาขั้นต่ำในการอยู่อาศัยคือ 1 ปี</p>
+                    <p class="text-small">กรุณาตรวจสอบรายละเอียดการจองก่อนที่จะยืนยัน</p>
+                    <div class="box-check">
+                        <input type="checkbox">
+                        <label>ยอมรับข้อตกลงของยูนิตนี้และเงื่อนไขการจองออนไลน์</label>
                     </div>
-                    <div class="input">
-                        <input type="text" required placeholder="ชื่อ*">
-                        <label class="label">ชื่อ*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="นามสกุล*">
-                        <label class="label">นามสกุล*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="ชื่อเล่น*">
-                        <label class="label">ชื่อเล่น*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="อายุ*">
-                        <label class="label">อายุ*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="เพศ*">
-                        <label class="label">เพศ*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="สัญชาติ*">
-                        <label class="label">สัญชาติ*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="เชื้อชาติ*">
-                        <label class="label">เชื้อชาติ*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="ศาสนา*">
-                        <label class="label">ศาสนา*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="เลขบัตรประชาชน*">
-                        <label class="label">เลขบัตรประชาชน*</label>
-                    </div>
-                    <div class="input">
-                        <input type="date" required placeholder="วันเกิด*" style="color: #585858;">
-                        <label class="label">วันเกิด*</label>
-                    </div>
-                </div>
-            </div>
-            <div class="tail-bottom">
-                <h1>ข้อมูลติดต่อ</h1>
-                <div class="input-personal">
-                    <div class="input">
-                        <input type="" required placeholder="ที่อยู่*">
-                        <label class="label">ที่อยู่*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" placeholder="ถนน*">
-                        <label class="label">ถนน*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" placeholder="แขวง/ตำบล*">
-                        <label class="label">แขวง/ตำบล*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" placeholder="เขต/อำเภอ*">
-                        <label class="label">เขต/อำเภอ*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="จังหวัด*">
-                        <label class="label">จังหวัด*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="รหัสไปรณีย์*">
-                        <label class="label">รหัสไปรณีย์*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="เบอร์โทรศัพท์*">
-                        <label class="label">เบอร์โทรศัพท์*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="E-mail*">
-                        <label class="label">E-mail*</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" required placeholder="Line-ID*">
-                        <label class="label">Line-ID*</label>
+
+                    <div class="btn-confirm">
+                        <button>ยืนยันการจอง</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="bottom">
+            <div class="tail">
+                <div class="tail-top">
+                    <h1>ข้อมูลส่วนตัว</h1>
+                    <div class="input-personal">
+                        <div class="input">
+                            <input type="text" name="prefix" required placeholder="คำนำหน้า*">
+                            <label class="label">คำนำหน้า*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="firstName" required placeholder="ชื่อ*">
+                            <label class="label">ชื่อ*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="lastName" required placeholder="นามสกุล*">
+                            <label class="label">นามสกุล*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="nickname" required placeholder="ชื่อเล่น*">
+                            <label class="label">ชื่อเล่น*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="age" required placeholder="อายุ*">
+                            <label class="label">อายุ*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="gender" required placeholder="เพศ*">
+                            <label class="label">เพศ*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="nationality" required placeholder="สัญชาติ*">
+                            <label class="label">สัญชาติ*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="ethnicity" required placeholder="เชื้อชาติ*">
+                            <label class="label">เชื้อชาติ*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="religion" required placeholder="ศาสนา*">
+                            <label class="label">ศาสนา*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="idCard" required placeholder="เลขบัตรประชาชน*">
+                            <label class="label">เลขบัตรประชาชน*</label>
+                        </div>
+                        <div class="input">
+                            <input type="date" name="birthdate" required placeholder="วันเกิด*" style="color: #585858;">
+                            <label class="label">วันเกิด*</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="tail-bottom">
+                    <h1>ข้อมูลติดต่อ</h1>
+                    <div class="input-personal">
+                        <div class="input">
+                            <input type="text" name="address" required placeholder="ที่อยู่*">
+                            <label class="label">ที่อยู่*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="street" placeholder="ถนน*">
+                            <label class="label">ถนน*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="district" placeholder="แขวง/ตำบล*">
+                            <label class="label">แขวง/ตำบล*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="subDistrict" placeholder="เขต/อำเภอ*">
+                            <label class="label">เขต/อำเภอ*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="province" required placeholder="จังหวัด*">
+                            <label class="label">จังหวัด*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="postalCode" required placeholder="รหัสไปรณีย์*">
+                            <label class="label">รหัสไปรณีย์*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="phone" required placeholder="เบอร์โทรศัพท์*">
+                            <label class="label">เบอร์โทรศัพท์*</label>
+                        </div>
+                        <div class="input">
+                            <input type="email" name="email" required placeholder="E-mail*">
+                            <label class="label">E-mail*</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="lineId" required placeholder="Line-ID*">
+                            <label class="label">Line-ID*</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
 </body>
+
 </html>
