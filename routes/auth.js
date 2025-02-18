@@ -21,7 +21,7 @@ const generateRefreshToken = (user) => {
 
 // 📌 LOGIN
 router.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/in2dex.html'));
+    res.sendFile(path.join(__dirname, '../website/templates/login.html'));
 });
 
 router.post("/login", (req, res) => {

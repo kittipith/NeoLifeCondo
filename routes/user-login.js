@@ -8,9 +8,9 @@ const { verifyToken } = require("../middleware/authMiddleware");
 
 
 // 📌 USER ROUTE
-// router.get("/show", (req, res) => {
-//     res.sendFile(path.join(__dirname, '../public/test.html'));
-// });
+router.get("/test-login", (req, res) => {
+    res.render('test-login', {data :'none'});
+});
 
 
 module.exports = router;

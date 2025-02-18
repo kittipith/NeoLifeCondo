@@ -1,40 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neo Life Condo</title>
-    <link rel="stylesheet" href="/website/static/css/login.css">
+    <link rel="stylesheet" href="/static/css/login.css">
 </head>
+
 <body>
-    <div class="head">
-        <img src="/website/static/img/logo_condo.png">
-        <p>Neo Life Condo</p>
-    </div>
-    <div class="box-bigger">
-        <div class="box-login">
-            <div class="top">
-                <img src="/website/static/img/logo_condo.png">
-                <p>LOGIN</p>
-            </div>
-            <div class="middle">
-                <p>Username</p>
-                <input type="text">
-                <p>Password</p>
-                <input type="password">
-            </div>
-            <div class="remember">
-                <input type="checkbox">
-                <label>จดจำการเข้าสู่ระบบ</label>
-            </div>
-            <div class="btn-login">
-                <button>เข้าสู่ระบบ</button>
-            </div>
-            <hr>
-            <div class="last">
-                <p>ข้าพเจ้ายอมรับใน เงื่อนไขและข้อตกลงการใช้บริการ และ นโยบายความเป็นส่วนตัว รวมไปถึงการเก็บรวบรวม, การนำไปใช้ และ การเปิดเผยข้อมูลส่วนบุคคลของข้าพเจ้า</p>
+    <form id="loginform">
+        <div class="head">
+            <img src="/static/img/logo_condo.png">
+            <p>Neo Life Condo</p>
+        </div>
+        <div class="box-bigger">
+            <div class="box-login">
+                <div class="top">
+                    <img src="/static/img/logo_condo.png">
+                    <p>LOGIN</p>
+                </div>
+                <div class="middle">
+                    <p>Username</p>
+                    <input type="text" id="username">
+                    <p>Password</p>
+                    <input type="password" id="password">
+                </div>
+                <div class="remember">
+                    <input type="checkbox">
+                    <label>จดจำการเข้าสู่ระบบ</label>
+                </div>
+                <div class="btn-login">
+                    <button type="submit">เข้าสู่ระบบ</button>
+                </div>
+                <hr>
+                <div class="last">
+                    <p>ข้าพเจ้ายอมรับใน เงื่อนไขและข้อตกลงการใช้บริการ และ นโยบายความเป็นส่วนตัว รวมไปถึงการเก็บรวบรวม,
+                        การนำไปใช้ และ การเปิดเผยข้อมูลส่วนบุคคลของข้าพเจ้า</p>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
+
+    <script>
+        document.getElementById("loginform").addEventListener("submit", async function (event) {
+            event.preventDefault();
+    
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+    
+            try {
+                const response = await fetch("http://localhost:3000/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password }),
+                    credentials: "include" // เพื่อให้ browser ส่ง cookies ไปด้วย
+                });
+    
+                if (!response.ok) throw new Error("Login Failed");
+    
+                const data = await response.json();
+                localStorage.setItem("accessToken", data.accessToken);
+    
+                alert("Login Successful!");
+
+                window.location.href = "http://localhost:3000/test-login";
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Invalid Username or Password");
+            }
+        });
+    </script>    
 </body>
+
 </html>

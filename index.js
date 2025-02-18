@@ -18,11 +18,13 @@ app.use(express.static(path.join(__dirname, "website"))); // static
 const authRoutes = require("./routes/auth");
 const protectedRoutes = require("./routes/protected");
 const user = require("./routes/user");
+const user2 = require("./routes/user-login");
 const admin = require("./routes/admin");
 
 app.use("/", authRoutes);
 app.use("/", protectedRoutes);
 app.use("/", user);
+app.use("/", user2);
 app.use("/", admin);
 
 // ✅ เปิดเซิร์ฟเวอร์
