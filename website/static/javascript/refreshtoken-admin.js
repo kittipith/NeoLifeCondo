@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        const response = await fetch("http://localhost:3000/user", {
+        const response = await fetch("http://localhost:3000/admin", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -25,12 +25,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const data = await response.json();
         console.log("User data:", data);
-
-        //ถ้าเป็น Admin -> Redirect
-        if (data.user) {
-            window.location.href = "/admin-login";
-            return;
-        }
     } catch (error) {
         console.error("Error:", error);
         alert("Session expired, please login again.");

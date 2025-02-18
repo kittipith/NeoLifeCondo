@@ -9,9 +9,9 @@ const { verifyToken } = require("../middleware/authMiddleware");
 
 
 // 📌 ADMIN ROUTE
-// router.get("/show", (req, res) => {
-//     res.sendFile(path.join(__dirname, '../public/test.html'));
-// });
+router.get("/admin-login", (req, res) => {
+    res.render('admin-login', {data :'none'});
+});
 
 
 module.exports = router;

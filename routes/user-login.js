@@ -8,7 +8,7 @@ const { verifyToken } = require("../middleware/authMiddleware");
 
 
 // 📌 USER ROUTE
-router.get("/test-login", (req, res) => {
+router.get("/user/mycondo", (req, res) => {
     res.render('test-login', {data :'none'});
 });
 

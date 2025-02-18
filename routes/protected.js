@@ -13,7 +13,7 @@ router.get("/admin", verifyToken, (req, res) => {
 
 // 📌 USER ROUTE
 router.get("/user", verifyToken, (req, res) => {
-  res.json({ message: "Welcome User!" });
+  res.json({ message: "Welcome User!" , user: req.user.isAdmin});
 });
 
 module.exports = router;
