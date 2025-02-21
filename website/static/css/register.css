@@ -1,0 +1,90 @@
+body{
+    padding: 20px 20px;
+}
+.img-logo{
+    display: flex;
+    justify-content: center;
+}
+.img-logo img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.info-detail{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.info-detail p{
+    font-size: 25px;
+    font-weight: 500;
+}
+.regis-detail{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.regis input{
+    width: 70%;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    padding: 5px 5px;
+    font-size: 20px;
+    background-color: #F6F6F6;
+}
+.regis p{
+    font-size: 25px;
+    font-weight: 500;
+}
+.regis-detail p{
+    font-size: 25px;
+    font-weight: 500;
+}
+hr{
+    height: 5px;
+    background-color: black;
+    border: none;
+    margin-top: 0;
+}
+.button-create{
+    display: flex;
+    justify-content: end;
+    margin-top: 50px;
+}
+.button-create button{
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: #0099FF;
+}
+.text-input{
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background-color: #F6F6F6;
+    height: 30px;
+    font-size: 20px;
+    width: 80%;
+    padding: 5px 5px;
+}
+.room-number{
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background-color: #F6F6F6;
+    height: 30px;
+    font-size: 20px;
+    width: 20%;
+    padding: 5px 5px;
+}
+#otherText{
+    display: none;
+}
+.txt-head{
+    font-size: 40px;
+    margin-bottom: 0;
+}

@@ -14,3 +14,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+function openPopup(url) {
+    var popup = document.getElementById("popup");
+    var iframe = document.getElementById("ContentIframe");
+
+    iframe.src = url;
+    popup.style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}

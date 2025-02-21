@@ -3,63 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body{
-            margin: 20px 20px;
-        }
-        button{
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            color: white;
-            background-color: #FF0000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        button:hover{
-            background-color: #a10000;
-        }
-        table{
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        th, td{
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #000000;
-        }
-        th {
-            background-color: #0099FF;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-        }
-        tr:nth-child(even){
-            background-color: #f2f2f2;
-            cursor: pointer;
-        }
-        tr:nth-child(odd){
-            background-color: #ffffff;
-            cursor: pointer;
-        }
-        tr:nth-child(odd):hover{
-            background-color: #e6f7ff;
-        }
-        tr:nth-child(even):hover{
-            background-color: #e6f7ff;
-        }
-        input[type="checkbox"]{
-            transform: scale(1.4);
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="/website/static/css/user-info.css">
 </head>
 <body>
-    <button>ลบข้อมูล</button>
+    <button class="button-del">ลบข้อมูล</button>
     <table>
         <thead>
             <tr>
@@ -73,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr onclick="openPopup('popup-user-info.html');">
                 <td><input type="checkbox"></td>
                 <td>101</td>
                 <td>นาย</td>
@@ -93,6 +40,10 @@
             </tr>
         </tbody>
     </table>
+    
+    <div id="popup" class="popup">
+        <iframe id="ContentIframe"></iframe>
+    </div>
     <script src="/website/static/javascript/checkbox.js"></script>
 </body>
 </html>
