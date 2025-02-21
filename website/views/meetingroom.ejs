@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/meetingroom.css">
+</head>
+<body>
+    <div class="container">
+        <div class="meetinginfo">
+            <div class="row"> 
+                <p style="font-size: 1.2rem; margin-left: 10px;">ข้อมูลการจองใช้ห้องประชุม</p>
+                <button id="editinfo">แก้ไขข้อมูล</button>
+            </div>
+            <div class="meetingdetail">
+                <label for="">หมายเลขห้อง <input type="text" class="textinput"></label>
+                <div class="timerow">
+                    <label for="">ใช้บริการเวลา <input type="time" style="margin-left: 12px;" id="start-time" class="timeinput" min="09:00" max="20:00" step="3600"></label>
+                    <label for="">ถึงเวลา <input type="time" style="margin-left: 12px;" id="end-time" class="timeinput" min="09:00" max="20:00" step="3600"></label>
+                </div>
+                <label for="" class="moreinfolable"><p class="moreinfo">หมายเหตุเพิ่มเติม</p> <textarea name="" id=""></textarea></label>
+            </div>
+            <button id="savedata" onclick="validateTimes();">บันทึกข้อมูล</button>
+        </div>
+        <div class="meetinginfo">
+            <p style="margin: 20px; font-size: 1.2rem;">ตารางเวลาบริการ</p>
+            <div class="small-device">
+                <label for="" style="margin-left: 20px;">วันที่: <select name="" id="selectdate">
+                </select></label>
+            </div>
+            <table id="meetingtable" style="margin: 20px;">
+                <thead id="tablehead"></thead>
+                <tbody id="tablebody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../static/javascript/meetingroom.js"></script>
+</body>
+</html>

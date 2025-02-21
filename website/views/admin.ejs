@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Life Condo</title>
+    <link rel="stylesheet" href="../static/css/admin.css">
+</head>
+<body>
+    <div class="biggest">
+        <div class="bigger">
+            <div class="big">
+                <div class="logo">
+                    <img src="../static/img/logo_condo.png">
+                    <span>Neo Life Condo</span>
+                </div>
+                <div class="list-menu">
+                    <button onclick="changePage('user-info')">ข้อมูลผู้เช่า</button>
+                    <button onclick="changePage('services')">บริการเสริม</button>
+                    <button onclick="changePage('news')">แจ้งข่าวสาร</button>
+                    <button onclick="changePage('report')">แจ้งของชำรุด</button>
+                    <button onclick="changePage('contact')">ติดต่อพนักงาน</button>
+                    <button onclick="changePage('register')">สมัครบัญชีลูกบ้าน</button>
+                    <button onclick="changePage('payment')">ยืนยันการชำระค่าคอนโด</button>
+                </div>
+            </div>
+            <div class="content">
+                <iframe id="contentFrame" src="about:blank"></iframe>
+            </div>
+        </div>
+    </div>
+    <script src="../static/javascript/refreshtoken-admin.js"></script>
+    <script>
+        function changePage(page) {
+            var iframe = document.getElementById("contentFrame");
+            iframe.src = page;
+            iframe.style.display = "block";
+        }
+
+        window.onload = function() {
+        changePage('user-info');
+    };
+    </script>
+</body>
+</html>

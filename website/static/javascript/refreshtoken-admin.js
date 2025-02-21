@@ -1,9 +1,9 @@
 // ✅ ดึง Token จาก LocalStorage
-const token = localStorage.getItem("accessToken");
+// const token = localStorage.getItem("accessToken");
 
 document.addEventListener("DOMContentLoaded", async () => {
     const token = localStorage.getItem("accessToken");
-
+    
     if (!token) {
         alert("No token found, please login.");
         window.location.href = "/login";
@@ -52,8 +52,11 @@ async function refreshAccessToken() {
     }
 }
 
+refreshAccessToken();
+
 // ✅ ตั้งให้เรียก refresh token อัตโนมัติเมื่อ access token หมดอายุ
-setInterval(refreshAccessToken, 25 * 1000); // รีเฟรชทุก 25 วินาที
+setInterval(refreshAccessToken, 25 * 1000); // รีเฟรชทุก 1 ชั่วโมง
+
 
 // function logout() {
 //     localStorage.removeItem("accessToken");

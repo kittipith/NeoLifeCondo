@@ -94,6 +94,10 @@ router.get("/bill", (req, res) => {
     });
 })
 
+router.get("/meeting", (req, res) => {
+    res.render("meetingroom");
+})
+
 router.get("/user/information", verifyToken, (req, res) => {
     const { refreshToken } = req.cookies;
 
