@@ -3,142 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            padding: 20px 20px;
+        }
+        .img-logo{
+            display: flex;
+            justify-content: center;
+        }
+        .img-logo img{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+        .info-detail{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .info-detail p{
+            font-size: 25px;
+            font-weight: 500;
+        }
+        .regis-detail{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .regis input{
+            width: 70%;
+            border: none;
+            border-bottom: 1px solid black;
+            outline: none;
+            padding: 5px 5px;
+            font-size: 20px;
+            background-color: #F6F6F6;
+        }
+        .regis p{
+            font-size: 25px;
+            font-weight: 500;
+        }
+        .regis-detail p{
+            font-size: 25px;
+            font-weight: 500;
+        }
+        hr{
+            height: 5px;
+            background-color: black;
+            border: none;
+            margin-top: 0;
+        }
+        .button-create{
+            display: flex;
+            justify-content: end;
+            margin-top: 50px;
+        }
+        .button-create button{
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            background-color: #0099FF;
+        }
+        .text-input{
+            border: none;
+            border-bottom: 1px solid black;
+            outline: none;
+            background-color: #F6F6F6;
+            height: 30px;
+            font-size: 20px;
+            width: 80%;
+            padding: 5px 5px;
+        }
+        .room-number{
+            border: none;
+            border-bottom: 1px solid black;
+            outline: none;
+            background-color: #F6F6F6;
+            height: 30px;
+            font-size: 20px;
+            width: 20%;
+            padding: 5px 5px;
+        }
+        #otherText{
+            display: none;
+        }
+        .txt-head{
+            font-size: 40px;
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <div>
-        <div>
+        <div class="img-logo">
             <img src="/website/static/img/logo_condo.png">
         </div>
         <div>
-            <p>เลขห้อง</p>
-            <input type="text">
+            <p style="font-size: 25px;">เลขห้อง</p>
+            <input type="text" class="room-number">
         </div>
         <div>
-            <h1>ข้อมูลส่วนตัว</h1>
+            <h1 class="txt-head">ข้อมูลส่วนตัว</h1>
             <hr>
-            <div>
+            <div class="info-detail">
                 <div>
                     <p>คำนำหน้า</p>
-                    <input type="text">
+                    <input type="text" class="text-input">
                 </div>
                 <div>
                     <p>ชื่อ</p>
-                    <input type="text">
+                    <input type="text" class="text-input">
                 </div>
                 <div>
                     <p>นามสกุล</p>
-                    <input type="text">
+                    <input type="text" class="text-input">
                 </div>
                 <div>
                     <p>ชื่อเล่น</p>
-                    <input type="text">
+                    <input type="text" class="text-input">
                 </div>
                 <div>
                     <p>อายุ</p>
-                    <input type="text">
+                    <input type="text" class="text-input">
                 </div>
                 <div>
                     <p>เพศ</p>
-                    <input type="radio">เพศชาย
-                    <input type="radio">เพศหญิง
-                    <input type="radio">อื่น ๆ
-                    <input type="text" id="otherText" placeholder="โปรดระบุ" style="display: none;">
+                    <input type="radio" name="gender" id="male">เพศชาย
+                    <input type="radio" name="gender" id="female">เพศหญิง
+                    <input type="radio" name="gender" id="other">อื่น ๆ
+                    <input type="text" id="otherText" placeholder="โปรดระบุ" class="text-input">
                 </div>
                 <div>
                     <p>สัญชาติ</p>
-                    <input type="text">
+                    <input type="text" class="text-input">
                 </div>
                 <div>
                     <p>เชื้อชาติ</p>
-                    <input type="text">
+                    <input type="text" class="text-input">
                 </div>
                 <div>
                     <p>ศาสนา</p>
-                    <input type="text">
+                    <input type="text" class="text-input">
                 </div>
                 <div>
                     <p>วันเกิด</p>
-                    <input type="date">
+                    <input type="date" class="text-input">
                 </div>
                 <div>
                     <p>เลขบัตรประชาชน</p>
-                    <input type="text">
+                    <input type="text" class="text-input">
                 </div>
             </div>
         </div>
         <div>
-            <h1>ข้อมูลติดต่อ</h1>
+            <h1 class="txt-head">ข้อมูลติดต่อ</h1>
             <hr>
             <div>
-                <div>
+                <div class="regis-detail">
                     <div>
                         <p>ที่อยู่</p>
-                        <input type="text">
+                        <input type="text" class="text-input">
                     </div>
                     <div>
                         <p>หมู่ที่</p>
-                        <input type="text">
+                        <input type="text" class="text-input">
                     </div>
                     <div>
                         <p>ซอย</p>
-                        <input type="text">
+                        <input type="text" class="text-input">
                     </div>
                     <div>
                         <p>ถนน</p>
-                        <input type="text">
+                        <input type="text" class="text-input">
                     </div>
                     <div>
                         <p>แขวง/ตำบล</p>
-                        <input type="text">
+                        <input type="text" class="text-input">
                     </div>
                     <div>
                         <p>เขต/อำเภอ</p>
-                        <input type="text">
+                        <input type="text" class="text-input">
                     </div>
                     <div>
                         <p>จังหวัด</p>
-                        <input type="text">
+                        <input type="text" class="text-input">
                     </div>
                     <div>
                         <p>รหัสไปรณีย์</p>
-                        <input type="text">
+                        <input type="text" class="text-input">
                     </div>
                     <div>
                         <p>เบอร์โทรศัพท์</p>
-                        <input type="text">
+                        <input type="text" class="text-input">
                     </div>
                     <div>
                         <p>Line-ID</p>
-                        <input type="text">
+                        <input type="text" class="text-input">
                     </div>
                     <div>
                         <p>Email</p>
-                        <input type="text">
+                        <input type="text" class="text-input">
                     </div>
                 </div>
             </div>
         </div>
         <div>
-            <h1>ข้อมูลลงทะเบียน</h1>
+            <h1 class="txt-head">ข้อมูลลงทะเบียน</h1>
             <hr>
-            <div>
-                <div>
+            <div class="create">
+                <div class="regis">
                     <p>Username</p>
                     <input type="text">
                 </div>
-                <div>
+                <div class="regis">
                     <p>Password</p>
                     <input type="password">
                 </div>
-                <div>
+                <div class="regis">
                     <p>Confirm Password</p>
                     <input type="password">
                 </div>
             </div>
         </div>
-        <div>
+        <div class="button-create">
             <button>สร้างบัญชี</button>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const otherRadio = document.getElementById("other");
+            const otherText = document.getElementById("otherText");
+            const genderRadios = document.querySelectorAll("input[name='gender']");
+    
+            genderRadios.forEach(radio => {
+                radio.addEventListener("change", function () {
+                    if (otherRadio.checked) {
+                        otherText.style.display = "inline-block";
+                        otherText.focus();
+                    } else {
+                        otherText.style.display = "none";
+                        otherText.value = "";
+                    }
+                });
+            });
+        });
+    </script>    
 </body>
 </html>

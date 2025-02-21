@@ -67,6 +67,7 @@
             height: 25px;
             border-radius: 7px;
             border: 0.5px solid black;
+            margin-bottom: 0
         }
         .middle p{
             text-align: left;
@@ -74,9 +75,13 @@
         }
         .remember{
             display: flex;
-            justify-content: left;
+            justify-content: space-between;
             padding-left: 6%;
-            margin: 5px auto;
+            padding-right: 6%;
+            margin: 5px 0;
+        }
+        .forgot{
+            color: #0075cf;
         }
         .btn-login{
             display: flex;
