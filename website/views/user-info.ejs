@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/user-info.css">
+</head>
+<body>
+    <button class="button-del">ลบข้อมูล</button>
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>ห้อง</th>
+                <th>คำนำหน้า</th>
+                <th>ชื่อ</th>
+                <th>นามสกุล</th>
+                <th>เบอร์โทร</th>
+                <th>Line-ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach((item)=>{ %>        
+            <tr onclick="openPopup('popup-user-info');">
+                <td><input type="checkbox"></td>
+                <td><%=item.room_number%></td>
+                <td><%=item.title%></td>
+                <td><%=item.name%></td>
+                <td><%=item.surname%></td>
+                <td><%=item.phone%></td>
+                <td><%=item.line%></td>
+            </tr>
+            <% }); %>   
+        </tbody>
+    </table>
+    
+    <div id="popup" class="popup">
+        <iframe id="ContentIframe"></iframe>
+    </div>
+    <!-- <script src="../static/javascript/refreshtoken-admin.js"></script> -->
+    <script src="../static/javascript/checkbox.js"></script>
+</body>
+</html>
