@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            margin: 20px 20px;
+        }
+        button{
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: white;
+            background-color: #00e013;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        button:hover{
+            background-color: #00800b;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td{
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #000000;
+        }
+        th {
+            background-color: #0099FF;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        tr:nth-child(odd){
+            background-color: #ffffff;
+            cursor: pointer;
+        }
+        tr:nth-child(odd):hover{
+            background-color: #e6f7ff;
+        }
+        tr:nth-child(even):hover{
+            background-color: #e6f7ff;
+        }
+        input[type="checkbox"]{
+            transform: scale(1.4);
+            cursor: pointer;
+        }
+        th:nth-child(3), td:nth-child(3) {
+            width: 900px;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+    </style>
+</head>
+<body>
+    <button>เสร็จสิ้น</button>
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>ห้อง</th>
+                <th>เรื่องที่ต้องการจะติดต่อ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>101</td>
+                <td>สอบถามรายละเอียดต่าง ๆ</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>102</td>
+                <td>ห้องข้าง ๆ ส่งเสียงดังตอนกลางคืนตลอดเวลาตั้งแต่เวลา 03:00 - 06:00 ตลอดระยะเวลา 1 เดือน</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="/website/static/javascript/checkbox.js"></script>
+</body>
+</html>
