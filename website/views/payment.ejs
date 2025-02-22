@@ -12,26 +12,24 @@
             <tr>
                 <th><input type="checkbox"></th>
                 <th>ห้อง</th>
+                <th>บิล</th>
                 <th>รูปภาพ</th>
                 <th>วันที่</th>
                 <th>เวลา</th>
             </tr>
         </thead>
         <tbody>
+            <% data.forEach((item)=>{ %>
+                
             <tr>
                 <td><input type="checkbox"></td>
-                <td>101</td>
-                <td>999.jpg</td>
-                <td>29/03/2025</td>
-                <td>999.jpg</td>
+                <td><%=item.room_number%></td>
+                <td><%=item.bill_id%></td>
+                <td><%=item.pic%></td>
+                <td><%=item.date%></td>
+                <td><%=item.time%></td>
             </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>102</td>
-                <td>999.jpg</td>
-                <td>29/03/2025</td>
-                <td>999.jpg</td>
-            </tr>
+            <% }); %> 
         </tbody>
     </table>
     <script src="/static/javascript/refreshtoken-admin.js"></script>

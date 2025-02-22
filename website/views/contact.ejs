@@ -18,20 +18,15 @@
             </tr>
         </thead>
         <tbody>
+            <% data.forEach((item)=>{ %>       
             <tr>
                 <td><input type="checkbox"></td>
-                <td>101</td>
-                <td>สอบถามรายละเอียดต่าง ๆ</td>
-                <td>29/03/2025</td>
-                <td>สอบถามรายละเอียดต่าง ๆ</td>
+                <td><%=item.room_number%></td>
+                <td><%=item.contact_name%></td>
+                <td><%=item.date%></td>
+                <td><%=item.time%></td>
             </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>102</td>
-                <td>ห้องข้าง ๆ ส่งเสียงดังตอนกลางคืนตลอดเวลาตั้งแต่เวลา 03:00 - 06:00 ตลอดระยะเวลา 1 เดือน</td>
-                <td>101</td>
-                <td>สอบถามรายละเอียดต่าง ๆ</td>
-            </tr>
+            <% }); %>
         </tbody>
     </table>
     <script src="/static/javascript/refreshtoken-admin.js"></script>

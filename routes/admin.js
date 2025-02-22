@@ -32,15 +32,36 @@ FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.add
 });
 
 router.get("/contact", (req,res) => {
-    res.render('contact');
+    const query = `SELECT room.room_number, contact_staff.contact_name, contact_staff.pic, contact_staff.date, contact_staff.time from contact_staff join room on contact_staff.room_id = room.room_id`;
+    db.all(query, (err, rows) => {
+      if (err) {
+        console.log(err.message);
+      }
+      console.log(rows);
+      res.render('contact', { data : rows });
+    });
 });
 
 router.get("/payment", (req,res) => {
-    res.render('payment');
+    const query = `SELECT room.room_number, payment.bill_id, payment.pic, payment.date, payment.time from payment join bill on payment.bill_id = bill.bill_id JOIN room ON bill.room_id = room.room_id;` ;
+    db.all(query, (err, rows) => {
+      if (err) {
+        console.log(err.message);
+      }
+      console.log(rows);
+      res.render('payment', { data : rows });
+    });
 });
 
 router.get("/news", (req,res) => {
-    res.render('news');
+    const query = `select * from news`;
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.log(err.message);
+    }
+    console.log(rows);
+    res.render('news', { data : rows });
+  });
 });
 
 router.get("/popup-user-info", (req,res) => {
@@ -52,11 +73,25 @@ router.get("/register", (req,res) => {
 });
 
 router.get("/report", (req,res) => {
-    res.render('report');
+    const query = `SELECT room.room_number, repairReq.info, repairReq.pic, repairReq.date, repairReq.time from repairReq join room on repairReq.room_id = room.room_id`;
+    db.all(query, (err, rows) => {
+      if (err) {
+        console.log(err.message);
+      }
+      console.log(rows);
+      res.render('report', { data : rows });
+    });
 });
 
 router.get("/services", (req,res) => {
-    res.render('services');
+    const query = `SELECT room.room_number, service.name_service, servicesReq.date, servicesReq.time, servicesReq.info FROM servicesReq JOIN service ON servicesReq.service_id = service.service_id JOIN room ON servicesReq.room_id = room.room_id;`;
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.log(err.message);
+    }
+    console.log(rows);
+    res.render('services', { data : rows });
+  });
 });
 
 

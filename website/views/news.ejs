@@ -19,20 +19,15 @@
             </tr>
         </thead>
         <tbody>
+            <% data.forEach((item)=>{ %>
             <tr>
                 <td><input type="checkbox"></td>
-                <td>เจอโรคจิตตรงด้านหลังคอนโด</td>
-                <td>999.jpg</td>
-                <td>29/03/2025</td>
-                <td>999.jpg</td>
+                <td><%=item.new_name%></td>
+                <td><%=item.pic%></td>
+                <td><%=item.date%></td>
+                <td><%=item.time%></td>
             </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>ระวังหมาจรด้านข้างคอนโด</td>
-                <td>999.jpg</td>
-                <td>999.jpg</td>
-                <td>999.jpg</td>
-            </tr>
+            <% }); %> 
         </tbody>
     </table>
     <script src="/static/javascript/refreshtoken-admin.js"></script>
