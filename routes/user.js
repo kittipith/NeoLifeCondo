@@ -98,6 +98,17 @@ router.get("/meeting", (req, res) => {
     res.render("meetingroom");
 })
 
+router.get('/meetdata', (req, res) => {
+    const query = 'SELECT * FROM CoWork;';
+    db.all(query, (err, rows) => {
+        if (err) {
+            console.log(err.message);
+        }
+        console.log(rows);
+        res.send(JSON.stringify(rows));        
+    });
+});
+
 router.get("/user/information", verifyToken, (req, res) => {
     const { refreshToken } = req.cookies;
 

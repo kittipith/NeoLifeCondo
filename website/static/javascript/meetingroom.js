@@ -1,7 +1,19 @@
 let meetingtable = document.getElementById("meetingtable");
 let tablehead = document.getElementById("tablehead");
 let tablebody = document.getElementById("tablebody");
-    // เปลี่ยนตารางตอน max-width: 768px
+let ddata = [];
+const endpoint = 'http://localhost:3000/meetdata';
+fetch(endpoint)
+        .then(response => response.json())
+        .then(data => {
+            ddata = data;
+            console.log(ddata[0].endtime);
+            changeTable(smalldevice);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
     function changeTable(smalldevice) {
         if (smalldevice.matches) {
             tablehead.innerHTML = '';
@@ -39,6 +51,7 @@ let tablebody = document.getElementById("tablebody");
                 newOption.value = fullDate;
                 newOption.textContent = fullDate;
                 selectdate.appendChild(newOption);
+
             }
         } else {
           let tablehtml = "<tr>";
@@ -61,10 +74,8 @@ let tablebody = document.getElementById("tablebody");
             let dayString = ''+day;
             let monthString = ''+month;
             let fullDate = `${day}-${month}-${year}`;
-            console.log(fullDate);
             tablehtml = '';
             for(let i = 0; i < 14; i++) {
-                console.log(i);
                 if(i!=0){
                     date.setDate(date.getDate()+1);
                 }
@@ -87,10 +98,8 @@ let tablebody = document.getElementById("tablebody");
     
     let smalldevice = window.matchMedia("(max-width: 768px)");
     
-    changeTable(smalldevice);
-    
     smalldevice.addEventListener("change", function() {
-      changeTable(smalldevice);
+        changeTable(smalldevice);
     });
 
     // เช็คเวลา
@@ -125,8 +134,8 @@ let tablebody = document.getElementById("tablebody");
 
     function validateTimes() {
         const startTime = document.getElementById('start-time').value;
-        const endTime = document.getElementById('end-time').value;
-        if (startTime && endTime && startTime >= endTime) {
+        const end_Time = document.getElementById('end-time').value;
+        if (startTime && end_Time && startTime >= end_Time) {
             alert("เวลาเริ่มต้นและเวลาสิ้นสุดไม่ถูกต้อง");
             document.getElementById('end-time').value = '';
         }
