@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/home.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="thelogo">
+                <img class="logoimg" src="/img/logo.png" alt="">
+                <div class="logo">NEO LIFE CONDO</div>
+            </div>
+                <div class="link">
+                    <a href="#home">HOME</a>
+                    <a href="#concept" >CONCEPT</a>
+                    <a href="#reserve" >RESERVE</a>
+                    <a href="#facilities" >FACILITIES</a>
+                    <a href="#contact" >CONTACT</a>
+                </div>
+                <div class="member"><a href="#">MEMBER</a></div>
+        </div>
+    </nav>
+    
+    <!-- ปุ่มเปิด Sidebar -->
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    
+    <!-- Sidebar เมนู -->
+    <div class="sidebar" id="mySidebar">
+        <a href="javascript:void(0)" onclick="toggleSidebar()">❌ ปิด</a>
+        <a href="#home">HOME</a>
+        <a href="#concept">CONCEPT</a>
+        <a href="#reserve">RESERVE</a>
+        <a href="#facilities">FACILITIES</a>
+        <a href="#contact">CONTACT</a>
+        <a href="#">MEMBER</a>
+    </div>
+
+    <div class="home" id="home">
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <img src="/img/conceptcondo.png" alt="Slide 1">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="https://files.oaiusercontent.com/file-4UWikzztVsMptn9NM3jSJG?se=2025-02-04T16%3A24%3A43Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da0d2330d-1436-4888-a0b1-1fe36e960759.webp&sig=sWhiZfZIoMNllI/uqqrSNDRqq7dpmCGSSGe92Y%2BfrpY%3D" alt="Slide 2">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="/img/conceptcondo.png" alt="Slide 3">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="concept" id="concept">
+        <h2 >CONCEPT</h2>
+        <img src="/img/conceptcondo.png" alt="">
+        <div class="ch2"><strong>Smart Living ใช้ชีวิตอย่างสมาร์ท แบบคนยุคดิจิทัล</strong></div>
+        <p>นี่คือยุคที่ทุกอย่างเชื่อมต่อถึงกัน "Smart Condo" ออกแบบมาเพื่อคนรุ่นใหม่ที่ไม่ยึดติดกับ วิถีเดิม ๆ แต่ต้องการอิสระ ความสะดวกสบาย และเทคโนโลยีที่ตอบโจทย์ไลฟ์สไตล์เราไม่ได้แค่สร้างที่อยู่อาศัย แต่เราสร้าง "ชีวิตที่ง่ายขึ้น"</p>
+        <p> ทุกตารางเมตรถูกออกแบบภายใต้แนวคิด "Future Minimalist" ที่เรียบง่ายแต่ล้ำสมัย โดดเด่นด้วยเส้นสายที่สะอาดตา พื้นที่โปร่งโล่งแต่เต็มไปด้วยฟังก์ชันอัจฉริยะ ใช้วัสดุไฮเทคและสีโทนโมเดิร์น พร้อมระบบ Automation ที่ทำให้ทุกอย่างง่ายแค่ปลายนิ้ว
+            Minimal ไม่ได้แปลว่าน้อย แต่มันหมายถึง "พอดี" เราเลือกใช้เทคโนโลยีเฉพาะสิ่งที่จำเป็น ให้คุณใช้ชีวิตได้อย่าง อิสระ ปลอดภัย และไม่ยุ่งยาก</p>
+    </div>
+
+    <div class="reserve" id="reserve">
+        <h2>RESERVE A ROOM</h2>
+        <div class="roomshow">
+            <div class="filter">
+                <div>
+                    <h3>กรองตามราคา</h3>
+                    <label><input type="checkbox" class="price-checkbox-all"> แสดงทั้งหมด</label><br>
+                    <label><input type="checkbox" value="10,000" class="price-checkbox">฿ 10,000</label><br>
+                    <label><input type="checkbox" value="15,000" class="price-checkbox">฿ 15,000</label><br>
+                    <label><input type="checkbox" value="25,000" class="price-checkbox">฿ 25,000</label><br>
+                    <label><input type="checkbox" value="45,500" class="price-checkbox">฿ 45,500</label><br>
+                </div>
+                <div>
+                <h3>กรองตามชั้น</h3>
+                    <label><input type="checkbox" class="floor-checkbox-all"> แสดงทั้งหมด</label><br>
+                    <label><input type="checkbox" value="1" class="floor-checkbox"> ชั้น 1</label><br>
+                    <label><input type="checkbox" value="2" class="floor-checkbox"> ชั้น 2</label><br>
+                    <label><input type="checkbox" value="3" class="floor-checkbox"> ชั้น 3</label><br>
+                    <label><input type="checkbox" value="4" class="floor-checkbox"> ชั้น 4</label><br>
+                </div>
+                <div>
+                    <h3>กรองตามทิศห้อง</h3>
+                    <label><input type="checkbox" class="direction-checkbox-all"> แสดงทั้งหมด</label><br>
+                    <label><input type="checkbox" value="ห้องหันทางทิศเหนือ" class="direction-checkbox"> ห้องหันทางทิศเหนือ</label><br>
+                    <label><input type="checkbox" value="ห้องหันทา'ทิศใต้" class="direction-checkbox"> ห้องหันทางทิศใต้</label><br>
+                </div>
+                <div>
+                    <h3>กรองห้องหัวมุม</h3>
+                    <label><input type="checkbox" class="corner-checkbox-all"> แสดงทั้งหมด</label><br>
+                    <label><input type="checkbox" value="Yes" class="corner-checkbox">  เฉพาะห้องมุม</label><br>
+                </div>
+            </div>
+            <div class="container" id="room-list">>
+            
+            </div>
+        </div>
+    </div>
+    <div class="facilities" id="facilities">
+        <h2>FACILITIES</h2>
+        <div class="facitem">
+            <div>
+                <div class="imgfac">
+                    <img src="/img/meeting.png" alt="">
+                </div>
+                <p>ห้องประชุม</p>
+            </div>
+            <div>
+                <div class="imgfac">
+                    <img src="/img/studyroom.png" alt="">
+                    
+                </div>
+                <p>พื้นที่อ่านหนังสือ</p>
+            </div>
+            <div>
+                <div class="imgfac">
+                    <img src="/img/livingroom.png" alt="">
+                    
+                </div>
+                <p>ห้องนั่งเล่น</p>
+            </div>
+            <div>
+                <div class="imgfac">
+                    <img src="/img/swimmingpool.png" alt="">
+                    
+                </div> 
+                <p>สระว่ายน้ำ</p> 
+            </div>
+            <div>
+                <div class="imgfac">
+                    <img src="/img/park.png" alt="">
+                    
+                </div> 
+                <p>สวนสาธารณะ</p>
+            </div>
+            <div>
+                <div class="imgfac">
+                    <img src="/img/gym.png" alt="">
+                    
+                </div>
+                <p>ยิม</p>
+            </div>
+            <div>
+                <div class="imgfac">
+                    <img src="/img/badminton.png" alt="">
+                    
+                </div>
+                <p>สนามแบดมินตัน</p>
+            </div>
+            <div>
+                <div class="imgfac">
+                    <img src="/img/bas.png" alt="">
+                    
+                </div>
+                <p>สนามบาส</p>
+            </div>
+            <div>
+                <div class="imgfac">
+                    <img src="/img/theater.png" alt="">
+                </div>
+                <p>ห้องดูหนัง</p>
+            </div>
+        </div>
+    </div>
+    <div class="contact" id="contact">
+        <div class="c_logo">
+            <img src="/img/logo.png" alt="">
+            <p>NEO LIFE CONDO</p>
+        </div>
+        <div class="c_address">
+            <p>699 ฉลองกรุง 1 ฉลองกรุง, ถ.ฉลองกรุง, ข.ลาดกระบัง กรุงเทพมหานคร, 10520 </p>
+        </div>
+        <div class="c_contact">
+            <div class="c_c_img">
+                <img class="line" src="img/line.png" alt="" >
+            </div>
+            <div class="c_c_img">
+                <img class="facebook" src="/img/facebook.png" alt="">
+            </div>
+            <div class="c_c_img">
+                <img class="mail" src="/img/mail.png" alt="">
+            </div>
+            <div class="c_c_img">
+                <img class="phone" src="/img/phone.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        let slideIndex = 0;
+        showSlides();
+
+        // Function to show slides 
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 8000);
+        }
+
+        // ปุ่มกด2ข้าง
+        function plusSlides(n) {
+            slideIndex += n - 1;
+            showSlides();
+        }
+
+        function currentSlide(n) {
+            slideIndex = n - 1;
+            showSlides();
+        }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+        const resultsDiv = document.getElementById("room-list");
+        let rooms = [];
+    
+        // โหลด JSON file
+        try {
+            const response = await fetch("room_data.json");
+            const data = await response.json();
+            rooms = data.rooms; // ใช้ข้อมูลจาก "rooms" ใน JSON
+        } catch (error) {
+            console.error("Error loading JSON:", error);
+        }
+    
+        // ฟังก์ชันแสดงผล
+        function displayRooms(filteredRooms) {
+            resultsDiv.innerHTML = filteredRooms.length > 0
+                ? filteredRooms.map(room => `
+                    <div class="room-card">
+                    <img src="${room.img}" alt="ห้อง ${room.id}">
+                    <div class="room-info">
+                        <h3>ห้อง ${room.id}</h3>
+                        <p class="price">฿ ${room.price}</p>
+                        <div class="features">
+                            <p>สิ่งอำนวยความสะดวก </p>
+                            <div class="featurs_des">✅${room.features.join(" <br>✅")}</div>
+                        </div>
+                        <div class="di_sta">
+                            <div class="di_st_item"><p>${room.direction}</p></div>
+                            <div class="di_st_item"><p>${room.commonfee ? "จ่ายส่วนกลาง" : "ไม่อต้องจ่ายส่วนกลาง"}</p></div>
+                        </div>
+                        <div class="btn">
+                            <a href="#${room.desciption}" >รายละเอียดเพิ่มเติม</a>
+                        </div>
+                    </div>
+                    <div class="dc_room">
+                        <div class="dc_room_1">
+                        <img src="https://s3-alpha-sig.figma.com/img/39ea/2881/f734818461687e8b7a50307f27ecf4d9?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=XJuHvmlhBVdxrCvz9Jf0aeWfYquFEgApz27U9Xpkc7Htht9Y9YiuqcgLsF~Lg1zbFg1zrwZNhE~hmcpPYupi2A6SH9MBXhGoobul0UfORRC0M7VROKMAqhr-7Os7pLKptxgz4xP7dJgEv8b488qSkWYY3TvEOWC85V08uCedut--VqtojUNDc3MF7IoNyymNz4fSjtDJDGPku8A6vp0OMa7Jy71uxVVqJ2V2RmZhTYsSTUW0vJMW5BoS34nyeoles9Ctz3fczTOnu0Ziuc3OLq6j2cCmAAEohp~A1hmnMKsBdGvJ8dQpYiDtvO42ynhzlBgpegAm2ePSGOoOij-rRA__" > <p> ขนาด: ${room.details.area}</p>
+                        </div>
+                        <div class="dc_room_1">
+                        <img src="https://s3-alpha-sig.figma.com/img/23c6/95e3/0c123e309f24685cadfbbef79b90e18c?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Hsghqx8HKtQktAZFjXcUCN3u1q5quxC-e~fuG26r9IgLBovOHJXLduVN5Dm34iSR~p0733rD74UVjEi-IHUUawVlat~KsDfUjVwRmUYwuas94ezFM0dx4M3tUakRZLNeEWvKWRUpEHhwtobUsRcbijj~brubb4XxY75JBpqabWDbmTisuOeHobSPfcLyfDhDbVhwOtjVjRGvJlFLDLwoSEFZU7q3Nee-CwYp2hACjfQcQaUuAO962cc-a1KfiBQ6dEZ~Wsqh5osbYDJ-cGd8Q9ji~AVZqnq71kjOPPMEZsD9XC8TdLubwZ1IH688YCGF2z1b3O-rSFlr0BbfTp9Vbw__" > <p> ห้องนอน: ${room.details.bedroom}</p> 
+                        </div>
+                        <div class="dc_room_1">
+                        <img src="https://s3-alpha-sig.figma.com/img/eea6/7d15/684b6facd58b9ebb2570fa32fc9292f8?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=iHL7sfKaYN~OIhQqMIckHJPGQwovoj~Y1fjiOIudhxnbY6~BpLneEdMuFuX62X1GaPkMdv3cwOeL8iGS8gLh35tr5houw9l-BeGB1t1Lkd0OtIPxZYYA9Dov7AczFswEvPstCAw82uovPJOTJJvTVVFl8rGAk2bSGOmEAqZTPCexVPn3l3t7TT1XcoGKfljLCHmIph7cB-OiHbWZ~vBSNT94CpwC55X4TBF-aVwZmvlPWLZdPmAjHCsQRZwTYUNhEiqV2LaltdimzfNxIb-VTz5LTLuCw5uDjDMIkTE7yuIPB1kFs-ohGRstoclFi7hhh02Xhf5pmDWgl0drdOtltA__" > <p>ห้องน้ำ: ${room.details.bathroom}</p>
+                        </div>
+                        <div class="dc_room_1">
+                        <img src="https://s3-alpha-sig.figma.com/img/6284/27a6/310e0a62b76d5c5d6c7e9d3480314442?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nRSrX20fm4bNU2WdPXzO4UiUv1ilz252KD09tfowLRuIs0xBIcqI60SZqc~wsdZqqdf8gQ677RJ1gWCTQr4BE0r6FYRCMf3KrdMu0GXwELQdgSS-aeq-GzXB1VExi4tKR9d4Za48cr8ZISzkA9UA2RnYzPdyrUF4ANK2FjizsnmFrhEbo~qZArB-ymWAkzJxC3QZnAF2nYEE7UCnW1fx0uPq4Jc7zk~hyeNrI1baXASancFXrHn4WGKWtL5lClYx4dT1Q~Qj0pV~NK9tXA2HQmbzV0mDqqk3F7VvEy3m~LHyQcvi08WBRSPNThbD117ZPNYcw2086bnfV4yB4~bWzw__" > <p> ชั้น: ${room.details.floor}</p>
+                        </div>
+                        <div class="dc_room_1">
+                        <img src="https://s3-alpha-sig.figma.com/img/1964/dd36/620e89d226b5a0e7f1efe40a89141d7d?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=XAL7KPMKMsgFnABgFwAwNzJfJar9EqtWJvMbbUUsFhQIxUIMYEor0B8ibrfkGh772sIbzYihlgn9v49UkyJtWXRNt0BBIup1~BPlBY3smf4q7kTcpSALCenu3T3ffy9UzdkaPr1cQlUyqKFqsCT4WF0NXA~Jpm6L86Fst6w8LWm5QnPXnWr5lFE9xPY1vxujQ7f1mwLLrv80jQF1gl1qE0GMgxAmrWjjP0U1eJrOPk3E2HMUbX1~SlZYf4vIyQi6t8w2pj0fD8HSKP9ogynEtl9~J2J8Ts1StGF6TKAkrUMr0Oc0GEkKiek8us1jk0~meskbumsuCkgOLb7QaVafww__"> <p>สัตว์เลี้ยง: ${room.details.pet_friendly ? "อนุญาต" : "ไม่อนุญาต"}</p>
+                        </div>
+                        </div>
+                    </div>
+                `).join("")
+                : "<p>ไม่มีห้องที่ตรงกับเงื่อนไข</p>";
+        }
+    
+        // ฟังก์ชันกรองห้อง/บ้านตามหลายตัวเลือก
+        function filterRooms() {
+            const checkedPrices = [...document.querySelectorAll(".price-checkbox:checked")].map(cb => cb.value);
+            const checkedDirections = [...document.querySelectorAll(".direction-checkbox:checked")].map(cb => cb.value);
+            const checkedFloors = [...document.querySelectorAll(".floor-checkbox:checked")].map(cb => cb.value);
+            const checkedCorners = [...document.querySelectorAll(".corner-checkbox:checked")].map(cb => cb.value);
+    
+            // ตรวจสอบการเลือก "แสดงทั้งหมด" สำหรับแต่ละฟิลด์
+            const allPricesSelected = document.querySelector(".price-checkbox-all").checked;
+            const allDirectionsSelected = document.querySelector(".direction-checkbox-all").checked;
+            const allFloorsSelected = document.querySelector(".floor-checkbox-all").checked;
+            const allCornersSelected = document.querySelector(".corner-checkbox-all").checked;
+    
+            const filtered = rooms.filter(room => {
+                const matchesPrice = allPricesSelected || (checkedPrices.length ? checkedPrices.includes(room.price.split(' ')[0]) : true);
+                const matchesDirection = allDirectionsSelected || (checkedDirections.length ? checkedDirections.includes(room.direction) : true);
+                const matchesFloor = allFloorsSelected || (checkedFloors.length ? checkedFloors.includes(room.details.floor) : true);
+                const matchesCorner = allCornersSelected || (checkedCorners.length ? checkedCorners.includes(room.details.corner) : true);
+                
+                return matchesPrice && matchesDirection && matchesFloor && matchesCorner;
+            });
+    
+            displayRooms(filtered);
+        }
+    
+        // Event Listener สำหรับ Checkbox ทุกตัว
+        document.querySelectorAll(".price-checkbox, .direction-checkbox, .floor-checkbox, .corner-checkbox").forEach(checkbox => {
+            checkbox.addEventListener("change", filterRooms);
+        });
+    
+        // แสดงผลทั้งหมดตอนเริ่ม
+        displayRooms(rooms);
+    });
+
+    //ปุ่มnav
+    function toggleSidebar() {
+        document.getElementById("mySidebar").classList.toggle("open-sidebar");
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+</body>
+</html>

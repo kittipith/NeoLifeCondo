@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Life Condo</title>
+    <link rel="stylesheet" href="/static/newboard.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="thelogo">
+                <img class="logoimg" src="/img/logo.png" alt="">
+                <div class="logo">NEO LIFE CONDO</div>
+            </div>
+            <div class="link">
+                <div class="thelink">
+                    <a href="javascript:void(0);" onclick="openSmallWindow('url-to-service')">บริการเสริม</a>
+                    <a href="javascript:void(0);" onclick="openSmallWindow('url-to-contact')">ติดต่อพนักงาน</a>
+                </div>
+                <div class="theprofile"><img class="profile" src="./img/profile.jpg" alt=""></div>
+                
+            </div>
+        </div>
+    </nav>
+    
+    <!-- ปุ่มเปิด Sidebar -->
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    
+    <!-- Sidebar เมนู -->
+    <div class="sidebar" id="mySidebar">
+        <a href="javascript:void(0)" onclick="toggleSidebar()">❌ ปิด</a>
+        <a href="javascript:void(0);" onclick="openSmallWindow('url-to-service')">บริการเสริม</a>
+        <a href="javascript:void(0);" onclick="openSmallWindow('url-to-contact')">ติดต่อพนักงาน</a>
+    </div>
+
+    <div class="container">
+        <div class="news">
+            <h2>ข่าวสาร</h2>
+            <div class="news-grid">
+                <div class="news-item">โครงการกำลังหลบหนีอยู่บริเวณคอนโด</div>
+                <div class="news-item">ลิฟต์ตัวด้านซ้ายเสีย</div>
+                <div class="news-item">ไฟทางเดินชั้น 5 เสีย</div>
+                <div class="news-item">ห้อง 504 กำลังซ่อมแซม อาจมีเสียงก่อสร้าง</div>
+            </div>
+        </div>
+        <div class="facilities">
+            <h2>จองใช้ส่วนกลาง</h2>
+            <div class="facilities-grid">
+                <div class="facilities-item">สนามแบดมินตัน</div>
+                <div class="facilities-item">ห้องประชุม</div>
+                <div class="facilities-item">สนามบาส</div>
+                <div class="facilities-item">ห้องดูหนัง</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //ปุ่มnav
+        function toggleSidebar() {
+            document.getElementById("mySidebar").classList.toggle("open-sidebar");
+        }
+
+        function openSmallWindow(url) {
+            window.open(url, '_blank', 'width=600,height=400'); // กำหนดขนาดหน้าต่างใหม่
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลผู้ใช้</title>
+    <link rel="stylesheet" href="./static/dataperson.css">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <img src="./img/porson.jpg" alt="Profile">
+            <div>
+                <h2><strong>ชื่อ:</strong> <span id="name"></span></h2>
+                <p>ห้อง</strong> <span id="room"></span></p>
+            </div>
+        </div>
+        <div class="incon">
+            <div class="info-section">
+                <div class="personal-info">
+                    <h3>ข้อมูลส่วนตัว</h3>
+                    <p><strong>ชื่อ (Name):</strong> นายกิตติพิชญ์ หิรัญวงศ์</p>
+                    <p><strong>ชื่อเล่น (Nickname):</strong> พิก</p>
+                    <p><strong>วันเกิด (Birthdate):</strong> 30 กรกฎาคม 2547</p>
+                    <p><strong>อายุ (Age):</strong> 15</p>
+                    <p><strong>เพศ (Gender):</strong> ชาย</p>
+                    <p><strong>สัญชาติ (Nationality):</strong> ไทย</p>
+                    <p><strong>ศาสนา (Religion):</strong> พุทธ</p>
+                    <p><strong>เชื้อชาติ (Ethnicity):</strong> ไทย</p>
+                    <p><strong>เลขบัตรประชาชน (ID Number):</strong> 1-1055-00064-37-9</p>
+                </div>
+                <div class="history">
+                    <h3>ประวัติการจอง</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ประเภท</th>
+                                <th>วันที่จอง</th>
+                                <th>เวลาเริ่ม</th>
+                                <th>เวลาจบ</th>
+                                <th>หมายเหตุ</th>
+                            </tr>
+
+                        </thead>
+                        <tbody id="booking-history"><tr>
+                        <td>สนามแบดมินตัน</td>
+                        <td>29/12/2024</td>
+                        <td>09:00</td>
+                        <td>20:00</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>ห้องดูหนัง</td>
+                        <td>26/05/2025</td>
+                        <td>10:00</td>
+                        <td>15:00</td>
+                        <td>-</td>
+                    </tr></tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+            <div class="add_payment">
+                
+                <div class="contact-info">
+                    <h3>ข้อมูลติดต่อ</h3>
+                <p><strong>ที่อยู่ (Address):</strong> หอดีน่าเพลส 681 ซอยลองกรุง 1 แยก 6 ถนนลองกรุง แขวงลาดกระบัง เขตลาดกระบัง จังหวัดกรุงเทพ 10520</p>
+                <p><strong>เบอร์โทร (Phone Number):</strong> 099-999-9999</p>
+                <p><strong>Line ID:</strong> 099-999-9999</p>
+                <p><strong>E-mail:</strong> 6607999@kmitl.ac.th</p>
+                </div>
+                <div class="payment">
+                    <div class="pays">
+                        <h3><strong>ค่าใช้จ่าย</strong></h3>
+                        <p class="amount">15,774.00 บาท</p>
+                        <p class="paydate">ชำระภายในวันที่ 5 มีนาคม 2568</p>
+                    </div>
+                    <button class="btn" id="btn" type="button" onclick="senddata()"><strong>ส่งหลักฐานการโอน</strong></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("/api/user")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("full-name").textContent = `${data.name} (${data.nickname})`;
+                    document.getElementById("room-number").textContent = `ห้อง ${data.room}`;
+                    document.getElementById("name").textContent = data.name;
+                    document.getElementById("nickname").textContent = data.nickname;
+                    document.getElementById("birthdate").textContent = data.birthdate;
+                    document.getElementById("age").textContent = data.age;
+                    document.getElementById("gender").textContent = data.gender;
+                    document.getElementById("nationality").textContent = data.nationality;
+                    document.getElementById("religion").textContent = data.religion;
+                    document.getElementById("ethnicity").textContent = data.ethnicity;
+                    document.getElementById("address").textContent = data.address;
+                    document.getElementById("phone").textContent = data.phone;
+                    document.getElementById("line-id").textContent = data.lineID;
+                    document.getElementById("email").textContent = data.email;
+                    document.getElementById("payment-amount").textContent = `${data.paymentAmount} บาท`;
+                    document.getElementById("payment-deadline").textContent = `ชำระภายในวันที่ ${data.paymentDeadline}`;
+                    
+                    const bookingTable = document.getElementById("booking-history");
+                    data.bookings.forEach(booking => {
+                        let row = `<tr>
+                            <td>${booking.type}</td>
+                            <td>${booking.date}</td>
+                            <td>${booking.startTime}</td>
+                            <td>${booking.endTime}</td>
+                            <td>${booking.note || '-'}</td>
+                        </tr>`;
+                        bookingTable.innerHTML += row;
+                    });
+                });
+        });
+    </script>
+</body>
+</html>

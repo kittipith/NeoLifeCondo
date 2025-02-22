@@ -1,0 +1,884 @@
+{
+  "rooms": [
+    {
+      "img": "/img/roomdetal.png",
+      "id": "101",
+      "price": "10,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "1",
+        "area": "30",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "Yes",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal.png",
+      "id": "102",
+      "price": "10,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "1",
+        "area": "30",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal.png",
+      "id": "103",
+      "price": "10,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "1",
+        "area": "30",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal.png",
+      "id": "104",
+      "price": "10,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "1",
+        "area": "30",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal.png",
+      "id": "105",
+      "price": "10,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "1",
+        "area": "30",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal.png",
+      "id": "106",
+      "price": "10,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศเหนือ",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "1",
+        "area": "30",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal.png",
+      "id": "107",
+      "price": "10,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศเหนือ",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "1",
+        "area": "30",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal.png",
+      "id": "108",
+      "price": "10,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศเหนือ",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "1",
+        "area": "30",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal.png",
+      "id": "109",
+      "price": "10,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศเหนือ",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "1",
+        "area": "30",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal.png",
+      "id": "110",
+      "price": "10,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศเหนือ",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "1",
+        "area": "30",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "Yes",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal1.png",
+      "id": "201",
+      "price": "15,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "2",
+        "area": "35",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "Yes",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal1.png",
+      "id": "202",
+      "price": "15,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "2",
+        "area": "35",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal1.png",
+      "id": "203",
+      "price": "15,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "2",
+        "area": "35",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal1.png",
+      "id": "204",
+      "price": "15,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": "",
+      "details": {
+        "floor": "2",
+        "area": "35",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal1.png",
+      "id": "205",
+      "price": "15,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": " ",
+      "details": {
+        "floor": "2",
+        "area": "35",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal1.png",
+      "id": "206",
+      "price": "15,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": " ",
+      "details": {
+        "floor": "2",
+        "area": "35",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal1.png",
+      "id": "207",
+      "price": "15,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": " ",
+      "details": {
+        "floor": "2",
+        "area": "35",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal1.png",
+      "id": "208",
+      "price": "15,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": " ",
+      "details": {
+        "floor": "2",
+        "area": "35",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal1.png",
+      "id": "209",
+      "price": "15,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": " ",
+      "details": {
+        "floor": "2",
+        "area": "35",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "No",
+        "pet_friendly": true
+      }
+    },
+    {
+      "img": "/img/roomdetal1.png",
+      "id": "210",
+      "price": "15,000 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "pay",
+      "description": " ",
+      "details": {
+        "floor": "2",
+        "area": "35",
+        "bedroom": "1",
+        "bathroom": "1",
+        "corner": "Yes",
+        "pet_friendly": true
+      }
+    },
+    {
+        "img": "/img/roomdetal3.png",
+        "id": "301",
+        "price": "25,000 /เดือน",
+        "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+        "direction": "ห้องหันทางทิศใต้",
+        "commonfee": "free",
+        "description": " ",
+        "details": {
+            "floor": "3",
+            "area": "40",
+            "bedroom": "2",
+            "bathroom": "1",
+            "corner": "Yes",
+            "pet_friendly": false
+        }
+    },
+    {
+        "img": "/img/roomdetal3.png",
+        "id": "302",
+        "price": "25,000 /เดือน",
+        "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+        "direction": "ห้องหันทางทิศใต้",
+        "commonfee": "free",
+        "description": " ",
+        "details": {
+            "floor": "3",
+            "area": "40",
+            "bedroom": "2",
+            "bathroom": "1",
+            "corner": "No",
+            "pet_friendly": false
+        }
+    },
+    {
+        "img": "/img/roomdetal3.png",
+        "id": "303",
+        "price": "25,000 /เดือน",
+        "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+        "direction": "ห้องหันทางทิศใต้",
+        "commonfee": "free",
+        "description": " ",
+        "details": {
+            "floor": "3",
+            "area": "40",
+            "bedroom": "2",
+            "bathroom": "1",
+            "corner": "No",
+            "pet_friendly": false
+        }
+    },
+    {
+        "img": "/img/roomdetal3.png",
+        "id": "304",
+        "price": "25,000 /เดือน",
+        "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+        "direction": "ห้องหันทางทิศใต้",
+        "commonfee": "free",
+        "description": " ",
+        "details": {
+            "floor": "3",
+            "area": "40",
+            "bedroom": "2",
+            "bathroom": "1",
+            "corner": "No",
+            "pet_friendly": false
+        }
+    },
+    {
+        "img": "/img/roomdetal3.png",
+        "id": "305",
+        "price": "25,000 /เดือน",
+        "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+        "direction": "ห้องหันทางทิศใต้",
+        "commonfee": "free",
+        "description": " ",
+        "details": {
+            "floor": "3",
+            "area": "40",
+            "bedroom": "2",
+            "bathroom": "1",
+            "corner": "No",
+            "pet_friendly": false
+        }
+    },
+    {
+        "img": "/img/roomdetal3.png",
+        "id": "306",
+        "price": "25,000 /เดือน",
+        "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+        "direction": "ห้องหันทางทิศเหนือ",
+        "commonfee": "free",
+        "description": " ",
+        "details": {
+            "floor": "3",
+            "area": "40",
+            "bedroom": "2",
+            "bathroom": "1",
+            "corner": "No",
+            "pet_friendly": false
+        }
+    },
+    {
+        "img": "/img/roomdetal3.png",
+        "id": "307",
+        "price": "25,000 /เดือน",
+        "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+        "direction": "ห้องหันทางทิศเหนือ",
+        "commonfee": "free",
+        "description": " ",
+        "details": {
+            "floor": "3",
+            "area": "40",
+            "bedroom": "2",
+            "bathroom": "1",
+            "corner": "No",
+            "pet_friendly": false
+        }
+    },
+    {
+        "img": "/img/roomdetal3.png",
+        "id": "308",
+        "price": "25,000 /เดือน",
+        "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+        "direction": "ห้องหันทางทิศเหนือ",
+        "commonfee": "free",
+        "description": " ",
+        "details": {
+            "floor": "3",
+            "area": "40",
+            "bedroom": "2",
+            "bathroom": "1",
+            "corner": "No",
+            "pet_friendly": false
+        }
+    },
+    {
+        "img": "/img/roomdetal3.png",
+        "id": "309",
+        "price": "25,000 /เดือน",
+        "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+        "direction": "ห้องหันทางทิศเหนือ",
+        "commonfee": "free",
+        "description": " ",
+        "details": {
+            "floor": "3",
+            "area": "40",
+            "bedroom": "2",
+            "bathroom": "1",
+            "corner": "No",
+            "pet_friendly": false
+        }
+    },
+    {
+        "img": "/img/roomdetal3.png",
+        "id": "310",
+        "price": "25,000 /เดือน",
+        "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+        "direction": "ห้องหันทางทิศเหนือ",
+        "commonfee": "free",
+        "description": " ",
+        "details": {
+            "floor": "3",
+            "area": "40",
+            "bedroom": "2",
+            "bathroom": "1",
+            "corner": "Yes",
+            "pet_friendly": false
+        }
+    },
+    {
+      "img": "/img/roomdetal2.png",
+      "id": "401",
+      "price": "45,500 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "free",
+      "description": " ",
+      "details": {
+          "floor": "4",
+          "area": "55",
+          "bedroom": "3",
+          "bathroom": "2",
+          "corner": "Yes",
+          "pet_friendly": false
+      }
+  },
+  {
+      "img": "/img/roomdetal2.png",
+      "id": "402",
+      "price": "45,500 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "free",
+      "description": " ",
+      "details": {
+          "floor": "4",
+          "area": "55",
+          "bedroom": "3",
+          "bathroom": "2",
+          "corner": "No",
+          "pet_friendly": false
+      }
+  },
+  {
+      "img": "/img/roomdetal2.png",
+      "id": "403",
+      "price": "45,500 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "free",
+      "description": " ",
+      "details": {
+          "floor": "4",
+          "area": "55",
+          "bedroom": "3",
+          "bathroom": "2",
+          "corner": "No",
+          "pet_friendly": false
+      }
+  },
+  {
+      "img": "/img/roomdetal2.png",
+      "id": "404",
+      "price": "45,500 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "free",
+      "description": " ",
+      "details": {
+          "floor": "4",
+          "area": "55",
+          "bedroom": "3",
+          "bathroom": "2",
+          "corner": "No",
+          "pet_friendly": false
+      }
+  },
+  {
+      "img": "/img/roomdetal2.png",
+      "id": "405",
+      "price": "45,500 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศใต้",
+      "commonfee": "free",
+      "description": " ",
+      "details": {
+          "floor": "4",
+          "area": "55",
+          "bedroom": "3",
+          "bathroom": "2",
+          "corner": "No",
+          "pet_friendly": false
+      }
+  },
+  {
+      "img": "/img/roomdetal2.png",
+      "id": "406",
+      "price": "45,500 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศเหนือ",
+      "commonfee": "free",
+      "description": " ",
+      "details": {
+          "floor": "4",
+          "area": "55",
+          "bedroom": "3",
+          "bathroom": "2",
+          "corner": "No",
+          "pet_friendly": false
+      }
+  },
+  {
+      "img": "/img/roomdetal2.png",
+      "id": "407",
+      "price": "45,500 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศเหนือ",
+      "commonfee": "free",
+      "description": " ",
+      "details": {
+          "floor": "4",
+          "area": "55",
+          "bedroom": "3",
+          "bathroom": "2",
+          "corner": "No",
+          "pet_friendly": false
+      }
+  },
+  {
+      "img": "/img/roomdetal2.png",
+      "id": "408",
+      "price": "45,500 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศเหนือ",
+      "commonfee": "free",
+      "description": " ",
+      "details": {
+          "floor": "4",
+          "area": "55",
+          "bedroom": "3",
+          "bathroom": "2",
+          "corner": "No",
+          "pet_friendly": false
+      }
+  },
+  {
+      "img": "/img/roomdetal2.png",
+      "id": "409",
+      "price": "45,500 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศเหนือ",
+      "commonfee": "free",
+      "description": " ",
+      "details": {
+          "floor": "4",
+          "area": "55",
+          "bedroom": "3",
+          "bathroom": "2",
+          "corner": "No",
+          "pet_friendly": false
+      }
+  },
+  {
+      "img": "/img/roomdetal2.png",
+      "id": "410",
+      "price": "45,500 /เดือน",
+      "features": [
+        "Furniture",
+        "Air Conditioner",
+        "Water Heater",
+        "Samsung LED 4.5 Smart TV 4K"
+      ],
+      "direction": "ห้องหันทางทิศเหนือ",
+      "commonfee": "free",
+      "description": " ",
+      "details": {
+          "floor": "4",
+          "area": "55",
+          "bedroom": "3",
+          "bathroom": "2",
+          "corner": "Yes",
+          "pet_friendly": false
+      }
+  }
+  ]
+}

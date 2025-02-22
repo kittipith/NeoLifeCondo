@@ -3,21 +3,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/static/contacts.css">
-    
+    <link rel="stylesheet" href="/static/services.css">
 </head>
 <body>
     <div class="container">
-        <h2>ติดต่อใช้บริการเสริม</h2>
+        <h2>ติดต่อพนักงาน</h2>
         <form class="myform">
             <p>
                 <label for="numroom">ห้อง</label>
                 <input type="text" id="numroom" name="numroom" />
             </p>
-            
             <p>
-                <label for="servi">บริการเสริม</label>
-                <select id="servi" name="servi">
+                <label for="cont">สิ่งที่ต้องการติดต่อ</label>
+                <select id="cont" name="cont">
                     <option value="00" selected>กรุณาเลือก</option>
                     <option value="01">ไทย</option>
                     <option value="02">เวียดนาม</option>
@@ -30,22 +28,8 @@
                     <option value="09">บรูไน</option>
                 </select>
             </p>
-            <p>
-                <label for="date">เลือกวันที่</label>
-                <input type="date" id="date" name="date" />
-            </p>
-            <p>
-                <label for="time">เลือกเวลา</label>
-                <input type="time" id="time" name="time" />
-            </p>
-            <p>
-                <label for="note">หมายเหตุ</label>
-                <input type="text" id="note" name="note" />
-            </p>
             <button id="btn" type="button" onclick="senddata()">ส่งข้อมูล</button>
-    
         </form>
     </div>
-   
 </body>
 </html>
