@@ -1,0 +1,197 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+nav {
+    display: flex;
+    background-color: #27292C;
+    position: fixed;
+    width: 100%;
+    height: 15%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    align-items: center;
+}
+.nav-container {
+    width: 100%;
+    height: 100%;
+    margin: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+}
+.logo {
+    color: white;
+    font-weight: bold;
+    font-size: 80%;
+}
+.thelogo {
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    width: 15%;
+}
+.logoimg {
+    max-width: 50px;
+    height: auto;
+    border-radius: 50%;
+}
+.thelink{
+    display: flex;
+    flex-direction: row;
+}
+.link {
+    display: flex;
+    align-items: center;
+    gap: 1%;
+}
+.innav{
+    display: flex;
+    align-items: center;
+    /* gap:15%; */
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    border-radius: 20px;
+    padding: 6px 15px;
+    white-space: nowrap;
+}
+nav a:hover {
+    background: #ffffff;
+    color: #000;
+}
+.menu-btn {
+    position: fixed;
+    top: 1%;
+    left: 15px;
+    font-size: 24px;
+    background: #000;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: none;
+    justify-self: center;
+    align-self: center;
+    z-index: 1200;
+}
+.theprofile{
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+}
+.profile{
+    max-width: 50px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.container {
+    margin-top: 5%;
+    padding: 20px;
+}
+.news-grid {
+    display: flex;
+    gap: 10px;
+}
+.news-item {
+    background: #C44949;
+    color: white;
+    padding: 25px 15px;  /* เพิ่ม padding เพื่อให้สูงขึ้น */
+    flex: 1;
+    border-radius: 8px;
+    height: 150px; /* กำหนดความสูงให้สูงขึ้น */
+    display: flex;
+    align-items: flex-end;  /* ทำให้ข้อความชิดล่าง */
+
+}
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.facilities-item {
+    background: #ccc;
+    padding: 25px 15px;  /* เพิ่ม padding เพื่อให้สูงขึ้น */
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+    height: 100px; /* กำหนดความสูงให้สูงขึ้น */
+    display: flex;
+    align-items: flex-end;  /* ทำให้ข้อความชิดล่าง */
+}
+@media screen and (max-width: 1024px) {
+    nav {
+        height: 10%;
+    }
+    .menu-btn {
+        display: block;
+    }
+    .link{
+        width: 0%;
+    }
+    .thelink{
+        display: none;
+        
+    }
+    .thelogo {
+        justify-content: center;
+        width: 60%; 
+        display: flex;
+        justify-self: center;
+    }
+    .nav-container {
+        width: 100%;
+        height: 100%;
+        margin: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        /* justify-content: space-between; */
+    }
+    .container {
+        margin-top: 10%;
+        padding: 20px;
+    }
+}
+@media screen and (max-width: 780px) {
+    nav {
+        height: 10%;
+    }
+    .menu-btn {
+        display: block;
+    }
+    .link{
+        width: 0%;
+    }
+    .thelink{
+        display: none;
+        
+    }
+    .thelogo {
+        justify-content: center;
+        width: 60%; 
+        display: flex;
+        justify-self: center;
+    }
+    .nav-container {
+        width: 100%;
+        height: 100%;
+        margin: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        /* justify-content: space-between; */
+    }
+    .container {
+        margin-top: 10%;
+        padding: 20px;
+    }
+}

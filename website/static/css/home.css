@@ -1,0 +1,801 @@
+* {box-sizing: border-box;}
+        body {font-family: Verdana, sans-serif; margin: 0;}
+        .mySlides {display: none; position: relative;}
+
+        nav {
+            display: flex;
+            background-color: #27292C;
+            padding: 15px 20px;
+            position: fixed;
+            width: 100%;
+            height: 10%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            align-items: center;
+        }
+        .nav-container {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* gap: 15%; */
+            justify-content: space-between;
+        }
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 80%;
+        }
+        .thelogo {
+            display: flex;
+            align-items: center;
+            gap: 1%;
+            width: 15%;
+        }
+        .logoimg {
+            max-width: 50px;
+            height: auto;
+            border-radius: 50%;
+        }
+        .link {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .innav{
+            display: flex;
+            align-items: center;
+            /* gap:15%; */
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 20px;
+            padding: 6px 15px;
+        }
+        nav a:hover {
+            background: #ffffff;
+            color: #000;
+        }
+        .member a {
+            color: white;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #333;
+            color: white;
+            padding-top: 60px;
+            transition: 0.3s;
+            z-index: 1100;
+        }
+        .sidebar a {
+            padding: 15px;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background: #575757;
+        }
+        .open-sidebar {
+            left: 0 !important;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+        }
+
+        /* ปุ่มเมนู */
+        .menu-btn {
+            position: fixed;
+            top: 1%;
+            left: 15px;
+            font-size: 24px;
+            background: #000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: none;
+            z-index: 1200;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 1024px) {
+            .menu-btn {
+                display: block;
+            }
+            .link, .member {
+                display: none;
+            }
+            .thelogo {
+                justify-content: center;
+                width: 100%; 
+                display: flex;
+                justify-self: center;
+            }
+            .nav-container {
+                width: 100%;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                /* gap: 15%; */
+            }
+        }
+
+        .home {
+            width: 100%;
+            height: 70vh;
+            max-height: 600px; /* กำหนด max-height เพื่อให้รูปไม่สูงเกินไป */
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .home-images {
+            display: flex;
+            height: 100%;
+            transition: transform 1s ease-in-out;
+        }
+        
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            margin: auto;
+            height: 70vh;
+            max-height: 600px;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .slideshow-container img {
+            width: 100%;
+            height: auto; /* แก้จาก 0% เป็น auto */
+            object-fit: cover;
+            aspect-ratio: 16/9;
+        }
+        
+        /* ปุ่มเปลี่ยนภาพ */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: 3vw;
+            height: 3vw;
+            max-width: 40px;
+            max-height: 40px;
+            padding: 0.5vw;
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5vw;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 9;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        
+        /* จุดสไลด์ */
+        .dot-container {
+            position: absolute;
+            bottom: 5%;
+            width: 100%;
+            text-align: center;
+            z-index: 9;
+        }
+        
+        .dot {
+            height: 10px;
+            width: 10px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .dot:hover {
+            background-color: #bbb;
+            transform: scale(1.2);
+        }
+        
+        .active {
+            background-color: #717171;
+            transform: scale(1.4);
+        }
+        
+        @media (max-width: 768px) {
+            .home, .slideshow-container {
+                max-height: 90vh;
+            }
+        
+            .prev, .next {
+                width: 6vw;
+                height: 6vw;
+                font-size: 3vw;
+            }
+        
+            .dot {
+                height: 8px;
+                width: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .home, .slideshow-container {
+                height: 40vh;
+            }
+        
+            .prev, .next {
+                width: 7vw;
+                height: 7vw;
+                font-size: 4vw;
+            }
+        
+            .dot {
+                height: 6px;
+                width: 6px;
+            }
+        }
+        
+        .concept {
+            background: url('/img/back.jpeg');
+            background-size: cover;
+            width: 100%;
+            align-items: center;
+            text-align: center;
+            padding: 3% 0;
+            height: 100vh;
+            position: relative;
+            color: rgb(0, 0, 0); /* เพิ่มสีตัวอักษรเพื่อให้อ่านง่ายขึ้น */
+        }
+        
+        .concept img {
+            width: 40%;
+            height: auto; /* ปรับให้สัดส่วนของรูปภาพไม่เสียหาย */
+            aspect-ratio: 16/9;
+            animation: zoom-in linear;
+            animation-timeline: view();
+            animation-range: entry 30% cover 50%;
+        }
+        
+        .ch2 {
+            width: 50%;
+            justify-self: center;
+            font-size: 150%;
+            margin-top: 2%;
+            animation: zoom-in linear;
+            animation-timeline: view();
+            animation-range: entry 30% cover 10%;
+        }
+        
+        .concept h3, .concept h2 {
+            animation: zoom-in linear;
+            animation-timeline: view();
+            animation-range: entry 30% cover 10%;
+        }
+        
+        .concept p {
+            text-align: start;
+            text-indent: 5%;
+            margin-left: 18%;
+            margin-right: 18%;
+            animation: zoom-in linear;
+            animation-timeline: view();
+            animation-range: entry 30% cover 10%;
+        }
+        
+        @keyframes zoom-in {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .concept {
+                padding: 5% 0; /* ปรับ padding สำหรับหน้าจอเล็ก */
+            }
+        
+            .ch2 {
+                font-size: 120%; /* ลดขนาดฟอนต์เมื่อหน้าจอเล็ก */
+                width: 80%;
+            }
+        
+            .concept img {
+                width: 60%; /* ปรับขนาดรูปภาพเมื่อหน้าจอเล็ก */
+            }
+        
+            .concept p {
+                text-align: center;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+        
+            .concept h3, .concept h2 {
+                font-size: 140%; /* ปรับขนาดฟอนต์หัวเรื่อง */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .concept {
+                padding: 6% 0; /* ปรับ padding สำหรับหน้าจอเล็กสุด */
+            }
+        
+            .ch2 {
+                font-size: 100%; /* ลดขนาดฟอนต์ลงสำหรับหน้าจอเล็กสุด */
+                width: 90%;
+            }
+        
+            .concept img {
+                width: 80%; 
+            }
+        
+            .concept p {
+                text-align: center;
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+        
+            .concept h3, .concept h2 {
+                font-size: 120%;
+            }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        .reserve{
+            height: 100hv;
+            background-color: rgb(255, 255, 255);
+        }
+        .reserve h2{
+            justify-self: center;
+            margin-top: 5%;
+            margin-bottom: -3%;
+            animation: zoom-in linear;
+            animation-timeline: view();
+            animation-range: entry 30% cover 50%;
+        }
+        .reserve h3{
+            margin-bottom: -1%;
+        }
+        .roomshow{
+            display: flex;
+            flex-direction: row;
+            width: auto;
+            margin: 5%;
+            gap: 5%;
+        }
+        .container {
+            width: 70%;
+            overflow-y: auto;
+            height: 75vh;
+            padding: 3%;
+            background-color: #D9D9D9;
+            border-radius: 2%;
+            animation: zoom-in-contact linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 20%;
+        }
+        .filter{
+            display: flex;
+            flex-direction: column;
+            animation: slide-in linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 20%;
+        }
+        .room-card {
+            display: flex;
+            width: 100%;
+            height: 70%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            border: 1px solid #000;
+            align-items: center;
+            max-width: 800px;
+            margin: 20px auto;
+
+            animation: zoom-in-contact 5s linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 20%;
+
+        }
+        .room-card img {
+            height: 90%;
+            width: 40%;
+            object-fit: cover;
+            border-radius: 3%;
+            animation: zoom-in-contact linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 20%;
+        }
+        
+        .room-info {
+            display: flex;
+            margin: 2%;
+            width: 40%;
+            height: 100%;
+            border-right: 1px solid #757575;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1%;
+
+        }
+        .room-info h3 {
+            margin: 0;
+            font-size: 120%;
+            color: #000000;
+        }
+        .room-info p {
+            margin: 5px 0;
+            font-size: 80%;
+            color: #666;
+        }
+        .room-info .price {
+            font-size: 110%;
+            width: 70%;
+            color: #000000;
+            padding-bottom: 3%;
+            border-bottom:  1px solid #ababab;
+        }
+        .btn {
+            width: 75%;
+            margin-top: 3%;
+            padding: 8px 12px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #000000; 
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .featurs_des{
+            color: #1FA610;
+            font-size: 10px;
+        }
+        .di_sta{
+            display: flex;
+            gap: 3%;
+        }
+        .di_st_item{
+            /* margin-top: 10%; */
+            background-color: #001E8A;
+            width: 40%;
+        }
+        .di_st_item p{
+            font-size: 70%;
+            color: #ffffff;
+            margin: 2%;
+            justify-self: center;
+        }
+        .features p{
+            color: #000000;
+            font-size: 90%;
+        }
+        .dc_room{
+            display: flex;
+            flex-direction: column;
+            gap: 1%;
+            padding: 2%;
+            width: 25%;
+        }
+        .dc_room_1{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .dc_room_1 p{
+           color:#7F7F7F;
+           font-size: 80%;
+        }
+        
+        .dc_room_1 img{
+            height: 10%;
+            width: 10%;
+            margin-right: 5%;
+            object-fit: cover;
+        }
+        
+        /* Media Queries สำหรับหน้าจอเล็ก */
+        @media (max-width: 768px) {
+            .reserve {
+                padding: 5% 0;
+            }
+            .filter{
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 10px;
+                justify-content: center;
+                gap: 5%;
+
+            }
+            .filter h3 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            
+            .filter label {
+                font-size: 12px;
+                margin-bottom: 5px; 
+            }
+        
+            .roomshow {
+                flex-direction: column; /* แสดงในแนวตั้งเมื่อหน้าจอเล็ก */
+            }
+        
+            .container {
+                width: 100%;
+            }
+        
+            .room-card {
+                width: 100%; 
+                
+            }
+        
+        }
+        
+         /* Media Queries สำหรับหน้าจอมือถือ  */
+        @media (max-width: 480px) {
+            .reserve {
+                padding: 7% 0;
+            }
+            .filter{
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 10px;
+                justify-content: center;
+                gap: 5%;
+
+            }
+            .filter h3 {
+                font-size: 10px;
+                margin-bottom: 10px;
+            }
+            
+            .filter label {
+                font-size: 8px;
+                margin-bottom: 5px; 
+            }
+        
+            .roomshow {
+                flex-direction: column;
+            }
+        
+            .room-card {
+                width: 100%;
+            }
+    
+        }
+        
+        .facilities{
+            background: url('/img/back.jpeg') ;
+            width: 100%;
+            align-items: center;
+            text-align: center;
+            padding: 3% 0;
+            height: 100vh;
+
+        }
+        .facilities h2{
+            animation: zoom-in linear;
+            animation-timeline: view();
+            animation-range: entry 30% cover 50%;
+        }
+        .facilities p{
+            animation: zoom-in linear;
+            animation-timeline: view();
+            animation-range: entry 30% cover 10%;
+            justify-self: center;
+            width: 150%;
+            font-size: 80%;
+        }
+        .facitem{
+            height: auto; 
+            width: 30%;
+            gap: 5%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            justify-self: center;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3%;
+
+        }
+        .imgfac{
+            border: 2px solid #000000; 
+            padding: 15%;
+            border-radius: 50%;
+
+            animation: zoom-in-contact linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 20%;
+        }
+        .imgfac img{
+            width: 100%;
+            height: 100%;
+
+        }
+
+        @media (max-width: 480px) {
+            .facitem{
+                width: 80%;
+            }
+        }
+        @media (max-width: 769px) {
+            .facitem{
+                width: 60%;
+            }
+        }
+        .contact{
+            height: 40vh;
+            background-color: #4b4b4b;
+            align-items: center;
+            text-align: center;
+
+            animation: zoom-in-contact linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 20%;
+        }
+        .contact p{
+            color: #ffffff;
+        }
+        .c_contact{
+            /* height: 5%;
+            width: 15%; */
+            width: 20%;
+            height: 15%;
+            gap: 15%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            justify-self: center;
+            align-items: center;
+        }
+        .c_c_img{
+            background-color: #ffffff;
+            border: 2px solid #000000; 
+            border-radius: 50%;
+
+        }
+        .c_contact img{
+            width: 100%;
+            height: 100%;
+            justify-self: center;
+            padding: 10%;
+        }
+
+        /* .line a:hover{
+            background-color: #1e006a;
+        } */
+
+        .c_logo img{
+            margin-top: 1%;
+            width: 5%;
+            height: 5%;
+
+            border-radius: 50%;
+            animation: zoom-in-contact linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 20%;
+            
+
+        }
+        @media (max-width: 480px) {
+            .c_contact{
+                width: 60%;
+            }
+            .c_logo img{
+                width: 10%;
+                height: 10%;
+            }
+        }
+        @media (max-width: 768px) {
+            .c_contact{
+                width: 50%;
+            }
+            .c_logo img{
+                width: 10%;
+                height: 10%;
+            }
+        }
+        @keyframes zoom-in-contact{
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes zoom-out-contact{
+            from {
+                transform: scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                height: auto;
+                gap: 10px;
+                padding: 10px;
+            }
+        
+            .thelogo {
+                width: auto;
+                gap: 5px;
+            }
+        
+            .link {
+                display: none; /* ซ่อนเมนูหลัก */
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                text-align: center;
+            }
+        
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 24px;
+                color: white;
+                cursor: pointer;
+            }
+        
+            .link.show {
+                display: flex; /* แสดงเมนูเมื่อคลิก */
+            }
+        }
+        
