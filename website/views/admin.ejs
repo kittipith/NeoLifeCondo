@@ -15,13 +15,13 @@
                     <span>Neo Life Condo</span>
                 </div>
                 <div class="list-menu">
-                    <button onclick="changePage('user-info')">ข้อมูลผู้เช่า</button>
-                    <button onclick="changePage('services')">บริการเสริม</button>
-                    <button onclick="changePage('news')">แจ้งข่าวสาร</button>
-                    <button onclick="changePage('report')">แจ้งของชำรุด</button>
-                    <button onclick="changePage('contact')">ติดต่อพนักงาน</button>
-                    <button onclick="changePage('register')">สมัครบัญชีลูกบ้าน</button>
-                    <button onclick="changePage('payment')">ยืนยันการชำระค่าคอนโด</button>
+                    <button onclick="changePage('user-info', event)">ข้อมูลผู้เช่า</button>
+                    <button onclick="changePage('services', event)">บริการเสริม</button>
+                    <button onclick="changePage('news', event)">แจ้งข่าวสาร</button>
+                    <button onclick="changePage('report', event)">แจ้งของชำรุด</button>
+                    <button onclick="changePage('contact', event)">ติดต่อพนักงาน</button>
+                    <button onclick="changePage('register', event)">สมัครบัญชีลูกบ้าน</button>
+                    <button onclick="changePage('payment', event)">ยืนยันการชำระค่าคอนโด</button>
                 </div>
             </div>
             <div class="content">
@@ -31,10 +31,12 @@
     </div>
     <script src="../static/javascript/refreshtoken-admin.js"></script>
     <script>
-        function changePage(page) {
+        function changePage(page, event) {
             var iframe = document.getElementById("contentFrame");
             iframe.src = page;
             iframe.style.display = "block";
+            document.querySelectorAll(".list-menu button").forEach(btn => btn.classList.remove("active"));
+            event.target.classList.add("active");
         }
 
         window.onload = function() {

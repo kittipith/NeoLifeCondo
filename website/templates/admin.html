@@ -15,13 +15,13 @@
                     <span>Neo Life Condo</span>
                 </div>
                 <div class="list-menu">
-                    <button onclick="changePage('user-info.html')">ข้อมูลผู้เช่า</button>
-                    <button onclick="changePage('services.html')">บริการเสริม</button>
-                    <button onclick="changePage('news.html')">แจ้งข่าวสาร</button>
-                    <button onclick="changePage('report.html')">แจ้งของชำรุด</button>
-                    <button onclick="changePage('contact.html')">ติดต่อพนักงาน</button>
-                    <button onclick="changePage('register.html')">สมัครบัญชีลูกบ้าน</button>
-                    <button onclick="changePage('payment.html')">ยืนยันการชำระค่าคอนโด</button>
+                    <button onclick="changePage('user-info.html', event)">ข้อมูลผู้เช่า</button>
+                    <button onclick="changePage('services.html', event)">บริการเสริม</button>
+                    <button onclick="changePage('news.html', event)">แจ้งข่าวสาร</button>
+                    <button onclick="changePage('report.html', event)">แจ้งของชำรุด</button>
+                    <button onclick="changePage('contact.html', event)">ติดต่อพนักงาน</button>
+                    <button onclick="changePage('register.html', event)">สมัครบัญชีลูกบ้าน</button>
+                    <button onclick="changePage('payment.html', event)">ยืนยันการชำระค่าคอนโด</button>
                 </div>
             </div>
             <div class="content">
@@ -30,10 +30,12 @@
         </div>
     </div>
     <script>
-        function changePage(page) {
+        function changePage(page, event) {
             var iframe = document.getElementById("contentFrame");
             iframe.src = page;
             iframe.style.display = "block";
+            document.querySelectorAll(".list-menu button").forEach(btn => btn.classList.remove("active"));
+            event.target.classList.add("active");
         }
     </script>
 </body>
