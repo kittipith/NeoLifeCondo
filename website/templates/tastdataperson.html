@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ข้อมูลผู้ใช้</title>
-    <link rel="stylesheet" href="./static/dataperson.css">
+    <link rel="stylesheet" href="../static/css/dataperson.css">
 </head>
 <body>
     <div class="container">
         <div class="profile-header">
-            <img src="./img/porson.jpg" alt="Profile">
+            <img src="../static/img/porson.jpg" alt="Profile">
             <div>
-                <h2><strong>ชื่อ:</strong> <span id="name"></span></h2>
-                <p>ห้อง</strong> <span id="room"></span></p>
+                <h2><strong>ชื่อ:</strong>นายกิตติพิชญ์ หิรัญวงศ์</span></h2>
+                <p>ห้อง</strong> 103</span></p>
             </div>
         </div>
         <div class="incon">
@@ -21,7 +21,7 @@
                 <div class="personal-info">
                     <h3>ข้อมูลส่วนตัว</h3>
                     <p><strong>ชื่อ (Name):</strong> นายกิตติพิชญ์ หิรัญวงศ์</p>
-                    <p><strong>ชื่อเล่น (Nickname):</strong> พิก</p>
+                    <p><strong>ชื่อเล่น (Nickname):</strong> พีท</p>
                     <p><strong>วันเกิด (Birthdate):</strong> 30 กรกฎาคม 2547</p>
                     <p><strong>อายุ (Age):</strong> 15</p>
                     <p><strong>เพศ (Gender):</strong> ชาย</p>
@@ -82,42 +82,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch("/api/user")
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById("full-name").textContent = `${data.name} (${data.nickname})`;
-                    document.getElementById("room-number").textContent = `ห้อง ${data.room}`;
-                    document.getElementById("name").textContent = data.name;
-                    document.getElementById("nickname").textContent = data.nickname;
-                    document.getElementById("birthdate").textContent = data.birthdate;
-                    document.getElementById("age").textContent = data.age;
-                    document.getElementById("gender").textContent = data.gender;
-                    document.getElementById("nationality").textContent = data.nationality;
-                    document.getElementById("religion").textContent = data.religion;
-                    document.getElementById("ethnicity").textContent = data.ethnicity;
-                    document.getElementById("address").textContent = data.address;
-                    document.getElementById("phone").textContent = data.phone;
-                    document.getElementById("line-id").textContent = data.lineID;
-                    document.getElementById("email").textContent = data.email;
-                    document.getElementById("payment-amount").textContent = `${data.paymentAmount} บาท`;
-                    document.getElementById("payment-deadline").textContent = `ชำระภายในวันที่ ${data.paymentDeadline}`;
-                    
-                    const bookingTable = document.getElementById("booking-history");
-                    data.bookings.forEach(booking => {
-                        let row = `<tr>
-                            <td>${booking.type}</td>
-                            <td>${booking.date}</td>
-                            <td>${booking.startTime}</td>
-                            <td>${booking.endTime}</td>
-                            <td>${booking.note || '-'}</td>
-                        </tr>`;
-                        bookingTable.innerHTML += row;
-                    });
-                });
-        });
-    </script>
-</body>
 </html>

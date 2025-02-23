@@ -1,7 +1,7 @@
 {
   "rooms": [
     {
-      "img": "/img/roomdetal.png",
+      "img": "../static/img/roomdetal.png",
       "id": "101",
       "price": "10,000 /เดือน",
       "features": [
@@ -23,7 +23,7 @@
       }
     },
     {
-      "img": "/img/roomdetal.png",
+      "img": "../static/img/roomdetal.png",
       "id": "102",
       "price": "10,000 /เดือน",
       "features": [
@@ -45,7 +45,7 @@
       }
     },
     {
-      "img": "/img/roomdetal.png",
+      "img": "../static/img/roomdetal.png",
       "id": "103",
       "price": "10,000 /เดือน",
       "features": [
@@ -67,7 +67,7 @@
       }
     },
     {
-      "img": "/img/roomdetal.png",
+      "img": "../static/img/roomdetal.png",
       "id": "104",
       "price": "10,000 /เดือน",
       "features": [
@@ -89,7 +89,7 @@
       }
     },
     {
-      "img": "/img/roomdetal.png",
+      "img": "../static/img/roomdetal.png",
       "id": "105",
       "price": "10,000 /เดือน",
       "features": [
@@ -111,7 +111,7 @@
       }
     },
     {
-      "img": "/img/roomdetal.png",
+      "img": "../static/img/roomdetal.png",
       "id": "106",
       "price": "10,000 /เดือน",
       "features": [
@@ -133,7 +133,7 @@
       }
     },
     {
-      "img": "/img/roomdetal.png",
+      "img": "../static/img/roomdetal.png",
       "id": "107",
       "price": "10,000 /เดือน",
       "features": [
@@ -155,7 +155,7 @@
       }
     },
     {
-      "img": "/img/roomdetal.png",
+      "img": "../static/img/roomdetal.png",
       "id": "108",
       "price": "10,000 /เดือน",
       "features": [
@@ -177,7 +177,7 @@
       }
     },
     {
-      "img": "/img/roomdetal.png",
+      "img": "../static/img/roomdetal.png",
       "id": "109",
       "price": "10,000 /เดือน",
       "features": [
@@ -199,7 +199,7 @@
       }
     },
     {
-      "img": "/img/roomdetal.png",
+      "img": "../static/img/roomdetal.png",
       "id": "110",
       "price": "10,000 /เดือน",
       "features": [
@@ -221,7 +221,7 @@
       }
     },
     {
-      "img": "/img/roomdetal1.png",
+      "img": "../static/img/roomdetal1.png",
       "id": "201",
       "price": "15,000 /เดือน",
       "features": [
@@ -243,7 +243,7 @@
       }
     },
     {
-      "img": "/img/roomdetal1.png",
+      "img": "../static/img/roomdetal1.png",
       "id": "202",
       "price": "15,000 /เดือน",
       "features": [
@@ -265,7 +265,7 @@
       }
     },
     {
-      "img": "/img/roomdetal1.png",
+      "img": "../static/img/roomdetal1.png",
       "id": "203",
       "price": "15,000 /เดือน",
       "features": [
@@ -287,7 +287,7 @@
       }
     },
     {
-      "img": "/img/roomdetal1.png",
+      "img": "../static/img/roomdetal1.png",
       "id": "204",
       "price": "15,000 /เดือน",
       "features": [
@@ -309,7 +309,7 @@
       }
     },
     {
-      "img": "/img/roomdetal1.png",
+      "img": "../static/img/roomdetal1.png",
       "id": "205",
       "price": "15,000 /เดือน",
       "features": [
@@ -331,7 +331,7 @@
       }
     },
     {
-      "img": "/img/roomdetal1.png",
+      "img": "../static/img/roomdetal1.png",
       "id": "206",
       "price": "15,000 /เดือน",
       "features": [
@@ -353,7 +353,7 @@
       }
     },
     {
-      "img": "/img/roomdetal1.png",
+      "img": "../static/img/roomdetal1.png",
       "id": "207",
       "price": "15,000 /เดือน",
       "features": [
@@ -375,7 +375,7 @@
       }
     },
     {
-      "img": "/img/roomdetal1.png",
+      "img": "../static/img/roomdetal1.png",
       "id": "208",
       "price": "15,000 /เดือน",
       "features": [
@@ -397,7 +397,7 @@
       }
     },
     {
-      "img": "/img/roomdetal1.png",
+      "img": "../static/img/roomdetal1.png",
       "id": "209",
       "price": "15,000 /เดือน",
       "features": [
@@ -419,7 +419,7 @@
       }
     },
     {
-      "img": "/img/roomdetal1.png",
+      "img": "../static/img/roomdetal1.png",
       "id": "210",
       "price": "15,000 /เดือน",
       "features": [
@@ -441,7 +441,7 @@
       }
     },
     {
-        "img": "/img/roomdetal3.png",
+        "img": "../static../static/img/roomdetal3.png",
         "id": "301",
         "price": "25,000 /เดือน",
         "features": [
@@ -463,7 +463,7 @@
         }
     },
     {
-        "img": "/img/roomdetal3.png",
+        "img": "../static/img/roomdetal3.png",
         "id": "302",
         "price": "25,000 /เดือน",
         "features": [
@@ -485,7 +485,7 @@
         }
     },
     {
-        "img": "/img/roomdetal3.png",
+        "img": "../static/img/roomdetal3.png",
         "id": "303",
         "price": "25,000 /เดือน",
         "features": [
@@ -507,7 +507,7 @@
         }
     },
     {
-        "img": "/img/roomdetal3.png",
+        "img": "../static/img/roomdetal3.png",
         "id": "304",
         "price": "25,000 /เดือน",
         "features": [
@@ -529,7 +529,7 @@
         }
     },
     {
-        "img": "/img/roomdetal3.png",
+        "img": "../static/img/roomdetal3.png",
         "id": "305",
         "price": "25,000 /เดือน",
         "features": [
@@ -551,7 +551,7 @@
         }
     },
     {
-        "img": "/img/roomdetal3.png",
+        "img": "../static/img/roomdetal3.png",
         "id": "306",
         "price": "25,000 /เดือน",
         "features": [
@@ -573,7 +573,7 @@
         }
     },
     {
-        "img": "/img/roomdetal3.png",
+        "img": "../static/img/roomdetal3.png",
         "id": "307",
         "price": "25,000 /เดือน",
         "features": [
@@ -595,7 +595,7 @@
         }
     },
     {
-        "img": "/img/roomdetal3.png",
+        "img": "../static/img/roomdetal3.png",
         "id": "308",
         "price": "25,000 /เดือน",
         "features": [
@@ -617,7 +617,7 @@
         }
     },
     {
-        "img": "/img/roomdetal3.png",
+        "img": "../static/img/roomdetal3.png",
         "id": "309",
         "price": "25,000 /เดือน",
         "features": [
@@ -639,7 +639,7 @@
         }
     },
     {
-        "img": "/img/roomdetal3.png",
+        "img": "../static/img/roomdetal3.png",
         "id": "310",
         "price": "25,000 /เดือน",
         "features": [
@@ -661,7 +661,7 @@
         }
     },
     {
-      "img": "/img/roomdetal2.png",
+      "img": "../static../static/img/roomdetal2.png",
       "id": "401",
       "price": "45,500 /เดือน",
       "features": [
@@ -683,7 +683,7 @@
       }
   },
   {
-      "img": "/img/roomdetal2.png",
+      "img": "../static/img/roomdetal2.png",
       "id": "402",
       "price": "45,500 /เดือน",
       "features": [
@@ -705,7 +705,7 @@
       }
   },
   {
-      "img": "/img/roomdetal2.png",
+      "img": "../static/img/roomdetal2.png",
       "id": "403",
       "price": "45,500 /เดือน",
       "features": [
@@ -727,7 +727,7 @@
       }
   },
   {
-      "img": "/img/roomdetal2.png",
+      "img": "../static/img/roomdetal2.png",
       "id": "404",
       "price": "45,500 /เดือน",
       "features": [
@@ -749,7 +749,7 @@
       }
   },
   {
-      "img": "/img/roomdetal2.png",
+      "img": "../static/img/roomdetal2.png",
       "id": "405",
       "price": "45,500 /เดือน",
       "features": [
@@ -771,7 +771,7 @@
       }
   },
   {
-      "img": "/img/roomdetal2.png",
+      "img": "../static/img/roomdetal2.png",
       "id": "406",
       "price": "45,500 /เดือน",
       "features": [
@@ -793,7 +793,7 @@
       }
   },
   {
-      "img": "/img/roomdetal2.png",
+      "img": "../static/img/roomdetal2.png",
       "id": "407",
       "price": "45,500 /เดือน",
       "features": [
@@ -815,7 +815,7 @@
       }
   },
   {
-      "img": "/img/roomdetal2.png",
+      "img": "../static/img/roomdetal2.png",
       "id": "408",
       "price": "45,500 /เดือน",
       "features": [
@@ -837,7 +837,7 @@
       }
   },
   {
-      "img": "/img/roomdetal2.png",
+      "img": "../static/img/roomdetal2.png",
       "id": "409",
       "price": "45,500 /เดือน",
       "features": [
@@ -859,7 +859,7 @@
       }
   },
   {
-      "img": "/img/roomdetal2.png",
+      "img": "../static/img/roomdetal2.png",
       "id": "410",
       "price": "45,500 /เดือน",
       "features": [
