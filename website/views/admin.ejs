@@ -15,13 +15,13 @@
                     <span>Neo Life Condo</span>
                 </div>
                 <div class="list-menu">
-                    <button onclick="changePage('user-info', event)">ข้อมูลผู้เช่า</button>
-                    <button onclick="changePage('services', event)">บริการเสริม</button>
-                    <button onclick="changePage('news', event)">แจ้งข่าวสาร</button>
-                    <button onclick="changePage('report', event)">แจ้งของชำรุด</button>
-                    <button onclick="changePage('contact', event)">ติดต่อพนักงาน</button>
-                    <button onclick="changePage('register', event)">สมัครบัญชีลูกบ้าน</button>
-                    <button onclick="changePage('payment', event)">ยืนยันการชำระค่าคอนโด</button>
+                    <button onclick="changePage('admin/user-info', event)">ข้อมูลผู้เช่า</button>
+                    <button onclick="changePage('admin/services', event)">บริการเสริม</button>
+                    <button onclick="changePage('admin/news', event)">แจ้งข่าวสาร</button>
+                    <button onclick="changePage('admin/report', event)">แจ้งของชำรุด</button>
+                    <button onclick="changePage('admin/contact', event)">ติดต่อพนักงาน</button>
+                    <button onclick="changePage('admin/register', event)">สมัครบัญชีลูกบ้าน</button>
+                    <button onclick="changePage('admin/payment', event)">ยืนยันการชำระค่าคอนโด</button>
                 </div>
             </div>
             <div class="content">
@@ -40,7 +40,7 @@
         }
 
         window.onload = function() {
-        changePage('user-info');
+        changePage('admin/user-info');
     };
     </script>
 </body>
