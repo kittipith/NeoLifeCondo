@@ -253,7 +253,7 @@
             resultsDiv.innerHTML = filteredRooms.length > 0
                 ? filteredRooms.map(room => `
                     <div class="room-card">
-                    <img src="../static/img/roomdetal1.png" alt="ห้อง ${room.room_number}">
+                    <img src="${room.image}" alt="ห้อง ${room.room_number}">
                     <div class="room-info">
                         <h3>ห้อง ${room.room_number}</h3>
                         <p class="price">฿ ${Number(room.price).toLocaleString()}  /เดือน</p>
