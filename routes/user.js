@@ -6,27 +6,34 @@ const router = express.Router();
 const { users, REFRESH_SECRET } = require("../config");
 const { verifyToken } = require("../middleware/authMiddleware");
 const db = require("../database/database");
+const { render } = require("ejs");
 
 // 📌 แสดงข้อมูล USER
 //res.render("test", { condos: rows }); // ส่งข้อมูลไปที่ template
 
 //หน้า Default
 router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, '../website/templates/test.html'));
+    res.redirect("/condo");
 })
 
 //หน้าแสดง condo ทั้งหมด
 router.get("/condo", (req, res) => {
-    // db.all(`SELECT * FROM condo WHERE renter_id is NULL`, [], (err, data) => {
-    //     res.render("test", { condos: data });
-    // });
-    res.render("test", { name: "boss" });
+    res.render("home");
+})
+
+router.get("/api/condo", (req, res) => {
+    db.all(`SELECT * FROM room WHERE renter_id is NULL`, [], (err, data) => {
+        res.json({ rooms: data });
+    });
 })
 
 //หน้าที่เลือก condo แล้ว
 router.get("/condo/:id", (req, res) => {
     const roomId = req.params.id;
     db.get(`SELECT * FROM room WHERE renter_id is NULL AND ${roomId} = room_id`, [], (err, data) => {
+        if (err) {
+            res.redirect("/condo");
+        }
         res.render("room_detail", { condo: data });
         // res.json({condos: data});
     });
