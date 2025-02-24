@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        const response = await fetch("http://localhost:3000/user", {
+        const response = await fetch("http://localhost:3000/user-check", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         //ถ้าเป็น Admin -> Redirect
         if (data.user) {
-            window.location.href = "/admin-login";
+            window.location.href = "/admin";
             return;
         }
     } catch (error) {

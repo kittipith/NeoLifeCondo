@@ -4,7 +4,7 @@ const db = require("../database/database");
 const router = express.Router();
 
 // 📌 ADMIN ROUTE
-router.get("/admin", verifyToken, (req, res) => {
+router.get("/admin-check", verifyToken, (req, res) => {
   if (!req.user.isAdmin) {
     return res.status(403).json({ message: "You do not have admin privileges" });
   }
@@ -12,7 +12,7 @@ router.get("/admin", verifyToken, (req, res) => {
 });
 
 // 📌 USER ROUTE
-router.get("/user", verifyToken, (req, res) => {
+router.get("/user-check", verifyToken, (req, res) => {
   res.json({ message: "Welcome User!" , user: req.user.isAdmin});
 });
 

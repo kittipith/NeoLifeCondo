@@ -10,11 +10,11 @@ const { verifyToken } = require("../middleware/authMiddleware");
 
 
 // 📌 ADMIN ROUTE
-router.get("/admin-login", (req, res) => {
-    res.render('admin-login', {data :'none'});
-});
+// router.get("/admin-login", (req, res) => {
+//     res.render('admin-login', {data :'none'});
+// });
 
-router.get("/admis", (req, res) => {
+router.get("/admin", (req, res) => {
     res.render('admin');
 });
 
