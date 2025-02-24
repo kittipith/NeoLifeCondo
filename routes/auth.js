@@ -26,7 +26,7 @@ router.get("/login", (req, res) => {
 
 router.post("/login", (req, res) => {
     const { username, password } = req.body;
-    console.log(users);
+    // console.log(users);
     checkUserCredentials(username, password)
     .then(user => {
         if (!user) {

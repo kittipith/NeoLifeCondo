@@ -23,10 +23,10 @@ router.get("/user/information", (req, res) => {
 
     //ตรวจสอบและถอดรหัส refresh token
     const user = jwt.verify(token, REFRESH_SECRET);
-    console.log("Decoded Token:", user.id);
-    db.get(`SELECT * FROM users WHERE account_id = ${parseInt(user.id)}`, [], (err, data) => {
-        // res.render("booking", { condo: data });
-        res.json({condos: data});
+    // console.log("Decoded Token:", user.id);
+    db.get(`SELECT * FROM users JOIN address ON users.address_id = address.address_id WHERE account_id = ${user.id}`, [], (err, data) => {
+        res.render("userinfo", { data: data });
+        // res.json({data: data});
     });
 })
 

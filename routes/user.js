@@ -55,13 +55,14 @@ router.post("/condo/:id/reserve", async (req, res) => {
 
     const contactDateTime = `${data.contact_day} ${data.contact_time}:00`;
     const address = `${data.address} ${data.street} ${data.district} ${data.subDistrict} ${data.province} ${data.postalCode}`;
+    const idCard = data.idCard.slice(0, 1) + '-' +data.idCard.slice(1, 5) + '-' +data.idCard.slice(5, 10) + '-' + data.idCard.slice(10, 12) + '-' +data.idCard.slice(12);
     // console.log(contactDateTime);
     db.run(
         `INSERT INTO users 
-        (id_number, title, name, surname, nickname, age, gender, nationality, ethnicity, birthday, contact_day) 
+        (id_number, title, name, surname, nickname, age, gender, nationality, religion, ethnicity, birthday, contact_day) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
-            data.idCard,
+            idCard,
             data.prefix,
             data.firstName,
             data.lastName,
@@ -69,6 +70,7 @@ router.post("/condo/:id/reserve", async (req, res) => {
             data.age,
             data.gender,
             data.nationality,
+            data.religion,
             data.ethnicity,
             data.birthdate,
             contactDateTime,
