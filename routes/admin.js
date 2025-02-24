@@ -73,7 +73,7 @@ router.get("/admin/register", (req,res) => {
 });
 
 router.get("/admin/report", (req,res) => {
-    const query = `SELECT room.room_number, repairReq.info, repairReq.pic, repairReq.date, repairReq.time from repairReq join room on repairReq.room_id = room.room_id`;
+    const query = `SELECT repairReq.id,  room.room_number, repairReq.info, repairReq.pic, repairReq.date, repairReq.time from repairReq join room on repairReq.room_id = room.room_id where repairReq.isDone = 0; `;
     db.all(query, (err, rows) => {
       if (err) {
         console.log(err.message);
@@ -84,7 +84,7 @@ router.get("/admin/report", (req,res) => {
 });
 
 router.get("/admin/services", (req,res) => {
-    const query = `SELECT room.room_number, service.name_service, servicesReq.date, servicesReq.time, servicesReq.info FROM servicesReq JOIN service ON servicesReq.service_id = service.service_id JOIN room ON servicesReq.room_id = room.room_id;`;
+    const query = `SELECT servicesReq.id, room.room_number, service.name_service, servicesReq.date, servicesReq.time, servicesReq.info FROM servicesReq JOIN service ON servicesReq.service_id = service.service_id JOIN room ON servicesReq.room_id = room.room_id WHERE servicesReq.isDone = 0;`;
   db.all(query, (err, rows) => {
     if (err) {
       console.log(err.message);
@@ -93,6 +93,71 @@ router.get("/admin/services", (req,res) => {
     res.render('services', { data : rows });
   });
 });
+
+router.post("/submitReqService", (req, res) => {
+  const selectedRooms = req.body.selectedReqs; // รับค่าจาก checkbox
+
+  if (Array.isArray(selectedRooms)) {
+    for(let i=0; i < selectedRooms.length; i++){
+      let sql = `UPDATE servicesReq SET isDone = 1 WHERE id = ${selectedRooms[i]};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+      console.log(sql);
+    });
+    }
+    
+    
+  } else if (selectedRooms) {
+    let sql = `UPDATE servicesReq SET isDone = 1 WHERE id = ${selectedRooms};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+      console.log(sql); // กรณีเลือกแค่ 1 อัน
+  } else {
+      console.log("No reqs selected");
+  }
+
+  res.redirect('/admin/services');
+});
+
+router.post("/submitReqRepair", (req, res) => {
+  const selectedRepair = req.body.selectedRepair; // รับค่าจาก checkbox
+
+  if (Array.isArray(selectedRepair)) {
+    for(let i=0; i < selectedRepair.length; i++){
+      let sql = `UPDATE repairReq SET isDone = 1 WHERE id = ${selectedRepair[i]};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+      console.log(sql);
+    });
+    }
+    
+    
+  } else if (selectedRepair) {
+    let sql = `UPDATE repairReq SET isDone = 1 WHERE id = ${selectedRepair};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+      console.log(sql); // กรณีเลือกแค่ 1 อัน
+  } else {
+      console.log("No reqs selected");
+  }
+
+  res.redirect('/admin/report');
+});
+
 
 
 

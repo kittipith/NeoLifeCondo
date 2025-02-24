@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/report.css">
 </head>
 <body>
+    <form action="/submitReqRepair" method="POST">
     <button>เสร็จสิ้น</button>
     <table>
         <thead>
@@ -22,7 +23,7 @@
             <% data.forEach((item)=>{ %>
                 
             <tr>
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" name="selectedRepair" value="<%= item.id %>"  ></td>
                 <td><%=item.room_number%></td>
                 <td><%=item.info%></td>
                 <td><%=item.pic%></td>
@@ -32,6 +33,7 @@
             <% }); %> 
         </tbody>
     </table>
+</form>
     <script src="/static/javascript/refreshtoken-admin.js"></script>
     <script src= "../static/javascript/checkbox.js"></script>
 </body>

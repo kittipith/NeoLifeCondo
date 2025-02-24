@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/add-on.css">
 </head>
 <body>
+    <form action="/submitReqService" method="POST">
     <button>เสร็จสิ้น</button>
     <table>
         <thead>
@@ -21,7 +22,7 @@
         <tbody>
             <% data.forEach((item)=>{ %> 
             <tr>
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" name="selectedReqs" value="<%= item.id %>" ></td>
                 <td><%=item.room_number%></td>
                 <td><%=item.name_service%></td>
                 <td><%=item.date%></td>
@@ -31,6 +32,7 @@
             <% }); %>   
         </tbody>
     </table>
+    </form>
     <script src="../static/javascript/refreshtoken-admin.js"></script>
     <script src="../static/javascript/checkbox.js"></script>
 </body>
