@@ -32,7 +32,7 @@ FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.add
 });
 
 router.get("/admin/contact", (req,res) => {
-    const query = `SELECT room.room_number, contact_staff.contact_name, contact_staff.pic, contact_staff.date, contact_staff.time from contact_staff join room on contact_staff.room_id = room.room_id`;
+    const query = `SELECT contact_staff.contact_id, room.room_number, contact_staff.contact_name, contact_staff.pic, contact_staff.date, contact_staff.time from contact_staff join room on contact_staff.room_id = room.room_id where contact_staff.status = 0;`;
     db.all(query, (err, rows) => {
       if (err) {
         console.log(err.message);
@@ -157,6 +157,39 @@ router.post("/submitReqRepair", (req, res) => {
 
   res.redirect('/admin/report');
 });
+
+router.post("/submitContact", (req, res) => {
+  const selectedContact = req.body.selectedContact; // รับค่าจาก checkbox
+
+  if (Array.isArray(selectedContact)) {
+    for(let i=0; i < selectedContact.length; i++){
+      let sql = `UPDATE contact_staff SET status = 1 WHERE contact_id = ${selectedContact[i]};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+      console.log(sql);
+    });
+    }
+    
+    
+  } else if (selectedContact) {
+    let sql = `UPDATE contact_staff SET status = 1 WHERE contact_id = ${selectedContact};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+      console.log(sql); // กรณีเลือกแค่ 1 อัน
+  } else {
+      console.log("No reqs selected");
+  }
+
+  res.redirect('/admin/contact');
+});
+
 
 
 

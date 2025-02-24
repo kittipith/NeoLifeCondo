@@ -6,11 +6,12 @@
     <link rel="stylesheet" href="../static/css/employee.css">
 </head>
 <body>
+    <form action="/submitContact" method="POST">
     <button>เสร็จสิ้น</button>
     <table>
         <thead>
             <tr>
-                <th><input type="checkbox"></th>
+                <th><input type="checkbox" ></th>
                 <th>ห้อง</th>
                 <th>เรื่องที่ต้องการจะติดต่อ</th>
                 <th>วันที่</th>
@@ -20,7 +21,7 @@
         <tbody>
             <% data.forEach((item)=>{ %>       
             <tr>
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" name="selectedContact" value="<%= item.contact_id %>"></td>
                 <td><%=item.room_number%></td>
                 <td><%=item.contact_name%></td>
                 <td><%=item.date%></td>
@@ -29,6 +30,7 @@
             <% }); %>
         </tbody>
     </table>
+</form>
     <script src="/static/javascript/refreshtoken-admin.js"></script>
     <script src="../website/static/javascript/checkbox.js"></script>
 </body>
