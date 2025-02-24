@@ -67,4 +67,9 @@ router.post("/logout", (req, res) => {
     res.json({ message: "Logged out successfully" });
 });
 
+// FORGOT
+router.get("/forgot-password", (req, res) => {
+    res.sendFile(path.join(__dirname, '../website/templates/forgot-password-2.html'));
+})
+
 module.exports = router;
