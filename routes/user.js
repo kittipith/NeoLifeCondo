@@ -115,26 +115,4 @@ router.get('/meetdata', (req, res) => {
         res.send(JSON.stringify(rows));        
     });
 });
-
-router.get("/user/information", verifyToken, (req, res) => {
-    const { refreshToken } = req.cookies;
-
-    if (!refreshToken) {
-        return res.status(401).json({ message: "No refresh token provided" });
-    }
-
-    jwt.verify(refreshToken, REFRESH_SECRET, (err, decoded) => {
-        if (err) {
-            return res.status(403).json({ message: "Invalid refresh token" });
-        }
-
-        const user = users.find(u => u.id === decoded.id);
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-
-        res.json({ user });
-    });
-});
-
 module.exports = router;

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Life Condo</title>
+    <link rel="stylesheet" href="../static/css/newboard.css">
+    
+</head>
+<body style="display: none;">
+    <nav>
+        <div class="nav-container">
+            <div class="thelogo">
+                <img class="logoimg" src="../static/img/logo.png" alt="">
+                <div class="logo">NEO LIFE CONDO</div>
+            </div>
+            <div class="link">
+                <div class="thelink">
+                    <a href="javascript:void(0)" onclick="openPopup('popupcon')">บริการเสริม</a>
+                    <a href="javascript:void(0)" onclick="openPopup('popupser')">ติดต่อพนักงาน</a>
+                </div>
+                <div class="theprofile"><img class="profile" src="./img/profile.jpg" alt=""></div>
+            </div>
+        </div>
+    </nav>
+
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+    <div class="sidebar" id="mySidebar">
+        <a href="javascript:void(0)" onclick="toggleSidebar()">❌ ปิด</a>
+        <a href="javascript:void(0)" onclick="openPopup('popupcon')">บริการเสริม</a>
+        <a href="javascript:void(0)" onclick="openPopup('popupser')">ติดต่อพนักงาน</a>
+    </div>
+
+    <div class="container">
+        <div class="news">
+            <h2>ข่าวสาร</h2>
+            <div class="news-grid">
+                <div class="news-item">โครงการกำลังหลบหนีอยู่บริเวณคอนโด</div>
+                <div class="news-item">ลิฟต์ตัวด้านซ้ายเสีย</div>
+                <div class="news-item">ไฟทางเดินชั้น 5 เสีย</div>
+                <div class="news-item">ห้อง 504 กำลังซ่อมแซม อาจมีเสียงก่อสร้าง</div>
+            </div>
+        </div>
+        <div class="facilities">
+            <h2>จองใช้ส่วนกลาง</h2>
+            <div class="facilities-grid">
+                <div class="facilities-item">สนามแบดมินตัน</div>
+                <div class="facilities-item">ห้องประชุม</div>
+                <div class="facilities-item">สนามบาส</div>
+                <div class="facilities-item">ห้องดูหนัง</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup บริการเสริม -->
+    <div id="popupcon" class="popup">
+        <h2>ติดต่อใช้บริการเสริม</h2>
+        <form class="myform">
+            <p>
+                <label for="numroom">ห้อง</label>
+                <input type="text" id="numroom" name="numroom" />
+            </p>
+            <p>
+                <label for="servi">บริการเสริม:</label>
+                <select id="servi" name="servi">
+                    <option value="00">กรุณาเลือก</option>
+                    <option value="01">ทำความสะอาด</option>
+                    <option value="02">ซ่อมบำรุง</option>
+                </select>
+            </p>
+            <p>
+                <label for="date">เลือกวันที่</label>
+                <input type="date" id="date" name="date" />
+            </p>
+            <p>
+                <label for="time">เลือกเวลา</label>
+                <input type="time" id="time" name="time" />
+            </p>
+            <p>
+                <label for="note">หมายเหตุ</label>
+                <input type="text" id="note" name="note" />
+            </p>
+
+            <button type="button" onclick="sendData('popupcon')">ส่งข้อมูล</button>
+            <button type="button" onclick="closePopup('popupcon')">ปิด</button>
+        </form>
+    </div>
+
+    <!-- Popup ติดต่อพนักงาน -->
+    <div id="popupser" class="popup">
+        <h2>ติดต่อพนักงาน</h2>
+        <form class="myform">
+            <p>
+                <label for="numroom">ห้อง</label>
+                <input type="text" id="numroom" name="numroom" />
+            </p>
+            <p>
+                <label for="cont">สิ่งที่ต้องการติดต่อ</label>
+                <select id="cont" name="cont">
+                    <option value="00">กรุณาเลือก</option>
+                    <option value="01">ทำความสะอาด</option>
+                    <option value="02">ซ่อมบำรุง</option>
+                </select>
+            </p>
+
+            <button type="button" onclick="sendData('popupser')">ส่งข้อมูล</button>
+            <button type="button" onclick="closePopup('popupser')">ปิด</button>
+        </form>
+    </div>
+
+    <script src="/static/javascript/refreshtoken.js"></script>
+    <script>
+        function toggleSidebar() {
+            document.getElementById("mySidebar").classList.toggle("open-sidebar");
+        }
+
+        function openPopup(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function closePopup(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+</body>
+</html>
