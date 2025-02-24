@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 const db = require("../database/database");
 
-const { ACCESS_SECRET, REFRESH_SECRET, refreshTokens, users } = require("../config");
+const { ACCESS_SECRET, REFRESH_SECRET, refreshTokens, users, checkUserCredentials} = require("../config");
 
 const router = express.Router();
 
@@ -26,15 +26,22 @@ router.get("/login", (req, res) => {
 
 router.post("/login", (req, res) => {
     const { username, password } = req.body;
-    const user = users.find(u => u.username === username && u.password === password);
+    console.log(users);
+    checkUserCredentials(username, password)
+    .then(user => {
+        if (!user) {
+            return res.status(401).json({ message: "Invalid username or password" });
+        }
+        const accessToken = generateAccessToken(user);
+        const refreshToken = generateRefreshToken(user);
 
-    if (!user) return res.status(401).json({ message: "Invalid username or password" });
-
-    const accessToken = generateAccessToken(user);
-    const refreshToken = generateRefreshToken(user);
-
-    res.cookie("refreshToken", refreshToken, { httpOnly: true, secure: false, sameSite: "strict" });
-    res.json({ accessToken });
+        res.cookie("refreshToken", refreshToken, { httpOnly: true, secure: false, sameSite: "strict" });
+        res.json({ accessToken });
+    })
+    .catch(err => {
+        console.error("Error checking credentials:", err);
+        res.status(500).json({ message: "Internal server error" });
+    });
 });
 
 // 📌 REFRESH TOKEN
