@@ -12,8 +12,8 @@ router.get("/user/room", (req, res) => {
     const token = req.cookies.refreshToken;
 
     //ตรวจสอบและถอดรหัส refresh token
-    const decoded = jwt.verify(token, REFRESH_SECRET);
-    console.log("Decoded Token:", decoded);
+    // const decoded = jwt.verify(token, REFRESH_SECRET);
+    // console.log("Decoded Token:", decoded);
 
     res.render('newboard', {data :'none'});
 });
@@ -23,8 +23,8 @@ router.get("/user/information", (req, res) => {
 
     //ตรวจสอบและถอดรหัส refresh token
     const user = jwt.verify(token, REFRESH_SECRET);
-    console.log("Decoded Token:", user);
-    db.get(`SELECT * FROM users WHERE account_id is ${user.id}`, [], (err, data) => {
+    console.log("Decoded Token:", user.id);
+    db.get(`SELECT * FROM users WHERE account_id = ${parseInt(user.id)}`, [], (err, data) => {
         // res.render("booking", { condo: data });
         res.json({condos: data});
     });
