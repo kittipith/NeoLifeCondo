@@ -18,7 +18,7 @@ router.get("/admin", (req, res) => {
     res.render('admin');
 });
 
-router.get("/user-info", (req,res) => {
+router.get("/admin/user-info", (req,res) => {
 
     const query = `SELECT room.room_number, users.title, users.name, users.surname, address.phone, address.line
 FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.address_id = address.address_id;`;
@@ -31,7 +31,7 @@ FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.add
   });
 });
 
-router.get("/contact", (req,res) => {
+router.get("/admin/contact", (req,res) => {
     const query = `SELECT room.room_number, contact_staff.contact_name, contact_staff.pic, contact_staff.date, contact_staff.time from contact_staff join room on contact_staff.room_id = room.room_id`;
     db.all(query, (err, rows) => {
       if (err) {
@@ -42,7 +42,7 @@ router.get("/contact", (req,res) => {
     });
 });
 
-router.get("/payment", (req,res) => {
+router.get("/admin/payment", (req,res) => {
     const query = `SELECT room.room_number, payment.bill_id, payment.pic, payment.date, payment.time from payment join bill on payment.bill_id = bill.bill_id JOIN room ON bill.room_id = room.room_id;` ;
     db.all(query, (err, rows) => {
       if (err) {
@@ -53,7 +53,7 @@ router.get("/payment", (req,res) => {
     });
 });
 
-router.get("/news", (req,res) => {
+router.get("/admin/news", (req,res) => {
     const query = `select * from news`;
   db.all(query, (err, rows) => {
     if (err) {
@@ -64,15 +64,15 @@ router.get("/news", (req,res) => {
   });
 });
 
-router.get("/popup-user-info", (req,res) => {
+router.get("/admin/popup-user-info", (req,res) => {
     res.render('popup-user-info');
 });
 
-router.get("/register", (req,res) => {
+router.get("/admin/register", (req,res) => {
     res.render('register');
 });
 
-router.get("/report", (req,res) => {
+router.get("/admin/report", (req,res) => {
     const query = `SELECT room.room_number, repairReq.info, repairReq.pic, repairReq.date, repairReq.time from repairReq join room on repairReq.room_id = room.room_id`;
     db.all(query, (err, rows) => {
       if (err) {
@@ -83,7 +83,7 @@ router.get("/report", (req,res) => {
     });
 });
 
-router.get("/services", (req,res) => {
+router.get("/admin/services", (req,res) => {
     const query = `SELECT room.room_number, service.name_service, servicesReq.date, servicesReq.time, servicesReq.info FROM servicesReq JOIN service ON servicesReq.service_id = service.service_id JOIN room ON servicesReq.room_id = room.room_id;`;
   db.all(query, (err, rows) => {
     if (err) {
