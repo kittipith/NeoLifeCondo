@@ -35,20 +35,48 @@
     <div class="container">
         <div class="news">
             <h2>ข่าวสาร</h2>
-            <div class="news-grid">
-                <div class="news-item">โครงการกำลังหลบหนีอยู่บริเวณคอนโด</div>
-                <div class="news-item">ลิฟต์ตัวด้านซ้ายเสีย</div>
-                <div class="news-item">ไฟทางเดินชั้น 5 เสีย</div>
-                <div class="news-item">ห้อง 504 กำลังซ่อมแซม อาจมีเสียงก่อสร้าง</div>
+            <div class="news-flex">
+                <div class="news-item">
+                    <img src="../static/img/news1.png" alt="">
+                    <p>โครงการกำลังสร้างอยู่บริเวณคอนโด</p>
+                </div>
+                <div class="news-item">
+                    <img src="../static/img/news3.png" alt="">
+                    <p>ลิฟต์ตัวด้านซ้ายเสีย</p>
+                </div>
+                <div class="news-item">
+                    <img src="../static/img/news2.png" alt="">
+                    <p>ไฟทางเดินชั้น 5 เสีย</p>
+                </div>
+                <div class="news-item">
+                    <img src="../static/img/news4.png" alt="">
+                    <p>ห้อง 504 กำลังซ่อมแซม อาจมีเสียงก่อสร้าง</p>
+                </div>
+                <div class="news-item">
+                    <img src="../static/img/news5.png" alt="">
+                    <p>สระว่านน้ำมีการซ่อมแซม อาจมีเสียงก่อสร้าง</p>
+                </div>
             </div>
         </div>
         <div class="facilities">
             <h2>จองใช้ส่วนกลาง</h2>
             <div class="facilities-grid">
-                <div class="facilities-item">สนามแบดมินตัน</div>
-                <div class="facilities-item">ห้องประชุม</div>
-                <div class="facilities-item">สนามบาส</div>
-                <div class="facilities-item">ห้องดูหนัง</div>
+                <div class="facilities-item">
+                    <img src="../static/img/badminton_court.png" alt="">
+                    <p>สนามแบดมินตัน</p>
+                </div>
+                <div class="facilities-item">
+                    <img src="../static/img/meeting_room.png" alt="">
+                    <p>ห้องประชุม</p>
+                </div>
+                <div class="facilities-item">
+                    <img src="../static/img/basketball court.png" alt="">
+                    <p>สนามบาส</p>
+                </div>
+                <div class="facilities-item">
+                    <img src="../static/img/movie_room.png" alt="">
+                    <p>ห้องดูหนัง</p>
+                </div>
             </div>
         </div>
     </div>
@@ -122,6 +150,40 @@
         function closePopup(id) {
             document.getElementById(id).style.display = 'none';
         }
+
+        //เลื่อนข้างที่มีการเป็นจากเมาท์เป็นมือ
+        document.addEventListener('DOMContentLoaded', () => {
+        const newsFlex = document.querySelector('.news-flex');
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        newsFlex.addEventListener('mousedown', (e) => {
+            isDown = true;
+            newsFlex.classList.add('active');
+            startX = e.pageX - newsFlex.offsetLeft;
+            scrollLeft = newsFlex.scrollLeft;
+        });
+
+        newsFlex.addEventListener('mouseleave', () => {
+            isDown = false;
+            newsFlex.classList.remove('active');
+        });
+
+        newsFlex.addEventListener('mouseup', () => {
+            isDown = false;
+            newsFlex.classList.remove('active');
+        });
+
+        newsFlex.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - newsFlex.offsetLeft;
+            const walk = (x - startX) * 2; // ความเร็วในการเลื่อน
+            newsFlex.scrollLeft = scrollLeft - walk;
+        });
+    });
     </script>
 </body>
 </html>

@@ -441,7 +441,7 @@
       }
     },
     {
-        "img": "../static../static/img/roomdetal3.png",
+        "img": "../static/img/roomdetal3.png",
         "id": "301",
         "price": "25,000 /เดือน",
         "features": [
@@ -661,7 +661,7 @@
         }
     },
     {
-      "img": "../static../static/img/roomdetal2.png",
+      "img": "../static/img/roomdetal2.png",
       "id": "401",
       "price": "45,500 /เดือน",
       "features": [

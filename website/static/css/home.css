@@ -406,12 +406,14 @@
             overflow-y: auto;
             height: 75vh;
             padding: 3%;
-            /* background-color: #D9D9D9; */
             background-color: White;
             border-radius: 2%;
             animation: zoom-in linear;
             animation-timeline: view();
             animation-range: entry 0% cover 20%;
+        }
+        .container::-webkit-scrollbar {
+            display: none; 
         }
         .filter{
             display: flex;
@@ -634,7 +636,7 @@
             width: 30%;
             gap: 5%;
             display: grid;
-            grid-template-columns: repeat(4, 1fr); 
+            grid-template-columns: repeat(5, 1fr); 
             justify-self: center;
             align-items: center;
             margin-left: auto;
