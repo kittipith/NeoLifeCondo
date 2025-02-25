@@ -406,7 +406,8 @@
             overflow-y: auto;
             height: 75vh;
             padding: 3%;
-            background-color: #D9D9D9;
+            /* background-color: #D9D9D9; */
+            background-color: White;
             border-radius: 2%;
             animation: zoom-in linear;
             animation-timeline: view();
