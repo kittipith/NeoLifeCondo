@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/register.css">
 </head>
+
 <body>
     <div>
         <div class="img-logo">
@@ -12,9 +14,9 @@
         </div>
         <div class="IDCard">
             <p><label>เลขบัตรประชาชน</label></p>
-            <select>
-                <option selected>เลือกเลขบัตรประชาชน</option>
-                <option>1-1055-00064-37-9</option>
+            <select id="cid">
+                <!-- <option selected>เลือกเลขบัตรประชาชน</option>
+                <option>1-1055-00064-37-9</option> -->
             </select>
         </div>
         <div class="num-room">
@@ -149,11 +151,50 @@
         </div>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", async function () {
             const otherRadio = document.getElementById("other");
             const otherText = document.getElementById("otherText");
             const genderRadios = document.querySelectorAll("input[name='gender']");
-    
+            let cid = document.getElementById("cid");
+            try {
+                let response = await fetch(`/getcid`); 
+                let data = await response.json();
+                console.log(data);
+
+                let cidchild = `<option selected>เลือกเลขบัตรประชาชน</option>`; // ตัวเลือกแรก
+
+                for (let i = 0; i < data.length; i++) {
+                    cidchild += `<option value="${data[i].id_number}">${data[i].id_number}</option>`;
+                }
+
+                cid.innerHTML = cidchild;
+
+            } catch (error) {
+                console.error("เกิดข้อผิดพลาด:", error);
+            }
+
+
+
+            document.getElementById("cid").addEventListener("change", async function () {
+                let selectedValue = this.value;
+                // let userInfoDiv = document.getElementById("userInfo");
+
+                try {
+                    let response = await fetch(`/getuser/${selectedValue}`);
+                    let data = await response.json();
+
+                    // อัปเดตข้อมูลใน HTML
+                    //         userInfoDiv.innerHTML = `
+                    //     <h3>ข้อมูลผู้ใช้</h3>
+                    //     <p><strong>ชื่อ:</strong> ${data.name}</p>
+                    //     <p><strong>อีเมล:</strong> ${data.email}</p>
+                    //     <p><strong>ที่อยู่:</strong> ${data.address}</p>
+                    // `;
+                } catch (error) {
+                    console.error("เกิดข้อผิดพลาด:", error);
+                }
+            });
+
             genderRadios.forEach(radio => {
                 radio.addEventListener("change", function () {
                     if (otherRadio.checked) {
@@ -166,6 +207,8 @@
                 });
             });
         });
+
     </script>
 </body>
+
 </html>

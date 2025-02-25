@@ -31,6 +31,18 @@ FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.add
   });
 });
 
+router.get("/getcid", (req, res) => {
+  let query = `select id_number from users`;
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.log(err.message);
+    }
+    console.log(rows);
+    res.json(rows);
+  });
+});
+
+
 router.get("/admin/contact", (req,res) => {
     const query = `SELECT contact_staff.contact_id, room.room_number, contact_staff.contact_name, contact_staff.pic, contact_staff.date, contact_staff.time from contact_staff join room on contact_staff.room_id = room.room_id where contact_staff.status = 0;`;
     db.all(query, (err, rows) => {
