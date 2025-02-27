@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <form action="/setregister" method="post">
     <div>
         <div class="img-logo">
             <img src="../static/img/logo_condo.png">
@@ -28,24 +29,26 @@
             <hr>
             <div class="info-detail">
                 <div>
+                    <input type="text" name="address_id" id="add_id" class="text-input" style="display: none;">
+                    <input type="text" name="account_id" id="acc_id" class="text-input" style="display: none;">
                     <p>คำนำหน้า</p>
-                    <input type="text" id="titlename" class="text-input">
+                    <input type="text" name="titlename" id="titlename" class="text-input">
                 </div>
                 <div>
                     <p>ชื่อ</p>
-                    <input type="text" id="firstname" class="text-input">
+                    <input type="text" name="firstname" id="firstname" class="text-input">
                 </div>
                 <div>
                     <p>นามสกุล</p>
-                    <input type="text" id="lastname" class="text-input">
+                    <input type="text" name="lastname" id="lastname" class="text-input">
                 </div>
                 <div>
                     <p>ชื่อเล่น</p>
-                    <input type="text" id="nickname" class="text-input">
+                    <input type="text" name="nickname" id="nickname" class="text-input">
                 </div>
                 <div>
                     <p>อายุ</p>
-                    <input type="text" id="age" class="text-input">
+                    <input type="text" name="age" id="age" class="text-input">
                 </div>
                 <div class="gender">
                     <p>เพศ</p>
@@ -56,23 +59,23 @@
                 </div>
                 <div>
                     <p>สัญชาติ</p>
-                    <input type="text" id="nation" class="text-input">
+                    <input type="text" name="nation" id="nation" class="text-input">
                 </div>
                 <div>
                     <p>เชื้อชาติ</p>
-                    <input type="text" id="ciri" class="text-input">
+                    <input type="text" name="ciri" id="ciri" class="text-input">
                 </div>
                 <div>
                     <p>ศาสนา</p>
-                    <input type="text" id="religion" class="text-input">
+                    <input type="text" name="religion" id="religion" class="text-input">
                 </div>
                 <div>
                     <p>วันเกิด</p>
-                    <input type="date" id="dob" class="text-input">
+                    <input type="date" name="dob" id="dob" class="text-input">
                 </div>
                 <div>
                     <p>เลขบัตรประชาชน</p>
-                    <input type="text" id="cidss" class="text-input">
+                    <input type="text" name="cidss" id="cidss" class="text-input">
                 </div>
             </div>
         </div>
@@ -83,7 +86,7 @@
                 <div class="regis-detail">
                     <div>
                         <p>ที่อยู่</p>
-                        <input type="text" id="address" class="text-input">
+                        <input type="text" name="address" id="address" class="text-input">
                     </div>
                     <!-- <div>
                         <p>หมู่ที่</p>
@@ -95,35 +98,35 @@
                     </div> -->
                     <div>
                         <p>ถนน</p>
-                        <input type="text" id="road" class="text-input">
+                        <input type="text" name="road" id="road" class="text-input">
                     </div>
                     <div>
                         <p>แขวง/ตำบล</p>
-                        <input type="text" id="tumbon" class="text-input">
+                        <input type="text" name="tumbon" id="tumbon" class="text-input">
                     </div>
                     <div>
                         <p>เขต/อำเภอ</p>
-                        <input type="text" id="ket" class="text-input">
+                        <input type="text" name="ket" id="ket" class="text-input">
                     </div>
                     <div>
                         <p>จังหวัด</p>
-                        <input type="text" id="province" class="text-input">
+                        <input type="text" name="province" id="province" class="text-input">
                     </div>
                     <div>
                         <p>รหัสไปรณีย์</p>
-                        <input type="text" id="post_id" class="text-input">
+                        <input type="text" name="post_id" id="post_id" class="text-input">
                     </div>
                     <div>
                         <p>เบอร์โทรศัพท์</p>
-                        <input type="text" id="phone" class="text-input">
+                        <input type="text" name="phone" id="phone" class="text-input">
                     </div>
                     <div>
                         <p>Line-ID</p>
-                        <input type="text" id="line" class="text-input">
+                        <input type="text" name="line" id="line" class="text-input">
                     </div>
                     <div>
                         <p>Email</p>
-                        <input type="text" id="email" class="text-input">
+                        <input type="text" name="email"  id="email" class="text-input">
                     </div>
                 </div>
             </div>
@@ -134,11 +137,11 @@
             <div class="create">
                 <div class="regis">
                     <p>Username</p>
-                    <input type="text">
+                    <input name="username" id="username" type="text">
                 </div>
                 <div class="regis">
                     <p>Password</p>
-                    <input type="password">
+                    <input name="passw" id="passw" type="password">
                 </div>
                 <div class="regis">
                     <p>Confirm Password</p>
@@ -150,6 +153,7 @@
             <button>สร้างบัญชี</button>
         </div>
     </div>
+</form>
     <script>
         document.addEventListener("DOMContentLoaded", async function () {
             const otherRadio = document.getElementById("other");
@@ -184,7 +188,10 @@
                     let responseAdd = await fetch(`/getaddress/${selectedValue}`);
                     let data = await response.json();
                     let address = await responseAdd.json();
+                    console.log(data);
+                    console.log(address);
                     document.getElementById("titlename").value = data[0].title;
+                    document.getElementById("acc_id").value = data[0].user_id;
                     document.getElementById("firstname").value = data[0].name;
                     document.getElementById("lastname").value = data[0].surname;
                     document.getElementById("nickname").value = data[0].nickname;
@@ -203,9 +210,10 @@
                     }else{
                         document.getElementById("other").checked = true;
                     }
-                    console.log(data);
+                    
                     let arradd = address[0].address;
                     let splitadd = arradd.split("$");
+                    document.getElementById("add_id").value = address[0].address_id;
                     document.getElementById("phone").value = address[0].phone;
                     document.getElementById("line").value = address[0].line;
                     document.getElementById("email").value = address[0].email;

@@ -44,7 +44,7 @@ router.get("/getcid", (req, res) => {
 
 router.get("/getuser/:cid", (req, res) => {
   let cid = req.params.cid;
-  let query = `SELECT users.id_number, users.title, users.name, users.surname, users.nickname, users.age, users.gender, users.nationality, users.religion, users.ethnicity, users.birthday, room.room_number FROM users join room on users.user_id = room.renter_id WHERE id_number = ?`;
+  let query = `SELECT users.user_id,users.id_number, users.title, users.name, users.surname, users.nickname, users.age, users.gender, users.nationality, users.religion, users.ethnicity, users.birthday, room.room_number FROM users join room on users.user_id = room.renter_id WHERE id_number = ?`;
   
   db.all(query, [cid], (err, rows) => {
     if (err) {
@@ -63,7 +63,7 @@ router.get("/getuser/:cid", (req, res) => {
 
 router.get("/getaddress/:cid", (req, res) => {
   let cid = req.params.cid;
-  let query = `SELECT address, phone, line, email FROM address join users on users.address_id = address.address_id WHERE users.id_number = ?`;
+  let query = `SELECT address.address_id, address, phone, line, email FROM address join users on users.address_id = address.address_id WHERE users.id_number = ?`;
   
   db.all(query, [cid], (err, rows) => {
     if (err) {
@@ -78,6 +78,47 @@ router.get("/getaddress/:cid", (req, res) => {
     console.log(rows);
     res.json(rows); 
   });
+
+});
+
+router.post("/setregister", (req, res) => {
+  const { 
+    account_id, address_id, address, road, tumbon, ket, province, post_id, 
+    phone, line, email, username, passw, cidss, titlename, firstname, lastname, 
+    nickname, age, gender, nation, ciri, religion, dob 
+  } = req.body;
+
+  // สร้างที่อยู่ในรูปแบบที่ต้องการ
+  const addressformat = `${address}$${road}$${tumbon}$${ket}$${province}$${post_id}`;
+
+  // ใช้ prepared statements เพื่อป้องกัน SQL Injection
+  let sql = `UPDATE users SET account_id = ?, title = ?, name = ?, surname = ?, nickname = ?, age = ?, nationality = ?, religion = ?, ethnicity = ?, birthday = ? WHERE id_number = ?`;
+  let sqladdress = `UPDATE address SET address = ?, phone = ?, line = ?, email = ? WHERE address_id = ?`;
+  let sqlaccount = `INSERT INTO account (id, username, password, isAdmin) VALUES (?, ?, ?, ?)`; // เพิ่มชื่อของตาราง (เช่น 'accounts')
+
+  // บันทึกข้อมูลลงในฐานข้อมูล
+  db.run(sql, [account_id,titlename, firstname, lastname, nickname, age, nation, religion, ciri, dob, cidss], function(err) {
+    if (err) {
+      return console.log(err.message);
+    }
+    console.log("User data updated successfully");
+  });
+
+  db.run(sqladdress, [addressformat, phone, line, email, address_id], function(err) {
+    if (err) {
+      return console.log(err.message);
+    }
+    console.log("Address data updated successfully");
+  });
+  let iii = 0;
+  db.run(sqlaccount, [account_id, username, passw, iii], function(err) {
+    if (err) {
+      return console.log(err.message);
+    }
+    console.log("Account data inserted successfully");
+  });
+
+  res.redirect('/admin/register');
 });
 
 
