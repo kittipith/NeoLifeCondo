@@ -50,8 +50,8 @@ router.post("/user/service", (req, res) => {
 
     db.get("SELECT room_id FROM room WHERE room_number = ?", [numroom], (err, room_id) => {
         // console.log(room_id.room_id);
-        db.run("INSERT INTO servicesReq (service_id, room_id, info, date, time) VALUES (?, ?, ?, ?, ?)", 
-            [serviceId, room_id.room_id, note, date, time], (err) => {
+        db.run("INSERT INTO servicesReq (service_id, room_id, info, date, time, pic) VALUES (?, ?, ?, ?, ?, ?)", 
+            [serviceId, room_id.room_id, note, date, time, filebase64], (err) => {
                 if (err) {
                     console.error("Error inserting service request:", err);
                 } else {
