@@ -42,6 +42,26 @@ router.get("/getcid", (req, res) => {
   });
 });
 
+router.get("/getuser/:cid", (req, res) => {
+  let cid = req.params.cid;
+  let query = `SELECT * FROM users WHERE id_number = ?`;
+  
+  db.all(query, [cid], (err, rows) => {
+    if (err) {
+      console.log(err.message);
+      return res.status(500).json({ error: "Database error" });
+    }
+    
+    if (rows.length === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    console.log(rows);
+    res.json(rows); 
+  });
+});
+
+
 
 router.get("/admin/contact", (req,res) => {
     const query = `SELECT contact_staff.contact_id, room.room_number, contact_staff.contact_name, contact_staff.pic, contact_staff.date, contact_staff.time from contact_staff join room on contact_staff.room_id = room.room_id where contact_staff.status = 0;`;

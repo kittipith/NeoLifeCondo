@@ -29,23 +29,23 @@
             <div class="info-detail">
                 <div>
                     <p>คำนำหน้า</p>
-                    <input type="text" class="text-input">
+                    <input type="text" id="titlename" class="text-input">
                 </div>
                 <div>
                     <p>ชื่อ</p>
-                    <input type="text" class="text-input">
+                    <input type="text" id="firstname" class="text-input">
                 </div>
                 <div>
                     <p>นามสกุล</p>
-                    <input type="text" class="text-input">
+                    <input type="text" id="lastname" class="text-input">
                 </div>
                 <div>
                     <p>ชื่อเล่น</p>
-                    <input type="text" class="text-input">
+                    <input type="text" id="nickname" class="text-input">
                 </div>
                 <div>
                     <p>อายุ</p>
-                    <input type="text" class="text-input">
+                    <input type="text" id="age" class="text-input">
                 </div>
                 <div class="gender">
                     <p>เพศ</p>
@@ -56,23 +56,23 @@
                 </div>
                 <div>
                     <p>สัญชาติ</p>
-                    <input type="text" class="text-input">
+                    <input type="text" id="nation" class="text-input">
                 </div>
                 <div>
                     <p>เชื้อชาติ</p>
-                    <input type="text" class="text-input">
+                    <input type="text" id="ciri" class="text-input">
                 </div>
                 <div>
                     <p>ศาสนา</p>
-                    <input type="text" class="text-input">
+                    <input type="text" id="religion" class="text-input">
                 </div>
                 <div>
                     <p>วันเกิด</p>
-                    <input type="date" class="text-input">
+                    <input type="date" id="dob" class="text-input">
                 </div>
                 <div>
                     <p>เลขบัตรประชาชน</p>
-                    <input type="text" class="text-input">
+                    <input type="text" id="cidss" class="text-input">
                 </div>
             </div>
         </div>
@@ -177,19 +177,32 @@
 
             document.getElementById("cid").addEventListener("change", async function () {
                 let selectedValue = this.value;
-                // let userInfoDiv = document.getElementById("userInfo");
+                let userInfoDiv = document.getElementById("userInfo");
 
                 try {
                     let response = await fetch(`/getuser/${selectedValue}`);
+                    // let responseAdd = await fetch(`/getaddress/${selectedValue}`);
                     let data = await response.json();
-
-                    // อัปเดตข้อมูลใน HTML
-                    //         userInfoDiv.innerHTML = `
-                    //     <h3>ข้อมูลผู้ใช้</h3>
-                    //     <p><strong>ชื่อ:</strong> ${data.name}</p>
-                    //     <p><strong>อีเมล:</strong> ${data.email}</p>
-                    //     <p><strong>ที่อยู่:</strong> ${data.address}</p>
-                    // `;
+                    // let address = await responseAdd.json();
+                    document.getElementById("titlename").value = data[0].title;
+                    document.getElementById("firstname").value = data[0].name;
+                    document.getElementById("lastname").value = data[0].surname;
+                    document.getElementById("nickname").value = data[0].nickname;
+                    document.getElementById("age").value = data[0].age;
+                    document.getElementById("nation").value = data[0].nationality;
+                    document.getElementById("ciri").value = data[0].ethnicity;
+                    document.getElementById("religion").value = data[0].religion;
+                    document.getElementById("dob").value = data[0].birthday;
+                    document.getElementById("cidss").value = data[0].id_number;
+                    if(data[0].gender === "ชาย"){
+                        document.getElementById("male").checked = true;
+                    }
+                    else if(data[0].gender === "หญิง"){
+                        document.getElementById("female").checked = true;
+                    }else{
+                        document.getElementById("other").checked = true;
+                    }
+                    console.log(data);
                 } catch (error) {
                     console.error("เกิดข้อผิดพลาด:", error);
                 }
