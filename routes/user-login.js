@@ -40,5 +40,12 @@ router.get("/user/information", (req, res) => {
     });
 })
 
+router.post("/user/service", (req, res) => {
+    const {numroom, service, date, time ,note} = req.body;
+    
+    db.run("UPDATE ")
+    res.json({ data: [service, date, time, note] });
+})
+
 
 module.exports = router;

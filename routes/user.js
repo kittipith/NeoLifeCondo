@@ -55,7 +55,7 @@ router.post("/condo/:id/reserve", async (req, res) => {
     console.log("ข้อมูลที่ได้รับ:", data);
 
     const contactDateTime = `${data.contact_day} ${data.contact_time}:00`;
-    const address = `${data.address} ${data.street} ${data.district} ${data.subDistrict} ${data.province} ${data.postalCode}`;
+    const address = `${data.address}$${data.street}$${data.district}$${data.subDistrict}$${data.province}$${data.postalCode}`;
     const idCard = data.idCard.slice(0, 1) + '-' +data.idCard.slice(1, 5) + '-' +data.idCard.slice(5, 10) + '-' + data.idCard.slice(10, 12) + '-' +data.idCard.slice(12);
     // console.log(contactDateTime);
     db.run(

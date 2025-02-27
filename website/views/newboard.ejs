@@ -81,39 +81,41 @@
         </div>
     </div>
 
-    <!-- Popup บริการเสริม -->
-    <div id="popupcon" class="popup">
-        <h2>ติดต่อใช้บริการเสริม</h2>
-        <form class="myform">
-            <p>
-                <label for="numroom">ห้อง</label>
-                <input type="text" id="numroom" name="numroom" />
-            </p>
-            <p>
-                <label for="servi">บริการเสริม:</label>
-                <select id="servi" name="servi">
-                    <option value="00">กรุณาเลือก</option>
-                    <option value="01">ทำความสะอาด</option>
-                    <option value="02">ซ่อมบำรุง</option>
-                </select>
-            </p>
-            <p>
-                <label for="date">เลือกวันที่</label>
-                <input type="date" id="date" name="date" />
-            </p>
-            <p>
-                <label for="time">เลือกเวลา</label>
-                <input type="time" id="time" name="time" />
-            </p>
-            <p>
-                <label for="note">หมายเหตุ</label>
-                <input type="text" id="note" name="note" />
-            </p>
+    <form action="/user/service" method="post">
+        <!-- Popup บริการเสริม -->
+        <div id="popupcon" class="popup">
+            <h2>ติดต่อใช้บริการเสริม</h2>
+            <form class="myform">
+                <p>
+                    <label for="numroom">ห้อง</label>
+                    <input type="text" id="numroom" name="numroom" />
+                </p>
+                <p>
+                    <label for="servi">บริการเสริม:</label>
+                    <select id="servi" name="service">
+                        <option value="00">กรุณาเลือก</option>
+                        <option value="01">ทำความสะอาด</option>
+                        <option value="02">ซ่อมบำรุง</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="date">เลือกวันที่</label>
+                    <input type="date" id="date" name="date" />
+                </p>
+                <p>
+                    <label for="time">เลือกเวลา</label>
+                    <input type="time" id="time" name="time" />
+                </p>
+                <p>
+                    <label for="note">หมายเหตุ</label>
+                    <input type="text" id="note" name="note" />
+                </p>
 
-            <button type="button" onclick="sendData('popupcon')">ส่งข้อมูล</button>
-            <button type="button" onclick="closePopup('popupcon')">ปิด</button>
-        </form>
-    </div>
+                <button type="submit" onclick="sendData('popupcon')">ส่งข้อมูล</button>
+                <button type="button" onclick="closePopup('popupcon')">ปิด</button>
+            </form>
+        </div>
+    </form>
 
     <!-- Popup ติดต่อพนักงาน -->
     <div id="popupser" class="popup">
