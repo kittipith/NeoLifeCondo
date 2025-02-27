@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neo Life Condo</title>
     <link rel="stylesheet" href="../static/css/newboard.css">
-    
+
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
@@ -19,7 +21,8 @@
                     <a href="javascript:void(0)" onclick="openPopup('popupcon')">บริการเสริม</a>
                     <a href="javascript:void(0)" onclick="openPopup('popupser')">ติดต่อพนักงาน</a>
                 </div>
-                <div class="theprofile"><a href="/user/information"><img class="profile" src="../static/img/profile.jpg" alt=""></a></div>
+                <div class="theprofile"><a href="/user/information"><img class="profile" src="../static/img/profile.jpg"
+                            alt=""></a></div>
             </div>
         </div>
     </nav>
@@ -81,41 +84,44 @@
         </div>
     </div>
 
-    <form action="/user/service" method="post">
-        <!-- Popup บริการเสริม -->
-        <div id="popupcon" class="popup">
-            <h2>ติดต่อใช้บริการเสริม</h2>
-            <form class="myform">
-                <p>
-                    <label for="numroom">ห้อง</label>
-                    <input type="text" id="numroom" name="numroom" />
-                </p>
-                <p>
-                    <label for="servi">บริการเสริม:</label>
-                    <select id="servi" name="service">
-                        <option value="00">กรุณาเลือก</option>
-                        <option value="01">ทำความสะอาด</option>
-                        <option value="02">ซ่อมบำรุง</option>
-                    </select>
-                </p>
-                <p>
-                    <label for="date">เลือกวันที่</label>
-                    <input type="date" id="date" name="date" />
-                </p>
-                <p>
-                    <label for="time">เลือกเวลา</label>
-                    <input type="time" id="time" name="time" />
-                </p>
-                <p>
-                    <label for="note">หมายเหตุ</label>
-                    <input type="text" id="note" name="note" />
-                </p>
+    <!-- Popup บริการเสริม -->
+    <div id="popupcon" class="popup">
+        <h2>ติดต่อใช้บริการเสริม</h2>
+        <form class="myform" id="serviecForm" action="/user/service" method="post">
+            <p>
+                <label for="numroom">ห้อง</label>
+                <input type="text" id="numroom" name="numroom" required>
+            </p>
+            <p>
+                <label for="servi">บริการเสริม:</label>
+                <select id="servi" name="service">
+                    <option value="00">กรุณาเลือก</option>
+                    <option value="01">ทำความสะอาด</option>
+                    <option value="02">ซ่อมบำรุง</option>
+                </select>
+            </p>
+            <p>
+                <label for="date">เลือกวันที่</label>
+                <input type="date" id="date" name="date" required>
+            </p>
+            <p>
+                <label for="time">เลือกเวลา</label>
+                <input type="time" id="time" name="time" required>
+            </p>
+            <p>
+                <label for="note">หมายเหตุ</label>
+                <input type="text" id="note" name="note" required>
+            </p>
+            <p>
+                <label for="file">รูปภาพ (ไม่จำเป็นต้องใส่)</label>
+                <input type="file" id="file" name="file" accept="image/*">
+                <input type="text" id="filebase64" name="filebase64" hidden>
+            </p>
 
-                <button type="submit" onclick="sendData('popupcon')">ส่งข้อมูล</button>
-                <button type="button" onclick="closePopup('popupcon')">ปิด</button>
-            </form>
-        </div>
-    </form>
+            <button type="submit" onclick="sendData('popupcon')">ส่งข้อมูล</button>
+            <button type="button" onclick="closePopup('popupcon')">ปิด</button>
+        </form>
+    </div>
 
     <!-- Popup ติดต่อพนักงาน -->
     <div id="popupser" class="popup">
@@ -155,7 +161,7 @@
 
         //เลื่อนข้างที่มีการเป็นจากเมาท์เป็นมือ
         document.addEventListener('DOMContentLoaded', () => {
-        const newsFlex = document.querySelector('.news-flex');
+            const newsFlex = document.querySelector('.news-flex');
             let isDown = false;
             let startX;
             let scrollLeft;
@@ -185,6 +191,32 @@
                 newsFlex.scrollLeft = scrollLeft - walk;
             });
         });
+
+        document.getElementById("file").addEventListener("change", async function () {
+            const fileInput = this;
+            const hiddenInput = document.getElementById("filebase64");
+        
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const base64String = await toBase64(file);
+                
+                hiddenInput.value = base64String; // ใส่ Base64 ลงใน input
+            } else {
+                hiddenInput.value = "";
+            }
+        });
+        
+        // ฟังก์ชันแปลงไฟล์เป็น Base64
+        function toBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+        
     </script>
 </body>
+
 </html>
