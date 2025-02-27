@@ -1,3 +1,6 @@
+body{
+    overflow-y: hidden;
+}
 .big{
     display: flex;
     justify-content: center;
@@ -96,6 +99,10 @@ h1{
     font-size: 20px;
     border: 0.5px solid #ccc;
     background-color: #FF4902;
+    cursor: pointer;
+}
+.btn-confirm button:hover{
+    background-color: #c03600;
 }
 .text-medium{
     font-size: 20px;

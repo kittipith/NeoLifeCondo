@@ -111,6 +111,10 @@
     font-weight: bold;
     font-size: 20px;
     border-radius: 10px;
+    cursor: pointer;
+}
+.button button:hover{
+    background-color: #005a9b;
 }
 hr{
     color: #4A4A4A;
