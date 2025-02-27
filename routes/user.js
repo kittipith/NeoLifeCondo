@@ -7,6 +7,7 @@ const { users, REFRESH_SECRET } = require("../config");
 const { verifyToken } = require("../middleware/authMiddleware");
 const db = require("../database/database");
 const { render } = require("ejs");
+const { console } = require("inspector/promises");
 
 // 📌 แสดงข้อมูล USER
 //res.render("test", { condos: rows }); // ส่งข้อมูลไปที่ template
@@ -103,8 +104,17 @@ router.get("/user/bill", (req, res) => {
     JOIN room r ON b.room_id = r.room_id  
     JOIN users u ON r.renter_id = u.user_id
     WHERE u.user_id = ${user.id};`;
+
+    let countSql = `SELECT COUNT(*) AS total 
+                FROM bill b
+                JOIN room r ON b.room_id = r.room_id  
+                JOIN users u ON r.renter_id = u.user_id
+                WHERE u.user_id = ${user.id};`;
+
     db.get(sql, [], (err, data) => {
-        res.render("bill", { data: data });
+        db.get(countSql, [], (err, countData) => {
+            res.render("bill", { data: data, total: countData.total});
+        });
         // res.json({condos: data});
     });
 })

@@ -25,7 +25,13 @@ router.get("/user/information", (req, res) => {
     const user = jwt.verify(token, REFRESH_SECRET);
     // console.log("Decoded Token:", user.id);
     db.get(`SELECT * FROM users JOIN address ON users.address_id = address.address_id WHERE account_id = ${user.id}`, [], (err, data) => {
-        res.render("userinfo", { data: data });
+        db.get(`SELECT COUNT(*) AS total 
+                FROM bill b
+                JOIN room r ON b.room_id = r.room_id  
+                JOIN users u ON r.renter_id = u.user_id
+                WHERE u.user_id = ${user.id};`, [], (err, countData) => {
+            res.render("userinfo", { data: data, total: countData.total});
+        });
         // res.json({data: data});
     });
 })

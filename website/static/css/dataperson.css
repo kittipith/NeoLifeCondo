@@ -73,7 +73,7 @@ table, th, td {
     font-weight: bold;
     color: red;
 }
-.pays{
+.pays {
     background: #FFFFFF;
     color: rgb(0, 0, 0);
     border: none;
@@ -82,12 +82,32 @@ table, th, td {
     border-radius: 5px;
     cursor: pointer;
 }
+
 .pays p, .pays h3{
     padding: 5%;
 }
 .paydate{
     font-size: 16%;
 }
+.add_payment .payment .pays {
+    position: relative;
+}
+
+.add_payment .payment .pays .total-bills {
+    position: absolute;
+    top: -30px; 
+    right: -10px;
+    background-color: #f80000; 
+    padding: 5px 10px; 
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff; 
+    border-radius: 5px; 
+    z-index: 10;
+    border-radius: 20px;
+}
+
+
 .btn {
     background: #FFFFFF;
     color: rgb(0, 0, 0);
@@ -97,7 +117,9 @@ table, th, td {
     height: 100%;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 5px;
 }
+
 @media screen and (max-width: 820px) {
     .incon{
      grid-template-columns: repeat(1,1fr);
