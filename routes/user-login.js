@@ -46,19 +46,31 @@ router.post("/user/service", (req, res) => {
     console.log("📌 รับข้อมูล:", { numroom, service, date, time, note });
     console.log("🖼️ รูปภาพ Base64:", filebase64.substring(0, 100) + "..."); // แสดงเฉพาะ 100 ตัวอักษรแรก
 
-    serviceId = "1";
-
-    db.get("SELECT room_id FROM room WHERE room_number = ?", [numroom], (err, room_id) => {
-        // console.log(room_id.room_id);
-        db.run("INSERT INTO servicesReq (service_id, room_id, info, date, time, pic) VALUES (?, ?, ?, ?, ?, ?)", 
-            [serviceId, room_id.room_id, note, date, time, filebase64], (err) => {
-                if (err) {
-                    console.error("Error inserting service request:", err);
-                } else {
-                    console.log("Service request inserted successfully");
-                }
+    if (service === "01"){
+        db.get("SELECT room_id FROM room WHERE room_number = ?", [numroom], (err, room_id) => {
+            // console.log(room_id.room_id);
+            db.run("INSERT INTO servicesReq (service_id, room_id, info, date, time, pic) VALUES (?, ?, ?, ?, ?, ?)", 
+                [serviceId, room_id.room_id, note, date, time, filebase64], (err) => {
+                    if (err) {
+                        console.error("Error inserting service request:", err);
+                    } else {
+                        console.log("Service request inserted successfully");
+                    }
+                });
             });
-        });
+    }else if (service === "02"){
+        db.get("SELECT room_id FROM room WHERE room_number = ?", [numroom], (err, room_id) => {
+            // console.log(room_id.room_id);
+            db.run("INSERT INTO repairReq (room_id, info, date, time, pic) VALUES (?, ?, ?, ?, ?)", 
+                [room_id.room_id, note, date, time, filebase64], (err) => {
+                    if (err) {
+                        console.error("Error inserting repair request:", err);
+                    } else {
+                        console.log("Repair request inserted successfully");
+                    }
+                });
+            });
+    }
 
     res.redirect("/user/room");
     // res.json({ success: true, message: "ส่งข้อมูลสำเร็จ!", data: { numroom, service, date, time, note, filebase64 } });
