@@ -70,6 +70,27 @@ router.post("/logout", (req, res) => {
 // FORGOT
 router.get("/forgot-password", (req, res) => {
     res.sendFile(path.join(__dirname, '../website/templates/forgot-password-2.html'));
-})
+});
+
+router.post("/forgot-password", (req, res) => {
+    try {
+        const { idCard, username, password } = req.body;
+
+        if (!idCard || !username || !password) {
+            return res.status(400).json({ error: "กรุณากรอกข้อมูลให้ครบถ้วน" });
+        }
+
+        const idCard2 = idCard.slice(0, 1) + '-' + idCard.slice(1, 5) + '-' + idCard.slice(5, 10) + '-' +  idCard.slice(10, 12) + '-' + idCard.slice(12);
+
+
+        db.all("UPDATE account SET password = ? WHERE id = (SELECT account.id FROM account JOIN users ON account.id = users.account_id WHERE id_number = ?) AND username = ?", [password, idCard2, username], (err, account_id) => {
+            console.log("User data:", account_id);
+            res.status(200).json({ success: "อัปเดตข้อมูลเสร็จสิ้น"})
+        });
+    } catch (error) {
+        console.error("Server error:", error);
+        res.status(500).json({ error: "เกิดข้อผิดพลาดภายในเซิร์ฟเวอร์" });
+    }
+});
 
 module.exports = router;
