@@ -217,9 +217,9 @@ nav a:hover {
     z-index: 9;
 }
 
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.7);
+.prev:hover,.next:hover {
+    transform: scale(1.5);
+    color: #000;
 }
 
 .prev {
@@ -251,7 +251,7 @@ nav a:hover {
 }
 
 .dot:hover {
-    background-color: #bbb;
+    background-color: #060606;
     transform: scale(1.2);
 }
 
