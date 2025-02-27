@@ -101,11 +101,7 @@ router.get("/user/bill/:billId", (req, res) => {
     WHERE b.bill_id = ${billId}`;
 
     db.get(sql, [], (err, data) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
         res.render("bill", { data: data});
-        console.log(data);
         // res.json({condos: data});
     });
 })

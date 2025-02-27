@@ -28,14 +28,13 @@ router.get("/user/information", (req, res) => {
         db.all(`SELECT * FROM bill b
                 JOIN room r ON b.room_id = r.room_id  
                 JOIN users u ON r.renter_id = u.user_id
-                WHERE u.user_id = ${user.id}`, [], (err, bill_data) => {
-                db.get(`SELECT COUNT(*) AS total 
+                WHERE u.user_id = ${user.id} and b.isPaid = 0;`, [], (err, bill_data) => {
+                db.get(`SELECT COUNT(DISTINCT b.bill_id) AS total 
                         FROM bill b
                         JOIN room r ON b.room_id = r.room_id  
                         JOIN users u ON r.renter_id = u.user_id
-                        WHERE u.user_id = ${user.id};`, [], (err, countData) => {
+                        WHERE u.user_id = ${user.id} and b.isPaid = 0;`, [], (err, countData) => {
                     res.render("userinfo", { data: data, bill_data: bill_data, total: countData.total });
-                    console.log(bill_data);
                 });
         });
     });
