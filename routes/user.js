@@ -91,14 +91,20 @@ router.post("/condo/:id/reserve", async (req, res) => {
     res.send("you good");
 })
 
-router.get("/bill", (req, res) => {
-    const roomId = 1; // req.params.id
+router.get("/user/bill", (req, res) => {
+    const token = req.cookies.refreshToken;
+
+    //ตรวจสอบและถอดรหัส refresh token
+    const user = jwt.verify(token, REFRESH_SECRET);
+    console.log(user.id);
+    // console.log("Decoded Token:", user.id);
+
     let sql = `SELECT * FROM bill b
     JOIN room r ON b.room_id = r.room_id  
     JOIN users u ON r.renter_id = u.user_id
-    WHERE b.room_id = ${roomId};`;
+    WHERE u.user_id = ${user.id};`;
     db.get(sql, [], (err, data) => {
-        res.render("bill", { condo: data });
+        res.render("bill", { data: data });
         // res.json({condos: data});
     });
 })

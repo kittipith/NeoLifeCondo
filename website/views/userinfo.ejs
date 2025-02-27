@@ -74,7 +74,7 @@
                 <div class="payment">
                     <div class="pays">
                         <h3><strong>ค่าใช้จ่าย</strong></h3>
-                        <p class="amount">15,774.00 บาท</p>
+                        <p class="amount" id="amount">15,774.00 บาท</p>
                         <p class="paydate">ชำระภายในวันที่ 5 มีนาคม 2568</p>
                     </div>
                     <button class="btn" id="btn" type="button" onclick="senddata()"><strong>ส่งหลักฐานการโอน</strong></button>
@@ -83,5 +83,11 @@
         </div>
     </div>
     <script src="/static/javascript/refreshtoken.js"></script>
+    <script>
+        const  amount = document.getElementById('amount');
+        amount.addEventListener('click', function() {
+            window.location.href = '/user/bill';
+        });
+    </script>
 </body>
 </html>

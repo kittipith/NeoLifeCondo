@@ -10,13 +10,13 @@
     <h1>ใบแจ้งหนี้</h1>
     <div class="text">
         <div class="text-row">
-            <p>เล่มที่</p><p><%= condo.bill_id %></p>
-            <div class="text-end"><p>วันที่</p><p><%= condo.date %></p></div>
+            <p>เล่มที่</p><p><%= data.bill_id %></p>
+            <div class="text-end"><p>วันที่</p><p><%= data.date %></p></div>
         </div>
         <div class="text-row">
-            <p>ค่าเช่าห้อง เลขที่</p><p><%= condo.room_id %></p>
+            <p>ค่าเช่าห้อง เลขที่</p><p><%= data.room_id %></p>
             <p style="margin-left: 5%;">ประจำเดือน</p><p>มกราคม</p>
-            <div class="text-end"><p>ชื่อ</p><p><%= condo.title %> <%= condo.name %> <%= condo.surname %></p></div>
+            <div class="text-end"><p>ชื่อ</p><p><%= data.title %> <%= data.name %> <%= data.surname %></p></div>
         </div>
     </div>
     <table class="invoice-table">
@@ -33,17 +33,17 @@
                 <td>ค่าเช่า</td>
                 <td></td>
                 <td></td>
-                <td><%= condo.room_price %></td>
+                <td><%= data.room_price %></td>
             </tr>
             <tr>
                 <td>ค่าน้ำ</td>
-                <td id="wate"><%= condo.wate %></td>
+                <td id="wate"><%= data.wate %></td>
                 <td id="each_wate">18</td>
                 <td id="total_wate"></td>
             </tr>
             <tr>
                 <td>ค่าไฟ</td>
-                <td id="elec"><%= condo.elec %></td>
+                <td id="elec"><%= data.elec %></td>
                 <td id="each_elec">8</td>
                 <td id="total_elec"></td>
             </tr>
@@ -60,16 +60,16 @@
                 <td></td>
             </tr>
             <tr>
-                <td class="fine"><p>ค่าปรับ</p><p><%= condo.fine_info %></p></td>
+                <td class="fine"><p>ค่าปรับ</p><p><%= data.fine_info %></p></td>
                 <td></td>
                 <td></td>
-                <td><%= condo.fine %></td>
+                <td><%= data.fine %></td>
             </tr>
             <tr>
                 <td>รวมทั้งสิ้น</td>
                 <td></td>
                 <td></td>
-                <td><%= condo.total %></td>
+                <td><%= data.total %></td>
             </tr>
         </tbody>
     </table>
