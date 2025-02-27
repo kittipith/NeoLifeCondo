@@ -44,7 +44,26 @@ router.get("/getcid", (req, res) => {
 
 router.get("/getuser/:cid", (req, res) => {
   let cid = req.params.cid;
-  let query = `SELECT * FROM users WHERE id_number = ?`;
+  let query = `SELECT users.id_number, users.title, users.name, users.surname, users.nickname, users.age, users.gender, users.nationality, users.religion, users.ethnicity, users.birthday, room.room_number FROM users join room on users.user_id = room.renter_id WHERE id_number = ?`;
+  
+  db.all(query, [cid], (err, rows) => {
+    if (err) {
+      console.log(err.message);
+      return res.status(500).json({ error: "Database error" });
+    }
+    
+    if (rows.length === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    console.log(rows);
+    res.json(rows); 
+  });
+});
+
+router.get("/getaddress/:cid", (req, res) => {
+  let cid = req.params.cid;
+  let query = `SELECT address, phone, line, email FROM address join users on users.address_id = address.address_id WHERE users.id_number = ?`;
   
   db.all(query, [cid], (err, rows) => {
     if (err) {

@@ -21,7 +21,7 @@
         </div>
         <div class="num-room">
             <p style="font-size: 25px;">เลขห้อง</p>
-            <input type="text" class="room-number">
+            <input type="text" id="roomnum" class="room-number">
         </div>
         <div>
             <h1 class="txt-head">ข้อมูลส่วนตัว</h1>
@@ -83,47 +83,47 @@
                 <div class="regis-detail">
                     <div>
                         <p>ที่อยู่</p>
-                        <input type="text" class="text-input">
+                        <input type="text" id="address" class="text-input">
                     </div>
-                    <div>
+                    <!-- <div>
                         <p>หมู่ที่</p>
-                        <input type="text" class="text-input">
+                        <input type="text" id="muu" class="text-input">
                     </div>
                     <div>
                         <p>ซอย</p>
-                        <input type="text" class="text-input">
-                    </div>
+                        <input type="text" id="soi" class="text-input">
+                    </div> -->
                     <div>
                         <p>ถนน</p>
-                        <input type="text" class="text-input">
+                        <input type="text" id="road" class="text-input">
                     </div>
                     <div>
                         <p>แขวง/ตำบล</p>
-                        <input type="text" class="text-input">
+                        <input type="text" id="tumbon" class="text-input">
                     </div>
                     <div>
                         <p>เขต/อำเภอ</p>
-                        <input type="text" class="text-input">
+                        <input type="text" id="ket" class="text-input">
                     </div>
                     <div>
                         <p>จังหวัด</p>
-                        <input type="text" class="text-input">
+                        <input type="text" id="province" class="text-input">
                     </div>
                     <div>
                         <p>รหัสไปรณีย์</p>
-                        <input type="text" class="text-input">
+                        <input type="text" id="post_id" class="text-input">
                     </div>
                     <div>
                         <p>เบอร์โทรศัพท์</p>
-                        <input type="text" class="text-input">
+                        <input type="text" id="phone" class="text-input">
                     </div>
                     <div>
                         <p>Line-ID</p>
-                        <input type="text" class="text-input">
+                        <input type="text" id="line" class="text-input">
                     </div>
                     <div>
                         <p>Email</p>
-                        <input type="text" class="text-input">
+                        <input type="text" id="email" class="text-input">
                     </div>
                 </div>
             </div>
@@ -181,9 +181,9 @@
 
                 try {
                     let response = await fetch(`/getuser/${selectedValue}`);
-                    // let responseAdd = await fetch(`/getaddress/${selectedValue}`);
+                    let responseAdd = await fetch(`/getaddress/${selectedValue}`);
                     let data = await response.json();
-                    // let address = await responseAdd.json();
+                    let address = await responseAdd.json();
                     document.getElementById("titlename").value = data[0].title;
                     document.getElementById("firstname").value = data[0].name;
                     document.getElementById("lastname").value = data[0].surname;
@@ -194,6 +194,7 @@
                     document.getElementById("religion").value = data[0].religion;
                     document.getElementById("dob").value = data[0].birthday;
                     document.getElementById("cidss").value = data[0].id_number;
+                    document.getElementById("roomnum").value = data[0].room_number;
                     if(data[0].gender === "ชาย"){
                         document.getElementById("male").checked = true;
                     }
@@ -203,6 +204,18 @@
                         document.getElementById("other").checked = true;
                     }
                     console.log(data);
+                    let arradd = address[0].address;
+                    let splitadd = arradd.split("$");
+                    document.getElementById("phone").value = address[0].phone;
+                    document.getElementById("line").value = address[0].line;
+                    document.getElementById("email").value = address[0].email;
+                    document.getElementById("address").value = splitadd[0];
+                    document.getElementById("road").value = splitadd[1];
+                    document.getElementById("tumbon").value = splitadd[2];
+                    document.getElementById("ket").value = splitadd[3];
+                    document.getElementById("province").value = splitadd[4];
+                    document.getElementById("post_id").value = splitadd[5];
+
                 } catch (error) {
                     console.error("เกิดข้อผิดพลาด:", error);
                 }
