@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../static/css/bill.css">
+    <title>ใบแจ้งหนี้</title>
+    <link rel="stylesheet" href="/static/css/bill.css">
 </head>
 <body >
     <h1>ใบแจ้งหนี้</h1>
     <div class="text">
         <div class="text-row">
             <p>เล่มที่</p><p><%= data.bill_id %></p>
-            <div class="text-end"><p>วันที่</p><p><%= data.date %></p></div>
+            <div class="text-end"><p>วันที่</p><p id="date"><%= data.date %></p></div>
         </div>
         <div class="text-row">
             <p>ค่าเช่าห้อง เลขที่</p><p><%= data.room_id %></p>
-            <p style="margin-left: 5%;">ประจำเดือน</p><p>มกราคม</p>
+            <p style="margin-left: 5%;">ประจำเดือน</p><p id="month"></p>
             <div class="text-end"><p>ชื่อ</p><p><%= data.title %> <%= data.name %> <%= data.surname %></p></div>
         </div>
     </div>
@@ -33,7 +33,7 @@
                 <td>ค่าเช่า</td>
                 <td></td>
                 <td></td>
-                <td><%= data.room_price %></td>
+                <td><%= data.room_price.toFixed(2) %></td>
             </tr>
             <tr>
                 <td>ค่าน้ำ</td>
@@ -63,25 +63,24 @@
                 <td class="fine"><p>ค่าปรับ</p><p><%= data.fine_info %></p></td>
                 <td></td>
                 <td></td>
-                <td><%= data.fine %></td>
+                <td><%= data.fine.toFixed(2) %></td>
             </tr>
             <tr>
                 <td>รวมทั้งสิ้น</td>
                 <td></td>
                 <td></td>
-                <td><%= data.total %></td>
+                <td><%= data.total.toFixed(2) %></td>
             </tr>
         </tbody>
     </table>
     <div class="text">
         <div class="text-row">
             <p style="text-align: start;">หมายเหตุ:ใบเสร็จรับเงินนี้จะสมบูรณ์ เมื่อได้รับการชำระเงินเป็นที่เรียบร้อย</p>
-            <img src="../static/img/qrcode.png" class="qrcode">
+            <img src="/static/img/qrcode.png" class="qrcode">
         </div>
         <button id="print">
-            <img src="../static/img/print.png" alt="">
+            <img src="/static/img/print.png" alt="">
         </button>
-        <p><%= total %></p>
     </div>
 
     <script>
@@ -93,13 +92,32 @@
         const wate = document.getElementById('wate').innerHTML;
         const each_wate = document.getElementById('each_wate').innerHTML;
         let total_wate = document.getElementById('total_wate');
-        total_wate.innerHTML = parseFloat(wate)*parseFloat(each_wate);
+        total_wate.innerHTML = (parseFloat(wate)*parseFloat(each_wate)).toFixed(2);
 
         const elec = document.getElementById('elec').innerHTML;
         const each_elec = document.getElementById('each_elec').innerHTML;
         let total_elec = document.getElementById('total_elec');
-        total_elec.innerHTML = parseFloat(elec)*parseFloat(each_elec);
+        total_elec.innerHTML = (parseFloat(elec)*parseFloat(each_elec)).toFixed(2);
 
+        let dateString = document.getElementById("date");
+        const date = new Date(dateString.innerHTML);
+        const day = String(date.getDate()).padStart(2, '0'); 
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear()+543;
+
+        const formattedDate = `${day}/${month}/${year}`;
+        dateString.innerHTML = formattedDate;
+
+        function getMonthName(month) {
+            const months = [
+                "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+            ];
+            return months[month - 1];
+        }
+
+        displayMonth = document.getElementById("month");
+        displayMonth.innerHTML = getMonthName(month);
     </script>
 </body>
 </html>

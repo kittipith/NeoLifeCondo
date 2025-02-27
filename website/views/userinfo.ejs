@@ -60,7 +60,38 @@
                     </table>
                 </div>
             </div>
+            
+            <div id="popupser" class="popup">
+                <h2>ค่าใช้จ่าย</h2>
+                <div class="eachbill-head"><p>ประจำเดือน</p><p>จำนวน</p></div>
+                <% let totalSum = 0; %>
+                <% let lastMonthName = ''; %>
+                <% let lastYear = ''; %>
+                <% 
+                    const months = [
+                        "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                        "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                    ];
+                %>
+                <% bill_data.forEach((item, index)=>{ %>
+                    <% totalSum += parseFloat(item.total); %>
+                    <% 
+                        const date = new Date(item.date);
+                        const day = date.getDate();
+                        const month = date.getMonth();
+                        const year = date.getFullYear()+543;
 
+                        const monthName = months[month];
+                    %>
+                    <% if (index === bill_data.length - 1) { %>
+                        <% lastMonthName = months[(month + 1) % 12]; %>
+                        <% lastYear = (month === 11) ? year + 1 : year; %>
+                    <% } %>
+                    <div class="eachbill"  id="<%= item.bill_id %>"><p id="date"><%= monthName %> <%= year %></p><p><%=item.total.toFixed(2)%> บาท</p></div>
+                <% }); %> 
+                <button type="button" onclick="closePopup()">ปิด</button>
+                <!-- <div class="eachbill"><p>มกราคม 2568</p><p>บาท</p></div> -->
+            </div>
             
             <div class="add_payment">
                 
@@ -72,10 +103,10 @@
                 <p><strong>E-mail:</strong> <%= data.email %></p>
                 </div>
                 <div class="payment">
-                    <div class="pays">
+                    <div class="pays" id="pays" onclick="openPopup();">
                         <h3><strong>ค่าใช้จ่าย</strong></h3>
-                        <p class="amount" id="amount">15,774.00 บาท</p>
-                        <p class="paydate">ชำระภายในวันที่ 5 มีนาคม 2568</p>
+                        <p class="amount"><%= totalSum.toFixed(2) %> บาท</p>
+                        <p class="paydate">ชำระภายในวันที่ 5 <%= lastMonthName %> <%= lastYear %></p>
                         <p class="total-bills"><%= total %></p>
                     </div>
                     <button class="btn" id="btn" type="button" onclick="senddata()"><strong>ส่งหลักฐานการโอน</strong></button>
@@ -85,10 +116,42 @@
     </div>
     <script src="/static/javascript/refreshtoken.js"></script>
     <script>
-        const  amount = document.getElementById('amount');
-        amount.addEventListener('click', function() {
-            window.location.href = '/user/bill';
+        document.addEventListener('DOMContentLoaded', () => {
+            const billElements = document.querySelectorAll('.eachbill');
+
+            billElements.forEach((element) => {
+                element.addEventListener('click', () => {
+                    const billId = element.id;
+                    window.location.href = `/user/bill/${billId}`;
+                });
+            });
         });
+        let lastMonthName = '';
+        let lastYear = '';
+        const months = [
+                "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+            ];
+        function getMonthName(month) {
+            return months[month - 1];
+        }
+        
+        const billdate = document.querySelectorAll('.date');
+
+            billdate.forEach((element) => {
+                let date = new Date(element.innerHTML); 
+                let month = String(date.getMonth() + 1).padStart(2, '0');
+                let year = date.getFullYear()+543;
+                element.innerHTML = ""+getMonthName(month)+" "+year;
+            });
+
+        function openPopup() {
+            document.getElementById('popupser').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popupser').style.display = 'none';
+        }
     </script>
 </body>
 </html>
