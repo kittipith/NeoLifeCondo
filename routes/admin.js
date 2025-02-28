@@ -20,7 +20,7 @@ router.get("/admin", (req, res) => {
 
 router.get("/admin/user-info", (req,res) => {
 
-    const query = `SELECT room.room_number, users.title, users.name, users.surname, address.phone, address.line
+    const query = `SELECT users.user_id, room.room_number, users.title, users.name, users.surname, address.phone, address.line
 FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.address_id = address.address_id;`;
   db.all(query, (err, rows) => {
     if (err) {
@@ -40,6 +40,19 @@ router.get("/getcid", (req, res) => {
     console.log(rows);
     res.json(rows);
   });
+});
+
+router.post("/submitdeluser", (req, res) => {
+  const data = req.body;
+  let sql = `UPDATE room SET renter_id = NULL where renter_id = ${data.selectedid};`
+  db.run(sql, function(err) {
+    if (err) {
+      return console.log(err.message);
+    }
+    console.log("User data updated successfully");
+  });
+  console.log(sql)
+  res.redirect("/admin/user-info")
 });
 
 router.get("/getuser/:cid", (req, res) => {
