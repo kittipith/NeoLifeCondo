@@ -13,24 +13,22 @@
     <nav>
         <div class="nav-container">
             <div class="thelogo">
-                <img class="logoimg" src="../static/img/logo.png" alt="">
+                <img class="logoimg" src="../static/img/logo.png">
                 <div class="logo">NEO LIFE CONDO</div>
             </div>
             <div class="link">
                 <div class="thelink">
-                    <a href="javascript:void(0)" onclick="openPopup('popupcon')">บริการเสริม</a>
-                    <a href="javascript:void(0)" onclick="openPopup('popupser')">ติดต่อพนักงาน</a>
+                    <a href="javascript:void(0)" onclick="openPopup('popupcon')" class="btn-nav">บริการเสริม</a>
+                    <a href="javascript:void(0)" onclick="openPopup('popupser')" class="btn-nav">ติดต่อพนักงาน</a>
                 </div>
-                <div class="theprofile"><a href="/user/information"><img class="profile" src="../static/img/profile.jpg"
-                            alt=""></a></div>
+                <div class="theprofile"><a href="/user/information"><img class="profile" src="../static/img/profile.jpg"></a></div>
             </div>
         </div>
     </nav>
 
-    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <button class="menu-btn" id="menu-button" onclick="toggleSidebar()">☰</button>
 
     <div class="sidebar" id="mySidebar">
-        <a href="javascript:void(0)" onclick="toggleSidebar()">❌ ปิด</a>
         <a href="javascript:void(0)" onclick="openPopup('popupcon')">บริการเสริม</a>
         <a href="javascript:void(0)" onclick="openPopup('popupser')">ติดต่อพนักงาน</a>
     </div>
@@ -41,7 +39,7 @@
             <div class="news-flex">
                 <% data.forEach((item)=>{ %>
                     <div class="news-item">
-                        <img src="<%= item.pic %>" alt="">
+                        <img src="<%= item.pic %>">
                         <p><%= item.info %></p>
                     </div>
                 <% }); %>
@@ -51,19 +49,19 @@
             <h2>จองใช้ส่วนกลาง</h2>
             <div class="facilities-grid">
                 <div class="facilities-item">
-                    <img src="../static/img/badminton_court.png" alt="">
+                    <img src="../static/img/badminton_court-test.png">
                     <p>สนามแบดมินตัน</p>
                 </div>
                 <div class="facilities-item">
-                    <img src="../static/img/meeting_room.png" alt="">
+                    <img src="../static/img/meeting-room-test.jpeg">
                     <p>ห้องประชุม</p>
                 </div>
                 <div class="facilities-item">
-                    <img src="../static/img/basketball court.png" alt="">
+                    <img src="../static/img/basketball court.png">
                     <p>สนามบาส</p>
                 </div>
                 <div class="facilities-item">
-                    <img src="../static/img/movie_room.png" alt="">
+                    <img src="../static/img/movie_room.png">
                     <p>ห้องดูหนัง</p>
                 </div>
             </div>
@@ -123,6 +121,7 @@
                     <option value="00">กรุณาเลือก</option>
                     <option value="01">แจ้งข่าวสาร</option>
                     <option value="02">ติดต่อพนักงาน</option>
+                    <option value="03">แจ้งของชำรุด</option>
                 </select>
             </p>
             <p>
@@ -155,7 +154,17 @@
 
     <script src="/static/javascript/refreshtoken.js"></script>
     <script>
+        var check = true;
         function toggleSidebar() {
+            const change_color = document.getElementById("menu-button");
+
+            if(check === true){
+                change_color.style.backgroundColor = "#333";
+                check = false;
+            }else {
+                change_color.style.backgroundColor = "#27292C";
+                check = true;
+            }
             document.getElementById("mySidebar").classList.toggle("open-sidebar");
         }
 

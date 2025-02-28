@@ -136,33 +136,6 @@ nav a:hover {
     z-index: 1200;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 1024px) {
-    .menu-btn {
-        display: block;
-    }
-
-    .link,
-    .member {
-        display: none;
-    }
-
-    .thelogo {
-        justify-content: center;
-        width: 100%;
-        display: flex;
-        justify-self: center;
-    }
-
-    .nav-container {
-        width: 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
 .home {
     width: 100%;
     height: 70vh;
@@ -260,46 +233,6 @@ nav a:hover {
     transform: scale(1.4);
 }
 
-@media (max-width: 768px) {
-
-    .home,
-    .slideshow-container {
-        max-height: 90vh;
-    }
-
-    .prev,
-    .next {
-        width: 6vw;
-        height: 6vw;
-        font-size: 3vw;
-    }
-
-    .dot {
-        height: 8px;
-        width: 8px;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .home,
-    .slideshow-container {
-        height: 40vh;
-    }
-
-    .prev,
-    .next {
-        width: 7vw;
-        height: 7vw;
-        font-size: 4vw;
-    }
-
-    .dot {
-        height: 6px;
-        width: 6px;
-    }
-}
-
 .concept {
     background: url('../static/img/back.jpeg');
     background-size: cover;
@@ -348,76 +281,6 @@ nav a:hover {
     animation: zoom-in linear;
     animation-timeline: view();
     animation-range: entry 30% cover 10%;
-}
-
-@keyframes zoom-in {
-    from {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@media (max-width: 768px) {
-    .concept {
-        padding: 5% 0;
-        /* ปรับ padding สำหรับหน้าจอเล็ก */
-    }
-
-    .ch2 {
-        font-size: 120%;
-        /* ลดขนาดฟอนต์เมื่อหน้าจอเล็ก */
-        width: 80%;
-    }
-
-    .concept img {
-        width: 60%;
-        /* ปรับขนาดรูปภาพเมื่อหน้าจอเล็ก */
-    }
-
-    .concept p {
-        text-align: center;
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-
-    .concept h3,
-    .concept h2 {
-        font-size: 140%;
-        /* ปรับขนาดฟอนต์หัวเรื่อง */
-    }
-}
-
-@media (max-width: 480px) {
-    .concept {
-        padding: 6% 0;
-        /* ปรับ padding สำหรับหน้าจอเล็กสุด */
-    }
-
-    .ch2 {
-        font-size: 100%;
-        /* ลดขนาดฟอนต์ลงสำหรับหน้าจอเล็กสุด */
-        width: 90%;
-    }
-
-    .concept img {
-        width: 80%;
-    }
-
-    .concept p {
-        text-align: center;
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-
-    .concept h3,
-    .concept h2 {
-        font-size: 120%;
-    }
 }
 
 html {
@@ -605,81 +468,6 @@ html {
     object-fit: cover;
 }
 
-/* Media Queries สำหรับหน้าจอเล็ก */
-@media (max-width: 768px) {
-    .reserve {
-        padding: 5% 0;
-    }
-
-    .filter {
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 10px;
-        justify-content: center;
-        gap: 5%;
-
-    }
-
-    .filter h3 {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-
-    .filter label {
-        font-size: 12px;
-        margin-bottom: 5px;
-    }
-
-    .roomshow {
-        flex-direction: column;
-        /* แสดงในแนวตั้งเมื่อหน้าจอเล็ก */
-    }
-
-    .container {
-        width: 100%;
-    }
-
-    .room-card {
-        width: 100%;
-
-    }
-
-}
-
-/* Media Queries สำหรับหน้าจอมือถือ  */
-@media (max-width: 480px) {
-    .reserve {
-        padding: 7% 0;
-    }
-
-    .filter {
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 10px;
-        justify-content: center;
-        gap: 5%;
-    }
-
-    .filter h3 {
-        font-size: 10px;
-        margin-bottom: 10px;
-    }
-
-    .filter label {
-        font-size: 8px;
-        margin-bottom: 5px;
-    }
-
-    .roomshow {
-        flex-direction: column;
-    }
-
-    .room-card {
-        width: 100%;
-    }
-
-}
-
 .facilities {
     background: url('../static/img/back.jpeg');
     width: 100%;
@@ -708,9 +496,9 @@ html {
 .facitem {
     height: auto;
     width: 30%;
-    gap: 5%;
+    gap: 10%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     justify-self: center;
     align-items: center;
     margin-left: auto;
@@ -732,19 +520,6 @@ html {
 .imgfac img {
     width: 100%;
     height: 100%;
-
-}
-
-@media (max-width: 480px) {
-    .facitem {
-        width: 80%;
-    }
-}
-
-@media (max-width: 769px) {
-    .facitem {
-        width: 60%;
-    }
 }
 
 .contact {
@@ -797,18 +572,112 @@ html {
     animation-range: entry 0% cover 20%;
 }
 
-@media (max-width: 480px) {
-    .c_contact {
-        width: 60%;
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .menu-btn {
+        display: block;
     }
 
-    .c_logo img {
-        width: 10%;
-        height: 10%;
+    .link,
+    .member {
+        display: none;
+    }
+
+    .thelogo {
+        justify-content: center;
+        width: 100%;
+        display: flex;
+        justify-self: center;
+    }
+
+    .nav-container {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
 @media (max-width: 768px) {
+    .home,
+    .slideshow-container {
+        max-height: 90vh;
+    }
+
+    .prev,
+    .next {
+        width: 6vw;
+        height: 6vw;
+        font-size: 3vw;
+    }
+
+    .dot {
+        height: 8px;
+        width: 8px;
+    }
+    .concept {
+        padding: 5% 0;
+        /* ปรับ padding สำหรับหน้าจอเล็ก */
+    }
+
+    .ch2 {
+        font-size: 120%;
+        /* ลดขนาดฟอนต์เมื่อหน้าจอเล็ก */
+        width: 80%;
+    }
+
+    .concept img {
+        width: 60%;
+        /* ปรับขนาดรูปภาพเมื่อหน้าจอเล็ก */
+    }
+
+    .concept p {
+        text-align: center;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .concept h3, .concept h2 {
+        font-size: 140%;
+        /* ปรับขนาดฟอนต์หัวเรื่อง */
+    }
+
+    .reserve {
+        padding: 5% 0;
+    }
+
+    .filter {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        justify-content: center;
+        gap: 5%;
+
+    }
+
+    .filter h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .filter label {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    .roomshow {
+        flex-direction: column;
+        /* แสดงในแนวตั้งเมื่อหน้าจอเล็ก */
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .room-card {
+        width: 100%;
+    }
     .c_contact {
         width: 50%;
     }
@@ -817,33 +686,6 @@ html {
         width: 10%;
         height: 10%;
     }
-}
-
-@keyframes zoom-in-contact {
-    from {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes slide-in {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@media screen and (max-width: 768px) {
     nav {
         flex-direction: column;
         height: auto;
@@ -877,5 +719,127 @@ html {
     .link.show {
         display: flex;
         /* แสดงเมนูเมื่อคลิก */
+    }
+}
+
+@media (max-width: 480px) {
+
+    .home,
+    .slideshow-container {
+        height: 40vh;
+    }
+
+    .prev,
+    .next {
+        width: 7vw;
+        height: 7vw;
+        font-size: 4vw;
+    }
+
+    .dot {
+        height: 6px;
+        width: 6px;
+    }
+    .concept {
+        padding: 6% 0;
+        /* ปรับ padding สำหรับหน้าจอเล็กสุด */
+    }
+
+    .ch2 {
+        font-size: 100%;
+        /* ลดขนาดฟอนต์ลงสำหรับหน้าจอเล็กสุด */
+        width: 90%;
+    }
+
+    .concept img {
+        width: 80%;
+    }
+
+    .concept p {
+        text-align: center;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .concept h3,
+    .concept h2 {
+        font-size: 120%;
+    }
+
+    .reserve {
+        padding: 7% 0;
+    }
+
+    .filter {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        justify-content: center;
+        gap: 5%;
+    }
+
+    .filter h3 {
+        font-size: 10px;
+        margin-bottom: 10px;
+    }
+
+    .filter label {
+        font-size: 8px;
+        margin-bottom: 5px;
+    }
+
+    .roomshow {
+        flex-direction: column;
+    }
+
+    .room-card {
+        width: 100%;
+    }
+    .facitem {
+        width: 80%;
+    }
+    .c_contact {
+        width: 60%;
+    }
+
+    .c_logo img {
+        width: 10%;
+        height: 10%;
+    }
+}
+
+@keyframes zoom-in {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes zoom-in-contact {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }

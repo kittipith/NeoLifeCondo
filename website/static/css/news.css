@@ -66,7 +66,13 @@ input[type="checkbox"]{
     cursor: pointer;
 }
 th:nth-child(2), td:nth-child(2) {
-    width: 650px;
+    width: 500px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+th:nth-child(3), td:nth-child(3) {
+    width: 500px;
     word-break: break-word;
     overflow-wrap: break-word;
     white-space: normal;

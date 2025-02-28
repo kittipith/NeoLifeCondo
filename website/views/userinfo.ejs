@@ -18,17 +18,17 @@
         </div>
         <div class="incon">
             <div class="info-section">
+                <h3>ข้อมูลส่วนตัว</h3>
                 <div class="personal-info">
-                    <h3>ข้อมูลส่วนตัว</h3>
-                    <p><strong>ชื่อ (Name):</strong> <%= data.title %><%= data.name %> <%= data.surname %></p>
-                    <p><strong>ชื่อเล่น (Nickname):</strong> <%= data.nickname %></p>
-                    <p><strong>วันเกิด (Birthdate):</strong> 30 กรกฎาคม 2547</p>
-                    <p><strong>อายุ (Age):</strong> <%= data.age %></p>
-                    <p><strong>เพศ (Gender):</strong> <%= data.gender %></p>
-                    <p><strong>สัญชาติ (Nationality):</strong><%= data.nationality %></p>
-                    <p><strong>ศาสนา (Religion):</strong> <%= data.religion %></p>
-                    <p><strong>เชื้อชาติ (Ethnicity):</strong> <%= data.ethnicity %></p>
-                    <p><strong>เลขบัตรประชาชน (ID Number):</strong> <%= data.id_number %></p>
+                    <p class="text-inside"><strong>ชื่อ (Name):</strong> <%= data.title %><%= data.name %> <%= data.surname %></p>
+                    <p class="text-inside"><strong>ชื่อเล่น (Nickname):</strong> <%= data.nickname %></p>
+                    <p class="text-inside"><strong>วันเกิด (Birthdate):</strong> 30 กรกฎาคม 2547</p>
+                    <p class="text-inside"><strong>อายุ (Age):</strong> <%= data.age %></p>
+                    <p class="text-inside"><strong>เพศ (Gender):</strong> <%= data.gender %></p>
+                    <p class="text-inside"><strong>สัญชาติ (Nationality):</strong><%= data.nationality %></p>
+                    <p class="text-inside"><strong>ศาสนา (Religion):</strong> <%= data.religion %></p>
+                    <p class="text-inside"><strong>เชื้อชาติ (Ethnicity):</strong> <%= data.ethnicity %></p>
+                    <p class="text-inside"><strong>เลขบัตรประชาชน (ID Number):</strong> <%= data.id_number %></p>
                 </div>
                 <div class="history">
                     <h3>ประวัติการจอง</h3>
@@ -94,13 +94,12 @@
             </div>
             
             <div class="add_payment">
-                
                 <div class="contact-info">
                     <h3>ข้อมูลติดต่อ</h3>
-                <p><strong>ที่อยู่ (Address):</strong> <%= (data.address).split('$') %></p>
-                <p><strong>เบอร์โทร (Phone Number):</strong> <%= data.phone %></p>
-                <p><strong>Line ID:</strong> <%= data.line %></p>
-                <p><strong>E-mail:</strong> <%= data.email %></p>
+                    <p class="text-inside"><strong>ที่อยู่ (Address):</strong> <%= (data.address).split('$') %></p>
+                    <p class="text-inside"><strong>เบอร์โทร (Phone Number):</strong> <%= data.phone %></p>
+                    <p class="text-inside"><strong>Line ID:</strong> <%= data.line %></p>
+                    <p class="text-inside"><strong>E-mail:</strong> <%= data.email %></p>
                 </div>
                 <div class="payment">
                     <div class="pays" id="pays" onclick="openPopup();">
@@ -112,6 +111,7 @@
                         <p class="total-bills"><%= total %></p>
                     </div>
                     <button class="btn" id="btn" type="button" onclick="senddata()"><strong>ส่งหลักฐานการโอน</strong></button>
+                    <button class="btn-logout">Log Out</button>
                 </div>
             </div>
         </div>

@@ -35,8 +35,8 @@ nav {
     width: 15%;
 }
 .logoimg {
-    max-width: 50px;
-    height: auto;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
 }
 .thelink{
@@ -60,17 +60,18 @@ nav a {
     border-radius: 20px;
     padding: 6px 15px;
     white-space: nowrap;
+    font-size: 20px;
 }
-nav a:hover {
-    background: #ffffff;
-    color: #000;
+.btn-nav:hover{
+    color: black;
+    background-color: white;
 }
 .menu-btn {
     position: fixed;
     top: 1%;
     left: 15px;
     font-size: 24px;
-    background: #000;
+    background: #27292C;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -79,6 +80,7 @@ nav a:hover {
     justify-self: center;
     align-self: center;
     z-index: 1200;
+    margin-top: 5px;
 }
 .theprofile{
     display: flex;
@@ -92,7 +94,7 @@ nav a:hover {
 }
 
 .container {
-    margin-top: 5%;
+    margin-top: 7%;
     padding: 20px;
 }
 .news-flex{
@@ -108,7 +110,6 @@ nav a:hover {
     cursor: grabbing;
 } 
 .news-item {
-    background: #C44949;
     color: white;
     padding: 25px 15px;
     flex: 1;
@@ -120,14 +121,20 @@ nav a:hover {
 
 }
 .news-item img {
+    max-width: 100%;
+    max-height: 100%;
     width: 100%; 
-    height: 90%; 
+    height: 100%; 
     object-fit: cover; 
-    border-radius: 5px; 
+    border-radius: 5px;
+    user-drag: none;
+    user-select: none;
+    pointer-events: none;
 }
 .news-item p {
     margin: 5px;
     text-align: center;
+    color: black;
 }
 .facilities-grid {
     display: grid;
@@ -243,13 +250,13 @@ nav a:hover {
 }
 
 .popup button {
-    background: blue;
+    background: #0099FF;
     color: white;
     cursor: pointer;
 }
 
 .popup button:hover {
-    background: darkblue;
+    background: #006AFF;
 }
 /* Sidebar */
 .sidebar {
@@ -269,6 +276,7 @@ nav a:hover {
     display: block;
     color: white;
     text-decoration: none;
+    margin-top: 10px;
 }
 .sidebar a:hover {
     background: #575757;
@@ -289,20 +297,6 @@ nav a:hover {
     z-index: 1000;
 }
 
-/* ปุ่มเมนู */
-.menu-btn {
-    position: fixed;
-    top: 1%;
-    left: 15px;
-    font-size: 24px;
-    background: #000;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    display: none;
-    z-index: 1200;
-}
 @media screen and (max-width: 780px) {
     nav {
         height: 10%;
