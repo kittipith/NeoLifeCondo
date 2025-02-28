@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/user-info.css">
 </head>
 <body>
+    <form action="/submitdeluser" method="POST">
     <button class="button-del">ลบข้อมูล</button>
     <table>
         <thead>
@@ -22,7 +23,7 @@
         <tbody>
             <% data.forEach((item)=>{ %>        
             <tr onclick="openPopup('popup-user-info');">
-                <td><input type="checkbox" onclick="event.stopPropagation();"></td>
+                <td><input type="checkbox" name="selectedid" value="<%= item.user_id %>" onclick="event.stopPropagation();"></td>
                 <td><%=item.room_number%></td>
                 <td><%=item.title%></td>
                 <td><%=item.name%></td>
@@ -39,5 +40,6 @@
     </div>
     <!-- <script src="../static/javascript/refreshtoken-admin.js"></script> -->
     <script src="../static/javascript/checkbox.js"></script>
+</form>
 </body>
 </html>
