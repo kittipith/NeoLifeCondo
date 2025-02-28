@@ -39,26 +39,12 @@
         <div class="news">
             <h2>ข่าวสาร</h2>
             <div class="news-flex">
-                <div class="news-item">
-                    <img src="../static/img/news1.png" alt="">
-                    <p>โครงการกำลังสร้างอยู่บริเวณคอนโด</p>
-                </div>
-                <div class="news-item">
-                    <img src="../static/img/news3.png" alt="">
-                    <p>ลิฟต์ตัวด้านซ้ายเสีย</p>
-                </div>
-                <div class="news-item">
-                    <img src="../static/img/news2.png" alt="">
-                    <p>ไฟทางเดินชั้น 5 เสีย</p>
-                </div>
-                <div class="news-item">
-                    <img src="../static/img/news4.png" alt="">
-                    <p>ห้อง 504 กำลังซ่อมแซม อาจมีเสียงก่อสร้าง</p>
-                </div>
-                <div class="news-item">
-                    <img src="../static/img/news5.png" alt="">
-                    <p>สระว่านน้ำมีการซ่อมแซม อาจมีเสียงก่อสร้าง</p>
-                </div>
+                <% data.forEach((item)=>{ %>
+                    <div class="news-item">
+                        <img src="<%= item.pic %>" alt="">
+                        <p><%= item.info %></p>
+                    </div>
+                <% }); %>
             </div>
         </div>
         <div class="facilities">
@@ -89,11 +75,11 @@
         <h2>ติดต่อใช้บริการเสริม</h2>
         <form class="myform" id="serviecForm" action="/user/service" method="post">
             <p>
-                <label for="numroom">ห้อง</label>
+                <label for="numroom">*ห้อง</label>
                 <input type="text" id="numroom" name="numroom" required>
             </p>
             <p>
-                <label for="servi">บริการเสริม:</label>
+                <label for="servi">*บริการเสริม:</label>
                 <select id="servi" name="service">
                     <option value="00">กรุณาเลือก</option>
                     <option value="01">ทำความสะอาด</option>
@@ -101,21 +87,21 @@
                 </select>
             </p>
             <p>
-                <label for="date">เลือกวันที่</label>
+                <label for="date">*เลือกวันที่</label>
                 <input type="date" id="date" name="date" required>
             </p>
             <p>
-                <label for="time">เลือกเวลา</label>
+                <label for="time">*เลือกเวลา</label>
                 <input type="time" id="time" name="time" required>
             </p>
             <p>
-                <label for="note">หมายเหตุ</label>
+                <label for="note">*หมายเหตุ</label>
                 <input type="text" id="note" name="note" required>
             </p>
             <p>
-                <label for="file">รูปภาพ (ไม่จำเป็นต้องใส่)</label>
-                <input type="file" id="file" name="file" accept="image/*">
-                <input type="text" id="filebase64" name="filebase64" value="none" hidden >
+                <label for="file1">รูปภาพ (ไม่จำเป็นต้องใส่)</label>
+                <input type="file" id="file1" name="file1" accept="image/*">
+                <input type="text" id="filebase641" name="filebase641" value="none" hidden>
             </p>
 
             <button type="submit" onclick="sendData('popupcon')">ส่งข้อมูล</button>
@@ -126,21 +112,43 @@
     <!-- Popup ติดต่อพนักงาน -->
     <div id="popupser" class="popup">
         <h2>ติดต่อพนักงาน</h2>
-        <form class="myform">
+        <form class="myform" action="/user/contactstaff" method="post">
             <p>
-                <label for="numroom">ห้อง</label>
+                <label for="numroom">*ห้อง</label>
                 <input type="text" id="numroom" name="numroom" />
             </p>
             <p>
-                <label for="cont">สิ่งที่ต้องการติดต่อ</label>
+                <label for="cont">*สิ่งที่ต้องการติดต่อ</label>
                 <select id="cont" name="cont">
                     <option value="00">กรุณาเลือก</option>
-                    <option value="01">ทำความสะอาด</option>
-                    <option value="02">ซ่อมบำรุง</option>
+                    <option value="01">แจ้งข่าวสาร</option>
+                    <option value="02">ติดต่อพนักงาน</option>
                 </select>
             </p>
+            <p>
+                <label for="title">*เรื่อง</label>
+                <input type="text" id="title" name="title" />
+            </p>
+            <p>
+                <label for="info">*หมายเหตุ</label>
+                <input type="text" id="info" name="info" />
+            </p>
+            <p>
+                <label for="date">*เลือกวันที่</label>
+                <input type="date" id="date" name="date" required>
+            </p>
+            <p>
+                <label for="time">*เลือกเวลา</label>
+                <input type="time" id="time" name="time" required>
+            </p>
+            <p>
+            <p>
+                <label for="file2" id="pic">รูปภาพ (ไม่จำเป็นต้องใส่)</label>
+                <input type="file" id="file2" name="file2" accept="image/*">
+                <input type="text" id="filebase642" name="filebase642" value="none" hidden>
+            </p>
 
-            <button type="button" onclick="sendData('popupser')">ส่งข้อมูล</button>
+            <button type="submit" onclick="sendData('popupser')">ส่งข้อมูล</button>
             <button type="button" onclick="closePopup('popupser')">ปิด</button>
         </form>
     </div>
@@ -192,20 +200,32 @@
             });
         });
 
-        document.getElementById("file").addEventListener("change", async function () {
+        document.getElementById("file1").addEventListener("change", async function () {
             const fileInput = this;
-            const hiddenInput = document.getElementById("filebase64");
+            const hiddenInput = document.getElementById("filebase641");
         
             if (fileInput.files.length > 0) {
                 const file = fileInput.files[0];
                 const base64String = await toBase64(file);
-                
-                hiddenInput.value = base64String; // ใส่ Base64 ลงใน input
+                hiddenInput.value = base64String;
             } else {
                 hiddenInput.value = "";
             }
         });
         
+        document.getElementById("file2").addEventListener("change", async function () {
+            const fileInput = this;
+            const hiddenInput = document.getElementById("filebase642");
+        
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const base64String = await toBase64(file);
+                hiddenInput.value = base64String;
+            } else {
+                hiddenInput.value = "";
+            }
+        });
+
         // ฟังก์ชันแปลงไฟล์เป็น Base64
         function toBase64(file) {
             return new Promise((resolve, reject) => {
@@ -215,7 +235,19 @@
                 reader.onerror = error => reject(error);
             });
         }
-        
+
+        document.getElementById("cont").addEventListener("change", function () {
+            var fileInput = document.getElementById("file2");
+            const label = document.getElementById("pic");
+            if (this.value === "01") {
+                fileInput.required = true;
+                label.innerText = "*รูปภาพ";
+            } else {
+                fileInput.required = false;
+                label.innerText = "รูปภาพ (ไม่จำเป็นต้องใส่)";
+            }
+        });
+
     </script>
 </body>
 
