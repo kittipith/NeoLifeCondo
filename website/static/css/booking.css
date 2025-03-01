@@ -1,5 +1,5 @@
 body{
-    overflow-y: hidden;
+    font-family: "Open Sans", "Noto Sans Thai";
 }
 .big{
     display: flex;
@@ -132,7 +132,7 @@ h1{
 .input-personal{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 30px;
     width: 70%;
 }
 .input{
@@ -179,4 +179,50 @@ h1{
 .tail-bottom h1{
     margin-top: 10px;
     margin-bottom: 30px;
+}
+
+@media (max-width: 1200px) {
+    .top {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+    .book {
+        grid-template-columns: 1fr;
+    }
+    .book_img img {
+        width: 100%;
+        height: auto;
+    }
+    .input-personal {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+    .input {
+        width: 100%;
+    }
+    .tail {
+        width: 90%;
+    }
+    .box-confirm {
+        width: 90%;
+    }
+}
+@media (max-width: 480px) {
+    .top {
+        width: 100%;
+    }
+    .book {
+        grid-template-columns: 1fr;
+    }
+    .input-personal {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        width: 100%;
+    }
+    .input {
+        width: 90%;
+    }
+    .tail {
+        width: 100%;
+    }
 }

@@ -129,7 +129,16 @@ router.post("/user/savecowork", (req, res) => {
 });
 
 router.get("/user/meeting", (req, res) => {
-    res.render("meetingroom");
+    const token = req.cookies.refreshToken;
+
+    //ตรวจสอบและถอดรหัส refresh token
+    const user = jwt.verify(token, REFRESH_SECRET);
+    db.get(`SELECT * FROM Cowork c
+            JOIN room r ON c.room_id = r.room_id  
+            JOIN users u ON r.renter_id = u.user_id
+            WHERE u.user_id = ${user.id};`, [], (err, data) => {
+                res.render("meetingroom", { data: data });
+            });
 })
 
 router.get('/meetdata', (req, res) => {

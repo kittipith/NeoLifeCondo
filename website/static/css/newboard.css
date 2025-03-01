@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
+    font-family: "Open Sans", "Noto Sans Thai";
 }
 nav {
     display: flex;
@@ -26,13 +27,13 @@ nav {
 .logo {
     color: white;
     font-weight: bold;
-    font-size: 80%;
+    font-size: 20px;
 }
 .thelogo {
     display: flex;
     align-items: center;
     gap: 3%;
-    width: 15%;
+    width: 20%;
 }
 .logoimg {
     width: 70px;

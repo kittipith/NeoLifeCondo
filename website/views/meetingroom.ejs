@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Neo Life Condo</title>
     <link rel="stylesheet" href="../static/css/meetingroom.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -15,24 +17,26 @@
             </div>
             <form action="/user/savecowork" method="POST" class="meetingdetail">
                     <input type="text" value="meetingroom" name="cowork_name" style="display: none;">
-                    <label for="">หมายเลขห้อง <input type="text" class="textinput" name="room_id"></label>
-                    <label for="" style="margin-left: 70px;">วันที่: <select name="day" id="selectdate" class="textinput">
+                    <label class="room_lable">หมายเลขห้อง <input type="text" class="textinput" name="room_id" value="<%= data && data.room_id ? data.room_id : '' %>"></label>
+                    <p id="selected_date" style="display: none;"><%= data && data.starttime ? data.starttime.split(' ')[0] : '' %></p>
+                    <label  class="day_lable">วันที่: <select name="day" id="selectdate" class="textinput">
                     </select></label>                    <div class="timerow">
-                        <label for="">ใช้บริการเวลา <input type="time" style="margin-left: 12px;" id="start-time" class="timeinput" min="09:00" max="20:00" step="3600" name="starttime"></label>
-                        <label for="">ถึงเวลา <input type="time" style="margin-left: 12px;" id="end-time" class="timeinput" min="09:00" max="20:00" step="3600" name="endtime"></label>
+                        <label class="start_time_lable">ใช้บริการเวลา <input type="time" style="margin-left: 12px;" id="start-time" class="timeinput" min="09:00" max="20:00" step="3600" name="starttime" value="<%= data && data.starttime ? data.starttime.split(' ')[1].substring(0, 5) : '' %>"></label>
+                        <label class="end_time_lable">ถึงเวลา <input type="time" style="margin-left: 12px;" id="end-time" class="timeinput" min="09:00" max="20:00" step="3600" name="endtime" value="<%= data && data.endtime ? data.endtime.split(' ')[1].substring(0, 5) : '' %>"></label>
                     </div>
-                    <label for="" class="moreinfolable"><p class="moreinfo">หมายเหตุเพิ่มเติม</p> <textarea name="info" id=""></textarea></label>
+                    <label  class="moreinfolable"><p class="moreinfo">หมายเหตุเพิ่มเติม</p> <textarea name="info" id=""><%= data && data.info ? data.info : '' %></textarea></label>
                 <input type="submit" id="savedata" onclick="validateTimes();" value="บันทึกข้อมูล"></input>
             </form>
             <br>
-            <p class="moreinfo_user" style="margin-left: auto;">หมายเหตุ: 
-                1) สามารถเลือกเวลาได้ไม่เกิน 2 ชั่วโมง <br>
-                <p style="margin-left: auto; font-size: 16px; color: rgb(46, 49, 49);">2) ผู้ใช้สามารถจองใหม่ได้เมื่อสิ้นสุดเวลาการจองที่มีอยู่เท่านั้น</p></p>
+            <div class="moreinfo_user">
+                <p>หมายเหตุ: 1) สามารถเลือกเวลาได้ไม่เกิน 2 ชั่วโมง</p> <br>
+                <p class="more2" style="color: rgb(46, 49, 49);">2) ผู้ใช้สามารถจองใหม่ได้เมื่อสิ้นสุดเวลาการจองที่มีอยู่เท่านั้น</p>
+            </div>
         </div>
         <div class="meetinginfo">
             <p style="margin: 20px; font-size: 1.2rem;">ตารางเวลาบริการ</p>
             <div class="small-device">
-                <label for="" style="margin-left: 20px;">วันที่: <select name="" id="select_table_date">
+                <label  style="margin-left: 20px;">วันที่: <select name="" id="select_table_date">
                 </select></label>
             </div>
             <table id="meetingtable" style="margin: 20px;">

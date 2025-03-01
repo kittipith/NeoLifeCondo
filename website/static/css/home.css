@@ -3,8 +3,8 @@
 }
 
 body {
-    font-family: Verdana, sans-serif;
     margin: 0;
+    font-family: "Open Sans", "Noto Sans Thai";
 }
 
 .mySlides {
@@ -36,19 +36,20 @@ nav {
 .logo {
     color: white;
     font-weight: bold;
-    font-size: 80%;
+    font-size: 20px;
 }
 
 .thelogo {
     display: flex;
     align-items: center;
     gap: 1%;
-    width: 15%;
+    width: 20%;
+    margin-right: auto;
 }
 
 .logoimg {
-    max-width: 50px;
-    height: auto;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
 }
 
@@ -56,6 +57,8 @@ nav {
     display: flex;
     gap: 30px;
     align-items: center;
+    width: 100%;
+    justify-content: center;
 }
 
 .innav {
@@ -78,6 +81,7 @@ nav a:hover {
 
 .member a {
     color: white;
+    margin-left: auto;
 }
 
 /* Sidebar */
@@ -234,7 +238,7 @@ nav a:hover {
 }
 
 .concept {
-    background: url('../static/img/back.jpeg');
+    background: url('../img/background-wall.jpg');
     background-size: cover;
     width: 100%;
     align-items: center;
@@ -259,7 +263,7 @@ nav a:hover {
 .ch2 {
     width: 50%;
     justify-self: center;
-    font-size: 150%;
+    font-size: 35px;
     margin-top: 2%;
     animation: zoom-in linear;
     animation-timeline: view();
@@ -276,6 +280,7 @@ nav a:hover {
 .concept p {
     text-align: start;
     text-indent: 5%;
+    font-size: 20px;
     margin-left: 18%;
     margin-right: 18%;
     animation: zoom-in linear;
@@ -469,7 +474,7 @@ html {
 }
 
 .facilities {
-    background: url('../static/img/back.jpeg');
+    background: url('../img/background-wall.jpg');
     width: 100%;
     align-items: center;
     text-align: center;
@@ -636,11 +641,11 @@ html {
         text-align: center;
         margin-left: 10%;
         margin-right: 10%;
+        font-size: 20px;
     }
 
     .concept h3, .concept h2 {
-        font-size: 140%;
-        /* ปรับขนาดฟอนต์หัวเรื่อง */
+        font-size: 30px;
     }
 
     .reserve {
@@ -696,6 +701,8 @@ html {
     .thelogo {
         width: auto;
         gap: 5px;
+        justify-content: center;
+        margin-right: 0;
     }
 
     .link {
@@ -759,11 +766,12 @@ html {
         text-align: center;
         margin-left: 5%;
         margin-right: 5%;
+        font-size: 15px;
     }
 
     .concept h3,
     .concept h2 {
-        font-size: 120%;
+        font-size: 25px;
     }
 
     .reserve {

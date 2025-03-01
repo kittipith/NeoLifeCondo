@@ -5,6 +5,7 @@ body {
     margin: 5%;
     margin-top: 3%;
     font-size: 1.1rem;
+    font-family: "Open Sans", "Noto Sans Thai";
 }
 
 .container {
@@ -31,6 +32,7 @@ body {
     height: 50px;
     background-color: #fae19d;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .meetinginfo p {
@@ -64,6 +66,7 @@ body {
     border: 1px solid black;
     color: white;
     font-size: 1.075rem;
+    cursor: pointer;
 }
 
 .meetingdetail label {
@@ -73,6 +76,7 @@ body {
 }
 .meetingdetail input{
     margin-left: 10px; 
+    padding: 3px;
 }
 .meetingdetail select{
     margin-left: 10px; 
@@ -83,7 +87,10 @@ body {
     height: 100px;
     resize: none;
     margin-left: 10px; 
+    padding: 10px;
+    font-size: 1.025rem;
 }
+
 
 .timeinput{
     width: 150px;
@@ -122,6 +129,13 @@ body {
     margin-right: 142px !important;  
     font-size: 16px;
     color: rgb(46, 49, 49);
+}
+
+.day_lable{
+    margin-left: 60px;
+}
+.more2{
+    margin-left: 72px !important;
 }
 
 @media only screen and (max-width: 768px) {
@@ -177,7 +191,57 @@ body {
     }
 
     .moreinfo_user{
-        margin-right: 0px;  
+        width: 100%;  
+    }
+
+    .room_lable{
+        margin-left: -20px;
+    }
+    .day_lable{
+        margin-left: 36px;
+    }
+    .start_time_lable{
+        margin-left: -20px;
+    }
+    .end_time_lable{
+        margin-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .meetinginfo {
+        padding: 10px;
+    }
+    .meetingdetail textarea {
+        width: 65%;
+        height: 100px;
+        resize: none;
+    }
+    .timeinput{
+        width: 100px;
+        height: 25px;
+    }
+    .textinput{
+        width: 40%;
+        height: 25px;
+    }
+    .moreinfo{
+        width: 40%;
+    }
+    .room_lable{
+        margin-left: 0px;
+    }
+    .day_lable{
+        margin-left: 56px;
+    }
+    .start_time_lable{
+        margin-left: 0px;
+    }
+    .end_time_lable{
+        margin-left: 40px;
+    }
+    .more2{
+        margin-left: 0px !important; 
     }
 }
 

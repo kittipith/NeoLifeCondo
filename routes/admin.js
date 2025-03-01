@@ -32,7 +32,7 @@ FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.add
 });
 
 router.get("/getcid", (req, res) => {
-  let query = `select id_number from users`;
+  let query = `SELECT id_number FROM users WHERE isAdmin != 1 AND account_id IS NULL`;
   db.all(query, (err, rows) => {
     if (err) {
       console.log(err.message);
@@ -43,16 +43,82 @@ router.get("/getcid", (req, res) => {
 });
 
 router.post("/submitdeluser", (req, res) => {
-  const data = req.body;
-  let sql = `UPDATE room SET renter_id = NULL where renter_id = ${data.selectedid};`
-  db.run(sql, function(err) {
-    if (err) {
-      return console.log(err.message);
+  const data = req.body.selectedid;
+
+  if (Array.isArray(data)) {
+    for(let i=0; i < data.length; i++){
+      let sql = `UPDATE room SET renter_id = NULL where renter_id = ${data[i]};`;
+      let sqluser = `DELETE FROM users WHERE user_id = ${data[i]};`;
+      let sqlacc = `DELETE FROM account WHERE id = ${data[i]};`;
+      let sqladd = `DELETE FROM address WHERE address_id = ${data[i]};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+      console.log(sql);
+    });
+    db.run(sqluser, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdonedeluser`);
+      console.log(sql);
+    });
+    db.run(sqlacc, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdonedeluser`);
+      console.log(sql);
+    });
+    db.run(sqladd, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdonedeluser`);
+      console.log(sql);
+    });
     }
-    console.log("User data updated successfully");
-  });
-  console.log(sql)
-  res.redirect("/admin/user-info")
+    
+    
+  } else if (data) {
+    let sql = `UPDATE room SET renter_id = NULL where renter_id = ${data};`;
+    let sqluser = `DELETE FROM users WHERE user_id = ${data};`;
+    let sqlacc = `DELETE FROM account WHERE id = ${data};`;
+      let sqladd = `DELETE FROM address WHERE address_id = ${data};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+    db.run(sqluser, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+    db.run(sqlacc, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdonedeluser`);
+      console.log(sql);
+    });
+    db.run(sqladd, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdonedeluser`);
+      console.log(sql);
+    });
+      console.log(sql); // กรณีเลือกแค่ 1 อัน
+  } else {
+      console.log("No reqs selected");
+  }
+
+  res.redirect('/admin/user-info');
 });
 
 router.get("/getuser/:cid", (req, res) => {
@@ -148,7 +214,7 @@ router.get("/admin/contact", (req,res) => {
 });
 
 router.get("/admin/payment", (req,res) => {
-    const query = `SELECT room.room_number, payment.bill_id, payment.pic, payment.date, payment.time from payment join bill on payment.bill_id = bill.bill_id JOIN room ON bill.room_id = room.room_id;` ;
+    const query = `SELECT room.room_number, payment.bill_id, payment.pic, payment.date, payment.time from payment join bill on payment.bill_id = bill.bill_id JOIN room ON bill.room_id = room.room_id where bill.isPaid = 0;` ;
     db.all(query, (err, rows) => {
       if (err) {
         console.log(err.message);
@@ -278,7 +344,6 @@ router.post("/submitContact", (req, res) => {
     });
     }
     
-    
   } else if (selectedContact) {
     let sql = `UPDATE contact_staff SET status = 1 WHERE contact_id = ${selectedContact};`;
     db.run(sql, function(err) {
@@ -294,6 +359,101 @@ router.post("/submitContact", (req, res) => {
 
   res.redirect('/admin/contact');
 });
+
+
+router.post("/submitshownews", (req, res) => {
+  const selectednews= req.body.selectednews; // รับค่าจาก checkbox
+
+  if (Array.isArray(selectednews)) {
+    for(let i=0; i < selectednews.length; i++){
+      let sql = `UPDATE news SET status = 1 WHERE new_id = ${selectednews[i]};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+      console.log(sql);
+    });
+    }
+    
+  } else if (selectednews) {
+    let sql = `UPDATE news SET status = 1 WHERE new_id = ${selectednews};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+      console.log(sql); // กรณีเลือกแค่ 1 อัน
+  } else {
+      console.log("No reqs selected");
+  }
+
+  res.redirect('/admin/news');
+});
+
+router.post("/submitdelnews", (req, res) => {
+  const selectednews = req.body.selectednews; // รับค่าจาก checkbox
+
+  if (Array.isArray(selectednews)) {
+    for(let i=0; i < selectednews.length; i++){
+      let sql = `DELETE FROM news WHERE new_id = ${selectednews[i]};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+      console.log(sql);
+    });
+    }
+    
+  } else if (selectednews) {
+    let sql = `DELETE FROM news WHERE new_id = ${selectednews};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+      console.log(sql); // กรณีเลือกแค่ 1 อัน
+  } else {
+      console.log("No reqs selected");
+  }
+
+  res.redirect('/admin/news');
+});
+
+router.post("/submitbill", (req, res) => {
+  const selectednews = req.body.selectbill; // รับค่าจาก checkbox
+
+  if (Array.isArray(selectednews)) {
+    for(let i=0; i < selectednews.length; i++){
+      let sql = `UPDATE bill SET isPaid = 1 where bill_id = ${selectednews[i]};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+      console.log(sql);
+    });
+    }
+    
+  } else if (selectednews) {
+    let sql = `UPDATE bill SET isPaid = 1 where bill_id = ${selectednews};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+      console.log(sql); // กรณีเลือกแค่ 1 อัน
+  } else {
+      console.log("No reqs selected");
+  }
+
+  res.redirect('/admin/payment');
+});
+
 
 
 
