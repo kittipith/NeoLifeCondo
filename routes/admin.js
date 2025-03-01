@@ -344,7 +344,6 @@ router.post("/submitContact", (req, res) => {
     });
     }
     
-    
   } else if (selectedContact) {
     let sql = `UPDATE contact_staff SET status = 1 WHERE contact_id = ${selectedContact};`;
     db.run(sql, function(err) {
@@ -360,6 +359,70 @@ router.post("/submitContact", (req, res) => {
 
   res.redirect('/admin/contact');
 });
+
+
+router.post("/submitshownews", (req, res) => {
+  const selectednews= req.body.selectednews; // รับค่าจาก checkbox
+
+  if (Array.isArray(selectednews)) {
+    for(let i=0; i < selectednews.length; i++){
+      let sql = `UPDATE news SET status = 1 WHERE new_id = ${selectednews[i]};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+      console.log(sql);
+    });
+    }
+    
+  } else if (selectednews) {
+    let sql = `UPDATE news SET status = 1 WHERE new_id = ${selectednews};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+      console.log(sql); // กรณีเลือกแค่ 1 อัน
+  } else {
+      console.log("No reqs selected");
+  }
+
+  res.redirect('/admin/news');
+});
+
+router.post("/submitdelnews", (req, res) => {
+  const selectednews = req.body.selectednews; // รับค่าจาก checkbox
+
+  if (Array.isArray(selectednews)) {
+    for(let i=0; i < selectednews.length; i++){
+      let sql = `DELETE FROM news WHERE new_id = ${selectednews[i]};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+      console.log(sql);
+    });
+    }
+    
+  } else if (selectednews) {
+    let sql = `DELETE FROM news WHERE new_id = ${selectednews};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+      console.log(sql); // กรณีเลือกแค่ 1 อัน
+  } else {
+      console.log("No reqs selected");
+  }
+
+  res.redirect('/admin/news');
+});
+
 
 
 

@@ -8,8 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <button class="show">โชว์ข้อมูล</button>
-    <button class="del">ลบข้อมูล</button>
+  <button class="show" onclick="submitForm('/submitshownews')">โชว์ข้อมูล</button>
+  <button class="del" onclick="submitForm('/submitdelnews')">ลบข้อมูล</button>
+  <form id="newsForm" method="POST">
     <table>
         <thead>
             <tr>
@@ -22,9 +23,8 @@
         </thead>
         <tbody>
             <% data.forEach((item)=>{ %>
-              <input type="text" name="new_id" value="<%=item.new_id%>" class="text-input" style="display: none;">
             <tr>
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" name="selectednews" value="<%= item.new_id %>"  ></td>
                 <td><%=item.new_name%></td>
                 <td><a href="#" onclick="openModal(event, '<%=item.pic%>')">กดเพื่อดูรูป</a></td>
                 <td><%=item.date%></td>
@@ -37,9 +37,16 @@
               </div>
         </tbody>
     </table>
+  </form>
     <script src="/static/javascript/refreshtoken-admin.js"></script>
     <script src="../static/javascript/checkbox.js"></script>
  <script>
+        function submitForm(action) {
+        let form = document.getElementById("newsForm");
+        form.action = action;
+        form.submit(); 
+    }
+
         function openModal(event, imageData) {
           var modal = document.getElementById("myModal");
           var modalImg = document.getElementById("modalImage");
