@@ -15,18 +15,18 @@ const { console } = require("inspector/promises");
 //หน้า Default
 router.get("/", (req, res) => {
     res.redirect("/condo");
-})
+});
 
 //หน้าแสดง condo ทั้งหมด
 router.get("/condo", (req, res) => {
     res.render("home");
-})
+});
 
 router.get("/api/condo", (req, res) => {
     db.all(`SELECT * FROM room WHERE renter_id is NULL`, [], (err, data) => {
         res.json({ rooms: data });
     });
-})
+});
 
 //หน้าที่เลือก condo แล้ว
 router.get("/condo/:id", (req, res) => {
@@ -38,7 +38,7 @@ router.get("/condo/:id", (req, res) => {
         res.render("room_detail", { condo: data });
         // res.json({condos: data});
     });
-})
+});
 
 //หน้าที่เลือก condo แล้วมีข้อมูลให้กรอก
 router.get("/condo/:id/reserve", (req, res) => {
@@ -47,7 +47,7 @@ router.get("/condo/:id/reserve", (req, res) => {
         res.render("booking", { condo: data });
         // res.json({condos: data});
     });
-})
+});
 
 //ยืนยันการจองคอนโด
 router.post("/condo/:id/reserve", async (req, res) => {
@@ -89,8 +89,8 @@ router.post("/condo/:id/reserve", async (req, res) => {
         );
     });
     
-    res.send("you good");
-})
+    res.redirect("/");
+});
 
 
 module.exports = router;
