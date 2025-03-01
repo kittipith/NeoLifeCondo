@@ -2,7 +2,7 @@ body{
     background-color: #C4C4C4;
     overflow-y: hidden;
     overflow-x: hidden;
-    font-family: "Raleway", "Noto Sans Thai";
+    font-family: "Open Sans", "Noto Sans Thai";
 }
 .head{
     position: fixed;

@@ -4,7 +4,7 @@
 
 body {
     margin: 0;
-    font-family: "Raleway", "Noto Sans Thai";
+    font-family: "Open Sans", "Noto Sans Thai";
 }
 
 .mySlides {
@@ -238,7 +238,7 @@ nav a:hover {
 }
 
 .concept {
-    background: url('../static/img/back.jpeg');
+    background: url('../img/background-wall.jpg');
     background-size: cover;
     width: 100%;
     align-items: center;
@@ -474,7 +474,7 @@ html {
 }
 
 .facilities {
-    background: url('../static/img/back.jpeg');
+    background: url('../img/background-wall.jpg');
     width: 100%;
     align-items: center;
     text-align: center;
