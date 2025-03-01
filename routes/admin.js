@@ -32,7 +32,7 @@ FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.add
 });
 
 router.get("/getcid", (req, res) => {
-  let query = `select id_number from users where isAdmin != 1`;
+  let query = `SELECT id_number FROM users WHERE isAdmin != 1 AND account_id IS NULL`;
   db.all(query, (err, rows) => {
     if (err) {
       console.log(err.message);
@@ -48,7 +48,9 @@ router.post("/submitdeluser", (req, res) => {
   if (Array.isArray(data)) {
     for(let i=0; i < data.length; i++){
       let sql = `UPDATE room SET renter_id = NULL where renter_id = ${data[i]};`;
-      let sqluser = `DELETE FROM users WHERE user_id =; ${data[i]};`;
+      let sqluser = `DELETE FROM users WHERE user_id = ${data[i]};`;
+      let sqlacc = `DELETE FROM account WHERE id = ${data[i]};`;
+      let sqladd = `DELETE FROM address WHERE address_id = ${data[i]};`;
     db.run(sql, function(err) {
       if (err) {
         return console.log(err.message);
@@ -63,12 +65,28 @@ router.post("/submitdeluser", (req, res) => {
       console.log(`isdonedeluser`);
       console.log(sql);
     });
+    db.run(sqlacc, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdonedeluser`);
+      console.log(sql);
+    });
+    db.run(sqladd, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdonedeluser`);
+      console.log(sql);
+    });
     }
     
     
   } else if (data) {
     let sql = `UPDATE room SET renter_id = NULL where renter_id = ${data};`;
-    let sqluser = `DELETE FROM users WHERE user_id =; ${data};`;
+    let sqluser = `DELETE FROM users WHERE user_id = ${data};`;
+    let sqlacc = `DELETE FROM account WHERE id = ${data};`;
+      let sqladd = `DELETE FROM address WHERE address_id = ${data};`;
     db.run(sql, function(err) {
       if (err) {
         return console.log(err.message);
@@ -81,12 +99,26 @@ router.post("/submitdeluser", (req, res) => {
       }
       console.log(`isdone`);
     });
+    db.run(sqlacc, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdonedeluser`);
+      console.log(sql);
+    });
+    db.run(sqladd, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdonedeluser`);
+      console.log(sql);
+    });
       console.log(sql); // กรณีเลือกแค่ 1 อัน
   } else {
       console.log("No reqs selected");
   }
 
-  res.redirect('/admin/report');
+  res.redirect('/admin/user-info');
 });
 
 router.get("/getuser/:cid", (req, res) => {
