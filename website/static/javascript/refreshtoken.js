@@ -1,4 +1,4 @@
-// ✅ ดึง Token จาก LocalStorage
+//ดึง Token จาก LocalStorage
 const token = localStorage.getItem("accessToken");
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-// ✅ ฟังก์ชันรีเฟรช Access Token อัตโนมัติ
+//ฟังก์ชันรีเฟรช Access Token อัตโนมัติ
 async function refreshAccessToken() {
     try {
         const response = await fetch("http://localhost:3000/refresh", {
@@ -58,7 +58,7 @@ async function refreshAccessToken() {
     }
 }
 
-// ✅ ตั้งให้เรียก refresh token อัตโนมัติเมื่อ access token หมดอายุ
+//ตั้งให้เรียก refresh token อัตโนมัติเมื่อ access token หมดอายุ
 setInterval(refreshAccessToken, 25 * 1000); // รีเฟรชทุก 25 วินาที
 
 // function logout() {

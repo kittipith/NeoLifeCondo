@@ -7,14 +7,8 @@ const { users, REFRESH_SECRET } = require("../config");
 const { verifyToken } = require("../middleware/authMiddleware");
 
 
-// 📌 USER ROUTE
+//USER ROUTE
 router.get("/user/room", (req, res) => {
-    const token = req.cookies.refreshToken;
-
-    //ตรวจสอบและถอดรหัส refresh token
-    // const decoded = jwt.verify(token, REFRESH_SECRET);
-    // console.log("Decoded Token:", decoded);
-
     db.all("SELECT * FROM news WHERE status = 1", (err, data) => {
         console.log(data);
         res.render('newboard', { data: data });

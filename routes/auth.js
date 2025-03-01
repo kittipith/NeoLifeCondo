@@ -7,19 +7,19 @@ const { ACCESS_SECRET, REFRESH_SECRET, refreshTokens, users, checkUserCredential
 
 const router = express.Router();
 
-// ✅ ฟังก์ชันสร้าง Access Token
+//ฟังก์ชันสร้าง Access Token
 const generateAccessToken = (user) => {
     return jwt.sign({ id: user.id, isAdmin: user.isAdmin }, ACCESS_SECRET, { expiresIn: "30s" });
 };
 
-// ✅ ฟังก์ชันสร้าง Refresh Token
+//ฟังก์ชันสร้าง Refresh Token
 const generateRefreshToken = (user) => {
     const refreshToken = jwt.sign({ id: user.id, isAdmin: user.isAdmin }, REFRESH_SECRET, { expiresIn: "7d" });
     refreshTokens.add(refreshToken);
     return refreshToken;
 };
 
-// 📌 LOGIN
+//LOGIN
 router.get("/login", (req, res) => {
     res.sendFile(path.join(__dirname, '../website/templates/login.html'));
 });
@@ -44,7 +44,7 @@ router.post("/login", (req, res) => {
     });
 });
 
-// 📌 REFRESH TOKEN
+//REFRESH TOKEN
 router.post("/refresh", (req, res) => {
     const { refreshToken } = req.cookies;
     if (!refreshToken || !refreshTokens.has(refreshToken)) {
@@ -59,7 +59,7 @@ router.post("/refresh", (req, res) => {
     });
 });
 
-// 📌 LOGOUT
+//LOGOUT
 router.post("/logout", (req, res) => {
     const { refreshToken } = req.cookies;
     refreshTokens.delete(refreshToken);
