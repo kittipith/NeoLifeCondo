@@ -162,9 +162,7 @@ fetch(endpoint)
 
     const select_option = document.getElementById('select_table_date');
 
-    // เพิ่ม event listener เพื่อฟังเหตุการณ์ change
     select_option.addEventListener('change', function() {
-        // รับค่าที่เลือกจาก select
         selectedValue = select_option.value;
         changeTable(smalldevice);
     });
