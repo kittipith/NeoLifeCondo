@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 20px;
     overflow-y: hidden;
+    font-family: "Raleway", "Noto Sans Thai";
 }
 .container {
     max-width: 80%;

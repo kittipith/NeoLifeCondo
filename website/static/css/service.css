@@ -6,6 +6,7 @@ body {
     justify-content: center;
     gap: 20px;
     padding: 20px;
+    font-family: "Raleway", "Noto Sans Thai";
 }
 .container {
     background: #fff;
