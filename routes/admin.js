@@ -214,7 +214,7 @@ router.get("/admin/contact", (req,res) => {
 });
 
 router.get("/admin/payment", (req,res) => {
-    const query = `SELECT room.room_number, payment.bill_id, payment.pic, payment.date, payment.time from payment join bill on payment.bill_id = bill.bill_id JOIN room ON bill.room_id = room.room_id;` ;
+    const query = `SELECT room.room_number, payment.bill_id, payment.pic, payment.date, payment.time from payment join bill on payment.bill_id = bill.bill_id JOIN room ON bill.room_id = room.room_id where bill.isPaid = 0;` ;
     db.all(query, (err, rows) => {
       if (err) {
         console.log(err.message);
@@ -421,6 +421,37 @@ router.post("/submitdelnews", (req, res) => {
   }
 
   res.redirect('/admin/news');
+});
+
+router.post("/submitbill", (req, res) => {
+  const selectednews = req.body.selectbill; // รับค่าจาก checkbox
+
+  if (Array.isArray(selectednews)) {
+    for(let i=0; i < selectednews.length; i++){
+      let sql = `UPDATE bill SET isPaid = 1 where bill_id = ${selectednews[i]};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+      console.log(sql);
+    });
+    }
+    
+  } else if (selectednews) {
+    let sql = `UPDATE bill SET isPaid = 1 where bill_id = ${selectednews};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+      console.log(sql); // กรณีเลือกแค่ 1 อัน
+  } else {
+      console.log("No reqs selected");
+  }
+
+  res.redirect('/admin/payment');
 });
 
 
