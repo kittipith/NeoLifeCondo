@@ -22,6 +22,7 @@
         </thead>
         <tbody>
             <% data.forEach((item)=>{ %>
+              <input type="text" name="new_id" value="<%=item.new_id%>" class="text-input" style="display: none;">
             <tr>
                 <td><input type="checkbox"></td>
                 <td><%=item.new_name%></td>
@@ -90,7 +91,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  color: #000;
+  color: #eee;
   font-size: 30px;
   font-weight: bold;
   cursor: pointer;

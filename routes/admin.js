@@ -32,7 +32,7 @@ FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.add
 });
 
 router.get("/getcid", (req, res) => {
-  let query = `select id_number from users`;
+  let query = `select id_number from users where isAdmin != 1`;
   db.all(query, (err, rows) => {
     if (err) {
       console.log(err.message);
@@ -43,16 +43,50 @@ router.get("/getcid", (req, res) => {
 });
 
 router.post("/submitdeluser", (req, res) => {
-  const data = req.body;
-  let sql = `UPDATE room SET renter_id = NULL where renter_id = ${data.selectedid};`
-  db.run(sql, function(err) {
-    if (err) {
-      return console.log(err.message);
+  const data = req.body.selectedid;
+
+  if (Array.isArray(data)) {
+    for(let i=0; i < data.length; i++){
+      let sql = `UPDATE room SET renter_id = NULL where renter_id = ${data[i]};`;
+      let sqluser = `DELETE FROM users WHERE user_id =; ${data[i]};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+      console.log(sql);
+    });
+    db.run(sqluser, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdonedeluser`);
+      console.log(sql);
+    });
     }
-    console.log("User data updated successfully");
-  });
-  console.log(sql)
-  res.redirect("/admin/user-info")
+    
+    
+  } else if (data) {
+    let sql = `UPDATE room SET renter_id = NULL where renter_id = ${data};`;
+    let sqluser = `DELETE FROM users WHERE user_id =; ${data};`;
+    db.run(sql, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+    db.run(sqluser, function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      console.log(`isdone`);
+    });
+      console.log(sql); // กรณีเลือกแค่ 1 อัน
+  } else {
+      console.log("No reqs selected");
+  }
+
+  res.redirect('/admin/report');
 });
 
 router.get("/getuser/:cid", (req, res) => {
