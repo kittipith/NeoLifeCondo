@@ -74,6 +74,10 @@ body {
 .meetingdetail input{
     margin-left: 10px; 
 }
+.meetingdetail select{
+    margin-left: 10px; 
+    height: 30px;
+}
 .meetingdetail textarea {
     width: 500px;
     height: 100px;

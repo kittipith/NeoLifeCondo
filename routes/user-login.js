@@ -112,6 +112,51 @@ router.post("/user/contactstaff", (req, res) => {
     res.redirect("/user/room");
 });
 
+router.post("/user/savecowork", (req, res) => {
+    const { cowork_name, room_id, day, starttime, endtime, info } = req.body;
+    const day_starttime = `${day} ${starttime}:00`;
+    const day_endtime = `${day} ${endtime}:00`;
+    db.run("INSERT INTO Cowork (cowork_name, room_id, starttime, endtime, info) VALUES (?, ?, ?, ?, ?)",
+            [cowork_name, room_id, day_starttime, day_endtime, info], (err) => {
+                if (err) {
+                    console.error("Error inserting new request:", err);
+                } else {
+                    console.log("New request inserted successfully");
+                }
+            });
+    
+    res.redirect("/user/room");
+});
+
+router.get("/user/meeting", (req, res) => {
+    res.render("meetingroom");
+})
+
+router.get('/meetdata', (req, res) => {
+    const query = 'SELECT * FROM CoWork;';
+    db.all(query, (err, rows) => {
+        if (err) {
+            console.log(err.message);
+        }
+        console.log(rows);
+        res.send(JSON.stringify(rows));        
+    });
+});
+
+router.get("/user/bill/:billId", (req, res) => {
+    const billId = req.params.billId; // ดึง billId จาก URL
+
+    let sql = `SELECT * FROM bill b
+    JOIN room r ON b.room_id = r.room_id  
+    JOIN users u ON r.renter_id = u.user_id
+    WHERE b.bill_id = ${billId}`;
+
+    db.get(sql, [], (err, data) => {
+        res.render("bill", { data: data});
+        // res.json({condos: data});
+    });
+})
+
 
 
 module.exports = router;

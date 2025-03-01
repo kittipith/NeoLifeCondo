@@ -52,7 +52,7 @@
                     <img src="../static/img/badminton_court-test.png">
                     <p>สนามแบดมินตัน</p>
                 </div>
-                <div class="facilities-item">
+                <div class="facilities-item" id="meetingroom">
                     <img src="../static/img/meeting-room-test.jpeg">
                     <p>ห้องประชุม</p>
                 </div>
@@ -257,6 +257,9 @@
             }
         });
 
+        document.getElementById("meetingroom").addEventListener('click', () => {
+                    window.location.href = `/user/meeting`;
+        });
     </script>
 </body>
 

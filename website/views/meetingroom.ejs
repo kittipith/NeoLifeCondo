@@ -13,20 +13,22 @@
                 <p style="font-size: 1.2rem; margin-left: 10px;">ข้อมูลการจองใช้ห้องประชุม</p>
                 <button id="editinfo">แก้ไขข้อมูล</button>
             </div>
-            <div class="meetingdetail">
-                <label for="">หมายเลขห้อง <input type="text" class="textinput"></label>
-                <div class="timerow">
-                    <label for="">ใช้บริการเวลา <input type="time" style="margin-left: 12px;" id="start-time" class="timeinput" min="09:00" max="20:00" step="3600"></label>
-                    <label for="">ถึงเวลา <input type="time" style="margin-left: 12px;" id="end-time" class="timeinput" min="09:00" max="20:00" step="3600"></label>
-                </div>
-                <label for="" class="moreinfolable"><p class="moreinfo">หมายเหตุเพิ่มเติม</p> <textarea name="" id=""></textarea></label>
-            </div>
-            <button id="savedata" onclick="validateTimes();">บันทึกข้อมูล</button>
+            <form action="/user/savecowork" method="POST" class="meetingdetail">
+                    <input type="text" value="meetingroom" name="cowork_name" style="display: none;">
+                    <label for="">หมายเลขห้อง <input type="text" class="textinput" name="room_id"></label>
+                    <label for="" style="margin-left: 70px;">วันที่: <select name="day" id="selectdate" class="textinput">
+                    </select></label>                    <div class="timerow">
+                        <label for="">ใช้บริการเวลา <input type="time" style="margin-left: 12px;" id="start-time" class="timeinput" min="09:00" max="20:00" step="3600" name="starttime"></label>
+                        <label for="">ถึงเวลา <input type="time" style="margin-left: 12px;" id="end-time" class="timeinput" min="09:00" max="20:00" step="3600" name="endtime"></label>
+                    </div>
+                    <label for="" class="moreinfolable"><p class="moreinfo">หมายเหตุเพิ่มเติม</p> <textarea name="info" id=""></textarea></label>
+                <input type="submit" id="savedata" onclick="validateTimes();" value="บันทึกข้อมูล"></input>
+            </form>
         </div>
         <div class="meetinginfo">
             <p style="margin: 20px; font-size: 1.2rem;">ตารางเวลาบริการ</p>
             <div class="small-device">
-                <label for="" style="margin-left: 20px;">วันที่: <select name="" id="selectdate">
+                <label for="" style="margin-left: 20px;">วันที่: <select name="" id="select_table_date">
                 </select></label>
             </div>
             <table id="meetingtable" style="margin: 20px;">

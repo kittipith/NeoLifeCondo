@@ -92,32 +92,5 @@ router.post("/condo/:id/reserve", async (req, res) => {
     res.send("you good");
 })
 
-router.get("/user/bill/:billId", (req, res) => {
-    const billId = req.params.billId; // ดึง billId จาก URL
 
-    let sql = `SELECT * FROM bill b
-    JOIN room r ON b.room_id = r.room_id  
-    JOIN users u ON r.renter_id = u.user_id
-    WHERE b.bill_id = ${billId}`;
-
-    db.get(sql, [], (err, data) => {
-        res.render("bill", { data: data});
-        // res.json({condos: data});
-    });
-})
-
-router.get("/meeting", (req, res) => {
-    res.render("meetingroom");
-})
-
-router.get('/meetdata', (req, res) => {
-    const query = 'SELECT * FROM CoWork;';
-    db.all(query, (err, rows) => {
-        if (err) {
-            console.log(err.message);
-        }
-        console.log(rows);
-        res.send(JSON.stringify(rows));        
-    });
-});
 module.exports = router;
