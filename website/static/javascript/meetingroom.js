@@ -21,6 +21,8 @@ fetch(endpoint)
         let coWorkdata_count = 0;
         let coWorkDate_start;
         let coWorkDate_end;
+        let filtercoWorkData;
+        const selectedDate = document.getElementById("selected_date");
         if (smalldevice.matches) {
             tablehead.innerHTML = '';
             tablebody.innerHTML = '';
@@ -49,20 +51,28 @@ fetch(endpoint)
                 fullDateValue = `${year}-${monthString}-${dayString}`;
                 if(i==0)firstFullDate = `${year}-${monthString}-${dayString}`;
                 let newOption = document.createElement("option");
+                let newOption2 = document.createElement("option");
+                const selectedDate = document.getElementById("selected_date"); 
                 newOption.value = fullDateValue;
+                newOption2.value = fullDateValue;
                 newOption.textContent = fullDate;
+                newOption2.textContent = fullDate;
                 selectdate.appendChild(newOption);
-                select_table_date.appendChild(newOption);
+                if (fullDateValue === selectedDate.innerText) {
+                    newOption.selected = true;
+                }
+                select_table_date.appendChild(newOption2);
             }
             
             if(selectedValue == '') fullDateValue = firstFullDate;
             else fullDateValue = selectedValue;
             select_table_date.value = fullDateValue;
-
-            let filtercoWorkData = coWorkdata.filter(obj => isSameDay(obj.starttime, fullDateValue));
-            if(filtercoWorkData.length != 0){
-                coWorkDate_start = new Date(filtercoWorkData[coWorkdata_count].starttime);
-                coWorkDate_end = new Date(filtercoWorkData[coWorkdata_count].endtime);
+            if(coWorkdata.length != 0){
+                filtercoWorkData = coWorkdata.filter(obj => isSameDay(obj.starttime, fullDateValue));
+                if(filtercoWorkData.length != 0){
+                    coWorkDate_start = new Date(filtercoWorkData[coWorkdata_count].starttime);
+                    coWorkDate_end = new Date(filtercoWorkData[coWorkdata_count].endtime);
+                }
             }
             for(let i = 0; i < 11; i++) {
                 tablehtml += `<tr><td>${i+9}:00-${i+10}:00</td>`;
@@ -78,8 +88,11 @@ fetch(endpoint)
                         tablehtml += `<td style="background-color: #FF0000;"></td>`;
                     }
                     else if(currentTableTime.getTime() === coWorkDate_end.getTime()){
-                        coWorkDate_start = new Date(coWorkdata[coWorkdata_count+1].starttime);
-                        coWorkDate_end = new Date(coWorkdata[coWorkdata_count+1].endtime);
+                        coWorkdata_count += 1
+                            if(coWorkdata_count  < filtercoWorkData.length){
+                                coWorkDate_start = new Date(filtercoWorkData[coWorkdata_count].starttime);
+                                coWorkDate_end = new Date(filtercoWorkData[coWorkdata_count].endtime);
+                            }
                     }
                     else tablehtml += `<td></td>`;
                 }
@@ -87,9 +100,9 @@ fetch(endpoint)
                 tablehtml += "</tr>";
             }
             tablebody.innerHTML = tablehtml;
-            selectdate.value = 0;
         } else {
-          let tablehtml = "<tr>";
+            coWorkdata_count = 0;
+            let tablehtml = "<tr>";
             for(let i = 0; i < 12; i++) {
                 if(i==0){
                     tablehtml += "<th class=\"firsthead\">วัน/เวลา</th>";
@@ -111,8 +124,10 @@ fetch(endpoint)
             let fullDate = `${day}-${month}-${year}`;
             let fullDateValue = '';
             tablehtml = '';
-            let coWorkDate_start = new Date(coWorkdata[coWorkdata_count].starttime);
-            let coWorkDate_end = new Date(coWorkdata[coWorkdata_count].endtime);
+            if(coWorkdata.length != 0){
+                coWorkDate_start = new Date(coWorkdata[coWorkdata_count].starttime);
+                coWorkDate_end = new Date(coWorkdata[coWorkdata_count].endtime);
+            }
             for(let i = 0; i < 14; i++) {
                 if(i!=0){
                     date.setDate(date.getDate()+1);
@@ -128,29 +143,46 @@ fetch(endpoint)
                 fullDateValue = `${year}-${monthString}-${dayString}`;
                 tablehtml += "<tr><td>"+`${dayString}-${monthString}-${year}`+"</td>";
                 for(let j = 0; j < 11; j++) {
-                    if(j==0){
-                        currentTableTime = new Date(`${fullDateValue}T0${j + 9}:00:00`);
+                    if(coWorkdata.length != 0){
+                        if(j==0){
+                            currentTableTime = new Date(`${fullDateValue}T0${j + 9}:00:00`);
+                        }
+                        else{
+                            currentTableTime = new Date(`${fullDateValue}T${j + 9}:00:00`);
+                        }
+                        if(currentTableTime.getTime() >= coWorkDate_start.getTime() && currentTableTime.getTime() < coWorkDate_end.getTime()){
+                            tablehtml += `<td style="background-color: #FF0000;"></td>`;
+                        }
+                        else if(currentTableTime.getTime() === coWorkDate_end.getTime()){
+                            coWorkdata_count += 1;
+                            if(coWorkdata_count < coWorkdata.length){
+                                coWorkDate_start = new Date(coWorkdata[coWorkdata_count].starttime);
+                                coWorkDate_end = new Date(coWorkdata[coWorkdata_count].endtime);
+                            }
+                        }
+                        else tablehtml += `<td></td>`;
                     }
-                    else{
-                        currentTableTime = new Date(`${fullDateValue}T${j + 9}:00:00`);
-                    }
-                    if(currentTableTime.getTime() >= coWorkDate_start.getTime() && currentTableTime.getTime() < coWorkDate_end.getTime()){
-                        tablehtml += `<td style="background-color: #FF0000;"></td>`;
-                    }
-                    else if(currentTableTime.getTime() === coWorkDate_end.getTime()){
-                        coWorkDate_start = new Date(coWorkdata[coWorkdata_count+1].starttime);
-                        coWorkDate_end = new Date(coWorkdata[coWorkdata_count+1].endtime);
-                    }
-                    else tablehtml += `<td></td>`;
+                    else  tablehtml += `<td></td>`;
                 }
                 tablehtml += "</tr>";
                 let newOption = document.createElement("option");
                 newOption.value = fullDateValue;
                 newOption.textContent = fullDate;
                 selectdate.appendChild(newOption);
+                if (fullDateValue === selectedDate.innerText) {
+                    newOption.selected = true;
+                }
             }
             tablebody.innerHTML = tablehtml;
-            selectdate.value = 0;
+            if(selectedDate.innerText == ''){
+                let newOption = document.createElement("option");
+                newOption.value = ""
+                newOption.textContent = "";
+                newOption.disabled = true;
+                newOption.selected = true;
+                newOption.hidden = true;
+                selectdate.appendChild(newOption);
+            }
         }
     }
     
