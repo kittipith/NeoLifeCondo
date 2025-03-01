@@ -125,7 +125,7 @@ router.post("/user/savecowork", (req, res) => {
                 }
             });
     
-    res.redirect("/user/room");
+    res.redirect("/user/meeting");
 });
 
 router.get("/user/meeting", (req, res) => {
@@ -153,7 +153,7 @@ router.get('/meetdata', (req, res) => {
 });
 
 router.get("/user/bill/:billId", (req, res) => {
-    const billId = req.params.billId; // ดึง billId จาก URL
+    const billId = req.params.billId; 
 
     let sql = `SELECT * FROM bill b
     JOIN room r ON b.room_id = r.room_id  

@@ -184,6 +184,13 @@ fetch(endpoint)
                 selectdate.appendChild(newOption);
             }
         }
+        if(selectedDate.innerText != ''){
+            document.getElementById("room_id").disabled = true;
+            document.getElementById("selectdate").disabled = true;
+            document.getElementById("start-time").disabled = true;
+            document.getElementById("end-time").disabled = true;
+            document.getElementById("info").disabled = true;
+        }
     }
     
     let smalldevice = window.matchMedia("(max-width: 768px)");
@@ -245,3 +252,10 @@ fetch(endpoint)
         }
     }
 
+    function editData() {
+        document.getElementById("room_id").disabled = false;
+            document.getElementById("selectdate").disabled = false;
+            document.getElementById("start-time").disabled = false;
+            document.getElementById("end-time").disabled = false;
+            document.getElementById("info").disabled = false;
+    }
