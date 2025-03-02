@@ -43,33 +43,28 @@
 
     <div class="home" id="home">
         <div class="slideshow-container">
-
             <div class="mySlides fade">
-                <img src="../static/img/slidecondo2.png" alt="Slide 1">
+                <img src="../static/img/slidecondo1.png" alt="Slide 1">
             </div>
-
             <div class="mySlides fade">
-                <img src="../static/img/slidecondo3.png" alt="Slide 2">
+                <img src="../static/img/slidecondo8.png" alt="Slide 3">
             </div>
-
             <div class="mySlides fade">
-                <img src="../static/img/slidecondo4.png" alt="Slide 3">
+                <img src="../static/img/slidecondo10.png" alt="Slide 3">
             </div>
+        </div>
 
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-            <div class="dot-container">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-            </div>
+        <!-- จุดสำหรับเลือกสไลด์ -->
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
         </div>
     </div>
 
     <div class="concept" id="concept">
         <h2 >CONCEPT</h2>
-        <img src="../static/img/conceptcondo.png" alt="">
+        <img src="../static/img/slidecondo11.png" alt="">
         <div class="ch2"><strong>Smart Living ใช้ชีวิตอย่างสมาร์ท แบบคนยุคดิจิทัล</strong></div>
         <p>นี่คือยุคที่ทุกอย่างเชื่อมต่อถึงกัน "Smart Condo" ออกแบบมาเพื่อคนรุ่นใหม่ที่ไม่ยึดติดกับ วิถีเดิม ๆ แต่ต้องการอิสระ ความสะดวกสบาย และเทคโนโลยีที่ตอบโจทย์ไลฟ์สไตล์เราไม่ได้แค่สร้างที่อยู่อาศัย แต่เราสร้าง "ชีวิตที่ง่ายขึ้น"</p>
         <p> ทุกตารางเมตรถูกออกแบบภายใต้แนวคิด "Future Minimalist" ที่เรียบง่ายแต่ล้ำสมัย โดดเด่นด้วยเส้นสายที่สะอาดตา พื้นที่โปร่งโล่งแต่เต็มไปด้วยฟังก์ชันอัจฉริยะ ใช้วัสดุไฮเทคและสีโทนโมเดิร์น พร้อมระบบ Automation ที่ทำให้ทุกอย่างง่ายแค่ปลายนิ้ว
@@ -224,17 +219,6 @@
             slides[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " active";
             setTimeout(showSlides, 8000);
-        }
-
-        // ปุ่มกด2ข้าง
-        function plusSlides(n) {
-            slideIndex += n - 1;
-            showSlides();
-        }
-
-        function currentSlide(n) {
-            slideIndex = n - 1;
-            showSlides();
         }
 
         document.addEventListener("DOMContentLoaded", async () => {
