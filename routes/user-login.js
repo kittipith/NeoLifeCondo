@@ -31,7 +31,12 @@ router.get("/user/information", (req, res) => {
                         JOIN room r ON b.room_id = r.room_id  
                         JOIN users u ON r.renter_id = u.user_id
                         WHERE u.user_id = ${user.id} and b.isPaid = 0;`, [], (err, countData) => {
-                res.render("userinfo", { data: data, bill_data: bill_data, total: countData.total });
+                            db.all(`SELECT * FROM Cowork c
+                                    JOIN room r ON c.room_id = r.room_id  
+                                    JOIN users u ON r.renter_id = u.user_id
+                                    WHERE u.user_id = ${user.id};`, [], (err, coworkData) => {
+                                    res.render("userinfo", { data: data, bill_data: bill_data, total: countData.total, coworkData: coworkData});
+                });
             });
         });
     });
@@ -153,6 +158,23 @@ router.get("/user/reserve/:coworkname", (req, res) => {
                 console.log(data);
             });
 })
+
+router.get('/meetdata', (req, res) => {
+    const user = jwt.verify(token, REFRESH_SECRET);
+    const query = `SELECT * FROM Cowork c
+            JOIN room r ON c.room_id = r.room_id  
+            JOIN users u ON r.renter_id = u.user_id
+            WHERE u.user_id = ${user.id};`;
+    console.log(query);
+    db.all(query, (err, rows) => {
+        if (err) {
+            console.log(err.message);
+        }
+        console.log(rows);
+        res.send(JSON.stringify(rows));        
+    });
+});
+
 
 router.get('/meetdata/:coworkname', (req, res) => {
     const coworkname = req.params.coworkname;

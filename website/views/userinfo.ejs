@@ -45,20 +45,41 @@
                             </tr>
 
                         </thead>
-                        <tbody id="booking-history"><tr>
-                        <td>สนามแบดมินตัน</td>
-                        <td>29/12/2024</td>
-                        <td>09:00</td>
-                        <td>20:00</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>ห้องดูหนัง</td>
-                        <td>26/05/2025</td>
-                        <td>10:00</td>
-                        <td>15:00</td>
-                        <td>-</td>
-                    </tr></tbody>
+                        <tbody id="booking-history">
+                            <% if (coworkData && Array.isArray(coworkData) && coworkData.length > 0) { %>
+                                <% coworkData.forEach(item => { %>
+                                    <tr>
+                                        <td><% switch(item.cowork_name) { 
+                                            case 'badminton': %>
+                                                แบดมินตัน
+                                                <% break;
+                                            case 'meeting': %>
+                                                ห้องประชุม
+                                                <% break;
+                                            case 'basketball': %>
+                                                บาสเกตบอล
+                                                <% break;
+                                            case 'theater': %>
+                                                ห้องดูหนัง
+                                                <% break;
+                                            default: %>
+                                                <%= item.cowork_name %>
+                                        <% } %></td>
+                                        <td><% 
+                                            const date = new Date(item.starttime);
+                                            const day = String(date.getDate()).padStart(2, '0');
+                                            const month = String(date.getMonth() + 1).padStart(2, '0');
+                                            const year = date.getFullYear();
+                                        %>
+                                        <%= `${day}/${month}/${year}` %></td>
+                                        <td><%= new Date(item.starttime).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }) %></td>
+                                        <td><%= new Date(item.endtime).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }) %></td>
+                                        <td><%= item.info %></td>
+                                    </tr>
+                                <% }); %>
+                            <% } else { %>
+                            <% } %>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -156,6 +177,7 @@
         function closePopup() {
             document.getElementById('popupser').style.display = 'none';
         }
+
     </script>
 </body>
 </html>
