@@ -12,12 +12,11 @@
     <h1>ใบแจ้งหนี้</h1>
     <div class="text">
         <div class="text-row">
-            <p>เล่มที่</p><p><%= data.bill_id %></p>
+            <p>ค่าเช่าห้อง เลขที่</p><p><%= data.room_id %></p>
             <div class="text-end"><p>วันที่</p><p id="date"><%= data.date %></p></div>
         </div>
         <div class="text-row">
-            <p>ค่าเช่าห้อง เลขที่</p><p><%= data.room_id %></p>
-            <p style="margin-left: 5%;">ประจำเดือน</p><p id="month"></p>
+            <p>ประจำเดือน</p><p id="month"></p>
             <div class="text-end"><p>ชื่อ</p><p><%= data.title %> <%= data.name %> <%= data.surname %></p></div>
         </div>
     </div>
