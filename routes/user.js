@@ -61,7 +61,7 @@ router.post("/condo/:id/reserve", async (req, res) => {
     db.run(
         `INSERT INTO users 
         (id_number, title, name, surname, nickname, age, gender, nationality, religion, ethnicity, birthday, contact_day) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
             idCard,
             data.prefix,
@@ -77,11 +77,11 @@ router.post("/condo/:id/reserve", async (req, res) => {
             contactDateTime,
         ]
     );
-    db.get(`SELECT user_id FROM users WHERE id_number = ?`, [data.idCard], (err, info) => {
+    db.get(`SELECT user_id FROM users WHERE id_number = ?`, [idCard], (err, info) => {
         console.log(info.user_id);
         db.run(
             `UPDATE users SET address_id = ? WHERE id_number = ?`,
-            [info.user_id, data.idCard]
+            [info.user_id, idCard]
         );
         db.run(
             `INSERT INTO address(address_id, address, phone, line, email) VALUES (?, ?, ?, ?, ?)`,

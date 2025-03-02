@@ -15,20 +15,19 @@
             <tr>
                 <th><input type="checkbox"></th>
                 <th>ห้อง</th>
-                <th>บิล</th>
                 <th>รูปภาพ</th>
+                <th>เดือน</th>
                 <th>วันที่</th>
                 <th>เวลา</th>
             </tr>
         </thead>
         <tbody>
             <% data.forEach((item)=>{ %>
-                
             <tr>
                 <td><input type="checkbox" name="selectbill" value="<%=item.bill_id%>"></td>
                 <td><%=item.room_number%></td>
-                <td><%=item.bill_id%></td>
                 <td><a href="#" onclick="openModal(event, '<%=item.pic%>')">กดเพื่อดูรูป</a></td>
+                <td></td>  <!-- ทำเองละกัน -->
                 <td><%=item.date%></td>
                 <td><%=item.time%></td>
             </tr>

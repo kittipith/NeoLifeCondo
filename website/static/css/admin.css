@@ -65,3 +65,6 @@ iframe {
     background-color: #F6F6F6;
     display: none;
 }
+.btn-logout{
+    color: red;
+}

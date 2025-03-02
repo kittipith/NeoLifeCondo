@@ -1,0 +1,155 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5%;
+    margin-top: 3%;
+    font-size: 1.1rem;
+    font-family: "Open Sans", "Noto Sans Thai";
+    background-color: white;
+}
+
+.text {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.text p {
+    margin-right: 10px;
+}
+
+.text-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.text-end {
+    display: flex;
+    margin-left: auto;
+}
+
+.invoice-table {
+    width: 100%;
+}
+
+.invoice-table,
+th,
+td {
+    border: solid black 1px;
+    border-collapse: collapse;
+    height: 50px;
+}
+
+.table-list {
+    width: 60%;
+}
+
+.invoice-table tr td:nth-child(2), tr td:nth-child(3) {
+    text-align: center;
+}
+
+.invoice-table tr td:nth-child(4) {
+    text-align: end;
+}
+
+.invoice-table td.fine p:first-of-type {
+    margin-right: auto;
+}
+
+
+.invoice-table td.fine p:nth-of-type(2) {
+    text-align: center;
+    flex-grow: 1;
+    margin-left: -9%;
+}
+
+.qrcode {
+    width: 195px;
+    margin-left: auto;
+    margin-top: 2%;
+}
+
+.input-inside{
+    max-width: 90%;
+    width: 50%;
+    border: none;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 20px;
+    outline: none;
+}
+
+.text-detail{
+   padding-left: 15px;
+}
+
+.input-top{
+    width: 120px;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    font-size: 18px;
+    border-bottom: 1px solid black;
+}
+
+.input-tops{
+    width: 180px;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    font-size: 18px;
+    border-bottom: 1px solid black;
+}
+
+#print {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-left: auto;
+    margin-top: 2%;
+}
+
+
+#print img {
+    width: 75px;
+    height: auto;
+}
+
+@media print {
+    #print {
+        display: none;
+    }
+
+    body {
+        background-color: #ffffff;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .qrcode {
+        width: 120px;
+    }
+
+    #print img {
+        width: 60px;
+    }
+}
+
+
+@media only screen and (max-width: 425px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    .qrcode {
+        width: 100px;
+    }
+
+    #print img {
+        width: 50px;
+    }
+}

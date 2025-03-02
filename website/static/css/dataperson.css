@@ -152,9 +152,9 @@ table, th, td {
 
 
 .btn {
-    background: #FFFFFF;
-    color: rgb(0, 0, 0);
-    border: none;
+    background: transparent;
+    color: black;
+    border: 1px dashed black;
     font-size: 110%;
     width: 100%;
     height: 100%;
@@ -163,6 +163,8 @@ table, th, td {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 .btn:hover{
+    color: red;
+    border: 1px dashed red;
     transform: translateY(-15px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }

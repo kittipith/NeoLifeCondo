@@ -26,3 +26,7 @@ function openPopup(url) {
 function closePopup() {
     document.getElementById("popup").style.display = "none";
 }
+
+function swap(url) {
+    window.open(url, '_blank');
+}

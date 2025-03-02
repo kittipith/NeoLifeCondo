@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Life Condo</title>
+    <link rel="stylesheet" href="/website/static/css/write-bill.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>ใบแจ้งหนี้</h1>
+    <div class="text">
+        <div class="text-row">
+            <p>ค่าเช่าห้อง เลขที่</p><input type="text" class="input-top">
+            <div class="text-end">
+                <p>วันที่</p>
+                <input type="date" class="input-top">
+            </div>
+        </div>
+        <div class="text-row">
+            <p>ประจำเดือน</p><input type="text" class="input-top">
+            <div class="text-end">
+                <p>ชื่อ</p>
+                <input type="text" class="input-tops">
+            </div>
+        </div>
+    </div>
+    <table class="invoice-table">
+        <thead>
+            <tr>
+                <th class="table-list">รายการ</th>
+                <th class="table-amount">จำนวน</th>
+                <th class="table-each">หน่วยละ</th>
+                <th class="table-sum">รวมเงิน</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-detail">ค่าเช่า</td>
+                <td><input type="text" class="input-inside"></td>
+                <td></td>
+                <td><input type="text" class="input-inside"></td>
+            </tr>
+            <tr>
+                <td class="text-detail">ค่าน้ำ</td>
+                <td><input type="text" class="input-inside"></td>
+                <td>18</td>
+                <td><input type="text" class="input-inside"></td>
+            </tr>
+            <tr>
+                <td class="text-detail">ค่าไฟ</td>
+                <td><input type="text" class="input-inside"></td>
+                <td>8</td>
+                <td><input type="text" class="input-inside"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
+            </tr>
+            <tr>
+                <td class="text-detail">รวมทั้งสิ้น</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text">
+        <div class="text-row">
+            <p style="text-align: start;">หมายเหตุ:ใบเสร็จรับเงินนี้จะสมบูรณ์ เมื่อได้รับการชำระเงินเป็นที่เรียบร้อย</p>
+            <img src="../static/img/qrcode.png" class="qrcode">
+        </div>
+        <button id="print">
+            <img src="../static/img/print.png">
+        </button>
+    </div>
+
+    <script>
+        const printBtn = document.getElementById('print');
+        printBtn.addEventListener('click', function () {
+            print();
+        })
+    </script>
+</body>
+</html>

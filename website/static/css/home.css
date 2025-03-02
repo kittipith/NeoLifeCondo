@@ -5,6 +5,7 @@
 body {
     margin: 0;
     font-family: "Open Sans", "Noto Sans Thai";
+    overflow-x: hidden;
 }
 
 .mySlides {
@@ -199,7 +200,6 @@ nav a:hover {
     transform: scale(1.4);
 }
 
-<<<<<<< HEAD
 /* เอฟเฟกต์จาง */
 .fade {
     animation-name: fade;
@@ -221,16 +221,12 @@ nav a:hover {
 }
 
 @media (max-width: 480px) {
-
     .home,
     .slideshow-container {
         height: 40vh;
     }
-
 }
 
-=======
->>>>>>> d70855d81a8efc497856872f84c1f2336b8e7ef0
 .concept {
     background: url('../img/background-wall.jpg');
     background-size: cover;
@@ -377,6 +373,10 @@ html {
 
 }
 
+.room-info a{
+    text-decoration: none;
+}
+
 .room-info h3 {
     margin: 0;
     font-size: 120%;
@@ -467,7 +467,6 @@ html {
     object-fit: cover;
 }
 
-<<<<<<< HEAD
 /* Media Queries สำหรับหน้าจอเล็ก */
 @media (max-width: 768px) {
     .reserve {
@@ -481,11 +480,7 @@ html {
         justify-content: center;
         width: 100%;
         gap: 2%;
-
-
     }
-    
-
     .filter h3 {
         font-size: 16px;
         margin-bottom: 10px;
@@ -516,6 +511,9 @@ html {
 
 /* Media Queries สำหรับหน้าจอมือถือ  */
 @media (max-width: 480px) {
+    .di_st_item{
+        display: none;
+    }
     .reserve {
         padding: 7% 0;
     }
@@ -550,8 +548,6 @@ html {
 
 }
 
-=======
->>>>>>> d70855d81a8efc497856872f84c1f2336b8e7ef0
 .facilities {
     background: url('../img/background-wall.jpg');
     width: 100%;
@@ -801,7 +797,14 @@ html {
 }
 
 @media (max-width: 480px) {
-
+    .room-info a{
+        font-size: 12px;
+    }
+    .btn{
+        width: 100px;
+        margin-top: 0;
+        height: 45px;
+    }
     .home,
     .slideshow-container {
         height: 40vh;

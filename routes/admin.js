@@ -265,6 +265,17 @@ router.get("/admin/services", (req,res) => {
   });
 });
 
+router.get("/admin/send-bill", (req,res) => {
+  const query = `SELECT repairReq.id,  room.room_number, repairReq.info, repairReq.pic, repairReq.date, repairReq.time from repairReq join room on repairReq.room_id = room.room_id where repairReq.isDone = 0; `;
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.log(err.message);
+    }
+    console.log(rows);
+    res.render('send-bill', { data : rows });
+  });
+});
+
 router.post("/submitReqService", (req, res) => {
   const selectedRooms = req.body.selectedReqs; // รับค่าจาก checkbox
 
