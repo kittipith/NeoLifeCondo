@@ -6,6 +6,7 @@ body{
     margin-top: 3%;
     font-size: 1.1rem;
     font-family: "Open Sans", "Noto Sans Thai";
+    background-color: #f0f0f0;
 }
 
 .text{
@@ -106,4 +107,30 @@ body{
     #print {
         display: none;
     }
+    body{
+        background-color: #ffffff;
+    }
 }
+
+@media only screen and (max-width: 768px) {
+    .qrcode{
+        width: 120px;
+    }
+    #print img {
+        width: 60px;
+    }
+}
+
+
+@media only screen and (max-width: 425px) {
+    body{
+        font-size: 0.95rem;
+    }
+    .qrcode{
+        width: 100px;
+    }
+    #print img {
+        width: 50px;
+    }
+}
+

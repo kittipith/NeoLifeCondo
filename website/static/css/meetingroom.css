@@ -6,6 +6,7 @@ body {
     margin-top: 3%;
     font-size: 1.1rem;
     font-family: "Open Sans", "Noto Sans Thai";
+    background-color: #f0f0f0;
 }
 
 .container {
@@ -27,12 +28,17 @@ body {
     margin-bottom: 1%;
 }
 
+#editinfo:hover{
+    background-color: #D3D3D3;
+}
+
 #editinfo {
     width: 150px;
     height: 50px;
-    background-color: #fae19d;
+    background-color: #f0f0f0;
     border: 1px solid black;
     cursor: pointer;
+    border-radius: 3px;
 }
 
 .meetinginfo p {
@@ -66,11 +72,16 @@ body {
     width: 200px;
     align-self: center;
     height: 50px;
-    background-color: #0090FF;
+    background-color: #3f9fe9;
     border: 1px solid black;
     color: white;
     font-size: 1.075rem;
     cursor: pointer;
+    border-radius: 3px;
+}
+
+#savedata:hover{
+    background-color: #0c6cb6;
 }
 
 .meetingdetail label {

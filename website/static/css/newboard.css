@@ -298,6 +298,19 @@ nav a {
     z-index: 1000;
 }
 
+#badminton{
+    cursor: pointer;
+}
+#meetingroom{
+    cursor: pointer;
+}
+#basketball{
+    cursor: pointer;
+}
+#theater{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 780px) {
     nav {
         height: 10%;
