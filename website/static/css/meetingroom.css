@@ -46,6 +46,10 @@ body {
     padding-bottom: 20px;
 }
 
+.first_row{
+    display: flex;
+    flex-direction: row;
+}
 .timerow{
     display: flex;
     flex-direction: row;

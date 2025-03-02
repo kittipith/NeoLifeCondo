@@ -49,7 +49,7 @@
         <div class="facilities">
             <h2>จองใช้ส่วนกลาง</h2>
             <div class="facilities-grid">
-                <div class="facilities-item">
+                <div class="facilities-item" id="badminton">
                     <img src="../static/img/badminton_court-test.png">
                     <p>สนามแบดมินตัน</p>
                 </div>
@@ -57,11 +57,11 @@
                     <img src="../static/img/meeting-room-test.jpeg">
                     <p>ห้องประชุม</p>
                 </div>
-                <div class="facilities-item">
+                <div class="facilities-item" id="basketball">
                     <img src="../static/img/basketball court.png">
                     <p>สนามบาส</p>
                 </div>
-                <div class="facilities-item">
+                <div class="facilities-item" id="theater">
                     <img src="../static/img/movie_room.png">
                     <p>ห้องดูหนัง</p>
                 </div>
@@ -259,7 +259,16 @@
         });
 
         document.getElementById("meetingroom").addEventListener('click', () => {
-                    window.location.href = `/user/meeting`;
+                    window.location.href = `/user/reserve/meeting`;
+        });
+        document.getElementById("badminton").addEventListener('click', () => {
+                    window.location.href = `/user/reserve/badminton`;
+        });
+        document.getElementById("basketball").addEventListener('click', () => {
+                    window.location.href = `/user/reserve/basketball`;
+        });
+        document.getElementById("theater").addEventListener('click', () => {
+                    window.location.href = `/user/reserve/theater`;
         });
     </script>
 </body>

@@ -119,24 +119,45 @@ router.post("/user/savecowork", (req, res) => {
                 }
             });
     
-    res.redirect("/user/meeting");
+    res.redirect(`/user/reserve/${cowork_name}`);
 });
 
-router.get("/user/meeting", (req, res) => {
-    const token = req.cookies.refreshToken;
+router.post("/user/editcowork", (req, res) => {
+    const { cowork_id, cowork_name, room_id, day, starttime, endtime, info } = req.body;
+    const day_starttime = `${day} ${starttime}:00`;
+    const day_endtime = `${day} ${endtime}:00`;
+    db.run("UPDATE Cowork SET room_id = ?, starttime = ?, endtime = ?, info = ? WHERE id = ?;",
+            [room_id, day_starttime, day_endtime, info, cowork_id], (err) => {
+                if (err) {
+                    console.error("Error updating new request:", err);
+                } else {
+                    console.log("New request updated successfully");
+                }
+            });
+    
+    res.redirect(`/user/reserve/${cowork_name}`);
+});
 
+router.get("/user/reserve/:coworkname", (req, res) => {
+    const token = req.cookies.refreshToken;
+    const coworkname = req.params.coworkname;
+    
     //ตรวจสอบและถอดรหัส refresh token
     const user = jwt.verify(token, REFRESH_SECRET);
+    console.log(coworkname);
     db.get(`SELECT * FROM Cowork c
             JOIN room r ON c.room_id = r.room_id  
             JOIN users u ON r.renter_id = u.user_id
-            WHERE u.user_id = ${user.id};`, [], (err, data) => {
-                res.render("meetingroom", { data: data });
+            WHERE u.user_id = ${user.id} and c.cowork_name = '${coworkname}';`, [], (err, data) => {
+                res.render("meetingroom", { data: data , coworkname: coworkname});
+                console.log(data);
             });
 })
 
-router.get('/meetdata', (req, res) => {
-    const query = 'SELECT * FROM CoWork;';
+router.get('/meetdata/:coworkname', (req, res) => {
+    const coworkname = req.params.coworkname;
+    const query = `SELECT * FROM CoWork WHERE cowork_name = '${coworkname}' ORDER BY starttime ASC;`;
+    console.log(query);
     db.all(query, (err, rows) => {
         if (err) {
             console.log(err.message);
@@ -152,7 +173,7 @@ router.get("/user/bill/:billId", (req, res) => {
     let sql = `SELECT * FROM bill b
     JOIN room r ON b.room_id = r.room_id  
     JOIN users u ON r.renter_id = u.user_id
-    WHERE b.bill_id = ${billId}`;
+    WHERE b.bill_id = ${billId};`;
 
     db.get(sql, [], (err, data) => {
         res.render("bill", { data: data});

@@ -4,10 +4,10 @@ let coWorkdata = [];
 let select_table_date = document.getElementById("select_table_date");
 let selectdate = document.getElementById("selectdate");
 let selectedValue = '';
-let alreadyChange = 0;
-
+let small_alreadyChange = 0, big_alreadyChange = 0;
+let coworkname = document.getElementById("coworkname");
 // รับข้อมูล json จากตาราง CoWork
-fetch('http://localhost:3000/meetdata')
+fetch(`http://localhost:3000/meetdata/${coworkname.innerText}`)
         .then(response => response.json())
         .then(data => {
             coWorkdata = data;
@@ -21,10 +21,15 @@ fetch('http://localhost:3000/meetdata')
 function changeTable(smalldevice) {
     let tablehtml = '';
     let coWorkdata_count = 0;
-    let coWorkDate_start, coWorkDate_end, filtercoWorkData, currentTableTime;;
+    let coWorkDate_start, coWorkDate_end, filtercoWorkData, currentTableTime;
     const selectedDate = document.getElementById("selected_date");
     let date = new Date(), day = date.getDate()-1, month = (date.getMonth() + 1), year = date.getFullYear(), fullDate, firstFullDate;
     let dayString = ''+day, monthString = ''+month;
+
+    if(coworkname.innerText == 'meeting')coworkname.innerText = 'ห้องประชุม';
+    else if(coworkname.innerText == 'badminton')coworkname.innerText = 'สนามแบดมินตัน';
+    else if(coworkname.innerText == 'basketball')coworkname.innerText = 'สนามบาส';
+    else if(coworkname.innerText == 'theater')coworkname.innerText = 'ห้องดูหนัง';
 
     if (smalldevice.matches) {
         tablehead.innerHTML = "<tr><th class=\"firsthead\">เวลา</th><th>การจอง</th></tr>";
@@ -43,8 +48,10 @@ function changeTable(smalldevice) {
             let newOption = document.createElement("option"), newOption2 = document.createElement("option");
             newOption.value = fullDateValue, newOption2.value = fullDateValue;
             newOption.textContent = fullDate, newOption2.textContent = fullDate;
-            if(!alreadyChange){
+            if(!big_alreadyChange){
                 selectdate.appendChild(newOption);
+            }
+            if(!small_alreadyChange){
                 select_table_date.appendChild(newOption2);
             }
             if (fullDateValue === selectedDate.innerText) {
@@ -91,6 +98,8 @@ function changeTable(smalldevice) {
             tablehtml += "</tr>";
         }
         tablebody.innerHTML = tablehtml;
+        small_alreadyChange = 1;
+        big_alreadyChange = 1;
     } else {
         tablehtml += "<tr>";
         // สร้างตารางเวลาแนวนอน 9:00-20:00
@@ -146,6 +155,10 @@ function changeTable(smalldevice) {
                             coWorkDate_start = new Date(coWorkdata[coWorkdata_count].starttime);
                             coWorkDate_end = new Date(coWorkdata[coWorkdata_count].endtime);
                         }
+                        if(currentTableTime.getTime() >= coWorkDate_start.getTime() && currentTableTime.getTime() < coWorkDate_end.getTime()){
+                            tablehtml += `<td style="background-color: #FF0000;"></td>`;
+                        }
+                        else tablehtml += `<td></td>`;
                     }
                     else tablehtml += `<td></td>`;
                 }
@@ -153,18 +166,18 @@ function changeTable(smalldevice) {
             }
             tablehtml += "</tr>";
 
-            let newOption = document.createElement("option");
+            let newOption = document.createElement("option"), newOption2 = document.createElement("option");
             newOption.value = fullDateValue;
             newOption.textContent = fullDate;
-            if(!alreadyChange){
+            if(!big_alreadyChange){
                 selectdate.appendChild(newOption);
-                select_table_date.appendChild(newOption2);
             }
             if (fullDateValue === selectedDate.innerText) {
                 newOption.selected = true;
             }
         }
         tablebody.innerHTML = tablehtml;
+        big_alreadyChange = 1;
     }
     if(selectedDate.innerText == ''){
         let newOption = document.createElement("option");
@@ -180,8 +193,8 @@ function changeTable(smalldevice) {
         document.getElementById("start-time").disabled = true;
         document.getElementById("end-time").disabled = true;
         document.getElementById("info").disabled = true;
+        document.getElementById("savedata").disabled = true;
     }
-    alreadyChange = 1;
 }
 
 
@@ -233,21 +246,66 @@ document.getElementById('end-time').addEventListener('change', function() {
     }
 });
 
-// alertถ้าผู้ใช้เลือกเวลาไม่ถูก
-function validateTimes() {
-    const startTime = document.getElementById('start-time').value;
-    const end_Time = document.getElementById('end-time').value;
+// alertถ้าผู้ใช้กรอกไม่ถูก
+function validateForm() {
+    let startTime = document.getElementById('start-time').value;
+    let end_Time = document.getElementById('end-time').value;
+    let room_id = document.getElementById("room_id").value;
+    let selectdate = document.getElementById("selectdate").value;
+    startTime_ = startTime.split(':');
+    end_Time_ = end_Time.split(':');
+
+    startTime_ = new Date(0, 0, 0, startTime_[0], startTime_[1]);
+    end_Time_ = new Date(0, 0, 0, end_Time_[0], end_Time_[1]);
+    const differenceInMs = Math.abs(end_Time_ - startTime_);
+    const differenceInHours = differenceInMs / (1000 * 60 * 60);
+    console.log(differenceInHours);
+
+    startTime_compare = new Date(`${selectdate}T${startTime}:00`);
+    end_Time_compare = new Date(`${selectdate}T${end_Time}:00`);
     if (startTime && end_Time && startTime >= end_Time) {
         alert("เวลาเริ่มต้นและเวลาสิ้นสุดไม่ถูกต้อง");
-        document.getElementById('end-time').value = '';
+        return false;
     }
+    if (room_id === ''){
+        alert("กรุณากรอกหมายเลขห้อง");
+        return false;
+    }
+    if (startTime === '' || end_Time === ''){
+        alert("กรุณากรอกเวลาให้ครบ");
+        return false;
+    }
+    if (differenceInHours > 2){
+        alert("สามารถเลือกเวลาได้ไม่เกิน 2 ชัวโมง");
+        return false;
+    }
+    if(coWorkdata.length != 0){
+        const isConflict = coWorkdata.some(data => {
+            if(data.room_id != room_id) {
+                let cowork_starttime = new Date(data.starttime);
+                let cowork_endtime = new Date(data.endtime);
+                if ((cowork_starttime < end_Time_compare) && (startTime_compare < cowork_endtime)) {
+                    alert("ไม่สามารถจองเวลานี้ได้ เนื่องจากมีการจองไว้แล้ว");
+                    return true; 
+                }
+            }
+            return false;
+        });
+        if (isConflict) {
+            return false;
+        }
+    }
+    alert("บันทึกข้อมูลสำเร็จ");
+    return true;
 }
 
 // ปุ่มแก้ไขข้อมูล
 function editData() {
     document.getElementById("room_id").disabled = false;
-        document.getElementById("selectdate").disabled = false;
-        document.getElementById("start-time").disabled = false;
-        document.getElementById("end-time").disabled = false;
-        document.getElementById("info").disabled = false;
+    document.getElementById("selectdate").disabled = false;
+    document.getElementById("start-time").disabled = false;
+    document.getElementById("end-time").disabled = false;
+    document.getElementById("info").disabled = false;
+    document.getElementById("savedata").disabled = false;
+    document.getElementById("meetingdetail").action = "/user/editcowork";
 }
