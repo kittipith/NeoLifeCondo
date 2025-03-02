@@ -119,6 +119,72 @@ hr{
     margin: 5px auto;
 }
 
+.loader {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.heading{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.loading {
+    display: flex;
+    width: 5em;
+    align-items: center;
+    justify-content: center;
+}
+
+.load {
+    width: 23px;
+    height: 3px;
+    background-color: limegreen;
+    animation: 1s move_5011 infinite;
+    border-radius: 5px;
+    margin: 0.1em;
+}
+
+.load:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.load:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.load:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes move_5011 {
+    0% {
+        width: 0.2em;
+    }
+
+    25% {
+        width: 0.7em;
+    }
+
+    50% {
+        width: 1.5em;
+    }
+
+    100% {
+        width: 0.2em;
+    }
+}
+
 @media screen and (max-width: 1024px) {
     .box-bigger{
         margin-top: 15%;

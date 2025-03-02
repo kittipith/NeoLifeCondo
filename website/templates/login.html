@@ -47,9 +47,21 @@
         </div>
     </form>
 
+    <div class="loader" id="downloadLoader">
+        <p class="heading">Loading</p>
+        <div class="loading">
+          <div class="load"></div>
+          <div class="load"></div>
+          <div class="load"></div>
+          <div class="load"></div>
+        </div>
+    </div>
+
     <script>
         document.getElementById("loginform").addEventListener("submit", async function (event) {
             event.preventDefault();
+
+            document.querySelector('.loader').style.display = 'flex';
     
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
@@ -66,13 +78,19 @@
     
                 const data = await response.json();
                 localStorage.setItem("accessToken", data.accessToken);
-    
-                alert("Login Successful!");
+
+                document.querySelector('.loader').style.display = 'none';
+                document.getElementById('downloadLoader').style.display = 'flex';
+
+                setTimeout(() => {
+                    window.location.href = "http://localhost:3000/user/room";
+                }, 10000);
 
                 window.location.href = "http://localhost:3000/user/room";
             } catch (error) {
                 console.error("Error:", error);
                 alert("Invalid Username or Password");
+                document.querySelector('.loader').style.display = 'none';
             }
         });
     </script>
