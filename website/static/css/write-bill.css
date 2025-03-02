@@ -104,19 +104,16 @@ td {
     border-bottom: 1px solid black;
 }
 
-#print {
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
+.submit-btn{
+    margin-top: 10px;
+    width: 200px;
+    height: 60px;
     margin-left: auto;
-    margin-top: 2%;
-}
-
-
-#print img {
-    width: 75px;
-    height: auto;
+    color: white;
+    background-color: #0099FF;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
 }
 
 @media print {
