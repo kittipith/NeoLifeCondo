@@ -56,10 +56,10 @@ input[type="checkbox"]{
     display: none;
     position: fixed;
     top: 50%;
-    left: 40%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 700px;
-    height: 700px;
+    width: 80%;
+    height: 80%;
     border-radius: 20px;
     background-color: white;
     border: 1px solid black;
