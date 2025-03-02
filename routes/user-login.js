@@ -159,23 +159,6 @@ router.get("/user/reserve/:coworkname", (req, res) => {
             });
 })
 
-router.get('/meetdata', (req, res) => {
-    const user = jwt.verify(token, REFRESH_SECRET);
-    const query = `SELECT * FROM Cowork c
-            JOIN room r ON c.room_id = r.room_id  
-            JOIN users u ON r.renter_id = u.user_id
-            WHERE u.user_id = ${user.id};`;
-    console.log(query);
-    db.all(query, (err, rows) => {
-        if (err) {
-            console.log(err.message);
-        }
-        console.log(rows);
-        res.send(JSON.stringify(rows));        
-    });
-});
-
-
 router.get('/meetdata/:coworkname', (req, res) => {
     const coworkname = req.params.coworkname;
     const query = `SELECT * FROM CoWork WHERE cowork_name = '${coworkname}' ORDER BY starttime ASC;`;
@@ -199,7 +182,6 @@ router.get("/user/bill/:billId", (req, res) => {
 
     db.get(sql, [], (err, data) => {
         res.render("bill", { data: data});
-        // res.json({condos: data});
     });
 })
 
