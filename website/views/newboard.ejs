@@ -249,7 +249,7 @@
         document.getElementById("cont").addEventListener("change", function () {
             var fileInput = document.getElementById("file2");
             const label = document.getElementById("pic");
-            if (this.value === "01") {
+            if (this.value === "01" || this.value === "03") {
                 fileInput.required = true;
                 label.innerText = "*รูปภาพ";
             } else {

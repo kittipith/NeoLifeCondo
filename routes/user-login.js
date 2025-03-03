@@ -85,7 +85,7 @@ router.post("/user/contactstaff", (req, res) => {
     // console.log("📌 รับข้อมูล:", { numroom, cont, date, time, title, info });
     // console.log("🖼️ รูปภาพ Base64:", filebase642.substring(0, 100) + "..."); // แสดงเฉพาะ 100 ตัวอักษรแรก
 
-    if (cont === "01") {
+    if (cont === "01" || cont === "03") {
         // console.log(room_id.room_id);
         db.run("INSERT INTO news (new_name, info, date, time, pic) VALUES (?, ?, ?, ?, ?)",
             [title, info, date, time, filebase642], (err) => {
