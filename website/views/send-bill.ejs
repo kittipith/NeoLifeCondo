@@ -16,10 +16,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr onclick="swap('write-bill');">
-                <td>101</td>
-                <td><img src="../static/img/bill.png"></td>
+            <% data.forEach((item)=>{ %>
+            <tr onclick="swap('write-bill','<%=item.renter_id%>');">
+                
+                    <td><%=item.room_number%></td>
+                    <td><img src="../static/img/bill.png"></td>
+                  
             </tr>
+            <% }); %>
         </tbody>
     </table>
     <script src="../static/javascript/checkbox.js"></script>

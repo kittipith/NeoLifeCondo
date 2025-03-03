@@ -352,7 +352,7 @@ router.get("/admin/services", (req, res) => {
 });
 
 router.get("/admin/send-bill", (req, res) => {
-    const query = `SELECT repairReq.id,  room.room_number, repairReq.info, repairReq.pic, repairReq.date, repairReq.time from repairReq join room on repairReq.room_id = room.room_id where repairReq.isDone = 0; `;
+    const query = `SELECT  room_number, renter_id from room where renter_id IS NOT NULL`;
     db.all(query, (err, rows) => {
         if (err) {
             console.log(err.message);
@@ -551,18 +551,18 @@ router.post("/submitbill", (req, res) => {
     res.redirect('/admin/payment');
 });
 
-router.get("/createbill", (req, res) => {
+router.post("/createbill", (req, res) => {
 
 
 
     //โค้ดกูน่าฝากใส่กลับ createbill ด้วย
-    db.get("SELECT bill_id FROM bill ORDER BY bill_id DESC LIMIT 1", [], (err, row) => {
+    db.all("SELECT bill_id FROM bill ORDER BY bill_id DESC LIMIT 1", [], (err, row) => {
         if (err) {
             console.error(err.message);
         }
 
         if (row) {
-            const latestBillId = row.bill_id;
+            const latestBillId = row[0].bill_id;
             db.run(
                 "INSERT INTO payment (bill_id, pic, date, time) VALUES (?, 'none', CURRENT_DATE, CURRENT_TIME)", [latestBillId], (err) => {
                     if (err) {
@@ -580,8 +580,16 @@ router.get("/createbill", (req, res) => {
     });
 });
 
-router.get("/admin/write-bill", (req, res) => {
-    res.render("write-bill");
+router.get("/admin/write-bill/:id", (req, res) => {
+    let id = req.params.id;
+    query = `select room.room_id, room.price,room.room_number, users.name, users.surname from users join room on users.user_id = room.renter_id where user_id = ?`
+    db.all(query,[id], (err, rows) => {
+        if (err) {
+            console.log(err.message);
+        }
+        console.log(rows);
+        res.render('write-bill', { data: rows });
+    });
 });
 
 
@@ -597,6 +605,21 @@ router.put("/updatenews/:newsId", (req, res) => {
         }
         res.json({ success: true, message: "Status updated successfully" });
         console.log(newsId + " status: " + status);
+    });
+});
+
+router.put("/insertbill/:roomid", (req, res) => {
+    const roomid = req.params.roomid;
+    const data = req.body; // รับค่า status
+    console.log(roomid, data.roomwage, data.wateruse, data.elecuse, data.fine, data.finewage, data.total, 0,  data.date);
+    // ตัวอย่าง SQL Update
+    const query = "insert into bill (room_id, room_price, wate, elec, fine_info, fine, total, isPaid, date) values (?,?,?,?,?,?,?,?,?)";
+    db.run(query, [roomid, data.roomwage, data.wateruse, data.elecuse, data.fine, data.finewage, data.total, 0,  data.date], (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: "Database update failed" });
+        }
+        res.json({ success: true, message: "Status updated successfully" });
+        console.log(roomid, data.roomwage, data.wateruse, data.elecuse, data.fine, data.finewage, data.total, 0,  data.date);
     });
 });
 

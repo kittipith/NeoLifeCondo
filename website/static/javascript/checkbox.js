@@ -27,6 +27,7 @@ function closePopup() {
     window.parent.location.href = "/admin";
 }
 
-function swap(url) {
-    window.open(url, '_blank');
+function swap(url,id) {
+    let urlformat = `${url}/${id}`
+    window.open(urlformat);
 }
