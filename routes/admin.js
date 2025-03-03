@@ -298,7 +298,7 @@ router.get("/admin/contact", (req, res) => {
 });
 
 router.get("/admin/payment", (req, res) => {
-    const query = `SELECT room.room_number, payment.bill_id, payment.pic, payment.date, payment.time from payment join bill on payment.bill_id = bill.bill_id JOIN room ON bill.room_id = room.room_id where bill.isPaid = 0;`;
+    const query = `SELECT bill.date AS bill_date ,bill.isPaid,room.room_number, payment.bill_id, payment.pic, payment.date, payment.time from payment join bill on payment.bill_id = bill.bill_id JOIN room ON bill.room_id = room.room_id;`;
     db.all(query, (err, rows) => {
         if (err) {
             console.log(err.message);
@@ -623,6 +623,19 @@ router.put("/insertbill/:roomid", (req, res) => {
     });
 });
 
+router.put("/updatebill/:newsId", (req, res) => {
+    const newsId = req.params.newsId;
+    const { status } = req.body; // รับค่า status
 
+    // ตัวอย่าง SQL Update
+    const query = "UPDATE bill SET isPaid = ? WHERE bill_id = ?";
+    db.run(query, [status, newsId], (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: "Database update failed" });
+        }
+        res.json({ success: true, message: "Status updated successfully" });
+        console.log(newsId + " status: " + status);
+    });
+});
 
 module.exports = router;
