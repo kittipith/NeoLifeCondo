@@ -140,9 +140,93 @@ router.get("/getuser/:cid", (req, res) => {
     });
 });
 
+router.get("/getpopuser/:cid", (req, res) => {
+    let cid = req.params.cid;
+    let query = `SELECT users.user_id,users.id_number, users.title, users.name, users.surname, users.nickname, users.age, users.gender, users.nationality, users.religion, users.ethnicity, users.birthday FROM users WHERE user_id = ?`;
+
+    db.all(query, [cid], (err, rows) => {
+        if (err) {
+            console.log(err.message);
+            return res.status(500).json({ error: "Database error" });
+        }
+
+        if (rows.length === 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        console.log(rows);
+        res.json(rows);
+    });
+});
+
+router.put("/updateuser/:id", async (req, res) => {
+    const userId = req.params.id;
+    const {
+        account_id, address_id, address, road, tumbon, ket, province, post_id,
+        phone, line, email, titlename, firstname, lastname,
+        nickname, age, gender, nation, ciri, religion, dob
+    } = req.body;
+
+    const addressFormat = `${address}$${road}$${tumbon}$${ket}$${province}$${post_id}`;
+
+    let sqlUser = `
+        UPDATE users 
+        SET title = ?, name = ?, surname = ?, nickname = ?, age = ?, gender = ?, 
+            nationality = ?, religion = ?, ethnicity = ?, birthday = ? 
+        WHERE user_id = ?
+    `;
+
+    let sqlAddress = `
+        UPDATE address 
+        SET address = ?, phone = ?, line = ?, email = ? 
+        WHERE address_id = ?
+    `;
+
+    db.serialize(() => {
+        db.run(sqlUser, [titlename, firstname, lastname, nickname, age, gender, nation, religion, ciri, dob, account_id], function (err) {
+            if (err) {
+                console.error("เกิดข้อผิดพลาดในการอัปเดตข้อมูลผู้ใช้:", err.message);
+                return res.status(500).json({ error: "อัปเดตข้อมูลผู้ใช้ไม่สำเร็จ" });
+            }
+            console.log("อัปเดตข้อมูลผู้ใช้สำเร็จ");
+        });
+
+        db.run(sqlAddress, [addressFormat, phone, line, email, address_id], function (err) {
+            if (err) {
+                console.error("เกิดข้อผิดพลาดในการอัปเดตที่อยู่:", err.message);
+                return res.status(500).json({ error: "อัปเดตที่อยู่ไม่สำเร็จ" });
+            }
+            console.log("อัปเดตที่อยู่สำเร็จ");
+
+            // ส่ง response กลับไปเมื่อทุกอย่างเสร็จ
+            res.json({ message: "อัปเดตข้อมูลสำเร็จ!" });
+        });
+    });
+});
+
 router.get("/getaddress/:cid", (req, res) => {
     let cid = req.params.cid;
     let query = `SELECT address.address_id, address, phone, line, email FROM address join users on users.address_id = address.address_id WHERE users.id_number = ?`;
+    
+    db.all(query, [cid], (err, rows) => {
+        if (err) {
+            console.log(err.message);
+            return res.status(500).json({ error: "Database error" });
+        }
+
+        if (rows.length === 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        console.log(rows);
+        res.json(rows);
+    });
+
+});
+
+router.get("/getpopaddress/:cid", (req, res) => {
+    let cid = req.params.cid;
+    let query = `SELECT address.address_id, address, phone, line, email FROM address  WHERE address_id = ?`;
 
     db.all(query, [cid], (err, rows) => {
         if (err) {
@@ -236,6 +320,8 @@ router.get("/admin/news", (req, res) => {
 });
 
 router.get("/admin/popup-user-info", (req, res) => {
+    // let user_id = req.params.id;
+    // let query = ``
     res.render('popup-user-info');
 });
 
@@ -474,7 +560,7 @@ router.get("/createbill", (req, res) => {
         if (err) {
             console.error(err.message);
         }
-    
+
         if (row) {
             const latestBillId = row.bill_id;
             db.run(
@@ -486,12 +572,16 @@ router.get("/createbill", (req, res) => {
                     }
                 }
             );
-            
+
         } else {
             console.log("No records found in bill table.");
         }
-        res.json({data:"dd"});
+        res.json({ data: "dd" });
     });
+});
+
+router.get("/admin/write-bill", (req, res) => {
+    res.render("write-bill");
 });
 
 

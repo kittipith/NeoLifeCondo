@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                 <% data.forEach((item)=>{ %>
-                    <tr onclick="openPopup('popup-user-info');">
+                    <tr onclick="openPopup('popup-user-info','<%= encodeURIComponent(item.user_id) %>');">
                         <td><input type="checkbox" name="selectedid" value="<%= item.user_id %>"
                                 onclick="event.stopPropagation();"></td>
                         <td>

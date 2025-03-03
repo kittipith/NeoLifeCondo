@@ -15,16 +15,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function openPopup(url) {
+function openPopup(url,userid) {
     var popup = document.getElementById("popup");
     var iframe = document.getElementById("ContentIframe");
-
-    iframe.src = url;
+    iframe.src = `${url}?userid=${encodeURIComponent(userid)}`;
     popup.style.display = "block";
 }
 
 function closePopup() {
     document.getElementById("popup").style.display = "none";
+    window.parent.location.href = "/admin";
 }
 
 function swap(url) {

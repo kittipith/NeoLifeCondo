@@ -1,64 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/popup-user-info.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="all">
         <div class="btn">
             <button onclick="window.parent.closePopup()" class="close-btn">×</button>
         </div>
+
         <h1 class="head-text">ห้อง 101</h1>
         <div>
             <h1 class="head-text">ข้อมูลส่วนตัว</h1>
             <div class="info-personal">
                 <div>
+                    <input type="text" name="address_id" id="add_id" class="text-input" style="display: none;">
+                    <input type="text" name="account_id" id="acc_id" class="text-input" style="display: none;">
                     <p class="topic">คำนำหน้า</p>
-                    <p>นาย</p>
+                    <input type="text" name="titlename" id="titlename" class="text-input" disabled>
+
                 </div>
                 <div>
                     <p class="topic">ชื่อ</p>
-                    <p>กิตติพิชญ์</p>
+                    <input type="text" name="firstname" id="firstname" class="text-input" disabled>
+
                 </div>
                 <div>
                     <p class="topic">นามสกุล</p>
-                    <p>หิรัญวงศ์</p>
+                    <input type="text" name="lastname" id="lastname" class="text-input" disabled>
+
                 </div>
                 <div>
                     <p class="topic">ชื่อเล่น</p>
-                    <p>พีท</p>
+                    <input type="text" name="nickname" id="nickname" class="text-input" disabled>
+
                 </div>
                 <div>
                     <p class="topic">อายุ</p>
-                    <p>15</p>
+                    <input type="text" name="age" id="age" class="text-input" disabled>
+
                 </div>
                 <div>
                     <p class="topic">เพศ</p>
-                    <p>ชาย</p>
+                    <input type="text" name="gender" id="gender" class="text-input" disabled>
+
                 </div>
                 <div>
                     <p class="topic">สัญชาติ</p>
-                    <p>ไทย</p>
+                    <input type="text" name="nation" id="nation" class="text-input" disabled>
+
                 </div>
                 <div>
                     <p class="topic">เชื้อชาติ</p>
-                    <p>ไทย</p>
+                    <input type="text" name="ciri" id="ciri" class="text-input" disabled>
+
                 </div>
                 <div>
                     <p class="topic">ศาสนา</p>
-                    <p>พุทธ</p>
+                    <input type="text" name="religion" id="religion" class="text-input" disabled>
+
                 </div>
                 <div>
                     <p class="topic">วันเกิด</p>
-                    <p>30/07/2004</p>
+                    <input type="date" name="dob" id="dob" class="text-input" disabled>
+
                 </div>
                 <div>
                     <p class="topic">เลขบัตรประชาชน</p>
-                    <p>1-1055-00064-37-9</p>
+                    <input type="text" name="cidss" id="cidss" class="text-input" disabled>
+
                 </div>
             </div>
         </div>
@@ -67,40 +84,154 @@
             <div class="info-address">
                 <div>
                     <p class="topic">ที่อยู่</p>
-                    <p>หอดีน่าเพลส 681 ซอยฉลองกรุง 1 แยก 6 ถนนฉลองกรุง แขวงลาดกระบัง เขตลาดกระบัง จังหวัดกรุงเทพ 10520</p>
+                    <input type="text" name="address" id="address" class="text-input" disabled>
+                    <p>ถนน</p>
+                    <input type="text" name="road" id="road" class="text-input" disabled>
+                    <p>แขวง/ตำบล</p>
+                    <input type="text" name="tumbon" id="tumbon" class="text-input" disabled>
+                    <p>เขต/อำเภอ</p>
+                    <input type="text" name="ket" id="ket" class="text-input" disabled>
+                    <p>จังหวัด</p>
+                    <input type="text" name="province" id="province" class="text-input" disabled>
+                    <p>รหัสไปรณีย์</p>
+                    <input type="text" name="post_id" id="post_id" class="text-input" disabled>
+
                 </div>
                 <div>
                     <p class="topic">เบอร์โทรศัพท์</p>
-                    <p>099-999-9999</p>
+                    <input type="text" name="phone" id="phone" class="text-input" disabled>
                 </div>
                 <div>
                     <p class="topic">Line ID</p>
-                    <p>099-999-9999</p>
+                    <input type="text" name="line" id="line" class="text-input" disabled>
                 </div>
                 <div>
                     <p class="topic">E-mail</p>
-                    <p>6607999@kmitl.ac.th</p>
-                </div>
-            </div>
-        </div>
-        <div>
-            <h1 class="head-text">ข้อมูลงทะเบียน</h1>
-            <div class="info-register">
-                <div>
-                    <p class="topic">Username</p>
-                    <p>6607999@kmitl.ac.th</p>
-                </div>
-                <div>
-                    <p class="topic">Password</p>
-                    <p>6607999@kmitl.ac.th</p>
+                    <input type="text" name="email" id="email" class="text-input" disabled>
                 </div>
             </div>
         </div>
         <div class="edit">
-            <button class="btn-edit">แก้ไขข้อมูล</button>
+            <button class="btn-edit" id="edit" onclick="editdata()">แก้ไขข้อมูล</button>
+            <button class="btn-edit" id="save" style="display: none;" onclick="savedata()">บันทึกข้อมูล</button>
         </div>
     </div>
     <script src="../static/javascript/checkbox.js"></script>
     <script src="/static/javascript/refreshtoken-admin.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            let userData = await getQueryParams();
+            try {
+                let [response, responseAdd] = await Promise.all([
+                    fetch(`/getpopuser/${userData.userid}`),
+                    fetch(`/getpopaddress/${userData.userid}`)
+                ]);
+
+                if (!response.ok || !responseAdd.ok) {
+                    throw new Error("Error fetching data");
+                }
+
+                let data = await response.json();
+                let address = await responseAdd.json();
+
+                console.log("User Data:", data);
+                console.log("Address Data:", address);
+                document.getElementById("titlename").value = data[0].title;
+                document.getElementById("acc_id").value = data[0].user_id;
+                document.getElementById("firstname").value = data[0].name;
+                document.getElementById("lastname").value = data[0].surname;
+                document.getElementById("nickname").value = data[0].nickname;
+                document.getElementById("age").value = data[0].age;
+                document.getElementById("nation").value = data[0].nationality;
+                document.getElementById("ciri").value = data[0].ethnicity;
+                document.getElementById("religion").value = data[0].religion;
+                document.getElementById("dob").value = data[0].birthday;
+                document.getElementById("cidss").value = data[0].id_number;
+                document.getElementById("gender").value = data[0].gender;
+                let arradd = address[0].address;
+                let splitadd = arradd.split("$");
+                document.getElementById("add_id").value = address[0].address_id;
+                document.getElementById("phone").value = address[0].phone;
+                document.getElementById("line").value = address[0].line;
+                document.getElementById("email").value = address[0].email;
+                document.getElementById("address").value = splitadd[0];
+                document.getElementById("road").value = splitadd[1];
+                document.getElementById("tumbon").value = splitadd[2];
+                document.getElementById("ket").value = splitadd[3];
+                document.getElementById("province").value = splitadd[4];
+                document.getElementById("post_id").value = splitadd[5];
+            } catch (error) {
+                console.error("เกิดข้อผิดพลาด:", error);
+            }
+        });
+        function getQueryParams() {
+            let params = new URLSearchParams(window.location.search);
+            return {
+                userid: params.get("userid") || "ไม่ระบุ"
+            };
+        }
+        function editdata() {
+            let inputs = document.getElementsByClassName("text-input");
+            let but = document.getElementById("edit");
+            but.style.display = "none";
+            let butsave = document.getElementById("save");
+            butsave.style.display = "block";
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].removeAttribute("disabled"); // เปิดให้แก้ไขข้อมูล
+            }
+        }
+        function savedata() {
+            let inputs = document.getElementsByClassName("text-input");
+            let updatedData = {};
+
+          
+            for (let i = 0; i < inputs.length; i++) {
+                updatedData[inputs[i].name] = inputs[i].value;
+            }
+
+            console.log("ส่งข้อมูลไปยังเซิร์ฟเวอร์:", updatedData);
+
+            
+            fetch(`/updateuser/${updatedData.address_id}`, { 
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updatedData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("อัปเดตสำเร็จ:", data);
+                    // alert("บันทึกข้อมูลเรียบร้อย!");
+
+                    // ปิดการแก้ไข input อีกครั้ง
+                    for (let i = 0; i < inputs.length; i++) {
+                        inputs[i].setAttribute("disabled", "true");
+                    }
+
+                    // แสดงปุ่มแก้ไข และซ่อนปุ่มบันทึก
+                    document.getElementById("save").style.display = "none";
+                    document.getElementById("edit").style.display = "block";
+                    
+                })
+                .catch(error => {
+                    console.error("เกิดข้อผิดพลาด:", error);
+                    alert("ไม่สามารถบันทึกข้อมูลได้");
+                });
+        }
+    </script>
 </body>
+<style>
+    .text-input {
+        border: none;
+        border-bottom: 1px solid black;
+        outline: none;
+        background-color: #F6F6F6;
+        height: 30px;
+        font-size: 20px;
+        width: 80%;
+        padding: 5px 5px;
+    }
+</style>
+
 </html>
