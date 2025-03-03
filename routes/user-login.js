@@ -5,6 +5,7 @@ const db = require("../database/database");
 const router = express.Router();
 const { users, REFRESH_SECRET } = require("../config");
 const { verifyToken } = require("../middleware/authMiddleware");
+const { route } = require("./auth");
 
 
 //USER ROUTE
@@ -180,10 +181,45 @@ router.get("/user/bill/:billId", (req, res) => {
     JOIN users u ON r.renter_id = u.user_id
     WHERE b.bill_id = ${billId};`;
 
+    let sql2 = `SELECT pic FROM payment
+    WHERE bill_id = ${billId};`;
+
     db.get(sql, [], (err, data) => {
-        res.render("bill", { data: data});
+        db.get(sql2, [], (err, pic) => {
+            res.render("bill", { data: data, pic: pic});
+        });
     });
 })
+
+router.post("/user/payment/:billId", (req, res) => {
+    const { billId } = req.params;
+    const { image } = req.body;
+
+    if (!image) {
+        return res.status(400).json({ error: "ต้องการรูปภาพ Base64" });
+    }
+
+    db.run("UPDATE payment SET pic = ?, date = CURRENT_DATE, time = CURRENT_TIME WHERE bill_id = ?", [image ,billId], function (err) {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.redirect(`/user/bill/${billId}`);
+    });
+});
+
+router.get("/user/payment/image/:bill_id", (req, res) => {
+    const { bill_id } = req.params;
+
+    db.get("SELECT pic FROM payment WHERE bill_id = ?", [bill_id], (err, data) => {
+        if (err || !data || !data.pic) {
+            return res.status(404).send("Not Found"); // ถ้าไม่มีรูป ส่ง 404
+        }
+
+        const imgBuffer = Buffer.from(data.pic, "base64"); // แปลง Base64 เป็น Buffer
+        res.writeHead(200, { "Content-Type": "image/png" });
+        res.end(imgBuffer);
+    });
+});
 
 
 
