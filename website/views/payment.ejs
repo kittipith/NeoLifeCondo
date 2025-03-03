@@ -67,7 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (billDate) {
             let monthIndex = new Date(billDate).getMonth(); // ดึง index เดือน (เริ่มจาก 0)
             let monthName = monthNames[monthIndex]; // แปลงเป็นชื่อเดือน
-            document.querySelectorAll("#month")[index].innerText = monthName; // ใส่ค่าใน `<p id="month">`
+            let year = new Date(billDate).getFullYear();
+            document.querySelectorAll("#month")[index].innerText = `${monthName} ${year}`; // ใส่ค่าใน `<p id="month">`
         }
     });
     });
