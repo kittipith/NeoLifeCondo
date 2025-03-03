@@ -585,7 +585,20 @@ router.get("/admin/write-bill", (req, res) => {
 });
 
 
+router.put("/updatenews/:newsId", (req, res) => {
+    const newsId = req.params.newsId;
+    const { status } = req.body; // รับค่า status
 
+    // ตัวอย่าง SQL Update
+    const query = "UPDATE news SET status = ? WHERE new_id = ?";
+    db.run(query, [status, newsId], (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: "Database update failed" });
+        }
+        res.json({ success: true, message: "Status updated successfully" });
+        console.log(newsId + " status: " + status);
+    });
+});
 
 
 
