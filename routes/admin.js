@@ -142,7 +142,7 @@ router.get("/getuser/:cid", (req, res) => {
 
 router.get("/getpopuser/:cid", (req, res) => {
     let cid = req.params.cid;
-    let query = `SELECT users.user_id,users.id_number, users.title, users.name, users.surname, users.nickname, users.age, users.gender, users.nationality, users.religion, users.ethnicity, users.birthday FROM users WHERE user_id = ?`;
+    let query = `SELECT users.user_id,users.id_number, users.title, users.name, users.surname, users.nickname, users.age, users.gender, users.nationality, users.religion, users.ethnicity, users.birthday, room.room_number FROM users join room on users.user_id = room.renter_id WHERE user_id = ?`;
 
     db.all(query, [cid], (err, rows) => {
         if (err) {

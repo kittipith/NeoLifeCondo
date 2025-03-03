@@ -16,7 +16,7 @@
             <button onclick="window.parent.closePopup()" class="close-btn">×</button>
         </div>
 
-        <h1 class="head-text">ห้อง 101</h1>
+        <h1 class="head-text" id="roomnum"></h1>
         <div>
             <h1 class="head-text">ข้อมูลส่วนตัว</h1>
             <div class="info-personal">
@@ -137,6 +137,7 @@
                 console.log("User Data:", data);
                 console.log("Address Data:", address);
                 document.getElementById("titlename").value = data[0].title;
+                document.getElementById("roomnum").innerHTML = `ห้อง ${data[0].room_number}`;
                 document.getElementById("acc_id").value = data[0].user_id;
                 document.getElementById("firstname").value = data[0].name;
                 document.getElementById("lastname").value = data[0].surname;
