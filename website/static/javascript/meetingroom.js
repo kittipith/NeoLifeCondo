@@ -235,14 +235,6 @@ document.getElementById('start-time').addEventListener('change', function() {
     let hours = timeValue.split(':')[0]; 
     let updatedTime = hours + ":00"; 
     this.value = updatedTime; 
-    const minTime = "09:00";
-    const maxTime = "20:00";
-    if (timeValue < minTime) {
-        this.value = minTime; 
-    } 
-    else if (timeValue > maxTime) {
-        this.value = maxTime; 
-    }
 });
 
 // เช็คไว้filterตอนจอเล็ก
@@ -257,13 +249,6 @@ document.getElementById('end-time').addEventListener('change', function() {
     let hours = timeValue.split(':')[0];
     let updatedTime = hours + ":00"; 
     this.value = updatedTime;
-    const minTime = "09:00";
-    const maxTime = "20:00";
-    if (timeValue < minTime) {
-        this.value = minTime; 
-    } else if (timeValue > maxTime) {
-        this.value = maxTime;
-    }
 });
 
 // alertถ้าผู้ใช้กรอกไม่ถูก
@@ -283,6 +268,14 @@ function validateForm() {
 
     startTime_compare = new Date(`${selectdate}T${startTime}:00`);
     end_Time_compare = new Date(`${selectdate}T${end_Time}:00`);
+    
+    let minAllowedTime = new Date(`${selectdate}T09:00:00`);
+    let maxAllowedTime = new Date(`${selectdate}T20:00:00`);
+
+    if (startTime && end_Time && (startTime_compare < minAllowedTime || startTime_compare > maxAllowedTime || end_Time_compare < minAllowedTime || end_Time_compare > maxAllowedTime)) {
+        alert("เวลาที่เลือกต้องอยู่ระหว่าง 09:00 ถึง 20:00");
+        return false;
+    }
     if (startTime && end_Time && startTime >= end_Time) {
         alert("เวลาเริ่มต้นและเวลาสิ้นสุดไม่ถูกต้อง");
         return false;

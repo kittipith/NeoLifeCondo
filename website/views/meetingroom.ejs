@@ -22,8 +22,8 @@
                 <p id="selected_date" style="display: none;"><%= data && data.starttime ? data.starttime.split(' ')[0] : '' %></p>
                 <label  class="day_lable">วันที่: <select name="day" id="selectdate" class="textinput"></select></label>                    
                 <div class="timerow">
-                    <label class="start_time_lable">ใช้บริการเวลา <input type="time" style="margin-left: 12px;" id="start-time" class="timeinput" min="09:00" max="20:00" step="3600" name="starttime" value="<%= data && data.starttime ? data.starttime.split(' ')[1].substring(0, 5) : '' %>" ></label>
-                    <label class="end_time_lable">ถึงเวลา <input type="time" style="margin-left: 12px;" id="end-time" class="timeinput" min="09:00" max="20:00" step="3600" name="endtime" value="<%= data && data.endtime ? data.endtime.split(' ')[1].substring(0, 5) : '' %>"></label>
+                    <label class="start_time_lable">ใช้บริการเวลา <input type="time" style="margin-left: 12px;" id="start-time" class="timeinput" step="3600" name="starttime" value="<%= data && data.starttime ? data.starttime.split(' ')[1].substring(0, 5) : '' %>"></label>
+                    <label class="end_time_lable">ถึงเวลา <input type="time" style="margin-left: 12px;" id="end-time" class="timeinput" step="3600" name="endtime" value="<%= data && data.endtime ? data.endtime.split(' ')[1].substring(0, 5) : '' %>"></label>
                 </div>
                 <label  class="moreinfolable"><p class="moreinfo">หมายเหตุเพิ่มเติม</p> <textarea name="info" id="info"><%= data && data.info ? data.info : '' %></textarea></label>
                 <input type="submit" id="savedata" value="บันทึกข้อมูล"></input>
