@@ -13,7 +13,7 @@ body{
 }
 .big{
     display: grid;
-    grid-template-rows: 150px 400px;
+    grid-template-rows: 150px auto;
     align-items: start;
 }
 .logo{
@@ -32,9 +32,10 @@ body{
     font-weight: bold;
 }
 .list-menu{
-    display: grid;
-    grid-template-rows: repeat(7, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 10px;
+    transition: transform 0.3s ease-in-out;
 }
 .list-menu button{
     background-color: white;
@@ -55,6 +56,7 @@ body{
 .content{
     width: 100%;
     height: 90%;
+    margin-top: 0;
 }
 iframe {
     width: 100%;
@@ -67,4 +69,63 @@ iframe {
 }
 .btn-logout{
     color: red;
+}
+.menu-toggle {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #0099FF;
+    color: white;
+    border: none;
+    font-size: 24px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 1500px) {
+    .bigger{
+        grid-template-columns: 40% 60%;
+    }
+}
+@media (max-width: 1100px) {
+    .logo {
+        position: absolute;
+        flex-direction: row-reverse;
+        right: 10px;
+        top: 10px;
+    }
+    .bigger {
+        grid-template-columns: 100%;
+        grid-template-rows: 10% 80%;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .list-menu {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 250px;
+        height: 100%;
+        background: white;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        padding-top: 60px;
+        z-index: 1000;
+    }
+    .list-menu.open {
+        left: 0;
+    }
+}
+@media (max-width: 768px) {
+    .bigger {
+        grid-template-rows: 20% 80%;
+    }
+}
+@media (max-width: 500px) {
+    .logo span {
+        display: none;
+    }
 }
