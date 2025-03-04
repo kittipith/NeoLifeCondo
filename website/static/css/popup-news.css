@@ -1,0 +1,69 @@
+body{
+    font-family: "Open Sans", "Noto Sans Thai", sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    border-radius: 20px;
+}
+.container{
+    background: white;
+    width: 100%;
+    height: 100vh;
+    padding: 20px 20px;
+}
+h1{
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+.form-group{
+    margin-bottom: 15px;
+}
+.form-group p{
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 5px;
+}
+input{
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+input[type="file"]{
+    border: none;
+}
+.btn-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+button{
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button:first-child{
+    background: #007bff;
+    color: white;
+    margin-right: 10px;
+}
+button:first-child:hover{
+    background: #0056b3;
+}
+button:last-child{
+    background: #dc3545;
+    color: white;
+}
+button:last-child:hover{
+    background: #a71d2a;
+}

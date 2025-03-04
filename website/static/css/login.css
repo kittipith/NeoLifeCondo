@@ -81,7 +81,7 @@ body{
 }
 .remember{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding-left: 6%;
     padding-right: 6%;
     margin: 5px 0;

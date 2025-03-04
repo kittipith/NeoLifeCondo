@@ -5,13 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/css/news.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <!-- <button class="show" onclick="submitForm('/submitshownews')">โชว์ข้อมูล</button> -->
+  <button class="show" onclick="openPopup('popup-news.html');">เพิ่มข่าวสาร</button>
   <button class="del" onclick="submitForm('/submitdelnews')">ลบข้อมูล</button>
   <form id="newsForm" method="POST">
     <table>
@@ -40,22 +39,24 @@
             <td>
               <%=item.time%>
             </td>
-            
-              <td>
-                <% if (item.status == 1) { %>
-                  <p style="color: green;">แสดงอยู่</p>
+
+            <td>
+              <% if (item.status==1) { %>
+                <p style="color: green;">แสดงอยู่</p>
                 <% } else { %>
                   <p style="color: red;">ไม่ได้แสดง</p>
-                <% } %>
-              </td>
-              <td>
-                <% if (item.status == 1) { %>
-                  <button class="unshow" type="button" onclick="toggleStatus(event, '<%= item.new_id %>', 0)">Unshow</button>
+                  <% } %>
+            </td>
+            <td>
+              <% if (item.status==1) { %>
+                <button class="unshow" type="button"
+                  onclick="toggleStatus(event, '<%= item.new_id %>', 0)">Unshow</button>
 
                 <% } else { %>
-                  <button class="show" type="button" onclick="toggleStatus(event, '<%= item.new_id %>', 1)">Show</button>
-                <% } %>
-              </td>
+                  <button class="show" type="button"
+                    onclick="toggleStatus(event, '<%= item.new_id %>', 1)">Show</button>
+                  <% } %>
+            </td>
           </tr>
           <% }); %>
             <div id="myModal" class="modal">
@@ -68,40 +69,40 @@
   <script src="/static/javascript/refreshtoken-admin.js"></script>
   <script src="../static/javascript/checkbox.js"></script>
   <script>
-   function toggleStatus(event, newsId, newStatus) {
-    event.preventDefault(); // ป้องกันการ refresh หน้า
+    function toggleStatus(event, newsId, newStatus) {
+      event.preventDefault(); // ป้องกันการ refresh หน้า
 
-    fetch(`/updatenews/${newsId}`, { // ส่งค่า newsId ใน URL
+      fetch(`/updatenews/${newsId}`, { // ส่งค่า newsId ใน URL
         method: "PUT",
         headers: {
-            "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ status: newStatus }), // ส่งเฉพาะ status
-    }).then(response => response.json())
-    .then(data => {
-        console.log("Updated:", data);
+      }).then(response => response.json())
+        .then(data => {
+          console.log("Updated:", data);
 
-        // หา element ที่เกี่ยวข้อง
-        let button = event.target; 
-        let statusCell = button.closest("tr").querySelector("td:nth-child(6)"); 
+          // หา element ที่เกี่ยวข้อง
+          let button = event.target;
+          let statusCell = button.closest("tr").querySelector("td:nth-child(6)");
 
-        // อัปเดตสถานะในตาราง
-        if (newStatus === 1) {
+          // อัปเดตสถานะในตาราง
+          if (newStatus === 1) {
             statusCell.innerHTML = `<p style="color: green;">แสดงอยู่</p>`;
             button.innerText = "Unshow";
             button.className = "unshow";
             button.onclick = (e) => toggleStatus(e, newsId, 0);
-        } else {
+          } else {
             statusCell.innerHTML = `<p style="color: red;">ไม่ได้แสดง</p>`;
             button.innerText = "Show";
             button.className = "show";
             button.onclick = (e) => toggleStatus(e, newsId, 1);
-        }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
-}
+          }
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+    }
 
 
 

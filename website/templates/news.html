@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/website/static/css/news.css">
 </head>
 <body>
-    <button class="show">โชว์ข้อมูล</button>
+    <button class="show" onclick="openPopup('popup-news.html');">โชว์ข้อมูล</button>
     <button class="del">ลบข้อมูล</button>
     <table>
         <thead>
@@ -35,6 +35,21 @@
             </tr>
         </tbody>
     </table>
-    <script src="/website/static/javascript/checkbox.js"></script>
+    <div id="popup" class="popup">
+        <iframe id="ContentIframe"></iframe>
+    </div>
+    <!-- <script src="/website/static/javascript/checkbox.js"></script> -->
+     <script>
+        function openPopup(url) {
+            document.getElementById('popup').style.display = 'block';
+            var iframe = document.getElementById('ContentIframe');
+            iframe.src = url;
+            console.log(url)
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+     </script>
 </body>
 </html>
