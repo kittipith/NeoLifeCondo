@@ -97,7 +97,7 @@ function changeTable(smalldevice) {
                 if(currentTableTime.getTime() >= coWorkDate_start.getTime() && currentTableTime.getTime() < coWorkDate_end.getTime()){
                     tablehtml += `<td style="background-color: #FF0000;"></td>`;
                 }
-                else if(currentTableTime.getTime() >= coWorkDate_end.getTime()){
+                else if(currentTableTime.getTime() === coWorkDate_end.getTime()){
                     coWorkdata_count += 1
                         if(coWorkdata_count  < filtercoWorkData.length){
                             coWorkDate_start = new Date(filtercoWorkData[coWorkdata_count].starttime);
@@ -285,6 +285,10 @@ function validateForm() {
     end_Time_compare = new Date(`${selectdate}T${end_Time}:00`);
     if (startTime && end_Time && startTime >= end_Time) {
         alert("เวลาเริ่มต้นและเวลาสิ้นสุดไม่ถูกต้อง");
+        return false;
+    }
+    if(selectdate === ''){
+        alert("กรุณากรอกวันที่");
         return false;
     }
     if (room_id === ''){
