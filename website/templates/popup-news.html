@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/website/static/css/popup-news.css">
+</head>
+<body>
+    <div class="container">
+        <h1>เพิ่มข่าวสาร</h1>
+        <div class="form-group">
+            <p>รายละเอียดข่าวสาร</p>
+            <input type="text" placeholder="กรอกรายละเอียดข่าวสาร">
+        </div>
+        <div class="form-group">
+            <p>ใส่รูปภาพ</p>
+            <input type="file">
+        </div>
+        <div class="form-group">
+            <p>ใส่วันที่</p>
+            <input type="date">
+        </div>
+        <div class="form-group">
+            <p>ใส่เวลา</p>
+            <input type="time">
+        </div>
+        <div class="btn-container">
+            <button>เสร็จสิ้น</button>
+            <button onclick="window.parent.closePopup()">ปิด</button>
+        </div>
+    </div>
+</body>
+</html>
