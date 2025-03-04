@@ -188,18 +188,24 @@
             <p>699 ฉลองกรุง 1 ฉลองกรุง, ถ.ฉลองกรุง, ข.ลาดกระบัง กรุงเทพมหานคร, 10520 </p>
         </div>
         <div class="c_contact">
-            <div class="c_c_img">
-                <a href=""><img class="line" src="../static/img/line.png" alt="" ></a>
-            </div>
-            <div class="c_c_img">
-                <a href=""><img class="facebook" src="../static/img/facebook.png" alt=""></a>
-            </div>
-            <div class="c_c_img">
-                <a href=""><img class="mail" src="../static/img/mail.png" alt=""></a>
-            </div>
-            <div class="c_c_img">
-                <a href=""><img class="phone" src="../static/img/phone.png" alt=""></a>
-            </div>
+            <ul class="wrapper">
+                <li class="icon line" onclick="copyToClipboard('neolifecondo')">
+                    <span class="tooltip">Line</span>
+                    <img src="../static/img/line.png">
+                  </li>
+                <li class="icon facebook" onclick="window.open('https://www.facebook.com/chatchawan.tongsirikun', '_blank')">
+                  <span class="tooltip">Facebook</span>
+                  <img src="../static/img/facebook.png">
+                </li>
+                <li class="icon mail" onclick="copyToClipboard('66070108@kmitl.ac.th')">
+                  <span class="tooltip">Email</span>
+                  <img src="../static/img/mail.png">
+                </li>
+                <li class="icon phone" onclick="copyToClipboard('0650566654')">
+                  <span class="tooltip">0650566654</span>
+                  <img src="../static/img/phone.png">
+                </li>
+              </ul>
         </div>
     </div>
 
@@ -325,8 +331,6 @@
             displayRooms(filtered);
         }
         
-
-    
         // Event Listener สำหรับ Checkbox ทุกตัว
         document.querySelectorAll(".price-checkbox, .direction-checkbox, .floor-checkbox, .corner-checkbox").forEach(checkbox => {
             checkbox.addEventListener("change", filterRooms);
@@ -337,7 +341,6 @@
     });
 
     var check = true;
-    //ปุ่มnav
     function toggleSidebar() {
         const change_color = document.getElementById("menu-button");
 
@@ -349,6 +352,14 @@
             check = true;
         }
         document.getElementById("mySidebar").classList.toggle("open-sidebar");
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert("คัดลอกสำเร็จ");
+        }).catch(err => {
+            console.error("คัดลอกไม่สำเร็จ", err);
+        });
     }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

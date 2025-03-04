@@ -6,6 +6,7 @@ body {
     margin: 0;
     font-family: "Open Sans", "Noto Sans Thai";
     overflow-x: hidden;
+    width: 100%;
 }
 
 .mySlides {
@@ -575,7 +576,7 @@ html {
 
 .facitem {
     height: auto;
-    width: 30%;
+    width: 20%;
     gap: 10%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -584,14 +585,16 @@ html {
     margin-left: auto;
     margin-right: auto;
     margin-top: 3%;
-
 }
 
-.imgfac {
+.facitem p{
+    font-size: 18px;
+}
+
+.imgfac{
     border: 2px solid #000000;
     padding: 15%;
     border-radius: 50%;
-
     animation: zoom-in-contact linear;
     animation-timeline: view();
     animation-range: entry 0% cover 20%;
@@ -604,6 +607,7 @@ html {
 
 .contact {
     height: 40vh;
+    width: 100%;
     background-color: #4b4b4b;
     align-items: center;
     text-align: center;
@@ -614,12 +618,10 @@ html {
 }
 
 .c_contact {
-    width: 20%;
     height: 15%;
     gap: 15%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-self: center;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -751,7 +753,7 @@ html {
         width: 100%;
     }
     .c_contact {
-        width: 50%;
+        width: 100%;
     }
 
     .c_logo img {
@@ -881,7 +883,7 @@ html {
         width: 80%;
     }
     .c_contact {
-        width: 60%;
+        width: 100%;
     }
 
     .c_logo img {
@@ -976,4 +978,112 @@ html {
     100% { 
         background-position: 200% 0; 
     }
+  }
+
+  .wrapper {
+    display: inline-flex;
+    list-style: none;
+    height: 120px;
+    max-width: 100%;
+    width: 100%;
+    padding-top: 40px;
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  .wrapper img{
+    width: 40px;
+    height: 40px;
+  }
+  
+  .wrapper .icon {
+    position: relative;
+    background: #fff;
+    border-radius: 50%;
+    margin: 10px;
+    width: 60px;
+    height: 60px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    background: #fff;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #fff;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  .wrapper .icon:hover span,
+  .wrapper .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .wrapper .line:hover,
+  .wrapper .line:hover .tooltip,
+  .wrapper .line:hover .tooltip::before {
+    background: #06C655;
+  }
+
+  .icon.line:hover img{
+    content: url(../img/line-white.png);
+  }
+  
+  .wrapper .facebook:hover,
+  .wrapper .facebook:hover .tooltip,
+  .wrapper .facebook:hover .tooltip::before {
+    background: #1877f2;
+  }
+
+  .icon.facebook:hover img{
+    content: url(../img/facebook-white.png);
+  }
+  
+  .wrapper .mail:hover,
+  .wrapper .mail:hover .tooltip,
+  .wrapper .mail:hover .tooltip::before {
+    background: #e4405f;
+  }
+
+  .icon.mail:hover img{
+    content: url(../img/mail-white.png);
+  }
+  
+  .wrapper .phone:hover,
+  .wrapper .phone:hover .tooltip,
+  .wrapper .phone:hover .tooltip::before {
+    background: #FFDF2B;
+    color: black;
   }
