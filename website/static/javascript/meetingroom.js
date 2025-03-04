@@ -77,9 +77,9 @@ function changeTable(smalldevice) {
         select_table_date.value = fullDateValue;
 
         //filterข้อมูลตามวันที่ผู้ใช้เลือก
-        if(coWorkdata.length != 0){
+        if(coWorkdata && coWorkdata.length != 0){
             filtercoWorkData = coWorkdata.filter(obj => isSameDay(obj.starttime, fullDateValue));
-            if(filtercoWorkData.length != 0){
+            if(filtercoWorkData && filtercoWorkData.length != 0){
                 coWorkDate_start = new Date(filtercoWorkData[coWorkdata_count].starttime);
                 coWorkDate_end = new Date(filtercoWorkData[coWorkdata_count].endtime);
             }
@@ -90,7 +90,7 @@ function changeTable(smalldevice) {
             tablehtml += `<tr><td>${i+9}:00-${i+10}:00</td>`;
 
             // เช็คว่าต้องสร้างช่องสีแดงมั้ย
-            if(filtercoWorkData.length != 0){
+            if(filtercoWorkData && filtercoWorkData.length != 0){
                 if(i==0)currentTableTime = new Date(`${fullDateValue}T0${i + 9}:00:00`);
                 else currentTableTime = new Date(`${fullDateValue}T${i + 9}:00:00`);
 
@@ -128,7 +128,7 @@ function changeTable(smalldevice) {
         tablehead.innerHTML = tablehtml;
     
         tablehtml = '';
-        if(coWorkdata.length != 0){
+        if(coWorkdata && coWorkdata.length != 0){
             coWorkDate_start = new Date(coWorkdata[coWorkdata_count].starttime);
             coWorkDate_end = new Date(coWorkdata[coWorkdata_count].endtime);
         }
@@ -303,7 +303,7 @@ function validateForm() {
         alert("สามารถเลือกเวลาได้ไม่เกิน 2 ชัวโมง");
         return false;
     }
-    if(coWorkdata.length != 0){
+    if(coWorkdata && coWorkdata.length != 0){
         const isConflict = coWorkdata.some(data => {
             if(data.room_id != room_id) {
                 let cowork_starttime = new Date(data.starttime);
