@@ -51,6 +51,7 @@ router.get("/condo/:id/reserve", (req, res) => {
 
 //ยืนยันการจองคอนโด
 router.post("/condo/:id/reserve", async (req, res) => {
+    const roomId = req.params.id;
     const data = req.body;
     console.log("ข้อมูลที่ได้รับ:", data);
 
@@ -86,6 +87,10 @@ router.post("/condo/:id/reserve", async (req, res) => {
         db.run(
             `INSERT INTO address(address_id, address, phone, line, email) VALUES (?, ?, ?, ?, ?)`,
             [info.user_id, address, data.phone, data.lineId, data.email]
+        );
+        db.run(
+            `UPDATE room SET renter_id = ? WHERE room_id = ?`,
+            [info.user_id, roomId]
         );
     });
     

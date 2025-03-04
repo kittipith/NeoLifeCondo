@@ -32,7 +32,7 @@ FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.add
 });
 
 router.get("/getcid", (req, res) => {
-    let query = `SELECT id_number FROM users WHERE isAdmin != 1 AND account_id IS NULL`;
+    let query = `SELECT id_number FROM users WHERE isAdmin IS NULL AND account_id IS NULL`;
     db.all(query, (err, rows) => {
         if (err) {
             console.log(err.message);
