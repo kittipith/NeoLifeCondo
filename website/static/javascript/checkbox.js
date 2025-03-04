@@ -15,19 +15,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function openPopup(url,userid) {
+function openPopup(url) {
     var popup = document.getElementById("popup");
     var iframe = document.getElementById("ContentIframe");
-    iframe.src = `${url}?userid=${encodeURIComponent(userid)}`;
+
+    iframe.src = url;
     popup.style.display = "block";
 }
 
 function closePopup() {
     document.getElementById("popup").style.display = "none";
-    window.parent.location.href = "/admin";
 }
 
-function swap(url,id) {
-    let urlformat = `${url}/${id}`
-    window.open(urlformat);
+function swap(url) {
+    window.open(url, '_blank');
 }

@@ -64,7 +64,7 @@ router.post("/logout", (req, res) => {
     const { refreshToken } = req.cookies;
     refreshTokens.delete(refreshToken);
     res.clearCookie("refreshToken");
-    res.redirect("/login");
+    res.json({ message: "Logged out successfully" });
 });
 
 // FORGOT

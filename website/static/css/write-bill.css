@@ -104,16 +104,19 @@ td {
     border-bottom: 1px solid black;
 }
 
-.submit-btn{
-    margin-top: 10px;
-    width: 200px;
-    height: 60px;
-    margin-left: auto;
-    color: white;
-    background-color: #0099FF;
+#print {
+    background: transparent;
     border: none;
-    border-radius: 10px;
-    font-size: 20px;
+    padding: 0;
+    cursor: pointer;
+    margin-left: auto;
+    margin-top: 2%;
+}
+
+
+#print img {
+    width: 75px;
+    height: auto;
 }
 
 @media print {

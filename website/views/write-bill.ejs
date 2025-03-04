@@ -1,47 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neo Life Condo</title>
-    <link rel="stylesheet" href="/static/css/write-bill.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/write-bill.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <h1>ใบแจ้งหนี้</h1>
     <div class="text">
         <div class="text-row">
-            <input id="roomid" type="text" style="display: none;" value="<%= data[0].room_id%>">
-            <p>ค่าเช่าห้อง เลขที่</p><input type="text" class="input-top" value="<%= data[0].room_number%>">
+            <p>ค่าเช่าห้อง เลขที่</p><input type="text" class="input-top">
             <div class="text-end">
                 <p>วันที่</p>
-                <input id="dates" type="date" class="input-top">
+                <input type="date" class="input-top">
             </div>
         </div>
         <div class="text-row">
-            <p>ประจำเดือน</p>
-            <select id="month" class="input-top">
-                <option value="0" selected>เลือกเดือน</option>
-                <option value="1">มกราคม</option>
-                <option value="2">กุมภาพันธ์</option>
-                <option value="3">มีนาคม</option>
-                <option value="4">เมษายน</option>
-                <option value="5">พฤษภาคม</option>
-                <option value="6">มิถุนายน</option>
-                <option value="7">กรกฎาคม</option>
-                <option value="8">สิงหาคม</option>
-                <option value="9">กันยายน</option>
-                <option value="10">ตุลาคม</option>
-                <option value="11">พฤศจิกายน</option>
-                <option value="12">ธันวาคม</option>
-            </select>
+            <p>ประจำเดือน</p><input type="text" class="input-top">
             <div class="text-end">
                 <p>ชื่อ</p>
-                <input type="text" class="input-tops" value="<%= data[0].name%> <%= data[0].surname%>">
+                <input type="text" class="input-tops">
             </div>
         </div>
     </div>
@@ -57,27 +38,27 @@
         <tbody>
             <tr>
                 <td class="text-detail">ค่าเช่า</td>
-                <td><input id="roomwage" type="text" class="input-inside" value="<%= data[0].price%>"></td>
+                <td><input type="text" class="input-inside"></td>
                 <td></td>
                 <td><input type="text" class="input-inside"></td>
             </tr>
             <tr>
                 <td class="text-detail">ค่าน้ำ</td>
-                <td><input id="wateruse" type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
                 <td>18</td>
-                <td><input id="waterwage" type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
             </tr>
             <tr>
                 <td class="text-detail">ค่าไฟ</td>
-                <td><input id="elecuse" type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
                 <td>8</td>
-                <td><input id="elecwage" type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
             </tr>
             <tr>
-                <td><input id="fine" type="text" class="input-inside"></td>
-                <td><input id="fineuse" type="text" class="input-inside"></td>
                 <td><input type="text" class="input-inside"></td>
-                <td><input id="finewage" type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside"></td>
             </tr>
             <tr>
                 <td><input type="text" class="input-inside"></td>
@@ -95,120 +76,25 @@
                 <td class="text-detail">รวมทั้งสิ้น</td>
                 <td></td>
                 <td></td>
-                <td><input id="total" type="text" class="input-inside"></td>
+                <td></td>
             </tr>
         </tbody>
     </table>
     <div class="text">
         <div class="text-row">
             <p style="text-align: start;">หมายเหตุ:ใบเสร็จรับเงินนี้จะสมบูรณ์ เมื่อได้รับการชำระเงินเป็นที่เรียบร้อย</p>
-            <button type="button" onclick="sendbill()" class="submit-btn">เสร็จสิ้น</button>
+            <img src="../static/img/qrcode.png" class="qrcode">
         </div>
+        <button id="print">
+            <img src="../static/img/print.png">
+        </button>
     </div>
+
+    <script>
+        const printBtn = document.getElementById('print');
+        printBtn.addEventListener('click', function () {
+            print();
+        })
+    </script>
 </body>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let today = new Date();
-        let formattedDate = today.toISOString().split('T')[0];
-        document.getElementById("dates").value = formattedDate;
-        let currentMonth = today.getMonth() + 1;
-        document.getElementById("month").value = currentMonth;
-        updateTotal();
-    });
-
-    document.getElementById("dates").addEventListener("change", function (event) {
-        let dateValue = event.target.value;
-        let selectedDate = new Date(dateValue);
-        let monthIndex = selectedDate.getMonth() + 1;
-
-        let monthSelect = document.getElementById("month");
-        monthSelect.value = monthIndex;
-    });
-    document.getElementById("fineuse").addEventListener("input", function (event) {
-        let dataValue = event.target.value;
-        let finewage = document.getElementById("finewage");
-        finewage.value = dataValue;
-        updateTotal();
-    });
-    document.getElementById("wateruse").addEventListener("input", function (event) {
-        let wateruse = event.target.value;
-        let waterwage = document.getElementById("waterwage");
-        waterwage.value = wateruse * 18;
-        updateTotal();
-    });
-    document.getElementById("elecuse").addEventListener("input", function (event) {
-        let elecuse = event.target.value;
-        let elecwage = document.getElementById("elecwage");
-        elecwage.value = elecuse * 8;
-        updateTotal();
-    });
-
-
-    function updateTotal() {
-        let waterCost = parseFloat(document.getElementById("waterwage").value) || 0;
-        let elecCost = parseFloat(document.getElementById("elecwage").value) || 0;
-        let roomWage = parseFloat(document.getElementById("roomwage").value) || 0;
-        let fineWage = parseFloat(document.getElementById("finewage").value) || 0;
-        let total = document.getElementById("total");
-        total.value = (roomWage + waterCost + elecCost + fineWage).toFixed(2);
-    }
-
-    function sendbill() {
-        let id = document.getElementById("roomid").value;
-        let date = document.getElementById("dates").value;
-        let month = document.getElementById("month").value;
-        let roomWage = document.getElementById("roomwage").value;
-        let waterUse = document.getElementById("wateruse").value;
-        let waterWage = document.getElementById("waterwage").value;
-        let elecUse = document.getElementById("elecuse").value;
-        let elecWage = document.getElementById("elecwage").value;
-        let total = document.getElementById("total").value;
-        let fine = document.getElementById("fine").value;
-        let finewage = document.getElementById("finewage").value;
-
-        let data = {
-            date: date,
-            fine: fine,
-            wateruse: parseFloat(waterUse) || 0,
-            roomwage: parseFloat(roomWage) || 0,
-            elecuse: parseFloat(elecUse) || 0,
-            total: parseFloat(total) || 0,
-            finewage: parseFloat(finewage) || 0
-        };
-
-        fetch(`/insertbill/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-            .then(response => response.json())
-            .then(data => {
-                createPayment();
-                alert("บันทึกข้อมูลเรียบร้อย!");
-                console.log("Success:", data);
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
-            });
-    }
-
-
-    function createPayment() {
-        fetch("/createbill", {
-            method: "POST", // หรือใช้ PUT, DELETE ตามที่ต้องการ
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({}) // ไม่ต้องส่งข้อมูลใดๆ
-        })
-            .then(() => console.log("Request sent successfully")) // ตรวจสอบว่า fetch ทำงาน
-            .catch(error => console.error("Error:", error)); // จับข้อผิดพลาด
-    }
-
-
-</script>
-
 </html>

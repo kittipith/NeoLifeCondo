@@ -10,7 +10,6 @@
     <div class="biggest">
         <div class="bigger">
             <div class="big">
-                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
                 <div class="logo">
                     <img src="/website/static/img/logo_condo.png">
                     <span>Neo Life Condo</span>
@@ -33,20 +32,12 @@
         </div>
     </div>
     <script>
-        function toggleMenu() {
-            document.querySelector(".list-menu").classList.toggle("open");
-        }
-
         function changePage(page, event) {
             var iframe = document.getElementById("contentFrame");
             iframe.src = page;
             iframe.style.display = "block";
             document.querySelectorAll(".list-menu button").forEach(btn => btn.classList.remove("active"));
             event.target.classList.add("active");
-
-            if (window.innerWidth <= 1100) {
-                document.querySelector(".list-menu").classList.remove("open");
-            }
         }
     </script>
 </body>

@@ -67,13 +67,3 @@ body{
     border: 0.5px solid black;
     cursor: pointer;
 }
-.btn-edit:hover{
-    color: white;
-    border: 1px solid white;
-    background-color: #be9f00;
-}
-@media screen and (max-width: 480px){
-    .info-personal{
-        grid-template-columns: repeat(1, 1fr);
-    }
-}

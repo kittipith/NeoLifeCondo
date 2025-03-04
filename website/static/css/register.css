@@ -96,7 +96,7 @@ hr{
 .IDCard select{
     height: 40px;
     font-size: 18px;
-    width: 35%;
+    width: 25%;
     padding: 5px 5px;
     border-bottom: 1px solid black;
 }
@@ -111,23 +111,4 @@ hr{
 }
 .gender input{
     margin-top: 20px;
-}
-@media screen and (max-width: 768px){
-    .info-detail{
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .regis-detail{
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media screen and (max-width: 480px){
-    .info-detail{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .regis-detail{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .IDCard select{
-        width: 70%;
-    }
 }

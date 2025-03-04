@@ -19,22 +19,7 @@
             </div>
         </div>
         <div class="text-row">
-            <p>ประจำเดือน</p>
-            <select class="input-top">
-                <option value="" selected>เลือกเดือน</option>
-                <option>มกราคม</option>
-                <option>กุมภาพันธ์</option>
-                <option>มีนาคม</option>
-                <option>เมษายน</option>
-                <option>พฤษภาคม</option>
-                <option>มิถุนายน</option>
-                <option>กรกฎาคม</option>
-                <option>สิงหาคม</option>
-                <option>กันยายน</option>
-                <option>ตุลาคม</option>
-                <option>พฤศจิกายน</option>
-                <option>ธันวาคม</option>
-            </select>
+            <p>ประจำเดือน</p><input type="text" class="input-top">
             <div class="text-end">
                 <p>ชื่อ</p>
                 <input type="text" class="input-tops">
@@ -98,8 +83,18 @@
     <div class="text">
         <div class="text-row">
             <p style="text-align: start;">หมายเหตุ:ใบเสร็จรับเงินนี้จะสมบูรณ์ เมื่อได้รับการชำระเงินเป็นที่เรียบร้อย</p>
-            <button class="submit-btn">เสร็จสิ้น</button>
+            <img src="../static/img/qrcode.png" class="qrcode">
         </div>
+        <button id="print">
+            <img src="../static/img/print.png">
+        </button>
     </div>
+
+    <script>
+        const printBtn = document.getElementById('print');
+        printBtn.addEventListener('click', function () {
+            print();
+        })
+    </script>
 </body>
 </html>
