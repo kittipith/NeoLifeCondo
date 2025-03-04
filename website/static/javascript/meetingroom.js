@@ -123,7 +123,9 @@ function changeTable(smalldevice) {
 
         // loopวัน14วัน
         for(let i = 0; i < 14; i++) {
-            date.setDate(date.getDate()+1);
+            if(i!=0){
+                date.setDate(date.getDate()+1);
+            }
             day = date.getDate()-1, month = (date.getMonth() + 1), year = date.getFullYear();
             dayString = ''+day, monthString = ''+month;
             if (monthString.length < 2) monthString = '0' + monthString;
@@ -143,15 +145,6 @@ function changeTable(smalldevice) {
                     }
                     else{
                         currentTableTime = new Date(`${fullDateValue}T${j + 9}:00:00`);
-                    }
-                    if(i==0 && j==0){
-                        while(coWorkDate_start.getTime() < currentTableTime.getTime()){
-                            coWorkdata_count += 1;
-                            if(coWorkdata_count < coWorkdata.length){
-                                coWorkDate_start = new Date(coWorkdata[coWorkdata_count].starttime);
-                                coWorkDate_end = new Date(coWorkdata[coWorkdata_count].endtime);
-                            }
-                        }
                     }
                     if(currentTableTime.getTime() >= coWorkDate_start.getTime() && currentTableTime.getTime() < coWorkDate_end.getTime()){
                         tablehtml += `<td style="background-color: #FF0000;"></td>`;
