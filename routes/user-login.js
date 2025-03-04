@@ -151,6 +151,7 @@ router.get("/user/reserve/:coworkname", (req, res) => {
     //ตรวจสอบและถอดรหัส refresh token
     const user = jwt.verify(token, REFRESH_SECRET);
     console.log(coworkname);
+    
     db.get(`SELECT * FROM Cowork c
             JOIN room r ON c.room_id = r.room_id  
             JOIN users u ON r.renter_id = u.user_id

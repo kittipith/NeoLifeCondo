@@ -19,18 +19,30 @@ fetch(`http://localhost:3000/meetdata/${coworkname.innerText}`)
 
 // เปลี่ยนตารางเวลาบริการเมื่อขนาดเปลี่ยน
 function changeTable(smalldevice) {
+    const selectedDate = document.getElementById("selected_date");
     let tablehtml = '';
     let coWorkdata_count = 0;
     let coWorkDate_start, coWorkDate_end, filtercoWorkData, currentTableTime;
-    const selectedDate = document.getElementById("selected_date");
     let date = new Date(), day = date.getDate()-1, month = (date.getMonth() + 1), year = date.getFullYear(), fullDate, firstFullDate;
     let dayString = ''+day, monthString = ''+month;
 
-    if(coworkname.innerText == 'meeting')coworkname.innerText = 'ห้องประชุม';
-    else if(coworkname.innerText == 'badminton')coworkname.innerText = 'สนามแบดมินตัน';
-    else if(coworkname.innerText == 'basketball')coworkname.innerText = 'สนามบาส';
-    else if(coworkname.innerText == 'theater')coworkname.innerText = 'ห้องดูหนัง';
-
+    switch(coworkname.innerText) { 
+        case 'badminton':
+            coworkname.innerText = 'แบดมินตัน';
+            break;
+        case 'meeting':
+            coworkname.innerText = 'ห้องประชุม';
+            break;
+        case 'basketball':
+            coworkname.innerText = 'บาสเกตบอล';
+            break;
+        case 'theater':
+            coworkname.innerText = 'ห้องดูหนัง';
+            break;
+        default:
+            coworkname.innerText = coworkname.innerText;
+    }
+    
     if (smalldevice.matches) {
         tablehead.innerHTML = "<tr><th class=\"firsthead\">เวลา</th><th>การจอง</th></tr>";
 
@@ -85,7 +97,7 @@ function changeTable(smalldevice) {
                 if(currentTableTime.getTime() >= coWorkDate_start.getTime() && currentTableTime.getTime() < coWorkDate_end.getTime()){
                     tablehtml += `<td style="background-color: #FF0000;"></td>`;
                 }
-                else if(currentTableTime.getTime() === coWorkDate_end.getTime()){
+                else if(currentTableTime.getTime() >= coWorkDate_end.getTime()){
                     coWorkdata_count += 1
                         if(coWorkdata_count  < filtercoWorkData.length){
                             coWorkDate_start = new Date(filtercoWorkData[coWorkdata_count].starttime);
@@ -156,7 +168,7 @@ function changeTable(smalldevice) {
                     if(currentTableTime.getTime() >= coWorkDate_start.getTime() && currentTableTime.getTime() < coWorkDate_end.getTime()){
                         tablehtml += `<td style="background-color: #FF0000;"></td>`;
                     }
-                    else if(currentTableTime.getTime() === coWorkDate_end.getTime()){
+                    else if(currentTableTime.getTime() >= coWorkDate_end.getTime()){
                         coWorkdata_count += 1;
                         if(coWorkdata_count < coWorkdata.length){
                             coWorkDate_start = new Date(coWorkdata[coWorkdata_count].starttime);
@@ -210,6 +222,7 @@ let smalldevice = window.matchMedia("(max-width: 768px)");
 smalldevice.addEventListener("change", function() {
     changeTable(smalldevice);
 });
+
 const select_option = document.getElementById('select_table_date');
 select_option.addEventListener('change', function() {
     selectedValue = select_option.value;
