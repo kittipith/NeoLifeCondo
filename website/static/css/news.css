@@ -31,6 +31,37 @@ body{
 .del:hover{
     background-color: #a10000;
 }
+
+.show{
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: white;
+    background-color: green;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.show:hover{
+    background-color: green;
+}
+
+.unshow{
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: white;
+    background-color: #FF0000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.unshow:hover{
+    background-color: #a10000;
+}
+
 table{
     width: 100%;
     border-collapse: collapse;
@@ -67,13 +98,13 @@ input[type="checkbox"]{
     cursor: pointer;
 }
 th:nth-child(2), td:nth-child(2) {
-    width: 500px;
+    width: 250px;
     word-break: break-word;
     overflow-wrap: break-word;
     white-space: normal;
 }
 th:nth-child(3), td:nth-child(3) {
-    width: 500px;
+    width: 250px;
     word-break: break-word;
     overflow-wrap: break-word;
     white-space: normal;
