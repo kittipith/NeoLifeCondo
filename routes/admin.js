@@ -21,7 +21,7 @@ router.get("/admin", (req, res) => {
 router.get("/admin/user-info", (req, res) => {
 
     const query = `SELECT users.user_id, room.room_number, users.title, users.name, users.surname, address.phone, address.line
-FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.address_id = address.address_id WHERE room.renter_id IS NOT NULL;`;
+FROM room JOIN users ON room.renter_id = users.user_id JOIN address ON users.address_id = address.address_id WHERE users.account_id IS NOT NULL;`;
     db.all(query, (err, rows) => {
         if (err) {
             console.log(err.message);
