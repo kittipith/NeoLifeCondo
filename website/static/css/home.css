@@ -595,10 +595,6 @@ html {
     margin-top: 3%;
 }
 
-.facitem p {
-    font-size: 18px;
-}
-
 .imgfac {
     border: 2px solid #000000;
     padding: 15%;
@@ -680,6 +676,12 @@ html {
         align-items: center;
         justify-content: center;
     }
+    .facitem {
+        width: 50%;
+    }
+    .facilities p {
+        font-size: 50%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -687,13 +689,6 @@ html {
     .home,
     .slideshow-container {
         max-height: 90vh;
-    }
-
-    .prev,
-    .next {
-        width: 6vw;
-        height: 6vw;
-        font-size: 3vw;
     }
 
     .dot {
@@ -764,7 +759,12 @@ html {
     .room-card {
         width: 100%;
     }
-
+    .facitem {
+        width: 50%;
+    }
+    .facilities p {
+        font-size: 80%;
+    }
     .c_contact {
         width: 100%;
     }
@@ -828,12 +828,6 @@ html {
         height: 40vh;
     }
 
-    .prev,
-    .next {
-        width: 7vw;
-        height: 7vw;
-        font-size: 4vw;
-    }
 
     .dot {
         height: 6px;
