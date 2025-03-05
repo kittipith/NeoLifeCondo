@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <button class="show" onclick="openPopup('popup-news.html');">เพิ่มข่าวสาร</button>
+  <button class="show" onclick="openPopup('popup-news');">เพิ่มข่าวสาร</button>
   <button class="del" onclick="submitForm('/submitdelnews')">ลบข้อมูล</button>
   <form id="newsForm" method="POST">
     <table>
@@ -65,6 +65,9 @@
             </div>
       </tbody>
     </table>
+    <div id="popup" class="popup">
+      <iframe id="ContentIframe"></iframe>
+  </div>
   </form>
   <script src="/static/javascript/refreshtoken-admin.js"></script>
   <script src="../static/javascript/checkbox.js"></script>
@@ -131,6 +134,25 @@
       var modal = document.getElementById("myModal");
       modal.style.display = "none";  // ปิด modal
     }
+
+    function openNewsPopup(url) {
+    var popup = document.getElementById("popup");
+    var iframe = document.getElementById("ContentIframe");
+    iframe.src = `${url}`;
+    popup.style.display = "block";
+}
+function closeNewsPopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+  function closeNewsPopupAdd() {
+    document.getElementById("popup").style.display = "none";
+    alert("เพิ่มข่าวสำเร็จ");
+    setTimeout(() => {
+        window.location.reload(true);
+    }, 1000);
+}
+
   </script>
 
 

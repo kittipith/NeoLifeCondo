@@ -91,12 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // อัปเดตสถานะในตาราง
         if (newStatus === 1) {
-            statusCell.innerHTML = `<p style="color: green;">แสดงอยู่</p>`;
+            statusCell.innerHTML = `<p style="color: green;">ยืนยันแล้ว</p>`;
             button.innerText = "ยกเลิก";
             button.className = "unshow";
             button.onclick = (e) => toggleStatus(e, newsId, 0);
         } else {
-            statusCell.innerHTML = `<p style="color: red;">ไม่ได้แสดง</p>`;
+            statusCell.innerHTML = `<p style="color: red;">ยังไม่ยืนยัน</p>`;
             button.innerText = "ยืนยัน";
             button.className = "show";
             button.onclick = (e) => toggleStatus(e, newsId, 1);

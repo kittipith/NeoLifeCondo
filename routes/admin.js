@@ -319,6 +319,12 @@ router.get("/admin/news", (req, res) => {
     });
 });
 
+
+router.get("/admin/popup-news", (req, res) => {
+    res.render('popup-news');
+});
+
+
 router.get("/admin/popup-user-info", (req, res) => {
     // let user_id = req.params.id;
     // let query = ``
@@ -591,6 +597,20 @@ router.get("/admin/write-bill/:id", (req, res) => {
         res.render('write-bill', { data: rows });
     });
 });
+
+router.post("/submitaddNews", (req, res) => {
+    const data = req.body;
+    db.run("INSERT INTO news (new_name, info, date, time, pic) VALUES (?, ?, ?, ?, ?)",
+        [data.title, data.info, data.date, data.time, data.filebase642], (err) => {
+            if (err) {
+                console.error("Error inserting new request:", err);
+            } else {
+                console.log("New request inserted successfully");
+            }
+        });
+        res.redirect('/admin/news');
+});
+
 
 
 router.put("/updatenews/:newsId", (req, res) => {

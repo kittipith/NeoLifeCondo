@@ -8,28 +8,60 @@
     <link rel="stylesheet" href="../static/css/popup-news.css">
 </head>
 <body>
+    <form action="/submitaddNews" method="post">
     <div class="container">
         <h1>เพิ่มข่าวสาร</h1>
         <div class="form-group">
+            <p>ชื่อข่าว</p>
+            <input name="title"  type="text" placeholder="กรอกชื่อข่าว">
+        </div>
+        <div class="form-group">
             <p>รายละเอียดข่าวสาร</p>
-            <input type="text" placeholder="กรอกรายละเอียดข่าวสาร">
+            <input name="info"  type="text" placeholder="กรอกรายละเอียดข่าวสาร">
         </div>
         <div class="form-group">
             <p>ใส่รูปภาพ</p>
-            <input type="file">
+                <input type="file" id="file2" name="file2" accept="image/*">
+                <input type="text" id="filebase642" name="filebase642" value="none" hidden>
         </div>
         <div class="form-group">
             <p>ใส่วันที่</p>
-            <input type="date">
+            <input name="date" type="date">
         </div>
         <div class="form-group">
             <p>ใส่เวลา</p>
-            <input type="time">
+            <input name="time" type="time">
         </div>
         <div class="btn-container">
-            <button>เสร็จสิ้น</button>
-            <button onclick="window.parent.closePopup()">ปิด</button>
+            <button type="submit" onclick="window.parent.closeNewsPopupAdd()">เสร็จสิ้น</button>
+            <button type="button" onclick="window.parent.closeNewsPopup()">ปิด</button>
         </div>
     </div>
+</form>
 </body>
+<script>
+    document.getElementById("file2").addEventListener("change", async function () {
+            const fileInput = this;
+            const hiddenInput = document.getElementById("filebase642");
+        
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const base64String = await toBase64(file);
+                hiddenInput.value = base64String;
+            } else {
+                hiddenInput.value = "";
+            }
+        });
+
+        // ฟังก์ชันแปลงไฟล์เป็น Base64
+        function toBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+</script>
+
 </html>
