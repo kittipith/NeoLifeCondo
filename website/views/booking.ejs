@@ -52,7 +52,11 @@
                             </div>
                         </div>
                         <div class="book_img">
-                            <img src="/static/img/inside_condo1.webp">
+                            <% if ( condo.floor-1 === 0 ) { %>
+                                <img src="/static/img/inside_condo1.webp">
+                            <% } else { %>
+                                <img src="/static/img/roomdetal<%= condo.floor-1 %>.png">
+                            <% } %>
                         </div>
                     </div>
                     <hr>
