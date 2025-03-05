@@ -106,7 +106,7 @@ body{
     #print {
         display: none;
     }
-    #file, #paymentImg {
+    #file, #paymentImg, .text span {
         display: none !important;
     }
 }
