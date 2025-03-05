@@ -74,22 +74,22 @@
                 <td><input id="elecwage" type="text" class="input-inside"></td>
             </tr>
             <tr>
-                <td><input id="fine" type="text" class="input-inside"></td>
+                <td><input type="text" class="input-inside" disabled></td>
+                <td><input type="text" class="input-inside" disabled></td>
+                <td><input type="text" class="input-inside" disabled></td>
+                <td><input type="text" class="input-inside" disabled></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="input-inside" disabled></td>
+                <td><input type="text" class="input-inside" disabled></td>
+                <td><input type="text" class="input-inside" disabled></td>
+                <td><input type="text" class="input-inside" disabled></td>
+            </tr>
+            <tr>
+                <td style="display: flex; align-items: center; border: none;"><p style="margin-left: 10px;"> ค่าปรับ : </p><input id="fine" type="text" class="input-inside" value=""></td>
                 <td><input id="fineuse" type="text" class="input-inside"></td>
                 <td><input type="text" class="input-inside"></td>
                 <td><input id="finewage" type="text" class="input-inside"></td>
-            </tr>
-            <tr>
-                <td><input type="text" class="input-inside"></td>
-                <td><input type="text" class="input-inside"></td>
-                <td><input type="text" class="input-inside"></td>
-                <td><input type="text" class="input-inside"></td>
-            </tr>
-            <tr>
-                <td><input type="text" class="input-inside"></td>
-                <td><input type="text" class="input-inside"></td>
-                <td><input type="text" class="input-inside"></td>
-                <td><input type="text" class="input-inside"></td>
             </tr>
             <tr>
                 <td class="text-detail">รวมทั้งสิ้น</td>
@@ -187,6 +187,7 @@
             .then(data => {
                 createPayment();
                 alert("บันทึกข้อมูลเรียบร้อย!");
+                window.close();
                 console.log("Success:", data);
             })
             .catch(error => {
