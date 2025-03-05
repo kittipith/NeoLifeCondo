@@ -40,6 +40,17 @@ body {
     cursor: pointer;
     border-radius: 3px;
 }
+#backbutton{
+    width: 150px;
+    height: 50px;
+    background-color: #f0f0f0;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-bottom: 2%;
+    align-self: flex-start;
+    margin-left: -8px;
+}
 
 .meetinginfo p {
     margin: 5px 0;
@@ -55,6 +66,10 @@ body {
 .first_row{
     display: flex;
     flex-direction: row;
+}
+
+.first_title{
+    margin-left: 10px !important;
 }
 .timerow{
     display: flex;
@@ -153,6 +168,8 @@ body {
     margin-left: 72px !important;
 }
 
+
+
 @media only screen and (max-width: 768px) {
     body {
         font-size: 1rem;
@@ -221,6 +238,10 @@ body {
     .end_time_lable{
         margin-left: 20px;
     }
+    #backbutton{
+        width: 100px;
+        height: 40px;
+    }
 }
 
 @media only screen and (max-width: 375px) {
@@ -257,6 +278,16 @@ body {
     }
     .more2{
         margin-left: 0px !important; 
+    }
+    #backbutton{
+        width: 100px;
+        height: 40px;
+    }
+    .first_row{
+        flex-direction: column;
+    }
+    .first_title{
+        margin-left: 0px !important;
     }
 }
 

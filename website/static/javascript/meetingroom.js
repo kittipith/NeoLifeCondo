@@ -28,13 +28,13 @@ function changeTable(smalldevice) {
 
     switch(coworkname.innerText) { 
         case 'badminton':
-            coworkname.innerText = 'แบดมินตัน';
+            coworkname.innerText = 'สนามแบดมินตัน';
             break;
         case 'meeting':
             coworkname.innerText = 'ห้องประชุม';
             break;
         case 'basketball':
-            coworkname.innerText = 'บาสเกตบอล';
+            coworkname.innerText = 'สนามบาส';
             break;
         case 'theater':
             coworkname.innerText = 'ห้องดูหนัง';
