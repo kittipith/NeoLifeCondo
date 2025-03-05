@@ -119,6 +119,39 @@ hr{
     margin: 5px auto;
 }
 
+
+.btn-last {
+    display: flex;
+    height: 3em;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+    color: #4A4A4A;
+    background-color: white;
+}
+.btn-last img{
+    width: 20px;
+    height: 20px;
+}
+.btn-last > img {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    transition: all 0.4s ease-in;
+}
+.btn-last:hover > img {
+    font-size: 1.2em;
+    transform: translateX(-5px);
+}
+.btn-last:hover {
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+}
+
 .loader {
     display: none;
     flex-direction: column;

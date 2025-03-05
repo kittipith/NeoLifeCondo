@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neo Life Condo</title>
     <link rel="stylesheet" href="/static/css/login.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <form id="loginform">
         <div class="head">
@@ -36,8 +39,10 @@
                 </div>
                 <hr>
                 <div class="last">
-                    <p>ข้าพเจ้ายอมรับใน เงื่อนไขและข้อตกลงการใช้บริการ และ นโยบายความเป็นส่วนตัว รวมไปถึงการเก็บรวบรวม,
-                        การนำไปใช้ และ การเปิดเผยข้อมูลส่วนบุคคลของข้าพเจ้า</p>
+                    <button class="btn-last">
+                        <img src="/static/img/arrow.png">
+                        <span>Back to HomePage</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -46,10 +51,10 @@
     <div class="loader" id="downloadLoader">
         <p class="heading">Loading</p>
         <div class="loading">
-          <div class="load"></div>
-          <div class="load"></div>
-          <div class="load"></div>
-          <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
         </div>
     </div>
 
@@ -58,10 +63,10 @@
             event.preventDefault();
 
             document.querySelector('.loader').style.display = 'flex';
-    
+
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-    
+
             try {
                 const response = await fetch("http://localhost:3000/login", {
                     method: "POST",
@@ -69,9 +74,9 @@
                     body: JSON.stringify({ username, password }),
                     credentials: "include" // เพื่อให้ browser ส่ง cookies ไปด้วย
                 });
-    
+
                 if (!response.ok) throw new Error("Login Failed");
-    
+
                 const data = await response.json();
                 localStorage.setItem("accessToken", data.accessToken);
 
@@ -91,4 +96,5 @@
         });
     </script>
 </body>
+
 </html>

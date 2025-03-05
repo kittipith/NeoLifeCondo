@@ -12,11 +12,19 @@
 <body style="display: none;">
     <div class="container">
         <div class="profile-header">
-            <img src="../static/img/porson.jpg" alt="Profile">
-            <div>
-                <h2><strong>ชื่อ:</strong><%= data.title %><%= data.name %> <%= data.surname %></span></h2>
-                <p>ห้อง <strong><%= room_number.room_number %></strong></p>
+            <div class="profile-header-inside">
+                <img src="../static/img/porson.jpg" alt="Profile">
+                <div>
+                    <h2><strong>ชื่อ:</strong><%= data.title %><%= data.name %> <%= data.surname %></span></h2>
+                    <p>ห้อง <strong><%= room_number.room_number %></strong></p>
+                </div>
             </div>
+            <button class="button-back">
+                <div class="icon-container">
+                    <img src="../static/img/arrow-white.png">
+                </div>
+                <p>Go Back</p>
+            </button>
         </div>
         <div class="incon">
             <div class="info-section">

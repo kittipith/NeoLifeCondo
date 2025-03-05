@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neo Life Condo</title>
     <link rel="stylesheet" href="/static/css/room_detail.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
     <script src="/static/javascript/room_detail.js"></script>
 </head>
+
 <body>
+    <button class="button-back">
+        <div class="icon-container">
+            <img src="../static/img/arrow-white.png">
+        </div>
+        <p>Go Back</p>
+    </button>
     <div class="room">
         <div class="img_roomall">
             <div class="img_room1">
@@ -27,7 +36,8 @@
         <div class="text">
             <div class="detail">
                 <div>
-                    <h1>ห้อง <%= condo.room_number %></h1>
+                    <h1>ห้อง <%= condo.room_number %>
+                    </h1>
                     <h1>฿ <%= Number(condo.price).toLocaleString() %> /เดือน</h1>
                     <hr>
                 </div>
@@ -36,19 +46,25 @@
                         <div class="circle-border">
                             <img src="/static/img/double-bed.png">
                         </div>
-                        <p><%= condo.bed_room %> ห้องนอน</p>
+                        <p>
+                            <%= condo.bed_room %> ห้องนอน
+                        </p>
                     </div>
                     <div>
                         <div class="circle-border">
                             <img src="/static/img/bath-tub.png">
                         </div>
-                        <p><%= condo.bath_room %> ห้องน้ำ</p>
+                        <p>
+                            <%= condo.bath_room %> ห้องน้ำ
+                        </p>
                     </div>
                     <div>
                         <div class="circle-border">
                             <img src="/static/img/length.png">
                         </div>
-                        <p><%= condo.area %> ตร.ม.</p>
+                        <p>
+                            <%= condo.area %> ตร.ม.
+                        </p>
                     </div>
                     <div>
                         <div class="circle-border">
@@ -67,21 +83,22 @@
                     <p>รายละเอียดห้องดังนี้</p>
                     <ul type="circle">
                         <li>ขนาด <%= condo.area %> ตร.ม.</li>
-                        <li>ชั้น <%= condo.floor %></li>
-                        <% if (condo.corner === "Yes") { %>
+                        <li>ชั้น <%= condo.floor %>
+                        </li>
+                        <% if (condo.corner==="Yes" ) { %>
                             <li>ห้องหัวมุม วิวดี ระเบียงกว้างกว่าเดิม</li>
-                        <% } %>
-                        <li>เฟอร์นิเจอร์และเครื่องใช้ไฟฟ้ามีดังนี้</li>
-                        <ul class="hidden-list" type="disc">
-                            <li>เครื่องปรับอากาศ</li>
-                            <li>ตู้เย็น</li>
-                            <li>เครื่องทำน้ำอุ่น</li>
-                            <li>ตู้เสื้อผ้า</li>
-                            <li>เตียงนอน + ฟูกขนาด 6 ฟุต</li>
-                            <li>เค้าเตอร์ครัวบิ้วอิน</li>
-                            <li>Samsung LED 43 นิ้ว Smart TV</li>
-                        </ul>
-                        <span class="see-more" onclick="toggleList()">...ดูเพิ่มเติม</span>
+                            <% } %>
+                                <li>เฟอร์นิเจอร์และเครื่องใช้ไฟฟ้ามีดังนี้</li>
+                                <ul class="hidden-list" type="disc">
+                                    <li>เครื่องปรับอากาศ</li>
+                                    <li>ตู้เย็น</li>
+                                    <li>เครื่องทำน้ำอุ่น</li>
+                                    <li>ตู้เสื้อผ้า</li>
+                                    <li>เตียงนอน + ฟูกขนาด 6 ฟุต</li>
+                                    <li>เค้าเตอร์ครัวบิ้วอิน</li>
+                                    <li>Samsung LED 43 นิ้ว Smart TV</li>
+                                </ul>
+                                <span class="see-more" onclick="toggleList()">...ดูเพิ่มเติม</span>
                     </ul>
                 </div>
                 <div>
@@ -125,4 +142,5 @@
         </div>
     </div>
 </body>
+
 </html>
