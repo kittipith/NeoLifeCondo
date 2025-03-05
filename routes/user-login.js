@@ -47,15 +47,11 @@ router.get("/user/information", (req, res) => {
 
 router.post("/user/service", (req, res) => {
     const { numroom, service, date, time, note, filebase641 } = req.body;
-
-    // console.log("📌 รับข้อมูล:", { numroom, service, date, time, note });
-    // console.log("🖼️ รูปภาพ Base64:", filebase64.substring(0, 100) + "..."); // แสดงเฉพาะ 100 ตัวอักษรแรก
-
     if (service === "01") {
         db.get("SELECT room_id FROM room WHERE room_number = ?", [numroom], (err, room_id) => {
             // console.log(room_id.room_id);
             db.run("INSERT INTO servicesReq (service_id, room_id, info, date, time, pic) VALUES (?, ?, ?, ?, ?, ?)",
-                [serviceId, room_id.room_id, note, date, time, filebase64], (err) => {
+                [serviceId, room_id.room_id, note, date, time, filebase641], (err) => {
                     if (err) {
                         console.error("Error inserting service request:", err);
                     } else {
@@ -67,7 +63,7 @@ router.post("/user/service", (req, res) => {
         db.get("SELECT room_id FROM room WHERE room_number = ?", [numroom], (err, room_id) => {
             // console.log(room_id.room_id);
             db.run("INSERT INTO repairReq (room_id, info, date, time, pic) VALUES (?, ?, ?, ?, ?)",
-                [room_id.room_id, note, date, time, filebase64], (err) => {
+                [room_id.room_id, note, date, time, filebase641], (err) => {
                     if (err) {
                         console.error("Error inserting repair request:", err);
                     } else {
@@ -78,7 +74,6 @@ router.post("/user/service", (req, res) => {
     }
 
     res.redirect("/user/room");
-    // res.json({ success: true, message: "ส่งข้อมูลสำเร็จ!", data: { numroom, service, date, time, note, filebase64 } });
 });
 
 router.post("/user/contactstaff", (req, res) => {
