@@ -9,10 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <button id="backbutton" onclick="window.location.href='/user/room'">ย้อนกลับ</button>
     <div class="container">
         <div class="meetinginfo">
             <div class="row">
-                <div class="first_row"><p style="font-size: 1.2rem; margin-left: 10px;">ข้อมูลการจองใช้</p><p style="font-size: 1.2rem;" id="coworkname"><%= coworkname %></p></div>
+                <div class="first_row"><p style="font-size: 1.2rem;" class="first_title">ข้อมูลการจอง</p><p style="font-size: 1.2rem;" id="coworkname"><%= coworkname %></p></div>
                 <button id="editinfo" onclick="editData();">แก้ไขข้อมูล</button>
             </div>
             <form action="/user/savecowork" method="POST" class="meetingdetail" id="meetingdetail" onsubmit="return validateForm()">
