@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="display: none;">
     <form action="/setregister" method="post">
     <div>
         <div class="img-logo">
@@ -156,6 +156,7 @@
         </div>
     </div>
 </form>
+    <script src="/static/javascript/refreshtoken-admin.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", async function () {
             const otherRadio = document.getElementById("other");

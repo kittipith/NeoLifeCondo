@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/popup-news.css">
 </head>
-<body>
+<body style="display: none;">
     <form action="/submitaddNews" method="post">
     <div class="container">
         <h1>เพิ่มข่าวสาร</h1>
@@ -39,6 +39,7 @@
     </div>
 </form>
 </body>
+<script src="/static/javascript/refreshtoken-admin.js"></script>
 <script>
     document.getElementById("file2").addEventListener("change", async function () {
             const fileInput = this;
