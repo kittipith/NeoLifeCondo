@@ -15,7 +15,7 @@
             <img src="../static/img/porson.jpg" alt="Profile">
             <div>
                 <h2><strong>ชื่อ:</strong><%= data.title %><%= data.name %> <%= data.surname %></span></h2>
-                <p>ห้อง</strong> 103</span></p>
+                <p>ห้อง <strong><%= room_number.room_number %></strong></p>
             </div>
         </div>
         <div class="incon">
@@ -152,6 +152,7 @@
                     window.location.href = `/user/bill/${billId}`;
                 });
             });
+
         });
         let lastMonthName = '';
         let lastYear = '';
@@ -180,6 +181,7 @@
             document.getElementById('popupser').style.display = 'none';
         }
 
+    
     </script>
 </body>
 </html>

@@ -36,7 +36,9 @@ router.get("/user/information", (req, res) => {
                                     JOIN room r ON c.room_id = r.room_id  
                                     JOIN users u ON r.renter_id = u.user_id
                                     WHERE u.user_id = ${user.id};`, [], (err, coworkData) => {
-                                    res.render("userinfo", { data: data, bill_data: bill_data, total: countData.total, coworkData: coworkData});
+                                        db.get(`SELECT room_number FROM room WHERE renter_id = ${user.id}`, (err, room_number) => {
+                                            res.render("userinfo", { data: data, bill_data: bill_data, total: countData.total, coworkData: coworkData, room_number: room_number});
+                                        });
                 });
             });
         });
@@ -85,7 +87,7 @@ router.post("/user/contactstaff", (req, res) => {
     // console.log("📌 รับข้อมูล:", { numroom, cont, date, time, title, info });
     // console.log("🖼️ รูปภาพ Base64:", filebase642.substring(0, 100) + "..."); // แสดงเฉพาะ 100 ตัวอักษรแรก
 
-    if (cont === "01" || cont === "03") {
+    if (cont === "01") {
         // console.log(room_id.room_id);
         db.run("INSERT INTO news (new_name, info, date, time, pic) VALUES (?, ?, ?, ?, ?)",
             [title, info, date, time, filebase642], (err) => {
@@ -104,6 +106,17 @@ router.post("/user/contactstaff", (req, res) => {
                         console.error("Error inserting contactStaff request:", err);
                     } else {
                         console.log("ContactStaff request inserted successfully");
+                    }
+                });
+        });
+    }  else if (cont === "03") {
+        db.get("SELECT room_id FROM room WHERE room_number = ?", [numroom], (err, room_id) => {
+            db.run("INSERT INTO repairReq (room_id, info, pic, date, time) VALUES (?, ?, ?, ?, ?)",
+                [room_id.room_id, info, filebase642, date, time], (err) => {
+                    if (err) {
+                        console.error("Error inserting new repaireq:", err);
+                    } else {
+                        console.log("New repaireq inserted successfully");
                     }
                 });
         });
@@ -220,7 +233,5 @@ router.get("/user/payment/image/:bill_id", (req, res) => {
         res.end(imgBuffer);
     });
 });
-
-
 
 module.exports = router;
