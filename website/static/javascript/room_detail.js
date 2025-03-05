@@ -9,4 +9,4 @@ function toggleList() {
       list.style.display = "none";
       button.innerText = "...ดูเพิ่มเติม";
     }
-  }
+}

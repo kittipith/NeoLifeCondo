@@ -208,8 +208,13 @@ nav a:hover {
 }
 
 @keyframes fade {
-    from { opacity: 0.4; }
-    to { opacity: 1; }
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media (max-width: 768px) {
@@ -222,6 +227,7 @@ nav a:hover {
 }
 
 @media (max-width: 480px) {
+
     .home,
     .slideshow-container {
         height: 40vh;
@@ -374,7 +380,7 @@ html {
 
 }
 
-.room-info a{
+.room-info a {
     text-decoration: none;
 }
 
@@ -482,6 +488,7 @@ html {
         width: 100%;
         gap: 2%;
     }
+
     .filter h3 {
         font-size: 16px;
         margin-bottom: 10px;
@@ -494,9 +501,9 @@ html {
 
     .roomshow {
         display: flex;
-            width: 100%;
-            margin: 5%;
-            align-items: center;
+        width: 100%;
+        margin: 5%;
+        align-items: center;
     }
 
     .container {
@@ -512,9 +519,10 @@ html {
 
 /* Media Queries สำหรับหน้าจอมือถือ  */
 @media (max-width: 480px) {
-    .di_st_item{
+    .di_st_item {
         display: none;
     }
+
     .reserve {
         padding: 7% 0;
     }
@@ -587,11 +595,11 @@ html {
     margin-top: 3%;
 }
 
-.facitem p{
+.facitem p {
     font-size: 18px;
 }
 
-.imgfac{
+.imgfac {
     border: 2px solid #000000;
     padding: 15%;
     border-radius: 50%;
@@ -613,6 +621,7 @@ html {
     text-align: center;
     padding: 2%;
 }
+
 .contact p {
     color: #ffffff;
 }
@@ -674,6 +683,7 @@ html {
 }
 
 @media (max-width: 768px) {
+
     .home,
     .slideshow-container {
         max-height: 90vh;
@@ -690,6 +700,7 @@ html {
         height: 8px;
         width: 8px;
     }
+
     .concept {
         padding: 5% 0;
         /* ปรับ padding สำหรับหน้าจอเล็ก */
@@ -713,7 +724,8 @@ html {
         font-size: 20px;
     }
 
-    .concept h3, .concept h2 {
+    .concept h3,
+    .concept h2 {
         font-size: 30px;
     }
 
@@ -752,6 +764,7 @@ html {
     .room-card {
         width: 100%;
     }
+
     .c_contact {
         width: 100%;
     }
@@ -760,6 +773,7 @@ html {
         width: 10%;
         height: 10%;
     }
+
     nav {
         flex-direction: column;
         height: auto;
@@ -799,14 +813,16 @@ html {
 }
 
 @media (max-width: 480px) {
-    .room-info a{
+    .room-info a {
         font-size: 12px;
     }
-    .btn{
+
+    .btn {
         width: 100px;
         margin-top: 0;
         height: 45px;
     }
+
     .home,
     .slideshow-container {
         height: 40vh;
@@ -823,6 +839,7 @@ html {
         height: 6px;
         width: 6px;
     }
+
     .concept {
         padding: 6% 0;
         /* ปรับ padding สำหรับหน้าจอเล็กสุด */
@@ -879,9 +896,11 @@ html {
     .room-card {
         width: 100%;
     }
+
     .facitem {
         width: 80%;
     }
+
     .c_contact {
         width: 100%;
     }
@@ -939,9 +958,9 @@ html {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-  }
-  
-  .div {
+}
+
+.div {
     position: relative;
     max-width: 200px;
     width: 100%;
@@ -955,10 +974,10 @@ html {
     animation-direction: reverse;
     border-radius: 10px;
     box-shadow: 0 0 3px;
-  }
-  
-  
-  #h2 {
+}
+
+
+#h2 {
     color: white;
     mix-blend-mode: difference;
     text-align: center;
@@ -969,18 +988,19 @@ html {
     text-shadow: 0 0 3px;
     padding: 0;
     letter-spacing: 5px;
-  }
-  
-  @keyframes gradientAnimation {
-    0% { 
-        background-position: 0; 
-    }
-    100% { 
-        background-position: 200% 0; 
-    }
-  }
+}
 
-  .wrapper {
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.wrapper {
     display: inline-flex;
     list-style: none;
     height: 120px;
@@ -989,14 +1009,15 @@ html {
     padding-top: 40px;
     justify-content: center;
     padding-left: 0;
-  }
+    cursor: pointer;
+}
 
-  .wrapper img{
+.wrapper img {
     width: 40px;
     height: 40px;
-  }
-  
-  .wrapper .icon {
+}
+
+.wrapper .icon {
     position: relative;
     background: #fff;
     border-radius: 50%;
@@ -1011,9 +1032,9 @@ html {
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  
-  .wrapper .tooltip {
+}
+
+.wrapper .tooltip {
     position: absolute;
     top: 0;
     font-size: 14px;
@@ -1025,9 +1046,9 @@ html {
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  
-  .wrapper .tooltip::before {
+}
+
+.wrapper .tooltip::before {
     position: absolute;
     content: "";
     height: 8px;
@@ -1037,53 +1058,53 @@ html {
     left: 50%;
     transform: translate(-50%) rotate(45deg);
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  
-  .wrapper .icon:hover .tooltip {
+}
+
+.wrapper .icon:hover .tooltip {
     top: -45px;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-  }
-  
-  .wrapper .icon:hover span,
-  .wrapper .icon:hover .tooltip {
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .wrapper .line:hover,
-  .wrapper .line:hover .tooltip,
-  .wrapper .line:hover .tooltip::before {
+.wrapper .line:hover,
+.wrapper .line:hover .tooltip,
+.wrapper .line:hover .tooltip::before {
     background: #06C655;
-  }
+}
 
-  .icon.line:hover img{
+.icon.line:hover img {
     content: url(../img/line-white.png);
-  }
-  
-  .wrapper .facebook:hover,
-  .wrapper .facebook:hover .tooltip,
-  .wrapper .facebook:hover .tooltip::before {
+}
+
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
     background: #1877f2;
-  }
+}
 
-  .icon.facebook:hover img{
+.icon.facebook:hover img {
     content: url(../img/facebook-white.png);
-  }
-  
-  .wrapper .mail:hover,
-  .wrapper .mail:hover .tooltip,
-  .wrapper .mail:hover .tooltip::before {
-    background: #e4405f;
-  }
+}
 
-  .icon.mail:hover img{
+.wrapper .mail:hover,
+.wrapper .mail:hover .tooltip,
+.wrapper .mail:hover .tooltip::before {
+    background: #e4405f;
+}
+
+.icon.mail:hover img {
     content: url(../img/mail-white.png);
-  }
-  
-  .wrapper .phone:hover,
-  .wrapper .phone:hover .tooltip,
-  .wrapper .phone:hover .tooltip::before {
+}
+
+.wrapper .phone:hover,
+.wrapper .phone:hover .tooltip,
+.wrapper .phone:hover .tooltip::before {
     background: #FFDF2B;
     color: black;
-  }
+}

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <form action="/condo/<%= condo.room_id %>/reserve" method="POST">
         <div class="big">
@@ -20,41 +18,38 @@
                         <div class="head-second-img">
                             <img src="/static/img/stair.png">
                             <p>ชั้น <%= condo.floor %>
-                            </p> <!-- ดีงข้อมูลชั้น -->
+                            </p>
                         </div>
                         <div class="head-second-img">
                             <img src="/static/img/double-beds.png">
                             <p>
                                 <%= condo.bed_room %> ห้องนอน
-                            </p> <!-- ดีงข้อมูลห้องนอน -->
+                            </p>
                         </div>
                         <div class="head-second-img">
                             <img src="/static/img/bath.png">
                             <p>
                                 <%= condo.bath_room %> ห้องน้ำ
-                            </p> <!-- ดีงข้อมูลห้องน้ำ -->
+                            </p>
                         </div>
                     </div>
                     <div class="book">
                         <div>
-                            <p class="explain">ห้อง <%= condo.room_number %>
-                            </p> <!-- ดีงข้อมูล ID  -->
-                            <p class="explain">พื้นที่ใช้สอย <%= condo.area %> ตร.ม.</p> <!-- ดีงข้อมูล area -->
+                            <p class="explain">ห้อง <%= condo.room_number %></p>
+                            <p class="explain">พื้นที่ใช้สอย <%= condo.area %> ตร.ม.</p>
                             <% if (condo.direction==="North" ) { %>
                                 <p class="explain">ระเบียงห้องหันทางทิศเหนือ</p>
-                                <!-- ใช้เงื่อนไขเอาถ้าทิสเป็น South ก็โชว์ว่า ระเบียงห้องหันทางทิศใต้ ถ้าเป็น North ก็โชว์ว่า ระเบียงห้องหันทางทิศเหนือ -->
-                                <% } else { %>
-                                    <p class="explain">ระเบียงห้องหันทางทิศใต้</p>
-                                    <!-- ใช้เงื่อนไขเอาถ้าทิสเป็น South ก็โชว์ว่า ระเบียงห้องหันทางทิศใต้ ถ้าเป็น North ก็โชว์ว่า ระเบียงห้องหันทางทิศเหนือ -->
-                                    <% } %>
-                                        <div class="booking_date">
-                                            <p>วันที่ต้องการทำสัญญา</p>
-                                            <input type="date" name="contact_day">
-                                        </div>
-                                        <div class="booking_date">
-                                            <p>เวลาที่ต้องการทำสัญญา</p>
-                                            <input type="time" name="contact_time">
-                                        </div>
+                            <% } else { %>
+                                <p class="explain">ระเบียงห้องหันทางทิศใต้</p>
+                            <% } %>
+                            <div class="booking_date">
+                                <p>วันที่ต้องการทำสัญญา</p>
+                                <input type="date" name="contact_day">
+                            </div>
+                            <div class="booking_date">
+                                <p>เวลาที่ต้องการทำสัญญา</p>
+                                <input type="time" name="contact_time">
+                            </div>
                         </div>
                         <div class="book_img">
                             <img src="/static/img/inside_condo1.webp">
@@ -64,7 +59,7 @@
                 </div>
                 <div class="box-confirm">
                     <p class="text-medium">ราคาห้อง</p>
-                    <h1>฿ <%= Number(condo.price).toLocaleString() %> /เดือน</h1> <!-- ดีงราคาห้อง -->
+                    <h1>฿ <%= Number(condo.price).toLocaleString() %> /เดือน</h1>
                     <hr>
                     <p class="text-small">ระยะเวลาขั้นต่ำในการอยู่อาศัยคือ 1 ปี</p>
                     <p class="text-small">กรุณาตรวจสอบรายละเอียดการจองก่อนที่จะยืนยัน</p>
@@ -72,7 +67,6 @@
                         <input type="checkbox">
                         <label>ยอมรับข้อตกลงของยูนิตนี้และเงื่อนไขการจองออนไลน์</label>
                     </div>
-
                     <div class="btn-confirm">
                         <button>ยืนยันการจอง</button>
                     </div>
@@ -166,7 +160,7 @@
                             <label class="label">E-mail*</label>
                         </div>
                         <div class="input">
-                            <input type="text" name="lineId" required placeholder="Line-ID*">
+                            <input type="text" name="lineId" placeholder="Line-ID*">
                             <label class="label">Line-ID*</label>
                         </div>
                     </div>
@@ -174,7 +168,5 @@
             </div>
         </div>
     </form>
-
 </body>
-
 </html>
