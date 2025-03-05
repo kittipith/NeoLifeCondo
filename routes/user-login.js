@@ -126,18 +126,19 @@ router.post("/user/contactstaff", (req, res) => {
 });
 
 router.post("/user/savecowork", (req, res) => {
-    const { cowork_name, room_id, day, starttime, endtime, info } = req.body;
+    const { cowork_name, room_number, day, starttime, endtime, info } = req.body;
     const day_starttime = `${day} ${starttime}:00`;
     const day_endtime = `${day} ${endtime}:00`;
-    db.run("INSERT INTO Cowork (cowork_name, room_id, starttime, endtime, info) VALUES (?, ?, ?, ?, ?)",
-            [cowork_name, room_id, day_starttime, day_endtime, info], (err) => {
-                if (err) {
-                    console.error("Error inserting new request:", err);
-                } else {
-                    console.log("New request inserted successfully");
-                }
-            });
-    
+    db.get("SELECT room_id FROM room WHERE room_number = ?;", [room_number], (err, room_id) => {
+        db.run("INSERT INTO Cowork (cowork_name, room_id, starttime, endtime, info) VALUES (?, ?, ?, ?, ?);",
+                [cowork_name, room_id, day_starttime, day_endtime, info], (err) => {
+                    if (err) {
+                        console.error("Error inserting new request:", err);
+                    } else {
+                        console.log("New request inserted successfully");
+                    }
+                });
+    });
     res.redirect(`/user/reserve/${cowork_name}`);
 });
 
@@ -145,7 +146,7 @@ router.post("/user/editcowork", (req, res) => {
     const { cowork_id, cowork_name, room_id, day, starttime, endtime, info } = req.body;
     const day_starttime = `${day} ${starttime}:00`;
     const day_endtime = `${day} ${endtime}:00`;
-    db.run("UPDATE Cowork SET room_number = ?, starttime = ?, endtime = ?, info = ? WHERE id = ?;",
+    db.run("UPDATE Cowork SET room_id = ?, starttime = ?, endtime = ?, info = ? WHERE id = ?;",
             [room_id, day_starttime, day_endtime, info, cowork_id], (err) => {
                 if (err) {
                     console.error("Error updating new request:", err);

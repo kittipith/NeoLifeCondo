@@ -207,7 +207,7 @@ function changeTable(smalldevice) {
         newOption.hidden = true;
         selectdate.appendChild(newOption);
     } else{
-        document.getElementById("room_id").disabled = true;
+        document.getElementById("room_number").disabled = true;
         document.getElementById("selectdate").disabled = true;
         document.getElementById("start-time").disabled = true;
         document.getElementById("end-time").disabled = true;
@@ -255,6 +255,7 @@ document.getElementById('end-time').addEventListener('change', function() {
 function validateForm() {
     let startTime = document.getElementById('start-time').value;
     let end_Time = document.getElementById('end-time').value;
+    let room_number = document.getElementById("room_number").value;
     let room_id = document.getElementById("room_id").value;
     let selectdate = document.getElementById("selectdate").value;
     startTime_ = startTime.split(':');
@@ -284,7 +285,7 @@ function validateForm() {
         alert("กรุณากรอกวันที่");
         return false;
     }
-    if (room_id === ''){
+    if (room_number === ''){
         alert("กรุณากรอกหมายเลขห้อง");
         return false;
     }
@@ -297,8 +298,9 @@ function validateForm() {
         return false;
     }
     if(coWorkdata && coWorkdata.length != 0){
+        console.log(coWorkdata);
         const isConflict = coWorkdata.some(data => {
-            if(data.room_id != room_id) {
+            if(data.room_id != room_id || room_id === '') {
                 let cowork_starttime = new Date(data.starttime);
                 let cowork_endtime = new Date(data.endtime);
                 if ((cowork_starttime < end_Time_compare) && (startTime_compare < cowork_endtime)) {
@@ -318,7 +320,7 @@ function validateForm() {
 
 // ปุ่มแก้ไขข้อมูล
 function editData() {
-    document.getElementById("room_id").disabled = false;
+    document.getElementById("room_number").disabled = false;
     document.getElementById("selectdate").disabled = false;
     document.getElementById("start-time").disabled = false;
     document.getElementById("end-time").disabled = false;

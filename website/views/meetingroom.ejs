@@ -18,7 +18,8 @@
             <form action="/user/savecowork" method="POST" class="meetingdetail" id="meetingdetail" onsubmit="return validateForm()">
                 <input type="text" value="<%= coworkname %>" name="cowork_name" style="display: none;" id="cowork_name">
                 <input type="text" value="<%= data && data.id ? data.id : '' %>" name="cowork_id" style="display: none;" id="cowork_id">
-                <label class="room_lable">หมายเลขห้อง <input type="text" class="textinput" name="room_id" value="<%= data && data.room_number ? data.room_number : '' %>" id="room_id"></label>
+                <input type="text" value="<%= data && data.room_id ? data.room_id : '' %>" name="room_id" style="display: none;" id="room_id">
+                <label class="room_lable">หมายเลขห้อง <input type="text" class="textinput" name="room_number" value="<%= data && data.room_number ? data.room_number : '' %>" id="room_number"></label>
                 <p id="selected_date" style="display: none;"><%= data && data.starttime ? data.starttime.split(' ')[0] : '' %></p>
                 <label  class="day_lable">วันที่: <select name="day" id="selectdate" class="textinput"></select></label>                    
                 <div class="timerow">
