@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/css/room_detail.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    <script src="/static/javascript/room_detail.js"></script>
 </head>
 <body>
     <div class="room">
@@ -26,8 +27,8 @@
         <div class="text">
             <div class="detail">
                 <div>
-                    <h1>ห้อง <%= condo.room_number %></h1> <!-- ดีงข้อมูล ID -->
-                    <h1>฿ <%= Number(condo.price).toLocaleString() %> /เดือน</h1> <!-- ดีง ราคาห้อง-->
+                    <h1>ห้อง <%= condo.room_number %></h1>
+                    <h1>฿ <%= Number(condo.price).toLocaleString() %> /เดือน</h1>
                     <hr>
                 </div>
                 <div class="icon_detail">
@@ -35,19 +36,19 @@
                         <div class="circle-border">
                             <img src="/static/img/double-bed.png">
                         </div>
-                        <p><%= condo.bed_room %> ห้องนอน</p> <!-- ดีงข้อมูลห้องนอนว่ามีกี่ห้อง -->
+                        <p><%= condo.bed_room %> ห้องนอน</p>
                     </div>
                     <div>
                         <div class="circle-border">
                             <img src="/static/img/bath-tub.png">
                         </div>
-                        <p><%= condo.bath_room %> ห้องน้ำ</p> <!-- ดีงข้อมูลห้องน้ำว่ามีกี่ห้อง -->
+                        <p><%= condo.bath_room %> ห้องน้ำ</p>
                     </div>
                     <div>
                         <div class="circle-border">
                             <img src="/static/img/length.png">
                         </div>
-                        <p><%= condo.area %> ตร.ม.</p> <!-- ดีงข้อมูล area -->
+                        <p><%= condo.area %> ตร.ม.</p>
                     </div>
                     <div>
                         <div class="circle-border">
@@ -65,10 +66,10 @@
                     </div>
                     <p>รายละเอียดห้องดังนี้</p>
                     <ul type="circle">
-                        <li>ขนาด <%= condo.area %> ตร.ม.</li> <!-- ดีงข้อมูล area -->
-                        <li>ชั้น <%= condo.floor %></li> <!-- ดีงข้อมูลชั้น -->
+                        <li>ขนาด <%= condo.area %> ตร.ม.</li>
+                        <li>ชั้น <%= condo.floor %></li>
                         <% if (condo.corner === "Yes") { %>
-                            <li>ห้องหัวมุม วิวดี ระเบียงกว้างกว่าเดิม</li> <!-- ถ้า corner เป็น Yes ให้โชว์ ห้องหัวมุม วิวดี ระเบียงกว้างกว่าเดิม ถ้าเป็น No ก็ไม่ต้องโชว์บรรทัดนี้ -->
+                            <li>ห้องหัวมุม วิวดี ระเบียงกว้างกว่าเดิม</li>
                         <% } %>
                         <li>เฟอร์นิเจอร์และเครื่องใช้ไฟฟ้ามีดังนี้</li>
                         <ul class="hidden-list" type="disc">
@@ -123,6 +124,5 @@
             </div>
         </div>
     </div>
-    <script src="/static/javascript/room_detail.js"></script>
 </body>
 </html>
