@@ -10,8 +10,13 @@
     <link rel="icon" type="image/png" href="/static/img/logo.png">
 </head>
 <body style="display: none;">
-    <button id="backbutton" onclick="window.location.href='/user/room'">ย้อนกลับ</button>
-    <div class="container">
+        <a href="/user/room"><button class="button-back" style="margin-bottom: 10px;">
+            <div class="icon-container">
+                <img src="/static/img/arrow-white.png">
+            </div>
+            <p>Go Back</p>
+        </button></a>
+        <div class="container">
         <div class="meetinginfo">
             <div class="row">
                 <div class="first_row"><p style="font-size: 1.2rem;" class="first_title">ข้อมูลการจอง</p><p style="font-size: 1.2rem;" id="coworkname"><%= coworkname %></p></div>
