@@ -102,6 +102,20 @@ body{
     height: auto;
 }
 
+.text span{
+    font-size: 30px;
+}
+
+#file{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+#paymentImg{
+    width: 50%;
+    height: 80%;
+}
+
 @media print {
     #print {
         display: none;
@@ -130,17 +144,4 @@ body{
     #print img {
         width: 50px;
     }
-}
-.text span{
-    font-size: 30px;
-}
-
-#file{
-    margin-bottom: 10px;
-    margin-left: 10px;
-}
-
-#paymentImg{
-    width: 50%;
-    height: 80%;
 }

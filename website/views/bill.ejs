@@ -82,7 +82,7 @@
         <button id="print">
             <img src="/static/img/print.png" alt="">
         </button>
-        <span>ส่งหลักฐารการโอน<input type="file" id="file" name="file" accept="image/*"></span>
+        <span>ส่งหลักฐานการโอน<input type="file" id="file" name="file" accept="image/*"></span>
         <input type="text" id="filebase64" name="filebase64" value="none" hidden>
         <div>
             <% if (pic.pic === "none") { %>
@@ -113,10 +113,6 @@
         const date = new Date(dateString.innerHTML);
         const day = String(date.getDate()).padStart(2, '0'); 
         const month = String(date.getMonth() + 1).padStart(2, '0');
-        const year = date.getFullYear()+543;
-
-        const formattedDate = `${day}/${month}/${year}`;
-        dateString.innerHTML = formattedDate;
 
         function getMonthName(month) {
             const months = [
