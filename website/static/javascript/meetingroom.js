@@ -355,7 +355,7 @@ async function validateForm(event) {
         icon: "success",
         title: "Your work has been saved",
         showConfirmButton: false,
-        timer: 3000
+        timer: 1500
     });
 
     document.getElementById("meetingdetail").submit();
