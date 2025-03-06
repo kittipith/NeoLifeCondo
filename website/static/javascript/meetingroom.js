@@ -363,10 +363,12 @@ async function validateForm(event) {
 
 // ปุ่มแก้ไขข้อมูล
 function editData() {
+    if(document.getElementById("selectdate").disabled == true){
+        document.getElementById("meetingdetail").action = "/user/editcowork";
+    }
     document.getElementById("selectdate").disabled = false;
     document.getElementById("start-time").disabled = false;
     document.getElementById("end-time").disabled = false;
     document.getElementById("info").disabled = false;
     document.getElementById("savedata").disabled = false;
-    document.getElementById("meetingdetail").action = "/user/editcowork";
 }
