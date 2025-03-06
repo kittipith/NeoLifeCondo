@@ -120,9 +120,9 @@ router.post("/user/savecowork", (req, res) => {
     const { cowork_name, room_number, day, starttime, endtime, info } = req.body;
     const day_starttime = `${day} ${starttime}:00`;
     const day_endtime = `${day} ${endtime}:00`;
-    db.get("SELECT room_id FROM room WHERE room_number = ?;", [room_number], (err, room_id) => {
+    db.get("SELECT room_id FROM room WHERE room_number = ?;", [room_number], (err, room) => {
         db.run("INSERT INTO Cowork (cowork_name, room_id, starttime, endtime, info) VALUES (?, ?, ?, ?, ?);",
-                [cowork_name, room_id, day_starttime, day_endtime, info], (err) => {
+                [cowork_name, room.room_id, day_starttime, day_endtime, info], (err) => {
                     if (err) {
                         console.error("Error inserting new request:", err);
                     } else {
