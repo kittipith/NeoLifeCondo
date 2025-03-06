@@ -68,7 +68,11 @@ iframe {
     display: none;
 }
 .btn-logout{
-    color: red;
+    color: #FF0000;
+}
+.btn-logout:hover{
+    color: white;
+    background-color: #FF0000;
 }
 .menu-toggle {
     display: none;

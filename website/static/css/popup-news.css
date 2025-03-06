@@ -1,13 +1,11 @@
 body{
-    font-family: "Open Sans", "Noto Sans Thai", sans-serif;
-    background: #f4f4f4;
+    font-family: "Open Sans", "Noto Sans Thai";
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
-    width: 100%;
+    width: 88%;
+    max-width: 100%;
     overflow-x: hidden;
-    border-radius: 20px;
+    background-color: white;
 }
 .container{
     background: white;
@@ -51,6 +49,7 @@ button{
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
+    margin-bottom: 10px;
 }
 button:first-child{
     background: #007bff;

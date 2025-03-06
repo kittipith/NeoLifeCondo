@@ -136,7 +136,6 @@ td {
     border-radius: 10px;
     font-size: 20px;
 }
-
 @media print {
     #print {
         display: none;
@@ -146,7 +145,6 @@ td {
         background-color: #ffffff;
     }
 }
-
 @media only screen and (max-width: 768px) {
     .qrcode {
         width: 120px;
@@ -156,8 +154,6 @@ td {
         width: 60px;
     }
 }
-
-
 @media only screen and (max-width: 425px) {
     body {
         font-size: 0.95rem;
