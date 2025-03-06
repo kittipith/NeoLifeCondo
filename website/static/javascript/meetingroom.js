@@ -314,7 +314,12 @@ function validateForm() {
             return false;
         }
     }
-    alert("บันทึกข้อมูลสำเร็จ");
+    Swal.fire({
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
     return true;
 }
 
