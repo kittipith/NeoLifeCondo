@@ -62,21 +62,22 @@
                 event.preventDefault();
 
                 Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
+                    title: "คุณแน่ใจที่จะลบรึเปล่า",
+                    text: "ข้อมูลจะไม่สามารถกู้คืนได้",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
+                    confirmButtonText: "ลบข้อมูล",
+                    cancelButtonText: "ยกเลิก"
                 }).then((result) => {
                     if (result.isConfirmed) {
                         Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
+                            title: "ลบข้อมูลสำเร็จ",
+                            text: "ข้อมูลของคุณถูกลบแล้ว",
+                            icon: "success",
+                            showConfirmButton: false
                         });
-
                         setTimeout(() => {
                             event.target.submit();
                         }, 2000);
