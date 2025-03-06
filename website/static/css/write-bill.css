@@ -80,6 +80,27 @@ td {
     padding: 0 10px;
     font-size: 20px;
     outline: none;
+    text-align: center;
+}
+
+.input-result{
+    max-width: 90%;
+    width: 50%;
+    border: none;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 20px;
+    outline: none;
+}
+
+.input-inside-detail{
+    max-width: 90%;
+    width: 50%;
+    border: none;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 20px;
+    outline: none;
 }
 
 .text-detail{

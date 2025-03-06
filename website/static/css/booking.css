@@ -134,6 +134,15 @@ h1{
     gap: 30px;
     width: 70%;
 }
+.tail-top h1{
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+.tail-bottom h1{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
 .input{
     position: relative;
     display: inline-block;
@@ -170,14 +179,6 @@ h1{
 }
 .input input:focus::placeholder {
     color: transparent;
-}
-.tail-top h1{
-    margin-top: 0;
-    margin-bottom: 30px;
-}
-.tail-bottom h1{
-    margin-top: 10px;
-    margin-bottom: 30px;
 }
 
 @media (max-width: 1200px) {

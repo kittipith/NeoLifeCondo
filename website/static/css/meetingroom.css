@@ -52,6 +52,10 @@ body {
     margin-left: -8px;
 }
 
+#backbutton:hover{
+    background-color: #D3D3D3;
+}
+
 .meetinginfo p {
     margin: 5px 0;
 }
@@ -70,6 +74,10 @@ body {
 
 .first_title{
     margin-left: 10px !important;
+    font-weight: bold;
+}
+#coworkname{
+    font-weight: bold;
 }
 .timerow{
     display: flex;
