@@ -82,11 +82,26 @@ router.post("/forgot-password", (req, res) => {
 
         const idCard2 = idCard.slice(0, 1) + '-' + idCard.slice(1, 5) + '-' + idCard.slice(5, 10) + '-' +  idCard.slice(10, 12) + '-' + idCard.slice(12);
 
+        db.get(
+            "SELECT account.id FROM account JOIN users ON account.id = users.account_id WHERE id_number = ?", 
+            [idCard2], 
+            (err, data) => {
+                if (err) {
+                    console.error("เกิดข้อผิดพลาดในการดึงข้อมูลบัญชี:", err);
+                    return res.status(500).json({ error: "เกิดข้อผิดพลาดในการดึงข้อมูลบัญชี" });
+                }
+        
+                if (!data) {
+                    console.error("ไม่พบข้อมูลบัญชีที่ตรงกับหมายเลขบัตรประชาชน", err);
+                    return res.status(404).json({ error: "ไม่พบข้อมูลบัญชีที่ตรงกับหมายเลขบัตรประชาชน" });
+                }
+        
+                db.run("UPDATE account SET password = ? WHERE id = ? AND username = ?", [password, idCard2, username], (err) => {
+                    res.status(200).json({ success: "อัปเดตข้อมูลเสร็จสิ้น"})
+                });
+            }
+        );
 
-        db.all("UPDATE account SET password = ? WHERE id = (SELECT account.id FROM account JOIN users ON account.id = users.account_id WHERE id_number = ?) AND username = ?", [password, idCard2, username], (err, account_id) => {
-            console.log("User data:", account_id);
-            res.status(200).json({ success: "อัปเดตข้อมูลเสร็จสิ้น"})
-        });
     } catch (error) {
         console.error("Server error:", error);
         res.status(500).json({ error: "เกิดข้อผิดพลาดภายในเซิร์ฟเวอร์" });
