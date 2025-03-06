@@ -252,12 +252,15 @@ document.getElementById('end-time').addEventListener('change', function() {
 });
 
 // alertถ้าผู้ใช้กรอกไม่ถูก
-function validateForm() {
+async function validateForm(event) {
+    event.preventDefault();
+
     let startTime = document.getElementById('start-time').value;
     let end_Time = document.getElementById('end-time').value;
     let room_number = document.getElementById("room_number").value;
     let room_id = document.getElementById("room_id").value;
     let selectdate = document.getElementById("selectdate").value;
+
     startTime_ = startTime.split(':');
     end_Time_ = end_Time.split(':');
 
@@ -265,7 +268,6 @@ function validateForm() {
     end_Time_ = new Date(0, 0, 0, end_Time_[0], end_Time_[1]);
     const differenceInMs = Math.abs(end_Time_ - startTime_);
     const differenceInHours = differenceInMs / (1000 * 60 * 60);
-    console.log(differenceInHours);
 
     startTime_compare = new Date(`${selectdate}T${startTime}:00`);
     end_Time_compare = new Date(`${selectdate}T${end_Time}:00`);
@@ -274,38 +276,71 @@ function validateForm() {
     let maxAllowedTime = new Date(`${selectdate}T20:00:00`);
 
     if (startTime && end_Time && (startTime_compare < minAllowedTime || startTime_compare > maxAllowedTime || end_Time_compare < minAllowedTime || end_Time_compare > maxAllowedTime)) {
-        alert("เวลาที่เลือกต้องอยู่ระหว่าง 09:00 ถึง 20:00");
+        await Swal.fire({
+            icon: "error",
+            title: "เวลาที่เลือกต้องอยู่ระหว่าง 09:00 ถึง 20:00",
+            showConfirmButton: true
+        });
         return false;
     }
+
     if (startTime && end_Time && startTime >= end_Time) {
-        alert("เวลาเริ่มต้นและเวลาสิ้นสุดไม่ถูกต้อง");
+        await Swal.fire({
+            icon: "error",
+            title: "เวลาเริ่มต้นและเวลาสิ้นสุดไม่ถูกต้อง",
+            showConfirmButton: true
+        });
         return false;
     }
-    if(selectdate === ''){
-        alert("กรุณากรอกวันที่");
+
+    if (selectdate === '') {
+        await Swal.fire({
+            icon: "error",
+            title: "กรุณากรอกวันที่",
+            showConfirmButton: true
+        });
         return false;
     }
-    if (room_number === ''){
-        alert("กรุณากรอกหมายเลขห้อง");
+
+    if (room_number === '') {
+        await Swal.fire({
+            icon: "error",
+            title: "กรุณากรอกหมายเลขห้อง",
+            showConfirmButton: true
+        });
         return false;
     }
-    if (startTime === '' || end_Time === ''){
-        alert("กรุณากรอกเวลาให้ครบ");
+
+    if (startTime === '' || end_Time === '') {
+        await Swal.fire({
+            icon: "error",
+            title: "กรุณากรอกเวลาให้ครบ",
+            showConfirmButton: true
+        });
         return false;
     }
-    if (differenceInHours > 2){
-        alert("สามารถเลือกเวลาได้ไม่เกิน 2 ชัวโมง");
+
+    if (differenceInHours > 2) {
+        await Swal.fire({
+            icon: "error",
+            title: "สามารถเลือกเวลาได้ไม่เกิน 2 ชั่วโมง",
+            showConfirmButton: true
+        });
         return false;
     }
-    if(coWorkdata && coWorkdata.length != 0){
-        console.log(coWorkdata);
+
+    if (coWorkdata && coWorkdata.length != 0) {
         const isConflict = coWorkdata.some(data => {
-            if(data.room_id != room_id || room_id === '') {
+            if (data.room_id != room_id || room_id === '') {
                 let cowork_starttime = new Date(data.starttime);
                 let cowork_endtime = new Date(data.endtime);
                 if ((cowork_starttime < end_Time_compare) && (startTime_compare < cowork_endtime)) {
-                    alert("ไม่สามารถจองเวลานี้ได้ เนื่องจากมีการจองไว้แล้ว");
-                    return true; 
+                    Swal.fire({
+                        icon: "error",
+                        title: "ไม่สามารถจองเวลานี้ได้ เนื่องจากมีการจองไว้แล้ว",
+                        showConfirmButton: true
+                    });
+                    return true;
                 }
             }
             return false;
@@ -314,13 +349,17 @@ function validateForm() {
             return false;
         }
     }
-    Swal.fire({
+
+    // ถ้าทุกอย่างถูกต้องแล้ว
+    await Swal.fire({
         icon: "success",
         title: "Your work has been saved",
         showConfirmButton: false,
-        timer: 1500
-      });
-    return true;
+        timer: 3000
+    });
+
+    document.getElementById("meetingdetail").submit();
+    return true; 
 }
 
 // ปุ่มแก้ไขข้อมูล

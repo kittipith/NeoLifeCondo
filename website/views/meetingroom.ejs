@@ -23,7 +23,7 @@
                 <div class="first_row"><p style="font-size: 1.2rem;" class="first_title">ข้อมูลการจอง</p><p style="font-size: 1.2rem;" id="coworkname"><%= coworkname %></p></div>
                 <button id="editinfo" onclick="editData();">แก้ไขข้อมูล</button>
             </div>
-            <form action="/user/savecowork" method="POST" class="meetingdetail" id="meetingdetail" onsubmit="return validateForm()">
+            <form action="/user/savecowork" method="POST" class="meetingdetail" id="meetingdetail" onsubmit="return validateForm(event)">
                 <input type="text" value="<%= coworkname %>" name="cowork_name" style="display: none;" id="cowork_name">
                 <input type="text" value="<%= data && data.id ? data.id : '' %>" name="cowork_id" style="display: none;" id="cowork_id">
                 <input type="text" value="<%= data && data.room_id ? data.room_id : '' %>" name="room_id" style="display: none;" id="room_id">
