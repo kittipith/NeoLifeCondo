@@ -50,9 +50,10 @@ hr{
 .button-create{
     display: flex;
     justify-content: end;
+    gap: 20px;
     margin-top: 50px;
 }
-.button-create button{
+.btn-create{
     width: 150px;
     height: 50px;
     text-align: center;
@@ -61,7 +62,11 @@ hr{
     font-weight: bold;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
     background-color: #0099FF;
+}
+.btn-create:hover{
+    background-color: #0c6cb6;
 }
 .text-input{
     border: none;
@@ -111,6 +116,21 @@ hr{
 }
 .gender input{
     margin-top: 20px;
+}
+.btn-del{
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: #FF0000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.btn-del:hover{
+    background-color: #a10000;
 }
 @media screen and (max-width: 768px){
     .info-detail{
