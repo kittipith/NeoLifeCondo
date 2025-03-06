@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="../static/img/logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-
 <body>
     <nav>
         <div class="nav-container">
@@ -73,7 +72,7 @@
     <!-- Popup บริการเสริม -->
     <div id="popupcon" class="popup">
         <h2>ติดต่อใช้บริการเสริม</h2>
-        <form class="myform" id="serviecForm" action="/user/service" method="post">
+        <form class="myform" id="serviecForm" action="/user/service" method="post" onsubmit="return confirmSubmission()">
             <p>
                 <label for="numroom">*ห้อง</label>
                 <input type="text" id="numroom" name="numroom" required>
@@ -112,7 +111,7 @@
     <!-- Popup ติดต่อพนักงาน -->
     <div id="popupser" class="popup">
         <h2>ติดต่อพนักงาน</h2>
-        <form class="myform" action="/user/contactstaff" method="post">
+        <form class="myform" action="/user/contactstaff" method="post" onsubmit="return confirmSubmission()">
             <p>
                 <label for="numroom">*ห้อง</label>
                 <input type="text" id="numroom" name="numroom" />
@@ -156,6 +155,20 @@
 
     <script src="/static/javascript/refreshtoken.js"></script>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".myform").addEventListener("submit", function (event) {
+                event.preventDefault(); // ป้องกันการ submit ทันที
+                Swal.fire({
+                  icon: "success",
+                  title: "บันทึกข้อมูลสำเร็จ",
+                  showConfirmButton: false,
+                });
+                
+                setTimeout(() => {
+                    this.submit();
+                }, 2000);
+            });
+        });
         var check = true;
         function toggleSidebar() {
             const change_color = document.getElementById("menu-button");
