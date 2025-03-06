@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="../static/img/logo.png">
 </head>
 <body style="display: none;">
-    <form action="/submitdeluser" method="POST">
+    <form action="/submitdeluser" method="POST" onsubmit="return confirmSubmission(event)">
         <button class="button-del">ลบข้อมูล</button>
         <table>
             <thead>
@@ -56,6 +56,35 @@
         </div>
         <script src="/static/javascript/refreshtoken-admin.js"></script>
         <script src="../static/javascript/checkbox.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function confirmSubmission(event) {
+                event.preventDefault();
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+
+                        setTimeout(() => {
+                            event.target.submit();
+                        }, 2000);
+                    }
+                });
+            }
+            
+            </script>
     </form>
 </body>
 </html>
