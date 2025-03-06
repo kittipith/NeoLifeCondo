@@ -112,20 +112,21 @@ hr{
     display: flex;
     justify-content: center;
 }
+.last a{
+    text-decoration: none;
+}
 .last p{
     width: 70%;
     color: #4A4A4A;
     font-size: 13px;
     margin: 5px auto;
 }
-
-
 .btn-last {
     display: flex;
     height: 3em;
     align-items: center;
     justify-content: center;
-    border-radius: 3px;
+    border-radius: 10px;
     transition: all 0.2s linear;
     cursor: pointer;
     border: none;
