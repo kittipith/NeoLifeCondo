@@ -248,21 +248,30 @@ router.post("/setregister", (req, res) => {
     const {
         account_id, address_id, address, road, tumbon, ket, province, post_id,
         phone, line, email, username, passw, cidss, titlename, firstname, lastname,
-        nickname, age, gender, nation, ciri, religion, dob
+        nickname, age, gender, nation, ciri, religion, dob, otherText
     } = req.body;
+
+    console.log("body id" + req.body);
+    console.log("gender is"  + otherText)
+    console.log(otherText)
+
+    let finalGender = gender;
+    if (gender === "A") {
+        finalGender = otherText;
+    }
+
 
     // สร้างที่อยู่ในรูปแบบที่ต้องการ
     const addressformat = `${address}$${road}$${tumbon}$${ket}$${province}$${post_id}`;
 
     // ใช้ prepared statements เพื่อป้องกัน SQL Injection
-    let sql = `UPDATE users SET account_id = ?, title = ?, name = ?, surname = ?, nickname = ?, age = ?, nationality = ?, religion = ?, ethnicity = ?, birthday = ? WHERE id_number = ?`;
+    let sql = `UPDATE users SET account_id = ?, title = ?, name = ?, surname = ?, nickname = ?, age = ?, nationality = ?, religion = ?, ethnicity = ?, birthday = ?, gender = ? WHERE id_number = ?`;
     let sqladdress = `UPDATE address SET address = ?, phone = ?, line = ?, email = ? WHERE address_id = ?`;
     let sqlaccount = `INSERT INTO account (id, username, password, isAdmin) VALUES (?, ?, ?, ?)`; // เพิ่มชื่อของตาราง (เช่น 'accounts')
 
     // บันทึกข้อมูลลงในฐานข้อมูล
-    db.run(sql, [account_id, titlename, firstname, lastname, nickname, age, nation, religion, ciri, dob, cidss], function (err) {
+    db.run(sql, [account_id, titlename, firstname, lastname, nickname, age, nation, religion, ciri, dob, finalGender,cidss], function (err) {
         if (err) {
-            return console.log(err.message);
         }
         console.log("User data updated successfully");
     });
@@ -608,7 +617,6 @@ router.post("/submitaddNews", (req, res) => {
                 console.log("New request inserted successfully");
             }
         });
-        res.redirect('/admin/news');
 });
 
 

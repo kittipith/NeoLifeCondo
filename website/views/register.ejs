@@ -5,158 +5,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/register.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="../static/img/logo.png">
 </head>
 
 <body style="display: none;">
     <form action="/setregister" method="post">
-    <div>
-        <div class="img-logo">
-            <img src="../static/img/logo_condo.png">
-        </div>
-        <div class="IDCard">
-            <p><label>เลขบัตรประชาชน</label></p>
-            <select id="cid">
-                <!-- <option selected>เลือกเลขบัตรประชาชน</option>
-                <option>1-1055-00064-37-9</option> -->
-            </select>
-        </div>
-        <div class="num-room">
-            <p style="font-size: 25px;">เลขห้อง</p>
-            <input type="text" id="roomnum" class="room-number">
-        </div>
         <div>
-            <h1 class="txt-head">ข้อมูลส่วนตัว</h1>
-            <hr>
-            <div class="info-detail">
-                <div>
-                    <input type="text" name="address_id" id="add_id" class="text-input" style="display: none;">
-                    <input type="text" name="account_id" id="acc_id" class="text-input" style="display: none;">
-                    <p>คำนำหน้า</p>
-                    <input type="text" name="titlename" id="titlename" class="text-input">
-                </div>
-                <div>
-                    <p>ชื่อ</p>
-                    <input type="text" name="firstname" id="firstname" class="text-input">
-                </div>
-                <div>
-                    <p>นามสกุล</p>
-                    <input type="text" name="lastname" id="lastname" class="text-input">
-                </div>
-                <div>
-                    <p>ชื่อเล่น</p>
-                    <input type="text" name="nickname" id="nickname" class="text-input">
-                </div>
-                <div>
-                    <p>อายุ</p>
-                    <input type="text" name="age" id="age" class="text-input">
-                </div>
-                <div class="gender">
-                    <p>เพศ</p>
-                    <input type="radio" name="gender" id="male">เพศชาย
-                    <input type="radio" name="gender" id="female">เพศหญิง
-                    <input type="radio" name="gender" id="other">อื่น ๆ
-                    <input type="text" id="otherText" placeholder="โปรดระบุ" class="text-input">
-                </div>
-                <div>
-                    <p>สัญชาติ</p>
-                    <input type="text" name="nation" id="nation" class="text-input">
-                </div>
-                <div>
-                    <p>เชื้อชาติ</p>
-                    <input type="text" name="ciri" id="ciri" class="text-input">
-                </div>
-                <div>
-                    <p>ศาสนา</p>
-                    <input type="text" name="religion" id="religion" class="text-input">
-                </div>
-                <div>
-                    <p>วันเกิด</p>
-                    <input type="date" name="dob" id="dob" class="text-input">
-                </div>
-                <div>
-                    <p>เลขบัตรประชาชน</p>
-                    <input type="text" name="cidss" id="cidss" class="text-input">
-                </div>
+            <div class="img-logo">
+                <img src="../static/img/logo_condo.png">
             </div>
-        </div>
-        <div>
-            <h1 class="txt-head">ข้อมูลติดต่อ</h1>
-            <hr>
+            <div class="IDCard">
+                <p><label>เลขบัตรประชาชน</label></p>
+                <select id="cid">
+
+                </select>
+            </div>
+            <div class="num-room">
+                <p style="font-size: 25px;">เลขห้อง</p>
+                <input type="text" id="roomnum" class="room-number">
+            </div>
             <div>
-                <div class="regis-detail">
+                <h1 class="txt-head">ข้อมูลส่วนตัว</h1>
+                <hr>
+                <div class="info-detail">
                     <div>
-                        <p>ที่อยู่</p>
-                        <input type="text" name="address" id="address" class="text-input">
-                    </div>
-                    <!-- <div>
-                        <p>หมู่ที่</p>
-                        <input type="text" id="muu" class="text-input">
-                    </div>
-                    <div>
-                        <p>ซอย</p>
-                        <input type="text" id="soi" class="text-input">
-                    </div> -->
-                    <div>
-                        <p>ถนน</p>
-                        <input type="text" name="road" id="road" class="text-input">
+                        <input type="text" name="address_id" id="add_id" class="text-input" style="display: none;">
+                        <input type="text" name="account_id" id="acc_id" class="text-input" style="display: none;">
+                        <p>คำนำหน้า</p>
+                        <input type="text" name="titlename" id="titlename" class="text-input">
                     </div>
                     <div>
-                        <p>แขวง/ตำบล</p>
-                        <input type="text" name="tumbon" id="tumbon" class="text-input">
+                        <p>ชื่อ</p>
+                        <input type="text" name="firstname" id="firstname" class="text-input">
                     </div>
                     <div>
-                        <p>เขต/อำเภอ</p>
-                        <input type="text" name="ket" id="ket" class="text-input">
+                        <p>นามสกุล</p>
+                        <input type="text" name="lastname" id="lastname" class="text-input">
                     </div>
                     <div>
-                        <p>จังหวัด</p>
-                        <input type="text" name="province" id="province" class="text-input">
+                        <p>ชื่อเล่น</p>
+                        <input type="text" name="nickname" id="nickname" class="text-input">
                     </div>
                     <div>
-                        <p>รหัสไปรณีย์</p>
-                        <input type="text" name="post_id" id="post_id" class="text-input">
+                        <p>อายุ</p>
+                        <input type="text" name="age" id="age" class="text-input">
+                    </div>
+                    <div class="gender">
+                        <p>เพศ</p>
+                        <input type="radio" name="gender" id="male" value="ชาย">เพศชาย
+                        <input type="radio" name="gender" id="female" value="หญิง">เพศหญิง
+                        <input type="radio" name="gender" id="other" value="A">อื่น ๆ
+                        <input type="text" name="otherText" id="otherText" placeholder="โปรดระบุ" class="text-input">
                     </div>
                     <div>
-                        <p>เบอร์โทรศัพท์</p>
-                        <input type="text" name="phone" id="phone" class="text-input">
+                        <p>สัญชาติ</p>
+                        <input type="text" name="nation" id="nation" class="text-input">
                     </div>
                     <div>
-                        <p>Line-ID</p>
-                        <input type="text" name="line" id="line" class="text-input">
+                        <p>เชื้อชาติ</p>
+                        <input type="text" name="ciri" id="ciri" class="text-input">
                     </div>
                     <div>
-                        <p>Email</p>
-                        <input type="text" name="email"  id="email" class="text-input">
+                        <p>ศาสนา</p>
+                        <input type="text" name="religion" id="religion" class="text-input">
+                    </div>
+                    <div>
+                        <p>วันเกิด</p>
+                        <input type="date" name="dob" id="dob" class="text-input">
+                    </div>
+                    <div>
+                        <p>เลขบัตรประชาชน</p>
+                        <input type="text" name="cidss" id="cidss" class="text-input">
                     </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <h1 class="txt-head">ข้อมูลลงทะเบียน</h1>
-            <hr>
-            <div class="create">
-                <div class="regis">
-                    <p>Username</p>
-                    <input name="username" id="username" type="text">
-                </div>
-                <div class="regis">
-                    <p>Password</p>
-                    <input name="passw" id="passw" type="password">
-                </div>
-                <div class="regis">
-                    <p>Confirm Password</p>
-                    <input type="password">
+            <div>
+                <h1 class="txt-head">ข้อมูลติดต่อ</h1>
+                <hr>
+                <div>
+                    <div class="regis-detail">
+                        <div>
+                            <p>ที่อยู่</p>
+                            <input type="text" name="address" id="address" class="text-input">
+                        </div>
+
+                        <div>
+                            <p>ถนน</p>
+                            <input type="text" name="road" id="road" class="text-input">
+                        </div>
+                        <div>
+                            <p>แขวง/ตำบล</p>
+                            <input type="text" name="tumbon" id="tumbon" class="text-input">
+                        </div>
+                        <div>
+                            <p>เขต/อำเภอ</p>
+                            <input type="text" name="ket" id="ket" class="text-input">
+                        </div>
+                        <div>
+                            <p>จังหวัด</p>
+                            <input type="text" name="province" id="province" class="text-input">
+                        </div>
+                        <div>
+                            <p>รหัสไปรณีย์</p>
+                            <input type="text" name="post_id" id="post_id" class="text-input">
+                        </div>
+                        <div>
+                            <p>เบอร์โทรศัพท์</p>
+                            <input type="text" name="phone" id="phone" class="text-input">
+                        </div>
+                        <div>
+                            <p>Line-ID</p>
+                            <input type="text" name="line" id="line" class="text-input">
+                        </div>
+                        <div>
+                            <p>Email</p>
+                            <input type="text" name="email" id="email" class="text-input">
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div>
+                <h1 class="txt-head">ข้อมูลลงทะเบียน</h1>
+                <hr>
+                <div class="create">
+                    <div class="regis">
+                        <p>Username</p>
+                        <input name="username" id="username" type="text">
+                    </div>
+                    <div class="regis">
+                        <p>Password</p>
+                        <input name="passw" id="passw" type="password">
+                    </div>
+                    <div class="regis">
+                        <p>Confirm Password</p>
+                        <input type="password">
+                    </div>
+                </div>
+            </div>
+            <div class="button-create">
+                <button>สร้างบัญชี</button>
+            </div>
         </div>
-        <div class="button-create">
-            <button>สร้างบัญชี</button>
-        </div>
-    </div>
-</form>
+    </form>
     <script src="/static/javascript/refreshtoken-admin.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", async function () {
@@ -165,7 +158,7 @@
             const genderRadios = document.querySelectorAll("input[name='gender']");
             let cid = document.getElementById("cid");
             try {
-                let response = await fetch(`/getcid`); 
+                let response = await fetch(`/getcid`);
                 let data = await response.json();
                 console.log(data);
 
@@ -206,15 +199,28 @@
                     document.getElementById("dob").value = data[0].birthday;
                     document.getElementById("cidss").value = data[0].id_number;
                     document.getElementById("roomnum").value = data[0].room_number;
-                    if(data[0].gender === "ชาย"){
+                    // if (data[0].gender === "ชาย") {
+                    //     document.getElementById("male").checked = true;
+                    // }
+                    // else if (data[0].gender === "หญิง") {
+                    //     document.getElementById("female").checked = true;
+                    // } else {
+                    //     document.getElementById("other").checked = true;
+                    // }
+                    if (data[0].gender === "ชาย") {
                         document.getElementById("male").checked = true;
-                    }
-                    else if(data[0].gender === "หญิง"){
+                        otherText.style.display = "none";
+                        otherText.value = "";
+                    } else if (data[0].gender === "หญิง") {
                         document.getElementById("female").checked = true;
-                    }else{
+                        otherText.style.display = "none";
+                        otherText.value = "";
+                    } else {
                         document.getElementById("other").checked = true;
+                        otherText.style.display = "inline-block";
+                        otherText.value = data[0].gender;
                     }
-                    
+
                     let arradd = address[0].address;
                     let splitadd = arradd.split("$");
                     document.getElementById("add_id").value = address[0].address_id;
