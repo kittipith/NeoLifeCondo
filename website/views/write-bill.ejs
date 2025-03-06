@@ -80,13 +80,13 @@
                 <td><input type="text" class="input-result" disabled></td>
             </tr>
             <tr>
-                <td><input type="text" class="input-inside-detail" disabled></td>
+                <td class="text-detail">ค่าบริการ</td>
+                <td><input type="text" id="serviceuse" class="input-inside"></td>
                 <td><input type="text" class="input-inside" disabled></td>
-                <td><input type="text" class="input-inside" disabled></td>
-                <td><input type="text" class="input-result" disabled></td>
+                <td><input type="text" id="servicewage" class="input-result"></td>
             </tr>
             <tr>
-                <td style="display: flex; align-items: center; border: none;"><p style="margin-left: 10px;"> ค่าปรับ : </p><input id="fine" type="text" class="input-inside-detail" value=""></td>
+                <td style="display: flex; align-items: center; border: none;"><p style="margin-left: 15px;"> ค่าปรับ : </p><input id="fine" type="text" class="input-inside-detail" value=""></td>
                 <td><input id="fineuse" type="text" class="input-inside"></td>
                 <td><input type="text" class="input-inside"></td>
                 <td><input id="finewage" type="text" class="input-result"></td>
@@ -143,6 +143,12 @@
         elecwage.value = elecuse * 8;
         updateTotal();
     });
+    document.getElementById("serviceuse").addEventListener("input", function (event) {
+        let serviceuse = event.target.value;
+        let servicewage = document.getElementById("servicewage");
+        servicewage.value = serviceuse;
+        updateTotal();
+    });
 
 
     function updateTotal() {
@@ -150,8 +156,9 @@
         let elecCost = parseFloat(document.getElementById("elecwage").value) || 0;
         let roomWage = parseFloat(document.getElementById("roomwage").value) || 0;
         let fineWage = parseFloat(document.getElementById("finewage").value) || 0;
+        let serviceWage = parseFloat(document.getElementById("servicewage").value) || 0;
         let total = document.getElementById("total");
-        total.value = (roomWage + waterCost + elecCost + fineWage).toFixed(2);
+        total.value = (roomWage + waterCost + elecCost + fineWage + serviceWage).toFixed(2);
     }
 
     function sendbill() {
@@ -166,6 +173,7 @@
         let total = document.getElementById("total").value;
         let fine = document.getElementById("fine").value;
         let finewage = document.getElementById("finewage").value;
+        let servicewage = document.getElementById("servicewage").value;
 
         let data = {
             date: date,
@@ -174,7 +182,8 @@
             roomwage: parseFloat(roomWage) || 0,
             elecuse: parseFloat(elecUse) || 0,
             total: parseFloat(total) || 0,
-            finewage: parseFloat(finewage) || 0
+            finewage: parseFloat(finewage) || 0,
+            servicewage: parseFloat(servicewage) || 0
         };
 
         fetch(`/insertbill/${id}`, {

@@ -641,13 +641,13 @@ router.put("/insertbill/:roomid", (req, res) => {
     const data = req.body; // รับค่า status
     console.log(roomid, data.roomwage, data.wateruse, data.elecuse, data.fine, data.finewage, data.total, 0,  data.date);
     // ตัวอย่าง SQL Update
-    const query = "insert into bill (room_id, room_price, wate, elec, fine_info, fine, total, isPaid, date) values (?,?,?,?,?,?,?,?,?)";
-    db.run(query, [roomid, data.roomwage, data.wateruse, data.elecuse, data.fine, data.finewage, data.total, 0,  data.date], (err, result) => {
+    const query = "insert into bill (room_id, room_price, wate, elec, fine_info, fine, total, isPaid, date, service) values (?,?,?,?,?,?,?,?,?,?)";
+    db.run(query, [roomid, data.roomwage, data.wateruse, data.elecuse, data.fine, data.finewage, data.total, 0,  data.date, data.servicewage], (err, result) => {
         if (err) {
             return res.status(500).json({ error: "Database update failed" });
         }
         res.json({ success: true, message: "Status updated successfully" });
-        console.log(roomid, data.roomwage, data.wateruse, data.elecuse, data.fine, data.finewage, data.total, 0,  data.date);
+        console.log(roomid, data.roomwage, data.wateruse, data.elecuse, data.fine, data.finewage, data.total, 0,  data.date, data.servicewage);
     });
 });
 
