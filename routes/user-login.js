@@ -161,7 +161,11 @@ router.get("/user/reserve/:coworkname", (req, res) => {
             JOIN room r ON c.room_id = r.room_id  
             JOIN users u ON r.renter_id = u.user_id
             WHERE u.user_id = ${user.id} and c.cowork_name = '${coworkname}';`, [], (err, data) => {
-                res.render("meetingroom", { data: data , coworkname: coworkname});
+                db.get(`SELECT room_number FROM room r
+                    JOIN users u ON r.renter_id = u.user_id
+                    WHERE u.user_id = ${user.id};`, [], (err, room) => {
+                        res.render("meetingroom", { data: data , coworkname: coworkname, room});
+                    });
             });
 })
 
