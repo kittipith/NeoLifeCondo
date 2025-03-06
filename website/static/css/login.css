@@ -85,18 +85,19 @@ body{
     padding-left: 6%;
     padding-right: 6%;
     margin: 5px 0;
+    margin-bottom: 0;
 }
-.forgot{
+.remember{
     color: #0075cf;
 }
-.forgot a{
+.remember a{
     text-decoration: none;
 }
 .btn-login{
     display: flex;
     justify-content: center;
-    margin-top: 40px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 .btn-login button{
     width: 35%;

@@ -41,10 +41,7 @@ tr:nth-child(odd){
     background-color: #ffffff;
     cursor: pointer;
 }
-tr:nth-child(odd):hover{
-    background-color: #e6f7ff;
-}
-tr:nth-child(even):hover{
+tr:hover{
     background-color: #e6f7ff;
 }
 input[type="checkbox"]{
@@ -52,7 +49,7 @@ input[type="checkbox"]{
     cursor: pointer;
 }
 th:nth-child(3), td:nth-child(3) {
-    width: 600px;
+    width: 500px;
     word-break: break-word;
     overflow-wrap: break-word;
     white-space: normal;
@@ -66,11 +63,11 @@ th:nth-child(3), td:nth-child(3) {
     border-radius: 5px;
     margin-bottom: 5px;
     color: white;
-    background-color: green;
+    background-color: #00e013;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .show:hover{
-    background-color: green;
+    background-color: #00800b;
 }
 
 .unshow{
@@ -86,4 +83,9 @@ th:nth-child(3), td:nth-child(3) {
 }
 .unshow:hover{
     background-color: #a10000;
+}
+
+.bin-btn{
+    width: 30px;
+    height: 30px;
 }

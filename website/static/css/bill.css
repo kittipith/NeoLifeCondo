@@ -8,6 +8,10 @@ body{
     font-family: "Open Sans", "Noto Sans Thai";
 }
 
+h1{
+    text-align: center;
+}
+
 .text{
     align-self: flex-start;
     display: flex;

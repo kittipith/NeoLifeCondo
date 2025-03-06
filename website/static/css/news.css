@@ -87,10 +87,7 @@ tr:nth-child(odd){
     background-color: #ffffff;
     cursor: pointer;
 }
-tr:nth-child(odd):hover{
-    background-color: #e6f7ff;
-}
-tr:nth-child(even):hover{
+tr:hover{
     background-color: #e6f7ff;
 }
 input[type="checkbox"]{

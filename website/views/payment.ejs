@@ -19,6 +19,7 @@
                 <th>วันที่ชำระ</th>
                 <th>สถานะ</th>
                 <th>ดำเนินการ</th>
+                <th>จัดการข้อมูล</th>
             </tr>
         </thead>
         <tbody>
@@ -38,11 +39,11 @@
               <td>
                 <% if (item.isPaid == 1) { %>
                   <button class="unshow" type="button" onclick="toggleStatus(event, '<%= item.bill_id %>', 0)">ยกเลิก</button>
-
                 <% } else { %>
                   <button class="show" type="button" onclick="toggleStatus(event, '<%= item.bill_id %>', 1)">ยืนยัน</button>
                 <% } %>
               </td>
+              <td><img src="../static/img/bin.png" class="bin-btn"></td>
             </tr>
             <% }); %> 
             <div id="myModal" class="modal">
