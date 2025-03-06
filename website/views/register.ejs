@@ -146,7 +146,7 @@
                 </div>
             </div>
             <div class="button-create">
-                <button class="btn-del">ลบข้อมูล</button>
+                <button type="button" id="delbut" onclick="deldata()" style="display: none;" class="btn-del">ลบข้อมูล</button>
                 <button class="btn-create">สร้างบัญชี</button>
             </div>
         </div>
@@ -180,6 +180,8 @@
             document.getElementById("cid").addEventListener("change", async function () {
                 let selectedValue = this.value;
                 let userInfoDiv = document.getElementById("userInfo");
+                let delbut = document.getElementById("delbut");
+                delbut.style.display = "block";
 
                 try {
                     let response = await fetch(`/getuser/${selectedValue}`);
@@ -252,7 +254,27 @@
                 });
             });
         });
-
+    
+        function deldata(){
+            let id = document.getElementById("acc_id").value
+            fetch(`/deluserregis`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                selectedid: id
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            window.location.reload(true);
+            console.log(data);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+        }
     </script>
 </body>
 

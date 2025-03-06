@@ -121,6 +121,38 @@ router.post("/submitdeluser", (req, res) => {
     res.redirect('/admin/user-info');
 });
 
+router.post("/deluserregis", (req, res) => {
+    const data = req.body.selectedid;
+
+    
+        let sql = `UPDATE room SET renter_id = NULL where renter_id = ${data};`;
+        let sqluser = `DELETE FROM users WHERE user_id = ${data};`;
+        let sqladd = `DELETE FROM address WHERE address_id = ${data};`;
+        db.run(sql, function (err) {
+            if (err) {
+                return console.log(err.message);
+            }
+            console.log(`isdone`);
+        });
+        db.run(sqluser, function (err) {
+            if (err) {
+                return console.log(err.message);
+            }
+            console.log(`isdone`);
+        });
+        db.run(sqladd, function (err) {
+            if (err) {
+                return console.log(err.message);
+            }
+            console.log(`isdonedeluser`);
+            console.log(sql);
+        });
+        console.log(sql); // กรณีเลือกแค่ 1 อัน
+ 
+
+        res.status(200).json({ message: "ลบข้อมูลสำเร็จ" });
+});
+
 router.get("/getuser/:cid", (req, res) => {
     let cid = req.params.cid;
     let query = `SELECT users.user_id,users.id_number, users.title, users.name, users.surname, users.nickname, users.age, users.gender, users.nationality, users.religion, users.ethnicity, users.birthday, room.room_number FROM users join room on users.user_id = room.renter_id WHERE id_number = ?`;
