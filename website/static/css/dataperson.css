@@ -64,7 +64,7 @@ body {
     width: 100%;
 }
 .contact-info{
-    height: 50%;
+    height: 70%;
     background-color: #ffff;
     border-radius: 10px;
     padding: 10px 20px;
@@ -292,7 +292,7 @@ table, th, td {
 
 @media screen and (max-width: 1024px) {
     .payment{
-        grid-template-columns: repeat(1,1fr);
+        grid-template-columns: repeat(2,1fr);
         height: 100%;
     }
 }
