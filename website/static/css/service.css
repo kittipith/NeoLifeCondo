@@ -26,10 +26,10 @@ input, select, button {
     border-radius: 4px;
 }
 button {
-    background: blue;
+    background: #0099FF;
     color: white;
     cursor: pointer;
 }
 button:hover {
-    background: darkblue;
+    background: #0c6cb6;
 }

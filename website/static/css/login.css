@@ -93,6 +93,9 @@ body{
 .remember a{
     text-decoration: none;
 }
+.remember label{
+    cursor: pointer;
+}
 .btn-login{
     display: flex;
     justify-content: center;
@@ -104,7 +107,11 @@ body{
     height: 5vh;
     font-size: 18px;
     color: white;
+    cursor: pointer;
     background-color: #27292C;
+}
+.btn-login button:hover{
+    background-color: #151618;
 }
 hr{
     width: 90%;

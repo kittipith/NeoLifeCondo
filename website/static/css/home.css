@@ -338,6 +338,9 @@ html {
     animation-timeline: view();
     animation-range: entry 0% cover 20%;
 }
+.filter input{
+    cursor: pointer;
+}
 
 .room-card {
     display: flex;
