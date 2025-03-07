@@ -8,15 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="../static/img/logo.png">
-    <link rel="icon" type="image/png" href="../static/img/logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
 <body>
-    <!-- <div class="loading-screen">
+    <div class="loading-screen">
         <div class="div">
           <p id="h2">Loading....<span id="lol"></span></p>
         </div>
-      </div> -->
+      </div>
     <nav>
         <div class="nav-container">
             <div class="thelogo">
@@ -114,62 +114,62 @@
     <div class="facilities" id="facilities">
         <h2>FACILITIES</h2>
         <div class="facitem">
-            <div>
+            <div class="faciall">
                 <div class="imgfac">
                     <img src="../static/img/meeting.png" alt="">
                 </div>
                 <p>ห้องประชุม</p>
             </div>
-            <div>
+            <div class="faciall">
                 <div class="imgfac">
                     <img src="../static/img/studyroom.png" alt="">
                     
                 </div>
                 <p>พื้นที่อ่านหนังสือ</p>
             </div>
-            <div>
+            <div class="faciall">
                 <div class="imgfac">
                     <img src="../static/img/livingroom.png" alt="">
                     
                 </div>
                 <p>ห้องนั่งเล่น</p>
             </div>
-            <div>
+            <div class="faciall">
                 <div class="imgfac">
                     <img src="../static/img/swimmingpool.png" alt="">
                     
                 </div> 
                 <p>สระว่ายน้ำ</p> 
             </div>
-            <div>
+            <div class="faciall">
                 <div class="imgfac">
                     <img src="../static/img/park.png" alt="">
                     
                 </div> 
                 <p>สวนสาธารณะ</p>
             </div>
-            <div>
+            <div class="faciall">
                 <div class="imgfac">
                     <img src="../static/img/gym.png" alt="">
                     
                 </div>
                 <p>ยิม</p>
             </div>
-            <div>
+            <div class="faciall">
                 <div class="imgfac">
                     <img src="../static/img/badminton.png" alt="">
                     
                 </div>
                 <p>สนามแบดมินตัน</p>
             </div>
-            <div>
+            <div class="faciall">
                 <div class="imgfac">
                     <img src="../static/img/bas.png" alt="">
                     
                 </div>
                 <p>สนามบาส</p>
             </div>
-            <div>
+            <div class="faciall">
                 <div class="imgfac">
                     <img src="../static/img/theater.png" alt="">
                 </div>
@@ -355,13 +355,17 @@
 
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(() => {
-            alert("คัดลอกสำเร็จ");
+            Swal.fire({
+              title: "คัดลอกสำเร็จ!",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 1000
+            });
         }).catch(err => {
             console.error("คัดลอกไม่สำเร็จ", err);
         });
     }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
 </body>
 </html>

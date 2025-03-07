@@ -569,7 +569,6 @@ html {
     text-align: center;
     padding: 3% 0;
     height: 100vh;
-
 }
 
 .facilities h2 {
@@ -687,6 +686,9 @@ html {
     .facilities p {
         font-size: 50%;
     }
+    .facilities {
+        height: 90vh;
+    }
 }
 
 @media (max-width: 768px) {
@@ -766,6 +768,9 @@ html {
     }
     .facitem {
         width: 50%;
+    }
+    .facilities {
+        height: 80vh;
     }
     .facilities p {
         font-size: 80%;
@@ -907,6 +912,11 @@ html {
     .c_logo img {
         width: 10%;
         height: 10%;
+    }
+}
+@media (max-width: 400px){
+    .facilities {
+        height: 90vh;
     }
 }
 
