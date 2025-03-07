@@ -6,6 +6,7 @@
 
 ```
     คลิก run.bat ได้เลยครับ
+    ![Image](/website/static/img/runbat.PNG)
 ```
 
 ## Username Password Role ADMIN
