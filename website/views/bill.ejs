@@ -100,6 +100,7 @@
     </div>
 
     <script src="/static/javascript/refreshtoken.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const printBtn = document.getElementById('print');
         printBtn.addEventListener('click', function(){
@@ -150,8 +151,14 @@
                 });
 
                 if (response.ok) {
-                    alert("อัปโหลดสำเร็จ!");
-                    window.location.href = `/user/bill/${billId}`;
+                    Swal.fire({
+                        icon: "success",
+                        title: "บันทึกการส่งหลักฐานเสร็จสิ้น",
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.href = `/user/bill/${billId}`;
+                    });
                 } else {
                     alert("เกิดข้อผิดพลาด!");
                 }
