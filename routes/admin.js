@@ -698,4 +698,20 @@ router.put("/updatebill/:newsId", (req, res) => {
     });
 });
 
+
+router.delete("/delbill/:id", (req, res) => {
+    const bill_id = req.params.id;
+
+    // ตัวอย่าง SQL Update
+    const query = `DELETE FROM bill WHERE bill_id = ?;`;
+    db.run(query, [bill_id], (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: "Database update failed" });
+        }
+        res.json({ success: true, message: "delete bill successfully" });
+        console.log(bill_id);
+    });
+});
+
+
 module.exports = router;

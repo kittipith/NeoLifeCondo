@@ -1,170 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/payment.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../static/img/logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/payment.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../static/img/logo.png">
 </head>
+
 <body style="display: none;">
   <form id="paymentform" action="/submitbill" method="POST">
     <table>
-        <thead>
-            <tr>
-                <th>ห้อง</th>
-                <th>บิลประจำเดือน</th>
-                <th>รูปภาพ</th>
-                <th>วันที่ชำระ</th>
-                <th>สถานะ</th>
-                <th>ดำเนินการ</th>
-                <th>จัดการข้อมูล</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% data.forEach((item)=>{ %>
-            <tr>
-                <td><%=item.room_number%></td>
-                <input type="text"  id="billdate" style="display: none;" value="<%=item.bill_date%>">
-                <td><p id="month"></p></td>
-                <td><a href="#" onclick="openModal(event, '<%=item.pic%>')">กดเพื่อดูรูป</a></td>
-                <td><%=item.date%></td>
-                <td><% if (item.isPaid == 1) { %>
-                  <p style="color: green;">ยืนยันแล้ว</p>
+      <thead>
+        <tr>
+          <th>ห้อง</th>
+          <th>บิลประจำเดือน</th>
+          <th>รูปภาพ</th>
+          <th>วันที่ชำระ</th>
+          <th>สถานะ</th>
+          <th>ดำเนินการ</th>
+          <th>จัดการข้อมูล</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach((item)=>{ %>
+          <tr>
+            <td>
+              <%=item.room_number%>
+            </td>
+            <input type="text" id="billdate" style="display: none;" value="<%=item.bill_date%>">
+            <td>
+              <p id="month"></p>
+            </td>
+            <td><a href="#" onclick="openModal(event, '<%=item.pic%>')">กดเพื่อดูรูป</a></td>
+            <td>
+              <%=item.date%>
+            </td>
+            <td>
+              <% if (item.isPaid==1) { %>
+                <p style="color: green;">ยืนยันแล้ว</p>
                 <% } else { %>
                   <p style="color: red;">ยังไม่ยืนยัน</p>
-                <% } %>
-              </td>
-              <td>
-                <% if (item.isPaid == 1) { %>
-                  <button class="unshow" type="button" onclick="toggleStatus(event, '<%= item.bill_id %>', 0)">ยกเลิก</button>
+                  <% } %>
+            </td>
+            <td>
+              <% if (item.isPaid==1) { %>
+                <button class="unshow" type="button"
+                  onclick="toggleStatus(event, '<%= item.bill_id %>', 0)">ยกเลิก</button>
                 <% } else { %>
-                  <button class="show" type="button" onclick="toggleStatus(event, '<%= item.bill_id %>', 1)">ยืนยัน</button>
-                <% } %>
-              </td>
-              <td><img src="../static/img/bin.png" class="bin-btn"></td>
-            </tr>
-            <% }); %> 
+                  <button class="show" type="button"
+                    onclick="toggleStatus(event, '<%= item.bill_id %>', 1)">ยืนยัน</button>
+                  <% } %>
+            </td>
+            <td><img onclick="delbill('<%= item.bill_id %>')" src="../static/img/bin.png" class="bin-btn"></td>
+          </tr>
+          <% }); %>
             <div id="myModal" class="modal">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <img class="modal-content" id="modalImage">
-              </div>
-        </tbody>
+              <span class="close" onclick="closeModal()">&times;</span>
+              <img class="modal-content" id="modalImage">
+            </div>
+      </tbody>
     </table>
-</form>
-    <script src="/static/javascript/refreshtoken-admin.js"></script>
-    <script src="../static/javascript/checkbox.js"></script>
-    <script>
+  </form>
+  <script src="/static/javascript/refreshtoken-admin.js"></script>
+  <script src="../static/javascript/checkbox.js"></script>
+  <script>
 
-document.addEventListener("DOMContentLoaded", function () {
-  const monthNames = [
+    document.addEventListener("DOMContentLoaded", function () {
+      const monthNames = [
         "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
         "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
-    ];
+      ];
 
-    // ค้นหาทุก `<input id="billdate">` แล้วแปลงเป็นชื่อเดือน
-    document.querySelectorAll("#billdate").forEach((input, index) => {
+      // ค้นหาทุก `<input id="billdate">` แล้วแปลงเป็นชื่อเดือน
+      document.querySelectorAll("#billdate").forEach((input, index) => {
         let billDate = input.value; // ค่าจาก input ที่ซ่อนไว้ (YYYY-MM-DD)
         if (billDate) {
-            let monthIndex = new Date(billDate).getMonth(); // ดึง index เดือน (เริ่มจาก 0)
-            let monthName = monthNames[monthIndex]; // แปลงเป็นชื่อเดือน
-            let year = new Date(billDate).getFullYear();
-            document.querySelectorAll("#month")[index].innerText = `${monthName} ${year}`; // ใส่ค่าใน `<p id="month">`
+          let monthIndex = new Date(billDate).getMonth(); // ดึง index เดือน (เริ่มจาก 0)
+          let monthName = monthNames[monthIndex]; // แปลงเป็นชื่อเดือน
+          let year = new Date(billDate).getFullYear();
+          document.querySelectorAll("#month")[index].innerText = `${monthName} ${year}`; // ใส่ค่าใน `<p id="month">`
         }
+      });
     });
-    });
-        function toggleStatus(event, newsId, newStatus) {
-    event.preventDefault(); // ป้องกันการ refresh หน้า
+    function toggleStatus(event, newsId, newStatus) {
+      event.preventDefault(); // ป้องกันการ refresh หน้า
 
-    fetch(`/updatebill/${newsId}`, { // ส่งค่า newsId ใน URL
+      fetch(`/updatebill/${newsId}`, { // ส่งค่า newsId ใน URL
         method: "PUT",
         headers: {
-            "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ status: newStatus }), // ส่งเฉพาะ status
-    }).then(response => response.json())
-    .then(data => {
-        console.log("Updated:", data);
+      }).then(response => response.json())
+        .then(data => {
+          console.log("Updated:", data);
 
-        // หา element ที่เกี่ยวข้อง
-        let button = event.target; 
-        let statusCell = button.closest("tr").querySelector("td:nth-child(5)"); 
+          // หา element ที่เกี่ยวข้อง
+          let button = event.target;
+          let statusCell = button.closest("tr").querySelector("td:nth-child(5)");
 
-        // อัปเดตสถานะในตาราง
-        if (newStatus === 1) {
+          // อัปเดตสถานะในตาราง
+          if (newStatus === 1) {
             statusCell.innerHTML = `<p style="color: green;">ยืนยันแล้ว</p>`;
             button.innerText = "ยกเลิก";
             button.className = "unshow";
             button.onclick = (e) => toggleStatus(e, newsId, 0);
-        } else {
+          } else {
             statusCell.innerHTML = `<p style="color: red;">ยังไม่ยืนยัน</p>`;
             button.innerText = "ยืนยัน";
             button.className = "show";
             button.onclick = (e) => toggleStatus(e, newsId, 1);
-        }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
-}
+          }
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+    }
 
-        function openModal(event, imageData) {
-          var modal = document.getElementById("myModal");
-          var modalImg = document.getElementById("modalImage");
-          
-          // ตั้งค่าตำแหน่งของ modal ที่ตำแหน่งที่คลิก
-          var mouseX = event.clientX;
-          var mouseY = event.clientY;
-          
-          modal.style.display = "flex";
-          modal.style.left = (mouseX - 310) + 'px'; // ตำแหน่งซ้าย - กว้าง modal (300px)
-          modal.style.top = (mouseY) + 'px'; 
-          
-          modalImg.src = imageData;  // กำหนดให้ src ของภาพเป็น Base64 string
+    function openModal(event, imageData) {
+      var modal = document.getElementById("myModal");
+      var modalImg = document.getElementById("modalImage");
+
+      // ตั้งค่าตำแหน่งของ modal ที่ตำแหน่งที่คลิก
+      var mouseX = event.clientX;
+      var mouseY = event.clientY;
+
+      modal.style.display = "flex";
+      modal.style.left = (mouseX - 310) + 'px'; // ตำแหน่งซ้าย - กว้าง modal (300px)
+      modal.style.top = (mouseY) + 'px';
+
+      modalImg.src = imageData;  // กำหนดให้ src ของภาพเป็น Base64 string
+    }
+
+    function closeModal() {
+      var modal = document.getElementById("myModal");
+      modal.style.display = "none";  // ปิด modal
+    }
+    function delbill(id) {
+      fetch(`/delbill/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
         }
-      
-        function closeModal() {
-          var modal = document.getElementById("myModal");
-          modal.style.display = "none";  // ปิด modal
-        }
-      </script>
+      })
+        .then(response => response.json()) 
+        .then(data => {
+          if (data.success) {
+            console.log("Bill deleted successfully:", data);
+            alert("บิลถูกลบแล้ว!");
+            window.location.reload(true);
+          } else {
+            console.error("Delete failed:", data.error);
+            alert("ลบบิลไม่สำเร็จ: " + data.error);
+          }
+        })
+        .catch(error => {
+          console.error("Error deleting bill:", error);
+          alert("เกิดข้อผิดพลาดในการลบบิล");
+        });
+    }
+
+  </script>
 </body>
 <style>
+  /* Modal styles */
+  .modal {
+    display: none;
+    /* ซ่อน modal โดยเริ่มต้น */
+    position: absolute;
+    /* ใช้ position absolute เพื่อให้สามารถตั้งตำแหน่งได้ */
+    z-index: 1;
+    /* จัดอันดับความสำคัญของ modal ให้สูงสุด */
+    width: 300px;
+    /* ขนาดของ modal */
+    height: 300px;
+    /* ขนาดของ modal */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* พื้นหลังโปร่งแสง */
+    overflow: hidden;
+    /* ซ่อนเนื้อหาที่เกินขอบเขต */
+    border-radius: 10px;
+    /* มุมโค้ง */
 
-    /* Modal styles */
-    .modal {
-      display: none; /* ซ่อน modal โดยเริ่มต้น */
-      position: absolute; /* ใช้ position absolute เพื่อให้สามารถตั้งตำแหน่งได้ */
-      z-index: 1; /* จัดอันดับความสำคัญของ modal ให้สูงสุด */
-      width: 300px; /* ขนาดของ modal */
-      height: 300px; /* ขนาดของ modal */
-      background-color: rgba(0, 0, 0, 0.8); /* พื้นหลังโปร่งแสง */
-      overflow: hidden; /* ซ่อนเนื้อหาที่เกินขอบเขต */
-      border-radius: 10px; /* มุมโค้ง */
-      
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-    }
-    
-    .modal-content {
-      width: 100%; /* ให้รูปเต็มขนาดของ modal */
-      height: 100%;
-      object-fit: contain; /* ให้รูปไม่เสียสัดส่วน */
-    }
-    
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      color: #eee;
-      font-size: 30px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    
-    
-    
-    </style>
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .modal-content {
+    width: 100%;
+    /* ให้รูปเต็มขนาดของ modal */
+    height: 100%;
+    object-fit: contain;
+    /* ให้รูปไม่เสียสัดส่วน */
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #eee;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+
 </html>
