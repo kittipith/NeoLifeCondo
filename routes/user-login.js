@@ -10,10 +10,19 @@ const { route } = require("./auth");
 
 //USER ROUTE
 router.get("/user/room", (req, res) => {
-    db.all("SELECT * FROM news WHERE status = 1", (err, data) => {
-        console.log(data);
-        res.render('newboard', { data: data });
-    });
+    try {
+        const token = req.cookies.refreshToken;
+        const user = jwt.verify(token, REFRESH_SECRET);
+
+        db.get(`SELECT room_number FROM room WHERE renter_id = ${user.id}`, (err, room_number) => {
+            db.all("SELECT * FROM news WHERE status = 1", (err, data) => {
+                console.log(data, room_number);
+                res.render('newboard', { data: data , room_number: room_number});
+            });
+        });
+    } catch (error){
+        res.redirect("/login");
+    }
 });
 
 router.get("/user/information", (req, res) => {
@@ -50,8 +59,11 @@ router.post("/user/service", (req, res) => {
     if (service === "01") {
         db.get("SELECT room_id FROM room WHERE room_number = ?", [numroom], (err, room_id) => {
             // console.log(room_id.room_id);
+            if (err) {
+                console.error("Error inserting service request:", err);
+            }
             db.run("INSERT INTO servicesReq (service_id, room_id, info, date, time, pic) VALUES (?, ?, ?, ?, ?, ?)",
-                [serviceId, room_id.room_id, note, date, time, filebase641], (err) => {
+                [1, room_id.room_id, note, date, time, filebase641], (err) => {
                     if (err) {
                         console.error("Error inserting service request:", err);
                     } else {
@@ -62,6 +74,9 @@ router.post("/user/service", (req, res) => {
     } else if (service === "02") {
         db.get("SELECT room_id FROM room WHERE room_number = ?", [numroom], (err, room_id) => {
             // console.log(room_id.room_id);
+            if (err) {
+                console.error("Error inserting service request:", err);
+            }
             db.run("INSERT INTO repairReq (room_id, info, date, time, pic) VALUES (?, ?, ?, ?, ?)",
                 [room_id.room_id, note, date, time, filebase641], (err) => {
                     if (err) {
@@ -91,8 +106,11 @@ router.post("/user/contactstaff", (req, res) => {
     } else if (cont === "02") {
         db.get("SELECT room_id FROM room WHERE room_number = ?", [numroom], (err, room_id) => {
             // console.log(room_id.room_id);
+            if (err) {
+                console.error("Error inserting service request:", err);
+            }
             db.run("INSERT INTO contact_staff (room_id, contact_name, info, date, time, pic) VALUES (?, ?, ?, ?, ?, ?)",
-                [room_id.room_id, tile, info, date, time, filebase642], (err) => {
+                [room_id.room_id, title, info, date, time, filebase642], (err) => {
                     if (err) {
                         console.error("Error inserting contactStaff request:", err);
                     } else {

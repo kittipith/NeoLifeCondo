@@ -59,7 +59,7 @@ async function refreshAccessToken() {
 }
 
 //ตั้งให้เรียก refresh token อัตโนมัติเมื่อ access token หมดอายุ
-setInterval(refreshAccessToken, 25 * 1000); // รีเฟรชทุก 25 วินาที
+setInterval(refreshAccessToken, 7 * 1000);
 
 // function logout() {
 //     localStorage.removeItem("accessToken");

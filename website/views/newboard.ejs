@@ -72,10 +72,10 @@
     <!-- Popup บริการเสริม -->
     <div id="popupcon" class="popup">
         <h2>ติดต่อใช้บริการเสริม</h2>
-        <form class="myform" id="serviecForm" action="/user/service" method="post" onsubmit="return confirmSubmission()">
+        <form class="myform" id="serviecForm" action="/user/service" method="post">
             <p>
                 <label for="numroom">*ห้อง</label>
-                <input type="text" id="numroom" name="numroom" required>
+                <input type="text" id="numroom" name="numroom" value="<%= room_number.room_number %>" required readonly>
             </p>
             <p>
                 <label for="servi">*บริการเสริม:</label>
@@ -111,10 +111,10 @@
     <!-- Popup ติดต่อพนักงาน -->
     <div id="popupser" class="popup">
         <h2>ติดต่อพนักงาน</h2>
-        <form class="myform" action="/user/contactstaff" method="post" onsubmit="return confirmSubmission()">
+        <form class="myform" id="myform2" action="/user/contactstaff" method="post">
             <p>
                 <label for="numroom">*ห้อง</label>
-                <input type="text" id="numroom" name="numroom" />
+                <input type="text" id="numroom" name="numroom" value="<%= room_number.room_number %>" required readonly>
             </p>
             <p>
                 <label for="cont">*สิ่งที่ต้องการติดต่อ</label>
@@ -169,6 +169,22 @@
                 }, 2000);
             });
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("myform2").addEventListener("submit", function (event) {
+                event.preventDefault(); // ป้องกันการ submit ทันที
+                Swal.fire({
+                  icon: "success",
+                  title: "บันทึกข้อมูลสำเร็จ",
+                  showConfirmButton: false,
+                });
+                
+                setTimeout(() => {
+                    this.submit();
+                }, 2000);
+            });
+        });
+
         var check = true;
         function toggleSidebar() {
             const change_color = document.getElementById("menu-button");

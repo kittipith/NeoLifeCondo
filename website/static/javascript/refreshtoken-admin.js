@@ -55,7 +55,7 @@ async function refreshAccessToken() {
 refreshAccessToken();
 
 // ✅ ตั้งให้เรียก refresh token อัตโนมัติเมื่อ access token หมดอายุ
-setInterval(refreshAccessToken, 25 * 1000); // รีเฟรชทุก 1 ชั่วโมง
+setInterval(refreshAccessToken, 25 * 1000);
 
 
 // function logout() {
