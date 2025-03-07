@@ -8,7 +8,8 @@ Fundamental Web Programming School of Information Technology KMITL Year 2/2024
 
 ## Username Password Role ADMIN
 
-``` Username : admin<br>Password : admin1234 ```
+``` Username : admin ```
+``` Password : admin1234 ```
 
 ## Username Password Role ADMIN
 
