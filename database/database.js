@@ -2,7 +2,7 @@ const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
 
 // เชื่อมต่อกับ SQLite Database
-const db = new sqlite3.Database(path.join(__dirname, "web.db"), (err) => {
+const db = new sqlite3.Database(path.join(__dirname, "webTemp.db"), (err) => {
   if (err) {
     console.error("Database connection error:", err.message);
   } else {

@@ -80,11 +80,11 @@
                 document.querySelector('.loader').style.display = 'none';
                 document.getElementById('downloadLoader').style.display = 'flex';
 
-                setTimeout(() => {
+                if (username === "admin"){
+                    window.location.href = "http://localhost:3000/admin";
+                }else{
                     window.location.href = "http://localhost:3000/user/room";
-                }, 10000);
-
-                window.location.href = "http://localhost:3000/user/room";
+                }
             } catch (error) {
                 console.error("Error:", error);
                 Swal.fire({
