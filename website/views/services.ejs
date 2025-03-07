@@ -9,34 +9,51 @@
     <link rel="icon" type="image/png" href="../static/img/logo.png">
 </head>
 <body style="display: none;">
-    <form action="/submitReqService" method="POST">
-    <button>เสร็จสิ้น</button>
-    <table>
-        <thead>
-            <tr>
-                <th><input type="checkbox"></th>
-                <th>ห้อง</th>
-                <th>บริการเสริม</th>
-                <th>วันที่</th>
-                <th>เวลา</th>
-                <th>หมายเหตุ</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% data.forEach((item)=>{ %> 
-            <tr>
-                <td><input type="checkbox" name="selectedReqs" value="<%= item.id %>" ></td>
-                <td><%=item.room_number%></td>
-                <td><%=item.name_service%></td>
-                <td><%=item.date%></td>
-                <td><%=item.time%></td>
-                <td><%=item.info%></td>
-            </tr>
-            <% }); %>   
-        </tbody>
-    </table>
+    <form action="/submitReqService" method="POST" onsubmit="return confirmSubmission(event)">
+        <button>เสร็จสิ้น</button>
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>ห้อง</th>
+                    <th>บริการเสริม</th>
+                    <th>วันที่</th>
+                    <th>เวลา</th>
+                    <th>หมายเหตุ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach((item)=>{ %> 
+                <tr>
+                    <td><input type="checkbox" name="selectedReqs" value="<%= item.id %>" ></td>
+                    <td><%=item.room_number%></td>
+                    <td><%=item.name_service%></td>
+                    <td><%=item.date%></td>
+                    <td><%=item.time%></td>
+                    <td><%=item.info%></td>
+                </tr>
+                <% }); %>   
+            </tbody>
+        </table>
     </form>
     <script src="/static/javascript/refreshtoken-admin.js"></script>
     <script src="../static/javascript/checkbox.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmSubmission(event) {
+            event.preventDefault(); // ป้องกันการส่งฟอร์มทันที
+    
+            Swal.fire({
+                icon: "success",
+                title: "บริการเสริมเสร็จสิ้น",
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                event.target.submit(); // ส่งฟอร์มหลังจากแสดง SweetAlert เสร็จ
+            });
+    
+            return false; // ป้องกันการส่งฟอร์มแบบปกติ
+        }
+    </script>
 </body>
 </html>

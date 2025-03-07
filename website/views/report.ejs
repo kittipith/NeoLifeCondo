@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="../static/img/logo.png">
 </head>
 <body style="display: none;">
-  <form action="/submitReqRepair" method="POST">
+  <form action="/submitReqRepair" method="POST" onsubmit="return confirmSubmission(event)">
     <button>เสร็จสิ้น</button>
     <table>
         <thead>
@@ -43,6 +43,7 @@
 </form>
     <script src="/static/javascript/refreshtoken-admin.js"></script>
     <script src= "../static/javascript/checkbox.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function openModal(event, imageData) {
           var modal = document.getElementById("myModal");
@@ -62,6 +63,21 @@
         function closeModal() {
           var modal = document.getElementById("myModal");
           modal.style.display = "none";  // ปิด modal
+        }
+
+        function confirmSubmission(event) {
+          event.preventDefault(); // ป้องกันการส่งฟอร์มทันที
+  
+          Swal.fire({
+              icon: "success",
+              title: "แก้ไขของชำรุดเสริมเสร็จสิ้น",
+              showConfirmButton: false,
+              timer: 1500
+          }).then(() => {
+              event.target.submit(); // ส่งฟอร์มหลังจากแสดง SweetAlert เสร็จ
+          });
+  
+          return false; // ป้องกันการส่งฟอร์มแบบปกติ
         }
       </script>
 

@@ -67,6 +67,7 @@
   </form>
   <script src="/static/javascript/refreshtoken-admin.js"></script>
   <script src="../static/javascript/checkbox.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -109,11 +110,23 @@
             button.innerText = "ยกเลิก";
             button.className = "unshow";
             button.onclick = (e) => toggleStatus(e, newsId, 0);
+            Swal.fire({
+              icon: "success",
+              title: "ยืนยันการชำระ",
+              showConfirmButton: false,
+              timer: 1500
+          });
           } else {
             statusCell.innerHTML = `<p style="color: red;">ยังไม่ยืนยัน</p>`;
             button.innerText = "ยืนยัน";
             button.className = "show";
             button.onclick = (e) => toggleStatus(e, newsId, 1);
+            Swal.fire({
+              icon: "success",
+              title: "ยกเลิกการชำระ",
+              showConfirmButton: false,
+              timer: 1500
+          });
           }
         })
         .catch(error => {
@@ -140,28 +153,48 @@
       var modal = document.getElementById("myModal");
       modal.style.display = "none";  // ปิด modal
     }
+
     function delbill(id) {
-      fetch(`/delbill/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json"
+      Swal.fire({
+        title: "คุณแน่ใจที่จะลบรึเปล่า",
+        text: "ข้อมูลจะไม่สามารถกู้คืนได้",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "ลบข้อมูล",
+        cancelButtonText: "ยกเลิก"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "ลบข้อมูลสำเร็จ",
+            text: "ข้อมูลของคุณถูกลบแล้ว",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            fetch(`/delbill/${id}`, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json"
+              }
+            })
+              .then(response => response.json()) 
+              .then(data => {
+                if (data.success) {
+                  console.log("Bill deleted successfully:", data);
+                  window.location.reload(true);
+                } else {
+                  console.error("Delete failed:", data.error);
+                }
+              })
+              .catch(error => {
+                console.error("Error deleting bill:", error);
+              });
+          });
         }
-      })
-        .then(response => response.json()) 
-        .then(data => {
-          if (data.success) {
-            console.log("Bill deleted successfully:", data);
-            alert("บิลถูกลบแล้ว!");
-            window.location.reload(true);
-          } else {
-            console.error("Delete failed:", data.error);
-            alert("ลบบิลไม่สำเร็จ: " + data.error);
-          }
-        })
-        .catch(error => {
-          console.error("Error deleting bill:", error);
-          alert("เกิดข้อผิดพลาดในการลบบิล");
-        });
+      });
+      
     }
 
   </script>

@@ -107,6 +107,7 @@
     </div>
 </body>
 <script src="/static/javascript/refreshtoken-admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         let today = new Date();
@@ -186,24 +187,31 @@
             servicewage: parseFloat(servicewage) || 0
         };
 
-        fetch(`/insertbill/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-            .then(response => response.json())
-            .then(data => {
-                createPayment();
-                alert("บันทึกข้อมูลเรียบร้อย!");
-                window.close();
-                console.log("Success:", data);
+        Swal.fire({
+            icon: "success",
+            title: "สร้างบิลเสร็จสิ้น",
+            text: "ทำการส่งบิลไปยังผู้เช่า",
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
+            fetch(`/insertbill/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
             })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
-            });
+                .then(response => response.json())
+                .then(data => {
+                    createPayment();
+                    window.close();
+                    console.log("Success:", data);
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+                });
+        });
     }
 
 

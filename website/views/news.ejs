@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/css/news.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../static/img/logo.png">
 </head>
@@ -68,10 +69,11 @@
     </table>
     <div id="popup" class="popup">
       <iframe id="ContentIframe"></iframe>
-  </div>
+    </div>
   </form>
   <script src="/static/javascript/refreshtoken-admin.js"></script>
   <script src="../static/javascript/checkbox.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     function toggleStatus(event, newsId, newStatus) {
       event.preventDefault(); // ป้องกันการ refresh หน้า
@@ -112,8 +114,31 @@
 
     function submitForm(action) {
       let form = document.getElementById("newsForm");
-      form.action = action;
-      form.submit();
+
+      Swal.fire({
+        title: "คุณแน่ใจที่จะลบรึเปล่า",
+        text: "ข้อมูลจะไม่สามารถกู้คืนได้",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "ลบข้อมูล",
+        cancelButtonText: "ยกเลิก"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "ลบข้อมูลสำเร็จ",
+            text: "ข้อมูลของคุณถูกลบแล้ว",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            form.action = action;
+            form.submit();
+          });
+        }
+      });
+
     }
 
     function openModal(event, imageData) {
@@ -137,22 +162,26 @@
     }
 
     function openNewsPopup(url) {
-    var popup = document.getElementById("popup");
-    var iframe = document.getElementById("ContentIframe");
-    iframe.src = `${url}`;
-    popup.style.display = "block";
-}
-function closeNewsPopup() {
-    document.getElementById("popup").style.display = "none";
-}
+      var popup = document.getElementById("popup");
+      var iframe = document.getElementById("ContentIframe");
+      iframe.src = `${url}`;
+      popup.style.display = "block";
+    }
+    function closeNewsPopup() {
+      document.getElementById("popup").style.display = "none";
+    }
 
-  function closeNewsPopupAdd() {
-    document.getElementById("popup").style.display = "none";
-    alert("เพิ่มข่าวสำเร็จ");
-    setTimeout(() => {
+    function closeNewsPopupAdd() {
+      document.getElementById("popup").style.display = "none";
+      Swal.fire({
+        icon: "success",
+        title: "เพิ่มข่าวสารเสร็จสิ้น",
+        showConfirmButton: false,
+        timer: 1500
+      }).then(() => {
         window.location.reload(true);
-    }, 1000);
-}
+      });
+    }
 
   </script>
 

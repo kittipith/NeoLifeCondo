@@ -12,7 +12,7 @@
 </head>
 
 <body style="display: none;">
-    <form action="/setregister" method="post">
+    <form action="/setregister" method="post" onsubmit="return confirmSubmission(event)">
         <div>
             <div class="img-logo">
                 <img src="../static/img/logo_condo.png">
@@ -146,12 +146,14 @@
                 </div>
             </div>
             <div class="button-create">
-                <button type="button" id="delbut" onclick="deldata()" style="display: block;" class="btn-del">ลบข้อมูล</button>
+                <button type="button" id="delbut" onclick="deldata()" style="display: block;"
+                    class="btn-del">ลบข้อมูล</button>
                 <button class="btn-create">สร้างบัญชี</button>
             </div>
         </div>
     </form>
     <script src="/static/javascript/refreshtoken-admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener("DOMContentLoaded", async function () {
             const otherRadio = document.getElementById("other");
@@ -254,27 +256,64 @@
                 });
             });
         });
-    
-        function deldata(){
+
+        function deldata() {
             let id = document.getElementById("acc_id").value
-            fetch(`/deluserregis`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                selectedid: id
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            window.location.reload(true);
-            console.log(data);
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        });
+            Swal.fire({
+                title: "คุณแน่ใจที่จะลบรึเปล่า",
+                text: "ข้อมูลจะไม่สามารถกู้คืนได้",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "ลบข้อมูล",
+                cancelButtonText: "ยกเลิก"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "ลบข้อมูลสำเร็จ",
+                        text: "ข้อมูลของคุณถูกลบแล้ว",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        fetch(`/deluserregis`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                selectedid: id
+                            })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                window.location.reload(true);
+                                console.log(data);
+                            })
+                            .catch(error => {
+                                console.error("Error:", error);
+                            });
+                    });
+                }
+            });
+
         }
+
+        function confirmSubmission(event) {
+            event.preventDefault(); // ป้องกันการส่งฟอร์มทันที
+    
+            Swal.fire({
+                icon: "success",
+                title: "สร้างบัญชีเสร็จสิ้น",
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                event.target.submit(); // ส่งฟอร์มหลังจากแสดง SweetAlert เสร็จ
+            });
+    
+            return false; // ป้องกันการส่งฟอร์มแบบปกติ
+          }
     </script>
 </body>
 
