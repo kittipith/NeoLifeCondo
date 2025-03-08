@@ -249,7 +249,7 @@
     
         // โหลด JSON file
         try {
-            const response = await fetch("http://localhost:3000/api/condo");
+            const response = await fetch("/api/condo");
             const data = await response.json();
             rooms = data.rooms; // ใช้ข้อมูลจาก "rooms" ใน JSON
         } catch (error) {
