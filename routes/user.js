@@ -9,7 +9,7 @@ const db = require("../database/database");
 const { render } = require("ejs");
 const { console } = require("inspector/promises");
 
-// 📌 แสดงข้อมูล USER
+//แสดงข้อมูล USER
 //res.render("test", { condos: rows }); // ส่งข้อมูลไปที่ template
 
 //หน้า Default

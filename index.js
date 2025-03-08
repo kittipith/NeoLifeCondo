@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const app = express();
 
-// ✅ Middleware
+//Middleware
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(cookieParser());
@@ -14,7 +14,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "website/views")); // โฟลเดอร์เก็บไฟล์ .ejs
 app.use(express.static(path.join(__dirname, "website"))); // static
 
-// ✅ Import Routes
+//Import Routes
 const authRoutes = require("./routes/auth");
 const protectedRoutes = require("./routes/protected");
 const user = require("./routes/user");
@@ -27,7 +27,7 @@ app.use("/", user);
 app.use("/", user2);
 app.use("/", admin);
 
-// ✅ เปิดเซิร์ฟเวอร์
+//เปิดเซิร์ฟเวอร์
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
 });
