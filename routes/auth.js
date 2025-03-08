@@ -96,7 +96,7 @@ router.post("/forgot-password", (req, res) => {
                     return res.status(404).json({ error: "ไม่พบข้อมูลบัญชีที่ตรงกับหมายเลขบัตรประชาชน" });
                 }
         
-                db.run("UPDATE account SET password = ? WHERE id = ? AND username = ?", [password, idCard2, username], (err) => {
+                db.run("UPDATE account SET password = ? WHERE username = ?", [password, username], (err) => {
                     res.status(200).json({ success: "อัปเดตข้อมูลเสร็จสิ้น"})
                 });
             }
