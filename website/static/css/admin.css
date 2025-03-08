@@ -87,6 +87,7 @@ iframe {
     font-size: 24px;
     border-radius: 5px;
     cursor: pointer;
+    z-index: 1200;
 }
 
 @media (max-width: 1500px) {
