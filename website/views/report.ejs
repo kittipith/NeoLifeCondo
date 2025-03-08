@@ -24,7 +24,6 @@
         </thead>
         <tbody>
             <% data.forEach((item)=>{ %>
-                
             <tr>
                 <td><input type="checkbox" name="selectedRepair" value="<%= item.id %>"  ></td>
                 <td><%=item.room_number%></td>
@@ -82,41 +81,4 @@
       </script>
 
 </body>
-<style>
-
-    /* Modal styles */
-    .modal {
-      display: none; /* ซ่อน modal โดยเริ่มต้น */
-      position: absolute; /* ใช้ position absolute เพื่อให้สามารถตั้งตำแหน่งได้ */
-      z-index: 1; /* จัดอันดับความสำคัญของ modal ให้สูงสุด */
-      width: 300px; /* ขนาดของ modal */
-      height: 300px; /* ขนาดของ modal */
-      background-color: rgba(0, 0, 0, 0.8); /* พื้นหลังโปร่งแสง */
-      overflow: hidden; /* ซ่อนเนื้อหาที่เกินขอบเขต */
-      border-radius: 10px; /* มุมโค้ง */
-      
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-    }
-    
-    .modal-content {
-      width: 100%; /* ให้รูปเต็มขนาดของ modal */
-      height: 100%;
-      object-fit: contain; /* ให้รูปไม่เสียสัดส่วน */
-    }
-    
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      color: #eee;
-      font-size: 30px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    
-    
-    
-    </style>
 </html>

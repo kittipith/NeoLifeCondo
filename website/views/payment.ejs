@@ -41,9 +41,9 @@
             </td>
             <td>
               <% if (item.isPaid==1) { %>
-                <p style="color: green;">ยืนยันแล้ว</p>
+                <p style="color: #00e013;">ยืนยันแล้ว</p>
                 <% } else { %>
-                  <p style="color: red;">ยังไม่ยืนยัน</p>
+                  <p style="color: #FF0000;">ยังไม่ยืนยัน</p>
                   <% } %>
             </td>
             <td>
@@ -199,48 +199,4 @@
 
   </script>
 </body>
-<style>
-  /* Modal styles */
-  .modal {
-    display: none;
-    /* ซ่อน modal โดยเริ่มต้น */
-    position: absolute;
-    /* ใช้ position absolute เพื่อให้สามารถตั้งตำแหน่งได้ */
-    z-index: 1;
-    /* จัดอันดับความสำคัญของ modal ให้สูงสุด */
-    width: 300px;
-    /* ขนาดของ modal */
-    height: 300px;
-    /* ขนาดของ modal */
-    background-color: rgba(0, 0, 0, 0.8);
-    /* พื้นหลังโปร่งแสง */
-    overflow: hidden;
-    /* ซ่อนเนื้อหาที่เกินขอบเขต */
-    border-radius: 10px;
-    /* มุมโค้ง */
-
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-  }
-
-  .modal-content {
-    width: 100%;
-    /* ให้รูปเต็มขนาดของ modal */
-    height: 100%;
-    object-fit: contain;
-    /* ให้รูปไม่เสียสัดส่วน */
-  }
-
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: #eee;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-</style>
-
 </html>
