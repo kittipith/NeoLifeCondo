@@ -28,18 +28,10 @@ body{
     flex-direction: column;
     margin-left: 8%;
 }
-.info-register{
-    display: flex;
-    flex-direction: column;
-    margin-left: 8%;
-}
 .info-personal p{
     margin: 7px auto;
 }
 .info-address p{
-    margin: 7px auto;
-}
-.info-register p{
     margin: 7px auto;
 }
 .head-text{
