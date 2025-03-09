@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            <% data.forEach((item)=>{ %>       
+            <% data.forEach((item)=>{ %>
             <tr>
                 <td><input type="checkbox" name="selectedContact" value="<%= item.contact_id %>"></td>
                 <td><%=item.room_number%></td>
@@ -40,7 +40,6 @@
     <script>
         function confirmSubmission(event) {
             event.preventDefault(); // ป้องกันการส่งฟอร์มทันที
-    
             Swal.fire({
                 icon: "success",
                 title: "งานติดต่อเสร็จสิ้น",
@@ -49,7 +48,6 @@
             }).then(() => {
                 event.target.submit(); // ส่งฟอร์มหลังจากแสดง SweetAlert เสร็จ
             });
-    
             return false; // ป้องกันการส่งฟอร์มแบบปกติ
           }
     </script>
