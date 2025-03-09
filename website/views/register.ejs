@@ -141,7 +141,7 @@
                     </div>
                     <div class="regis">
                         <p>Confirm Password</p>
-                        <input type="password">
+                        <input type="password" id="conpass">
                     </div>
                 </div>
             </div>
@@ -301,19 +301,32 @@
         }
 
         function confirmSubmission(event) {
-            event.preventDefault(); // ป้องกันการส่งฟอร์มทันที
-    
+            event.preventDefault(); 
+
+            let password = document.getElementById("passw").value;
+            let confirmPassword = document.getElementById("conpass").value;
+
+            if (password !== confirmPassword) {
+                Swal.fire({
+                    icon: "error",
+                    title: "รหัสผ่านไม่ตรงกัน",
+                    text: "โปรดตรวจสอบและกรอกใหม่",
+                    confirmButtonText: "ตกลง"
+                });
+                return false;
+            }
+
             Swal.fire({
                 icon: "success",
                 title: "สร้างบัญชีเสร็จสิ้น",
                 showConfirmButton: false,
                 timer: 1500
             }).then(() => {
-                event.target.submit(); // ส่งฟอร์มหลังจากแสดง SweetAlert เสร็จ
+                event.target.submit(); 
             });
-    
-            return false; // ป้องกันการส่งฟอร์มแบบปกติ
-          }
+
+            return false; 
+        }
     </script>
 </body>
 
