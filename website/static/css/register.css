@@ -64,6 +64,7 @@ hr{
     border-radius: 10px;
     cursor: pointer;
     background-color: #0099FF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .btn-create:hover{
     background-color: #0c6cb6;

@@ -9,24 +9,22 @@
     <link rel="icon" type="image/png" href="../static/img/logo.png">
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>ห้อง</th>
-                <th>บิลค่าเช่า</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% data.forEach((item)=>{ %>
-            <tr onclick="swap('write-bill','<%=item.renter_id%>');">
-                
-                    <td><%=item.room_number%></td>
-                    <td><img src="../static/img/bill.png"></td>
-                  
-            </tr>
-            <% }); %>
-        </tbody>
-    </table>
+<table>
+    <thead>
+        <tr>
+            <th>ห้อง</th>
+            <th>บิลค่าเช่า</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach((item)=>{ %>
+        <tr onclick="swap('write-bill','<%=item.renter_id%>');">
+                <td><%=item.room_number%></td>
+                <td><img src="../static/img/bill.png"></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
     <script src="../static/javascript/checkbox.js"></script>
 </body>
 </html>
