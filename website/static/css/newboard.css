@@ -174,42 +174,6 @@ nav a {
     color: #333; 
     font-weight: 600; 
 }
-
-@media screen and (max-width: 1024px) {
-    nav {
-        height: 10%;
-    }
-    .menu-btn {
-        display: block;
-    }
-    .link{
-        width: 0%;
-    }
-    .thelink{
-        display: none;
-        
-    }
-    .thelogo {
-        justify-content: center;
-        width: 60%; 
-        display: flex;
-        justify-self: center;
-    }
-    .nav-container {
-        width: 100%;
-        height: 100%;
-        margin: 5%;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-
-        /* justify-content: space-between; */
-    }
-    .container {
-        margin-top: 10%;
-        padding: 20px;
-    }
-}
 #popupcon, #popupser {
     color: #000;
     padding: 50px;
@@ -312,6 +276,39 @@ nav a {
     cursor: pointer;
 }
 
+@media screen and (max-width: 1024px) {
+    nav {
+        height: 10%;
+    }
+    .menu-btn {
+        display: block;
+    }
+    .link{
+        width: 0%;
+    }
+    .thelink{
+        display: none;
+        
+    }
+    .thelogo {
+        justify-content: center;
+        width: 60%; 
+        display: flex;
+        justify-self: center;
+    }
+    .nav-container {
+        width: 100%;
+        height: 100%;
+        margin: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .container {
+        margin-top: 10%;
+        padding: 20px;
+    }
+}
 @media screen and (max-width: 780px) {
     nav {
         height: 10%;
