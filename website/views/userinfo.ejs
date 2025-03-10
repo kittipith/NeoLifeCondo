@@ -33,7 +33,7 @@
                 <div class="personal-info">
                     <p class="text-inside"><strong>ชื่อ (Name):</strong> <%= data.title %><%= data.name %> <%= data.surname %></p>
                     <p class="text-inside"><strong>ชื่อเล่น (Nickname):</strong> <%= data.nickname %></p>
-                    <p class="text-inside"><strong>วันเกิด (Birthdate):</strong> 30 กรกฎาคม 2547</p>
+                    <p class="text-inside"><strong>วันเกิด (Birthdate):</strong><span id="birthdate"><%= data.birthday %></span></p>
                     <p class="text-inside"><strong>อายุ (Age):</strong> <%= data.age %></p>
                     <p class="text-inside"><strong>เพศ (Gender):</strong> <%= data.gender %></p>
                     <p class="text-inside"><strong>สัญชาติ (Nationality):</strong><%= data.nationality %></p>
@@ -190,7 +190,39 @@
             document.getElementById('popupser').style.display = 'none';
         }
 
+        document.addEventListener('DOMContentLoaded', () => {
+            // ดึง element ที่มี id="birthdate"
+            const birthdateElement = document.querySelector("#birthdate");
     
+            if (birthdateElement) {
+                // ดึงค่าวันที่จาก HTML (ค่าเดิมคือ YYYY-MM-DD)
+                const dateString = birthdateElement.innerText.trim();
+    
+                // แปลงวันที่เป็นรูปแบบไทย
+                birthdateElement.innerText = formatThaiDate(dateString);
+            }
+        });
+    
+        function formatThaiDate(dateString) {
+            if (!dateString) return "";
+    
+            // รายชื่อเดือนภาษาไทย
+            const months = [
+                "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+            ];
+    
+            // แปลง string เป็น Date object
+            const date = new Date(dateString);
+            if (isNaN(date)) return "ข้อมูลวันที่ไม่ถูกต้อง"; // ตรวจสอบว่าค่าวันที่ถูกต้องหรือไม่
+    
+            // ดึงค่าต่างๆ ของวันที่
+            const day = date.getDate(); // วันที่
+            const month = months[date.getMonth()]; // เดือน (ดึงจาก array)
+            const year = date.getFullYear(); // ปี ค.ศ.
+    
+            return `${day} ${month} ${year}`;
+        }
     </script>
 </body>
 </html>
