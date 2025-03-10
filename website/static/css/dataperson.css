@@ -81,7 +81,6 @@ table {
     padding: 5%;
 }
 table, th, td {
-
     border: 1px solid #ddd;
     text-align: left;
     padding: 10px;
@@ -103,7 +102,6 @@ table, th, td {
     transform: translateY(-15px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
-
 .payment{
     margin-top: 5%;
     display: grid;
